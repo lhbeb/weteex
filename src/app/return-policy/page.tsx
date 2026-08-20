@@ -178,7 +178,7 @@ export default function ReturnPolicyPage() {
             <p>Do not send or transport an excavator without <strong>written return authorisation</strong>. Here&apos;s how it works:</p>
             <ol className="list-decimal pl-6 space-y-3">
               <li>
-                <strong>Contact us</strong> at <a href="mailto:contact@weteextees.com" className="text-blue-600 hover:underline font-semibold">contact@weteextees.com</a> or call <span className="font-semibold">+19083256283</span>.
+                <strong>Contact us</strong> at <a href="mailto:contact@weteextees.com" className="text-blue-600 hover:underline font-semibold">contact@weteextees.com</a> or call <span className="font-semibold">+44 7533 408378</span>.
               </li>
               <li>
                 <strong>Receive written instructions</strong>. We will confirm eligibility, the return address, and suitable machinery transport requirements.
@@ -244,7 +244,7 @@ export default function ReturnPolicyPage() {
                   <span>Phone</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7 space-y-1">
-                  <div>+19083256283</div>
+                  <div>+44 7533 408378</div>
                 </div>
 
                 <div className="flex items-center gap-2 font-bold text-[#01428a] pt-2">

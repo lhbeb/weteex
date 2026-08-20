@@ -62,7 +62,7 @@ export const STORE_FAQS: readonly StoreFaq[] = [
   {
     question: 'How can I contact Weteex / Teextees?',
     answer:
-      'You can use our contact form, email contact@weteextees.com, or call +19083256283 during published support hours.',
+      'You can use our contact form, email contact@weteextees.com, or call +44 7533 408378 during published support hours.',
     linkHref: '/contact',
     linkLabel: 'Contact our team',
   },

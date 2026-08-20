@@ -51,7 +51,7 @@ export default function AboutPage() {
         'description':
           'Excavator retailer operated by Gooba Global LTD, company number 13107870.',
         'email': 'contact@weteextees.com',
-        'telephone': ['+19083256283'],
+        'telephone': ['+447533408378'],
         'address': {
           '@type': 'PostalAddress',
           'streetAddress': '71-75 Shelton Street',
@@ -63,7 +63,7 @@ export default function AboutPage() {
         'contactPoint': [
           {
             '@type': 'ContactPoint',
-            'telephone': '+19083256283',
+            'telephone': '+447533408378',
             'contactType': 'customer service',
             'areaServed': ['GB'],
             'availableLanguage': ['en'],
@@ -408,8 +408,8 @@ export default function AboutPage() {
               </div>
               <div className="ml-8 space-y-3 text-gray-600">
                 <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-1">
-                  <a href="tel:+19083256283" className="whitespace-nowrap hover:text-[#01428a] transition-colors">
-                    +19083256283
+                  <a href="tel:+447533408378" className="whitespace-nowrap hover:text-[#01428a] transition-colors">
+                    +44 7533 408378
                   </a>
                 </div>
               </div>

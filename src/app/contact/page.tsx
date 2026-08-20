@@ -36,11 +36,11 @@ export default function ContactPage() {
         'name': 'Weteex / Teextees',
         'url': 'https://weteextees.com',
         'email': 'contact@weteextees.com',
-        'telephone': ['+19083256283'],
+        'telephone': ['+447533408378'],
         'contactPoint': [
           {
             '@type': 'ContactPoint',
-            'telephone': '+19083256283',
+            'telephone': '+447533408378',
             'contactType': 'customer service',
             'areaServed': ['US', 'GB'],
             'availableLanguage': ['en'],
@@ -228,7 +228,7 @@ export default function ContactPage() {
                       <Phone className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
                       <div className="ml-4">
                         <h3 className="font-medium text-[#262626]">Phone Support</h3>
-                        <p className="text-gray-600 mt-1"><span className="font-semibold">Phone:</span> +19083256283</p>
+                        <p className="text-gray-600 mt-1"><span className="font-semibold">Phone:</span> +44 7533 408378</p>
                       </div>
                     </div>
                     <div className="flex items-start">

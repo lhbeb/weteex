@@ -120,7 +120,7 @@ export default function RootLayout({
                   "@type": "ContactPoint",
                   "contactType": "customer service",
                   "email": "contact@weteextees.com",
-                  "telephone": "+19083256283",
+                  "telephone": "+447533408378",
                   "areaServed": ["GB"]
                 },
                 "address": {

@@ -24,8 +24,8 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center">
                 <Phone className="h-5 w-5 shrink-0 text-[#d8941a] mr-2" />
-                <a href="tel:+19083256283" className="hover:text-[#d8941a] transition-colors duration-300">
-                  <span className="font-semibold">Customer support:</span> +19083256283
+                <a href="tel:+447533408378" className="hover:text-[#d8941a] transition-colors duration-300">
+                  <span className="font-semibold">Customer support:</span> +44 7533 408378
                 </a>
               </div>
               <div className="flex items-center">
