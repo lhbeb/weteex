@@ -17,4 +17,4 @@ User-agent: Googlebot-Image
 Allow: /
 
 # Sitemap location
-Sitemap: https://tazoota.com/sitemap.xml
+Sitemap: https://weteextees.com/sitemap.xml

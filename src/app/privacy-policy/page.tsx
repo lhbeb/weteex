@@ -8,7 +8,7 @@ const PrivacyPolicyPage = () => (
       <div className="prose max-w-none text-gray-700 space-y-8">
         {/* Introduction */}
         <p className="text-lg leading-relaxed">
-          At Tazoota, your privacy is important to us. This Privacy Policy explains what information we collect, how we use it, how we protect it, and the choices you have regarding your personal data when you visit or use our website.
+          Weteex / Teextees is operated by Gooba Global LTD, company number 13107870. Gooba Global LTD is the controller of personal data described in this Privacy Policy. This page explains what we collect, why we use it, how we protect it, and your rights when you browse our website, request an excavator quotation, or place an order.
         </p>
 
         {/* Information We Collect */}
@@ -20,13 +20,13 @@ const PrivacyPolicyPage = () => (
           <p className="mb-4">You may provide personal information when you:</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
             <li>Create an account</li>
-            <li>Place an order</li>
+            <li>Request an excavator quotation or place an order</li>
             <li>Sign up for our newsletter</li>
             <li>Contact our customer service team</li>
             <li>Participate in surveys, promotions, or giveaways</li>
           </ul>
           <p className="mb-4">
-            This information may include your name, email address, phone number, billing and shipping address, and payment details.
+            This information may include your name, email address, phone number, billing and delivery address, company details, delivery-site and access information, order correspondence, and payment details processed by our payment providers.
           </p>
 
           <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">Information Collected Automatically</h3>
@@ -49,8 +49,8 @@ const PrivacyPolicyPage = () => (
           <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">How We Use Your Information</h2>
           <p className="mb-4">We use the information we collect to:</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Process and fulfill your orders</li>
-            <li>Send order confirmations and shipping updates</li>
+            <li>Prepare quotations and process excavator orders</li>
+            <li>Coordinate heavy-equipment transport and send delivery updates</li>
             <li>Respond to customer inquiries and support requests</li>
             <li>Send marketing emails if you have opted in</li>
             <li>Improve our website, products, and services</li>
@@ -67,7 +67,7 @@ const PrivacyPolicyPage = () => (
           </p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
             <li>Payment processors</li>
-            <li>Shipping partners</li>
+            <li>Heavy-equipment transport and logistics partners</li>
             <li>Email communication platforms</li>
             <li>Website analytics providers</li>
           </ul>
@@ -143,20 +143,20 @@ const PrivacyPolicyPage = () => (
             </div>
             <div>
               <div className="font-medium text-[#262626] mb-1">Email:</div>
-              <div className="text-gray-600">contact@tazoota.com</div>
+              <div className="text-gray-600">contact@weteextees.com</div>
             </div>
             <div>
               <div className="font-medium text-[#262626] mb-1">UK Registered Office:</div>
-              <div className="text-gray-600">Choats Rd, Barking, Dagenham RM9 6BF, United Kingdom</div>
+              <div className="text-gray-600">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</div>
             </div>
             <div>
-              <div className="font-medium text-[#262626] mb-1">US Dispatch Center:</div>
-              <div className="text-gray-600">5850 E Raines Rd, Memphis, TN 38115, United States</div>
+              <div className="font-medium text-[#262626] mb-1">Registered Company:</div>
+              <div className="text-gray-600">Gooba Global LTD · Company number 13107870</div>
             </div>
             <div>
               <div className="font-medium text-[#262626] mb-1">Hours:</div>
-              <div className="text-gray-600">Monday to Friday: 9:00 AM to 5:00 PM CST</div>
-              <div className="text-gray-600">Saturday: 10:00 AM to 3:00 PM CST</div>
+              <div className="text-gray-600">Monday to Friday: 9:00 AM to 5:00 PM GMT/BST</div>
+              <div className="text-gray-600">Saturday: by appointment</div>
             </div>
           </div>
         </div>

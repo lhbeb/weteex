@@ -1,6 +1,6 @@
 import type { Product } from '@/types/product';
 
-const VISITOR_ID_KEY = 'tazoota_visitor_id';
+const VISITOR_ID_KEY = 'weteexmachines_visitor_id';
 const ROTATION_WINDOW_MS = 5 * 60 * 1000;
 
 function hashString(value: string): number {

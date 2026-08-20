@@ -19,17 +19,18 @@ export default async function HomePage() {
       (product) => product.isFeatured === true,
     );
 
-    const lawnGardenProducts = featuredProducts
+    const excavatorProducts = featuredProducts
       .filter(p =>
-        p.collections?.includes('lawn-garden') ||
-        p.category?.trim().toLowerCase() === 'lawn mowers' ||
-        p.category?.trim().toLowerCase().includes('mower')
+        p.collections?.includes('excavators') ||
+        p.category?.trim().toLowerCase() === 'excavators' ||
+        p.category?.trim().toLowerCase().includes('excavator')
       );
 
-    const smallToolProducts = featuredProducts.filter((product) =>
-      product.collections?.includes('power-tools') &&
-      product.category.trim().toLowerCase() === 'hardware'
-    );
+    const attachmentProducts = featuredProducts.filter((product) => {
+      const productText = `${product.title} ${product.category}`.toLowerCase();
+      return product.collections?.includes('attachments') ||
+        /attachment|hydraulic thumb|bucket|auger|ripper/.test(productText);
+    });
 
   return (
     <>
@@ -42,8 +43,8 @@ export default async function HomePage() {
 
       <CategorySection
         products={featuredProducts}
-        title="Featured Equipment"
-        subtitle="A considered selection of reliable tools and outdoor essentials."
+        title="Best-Selling Excavators and Attachments"
+        subtitle="Explore AGT mini excavators, compact 1-ton machines, and practical attachments for businesses and contractors."
         maxDisplay={FEATURED_PRODUCT_LIMIT}
         shuffleForVisitor
         visitorShuffleKey="home-featured"
@@ -51,31 +52,31 @@ export default async function HomePage() {
 
       <SameDayShipping />
 
-      {lawnGardenProducts.length > 0 && (
+      {excavatorProducts.length > 0 && (
         <Suspense fallback={null}>
           <ProductGrid
-            products={lawnGardenProducts}
-            sectionId="lawn-garden-equipment"
+            products={excavatorProducts}
+            sectionId="excavators"
             title=""
             editorialCard={{
-              title: 'Dependable Performance for Every Lawn',
+              title: 'Compact Machines. More Ways to Work.',
               description:
-                'Tazoota lawn mowers combine dependable power, durable construction, and clean, consistent cutting across lawns of every size. Choose gas or cordless performance and make routine yard care simpler, faster, and easier to manage.',
+                'Compare AGT mini excavators, compact 1-ton machines, and available attachments alongside engine, pilot-control, cab, air-conditioning, side-swing, and hydraulic-thumb configurations. Choose the setup your work demands at a competitive price.',
             }}
             randomizeForVisitor
-            visitorShuffleKey="home-lawn-garden"
+            visitorShuffleKey="home-excavators"
           />
         </Suspense>
       )}
 
-      {smallToolProducts.length > 0 && (
+      {attachmentProducts.length > 0 && (
         <Suspense fallback={null}>
           <ProductGrid
-            products={smallToolProducts}
-            sectionId="durable-tools"
-            title="Dependable Tools for Every Job"
+            products={attachmentProducts}
+            sectionId="excavator-attachments"
+            title="Attachments That Expand What Your Excavator Can Do"
             randomizeForVisitor
-            visitorShuffleKey="home-durable-tools"
+            visitorShuffleKey="home-excavator-attachments"
           />
         </Suspense>
       )}
@@ -93,7 +94,7 @@ export default async function HomePage() {
       <>
         <Hero />
         <div className="container mx-auto px-4 py-16 text-center">
-          <h2 className="text-2xl font-bold text-[#262626] mb-4">Unable to load products</h2>
+          <h2 className="text-2xl font-bold text-[#262626] mb-4">Unable to load machinery</h2>
           <p className="text-gray-600">Please refresh the page or try again later.</p>
         </div>
       </>

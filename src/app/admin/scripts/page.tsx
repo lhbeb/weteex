@@ -150,7 +150,7 @@ const SCRIPTS: ScriptCard[] = [
         description:
             'Finds all products listed by a specific admin and assigns them to a public seller. ' +
             'Sets the seller_id field on every matching product. ' +
-            'Enter the seller\'s username (e.g. official-tazoota) or their database ID. ' +
+            'Enter the seller\'s username (e.g. official-weteexmachines) or their database ID. ' +
             'Use Preview first to see how many products will be affected before running.',
         danger: false,
         params: {
@@ -162,7 +162,7 @@ const SCRIPTS: ScriptCard[] = [
             sellerId: 'Seller username or ID',
         },
         paramPlaceholders: {
-            sellerId: 'e.g. official-tazoota',
+            sellerId: 'e.g. official-weteexmachines',
         },
         paramOptions: {
             listedBy: LISTED_BY_ADMINS,
@@ -177,7 +177,7 @@ const SCRIPTS: ScriptCard[] = [
         description:
             'Finds all products that have NO public seller assigned (seller_id is null/empty) and assigns them to the specified public seller. ' +
             'Sets the seller_id field on every matching product. ' +
-            'Enter the seller\'s username (e.g. official-tazoota) or their database ID. ' +
+            'Enter the seller\'s username (e.g. official-weteexmachines) or their database ID. ' +
             'Use Preview first to see how many products will be affected before running.',
         danger: false,
         params: {
@@ -187,7 +187,7 @@ const SCRIPTS: ScriptCard[] = [
             sellerId: 'Assign to Seller username or ID',
         },
         paramPlaceholders: {
-            sellerId: 'e.g. official-tazoota',
+            sellerId: 'e.g. official-weteexmachines',
         },
     },
 ];
@@ -254,7 +254,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                     <div className="flex items-start gap-4">
                         <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${script.danger
                             ? 'bg-red-50 text-red-600'
-                            : 'bg-[#0b2a17]/10 text-[#0b2a17]'
+                            : 'bg-[#01428a]/10 text-[#01428a]'
                             }`}>
                             <Terminal className="h-5 w-5" />
                         </div>
@@ -287,7 +287,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                                         value={params[key] || ''}
                                         onChange={(e) => setParams((prev) => ({ ...prev, [key]: e.target.value }))}
                                         disabled={isBusy || state === 'done'}
-                                        className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent disabled:opacity-60"
+                                        className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent disabled:opacity-60"
                                     >
                                         {options.map(opt => {
                                             const label = script.paramOptionLabels?.[key]?.[opt] ?? opt;
@@ -301,7 +301,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                                         onChange={(e) => setParams((prev) => ({ ...prev, [key]: e.target.value }))}
                                         disabled={isBusy || state === 'done'}
                                         placeholder={script.paramPlaceholders?.[key] || ''}
-                                        className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent disabled:opacity-60"
+                                        className="w-full px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent disabled:opacity-60"
                                     />
                                 )}
                             </div>
@@ -345,7 +345,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                         <button
                             onClick={handleRun}
                             disabled={!response || response.affected === 0}
-                            className="inline-flex items-center gap-2 px-4 py-2 bg-[#0b2a17] text-white rounded-xl hover:bg-[#3a7f4b] transition-colors text-sm font-medium shadow-lg shadow-[#0b2a17]/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-[#01428a] text-white rounded-xl hover:bg-[#00366f] transition-colors text-sm font-medium shadow-lg shadow-[#01428a]/25 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             <Play className="h-4 w-4" />
                             Run Script ({response?.affected ?? 0} products)
@@ -355,7 +355,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
 
                 {/* Running spinner */}
                 {state === 'running' && (
-                    <button disabled className="inline-flex items-center gap-2 px-4 py-2 bg-[#0b2a17] text-white rounded-xl text-sm font-medium opacity-75">
+                    <button disabled className="inline-flex items-center gap-2 px-4 py-2 bg-[#01428a] text-white rounded-xl text-sm font-medium opacity-75">
                         <RefreshCw className="h-4 w-4 animate-spin" />
                         Running...
                     </button>
@@ -363,8 +363,8 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
 
                 {/* Done */}
                 {state === 'done' && (
-                    <div className="flex items-center gap-2 text-green-700 text-sm font-medium">
-                        <CheckCircle2 className="h-5 w-5 text-green-500" />
+                    <div className="flex items-center gap-2 text-blue-700 text-sm font-medium">
+                        <CheckCircle2 className="h-5 w-5 text-blue-500" />
                         {response?.message}
                     </div>
                 )}
@@ -441,7 +441,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                                                     </span>
                                                 </td>
                                                 <td className="px-4 py-3">
-                                                    <span className="inline-block px-2 py-0.5 bg-[#0b2a17]/10 text-[#0b2a17] rounded text-xs font-mono">
+                                                    <span className="inline-block px-2 py-0.5 bg-[#01428a]/10 text-[#01428a] rounded text-xs font-mono">
                                                         {row.newSellerId}
                                                     </span>
                                                 </td>
@@ -449,12 +449,12 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                                         ) : 'checkoutLink' in row ? (
                                                 <>
                                                     <td className="px-4 py-3">
-                                                        <span className="inline-block px-2 py-0.5 bg-[#0b2a17]/10 text-[#0b2a17] rounded text-xs font-mono">
+                                                        <span className="inline-block px-2 py-0.5 bg-[#01428a]/10 text-[#01428a] rounded text-xs font-mono">
                                                             {row.sellerUsername}
                                                         </span>
                                                     </td>
                                                     <td className="px-4 py-3">
-                                                        <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${row.oldStock === 'sold out' ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'}`}>
+                                                        <span className={`inline-block px-2 py-0.5 rounded text-xs font-medium ${row.oldStock === 'sold out' ? 'bg-red-50 text-red-700' : 'bg-blue-50 text-blue-700'}`}>
                                                             {row.oldStock} → {row.newStock}
                                                         </span>
                                                     </td>
@@ -468,7 +468,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                                                         <span className="inline-block px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs font-mono">{row.oldFlow}</span>
                                                     </td>
                                                     <td className="px-4 py-3">
-                                                        <span className="inline-block px-2 py-0.5 bg-[#0b2a17]/10 text-[#0b2a17] rounded text-xs font-mono">{row.newFlow}</span>
+                                                        <span className="inline-block px-2 py-0.5 bg-[#01428a]/10 text-[#01428a] rounded text-xs font-mono">{row.newFlow}</span>
                                                     </td>
                                                 </>
                                             ) : (
@@ -476,7 +476,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                                                     <td className="px-4 py-3 text-gray-500 font-mono text-xs max-w-[200px] truncate" title={row.oldLink}>
                                                         {row.oldLink}
                                                     </td>
-                                                    <td className="px-4 py-3 text-[#0b2a17] font-mono text-xs max-w-[200px] truncate" title={row.newLink}>
+                                                    <td className="px-4 py-3 text-[#01428a] font-mono text-xs max-w-[200px] truncate" title={row.newLink}>
                                                         {row.newLink}
                                                     </td>
                                                 </>
@@ -484,7 +484,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
                                             {state === 'done' && (
                                                 <td className="px-4 py-3">
                                                     {row.updated ? (
-                                                        <span className="inline-flex items-center gap-1 text-green-700 text-xs font-medium">
+                                                        <span className="inline-flex items-center gap-1 text-blue-700 text-xs font-medium">
                                                             <CheckCircle2 className="h-3.5 w-3.5" /> Updated
                                                         </span>
                                                     ) : (
@@ -506,7 +506,7 @@ function ScriptCardComponent({ script }: { script: ScriptCard }) {
             {/* No products affected */}
             {response && response.affected === 0 && (
                 <div className="border-t border-gray-100 px-6 py-4 flex items-center gap-2 text-gray-500 text-sm">
-                    <AlertCircle className="h-4 w-4 text-amber-500" />
+                    <AlertCircle className="h-4 w-4 text-[#d8941a]" />
                     No products matched — nothing to update.
                 </div>
             )}
@@ -549,9 +549,9 @@ export default function AdminScriptsPage() {
             ) : (
                 /* ─── Super Admin content ─── */
                 <>
-                    <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start gap-3">
-                        <AlertCircle className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
-                        <div className="text-sm text-amber-800">
+                    <div className="mb-6 p-4 bg-[#fff8e8] border border-[#f7d795] rounded-xl flex items-start gap-3">
+                        <AlertCircle className="h-5 w-5 text-[#b97810] flex-shrink-0 mt-0.5" />
+                        <div className="text-sm text-[#704607]">
                             <strong>Important:</strong> Always use <strong>Preview Changes</strong> first to review which products will be affected before running a script. Scripts modify the database directly and cannot be automatically undone.
                         </div>
                     </div>

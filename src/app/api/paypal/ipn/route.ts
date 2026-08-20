@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Tazoota-IPN-Verification',
+        'User-Agent': 'Weteex-Teextees-IPN-Verification',
       },
       body: verificationPayload,
     });

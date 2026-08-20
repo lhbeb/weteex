@@ -3,52 +3,52 @@ import Link from 'next/link';
 import { Clock, Mail, MapPin, PackageCheck, ShieldCheck, Truck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy | Tazoota',
+  title: 'Machinery Shipping Policy | Weteex / Teextees',
   description:
-    'Official Tazoota Shipping Policy. Free standard shipping across the United States. Estimated delivery 5–10 business days. Same-day processing for orders placed before 2:00 PM CST.',
+    'Delivery policy for excavators purchased from Weteex / Teextees, including heavy-equipment transport, site access, unloading, inspection, and delivery estimates.',
 };
 
 const timeline = [
-  ['Same-day orders', 'Ships same day when placed before 2:00 PM CST'],
-  ['Standard processing', '0–1 business day'],
-  ['Transit time (carrier)', '5–9 business days'],
-  ['Total estimated delivery', '5–10 business days (Free Standard Shipping)'],
+  ['Order confirmation', 'After cleared payment and required checks'],
+  ['Machine preparation', 'Estimated individually for each excavator'],
+  ['Transport scheduling', 'Based on machine size and destination'],
+  ['Estimated delivery', 'Confirmed in writing before dispatch'],
 ];
 
 const policySections = [
   {
-    title: 'Free Shipping (US)',
+    title: 'Delivery Pricing',
     items: [
-      'Free standard shipping on all orders across the United States',
-      'No minimum purchase requirement',
-      'Tracked shipping via premium logistics partners (USPS, FedEx)',
+      'Transport is quoted for each excavator and delivery destination',
+      'The quotation states whether delivery is included in the machine price',
+      'Special permits, escorts, cranes, or unloading services may cost extra',
     ],
   },
   {
     title: 'Order Tracking',
     items: [
-      'Automatic shipping confirmation email upon dispatch',
-      'Real-time package tracking link provided',
-      'Estimated delivery date visibility',
-      'Carrier milestone email updates',
+      'Dispatch confirmation is sent when the machine leaves its collection point',
+      'Carrier or driver updates are provided when available',
+      'Estimated delivery timing is confirmed before dispatch',
+      'Delays outside our reasonable control are communicated promptly',
     ],
   },
   {
-    title: 'Shipping Destinations',
+    title: 'Delivery Site Requirements',
     items: [
-      'We ship across all 50 US States nationwide',
-      'PO boxes supported for standard deliveries',
-      'APO/FPO/DPO military addresses fully supported',
-      'Discreet, eco-friendly, protective packaging',
+      'The buyer must provide an accurate delivery address and contact person',
+      'The site must have suitable access, clearance, and ground conditions',
+      'The buyer must disclose access restrictions before transport is booked',
+      'Safe unloading equipment and personnel must be available if not included',
     ],
   },
   {
-    title: 'Package Protection & Safety',
+    title: 'Delivery Inspection & Safety',
     items: [
-      '100% full shipping insurance on all packages',
-      'Signature confirmation for high-value orders over $500',
-      'Weather-resistant outer mailers',
-      'Protective bubble/foam layering for fragile items',
+      'Suitable specialist transport is used for heavy machinery',
+      'Inspect the excavator before signing the delivery document',
+      'Record visible transport damage on the delivery document immediately',
+      'Contact us promptly with photographs if damage is discovered',
     ],
   },
 ];
@@ -59,46 +59,40 @@ export default function ShippingPolicyPage() {
     '@graph': [
       {
         '@type': 'WebPage',
-        '@id': 'https://tazoota.com/shipping-policy',
-        'url': 'https://tazoota.com/shipping-policy',
-        'name': 'Shipping Policy | Tazoota',
+        '@id': 'https://weteextees.com/shipping-policy',
+        'url': 'https://weteextees.com/shipping-policy',
+        'name': 'Machinery Shipping Policy | Weteex / Teextees',
         'description':
-          'Tazoota Shipping Policy: Free standard shipping across the United States. Same-day processing for orders placed before 2:00 PM CST.',
+          'Weteex / Teextees delivery policy for excavators and related heavy equipment.',
       },
       {
         '@type': 'OfferShippingDetails',
-        '@id': 'https://tazoota.com/shipping-policy#shipping-us',
+        '@id': 'https://weteextees.com/shipping-policy#shipping-gb',
         'shippingDestination': {
           '@type': 'DefinedRegion',
-          'addressCountry': 'US',
-        },
-        'shippingRate': {
-          '@type': 'MonetaryAmount',
-          'value': 0,
-          'currency': 'USD',
+          'addressCountry': 'GB',
         },
         'deliveryTime': {
           '@type': 'ShippingDeliveryTime',
           'handlingTime': {
             '@type': 'QuantitativeValue',
-            'minValue': 0,
-            'maxValue': 1,
+            'minValue': 1,
+            'maxValue': 10,
             'unitCode': 'DAY',
           },
           'transitTime': {
             '@type': 'QuantitativeValue',
-            'minValue': 5,
-            'maxValue': 9,
+            'minValue': 1,
+            'maxValue': 20,
             'unitCode': 'DAY',
           },
-          'cutoffTime': '14:00:00-06:00',
         },
       },
     ],
   };
 
   return (
-    <main className="min-h-screen bg-[#f4f7f5] py-12 sm:py-16">
+    <main className="min-h-screen bg-[#f4f8fc] py-12 sm:py-16">
       {/* Schema.org OfferShippingDetails Structured Data */}
       <script
         type="application/ld+json"
@@ -106,51 +100,51 @@ export default function ShippingPolicyPage() {
       />
 
       <div className="container mx-auto max-w-5xl px-4">
-        <section className="mb-10 rounded-2xl bg-[#2e6b3e] px-6 py-8 text-[#f0f7f2] sm:px-8 sm:py-10 shadow-lg">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#f0f7f2]/10 bg-[#2e6b3e]/25 px-3.5 py-1.5 text-sm font-semibold text-[#e3e823]">
+        <section className="mb-10 rounded-2xl bg-[#01428a] px-6 py-8 text-[#f1f6fb] sm:px-8 sm:py-10 shadow-lg">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#f1f6fb]/10 bg-[#01428a]/25 px-3.5 py-1.5 text-sm font-semibold text-[#d8941a]">
             <Truck className="h-4 w-4" />
-            Fast & Free Shipping Across the US
+            Specialist Excavator Delivery
           </div>
           <h1 className="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl">
             Shipping Policy
           </h1>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-[#f0f7f2]/80 sm:text-lg">
-            At Tazoota, we focus on fast, reliable fulfillment with transparent delivery windows, free standard shipping to the United States, and real-time tracking from warehouse to door.
+          <p className="mt-5 max-w-3xl text-base leading-7 text-[#f1f6fb]/80 sm:text-lg">
+            Weteex / Teextees, operated by Gooba Global LTD (company number 13107870), coordinates specialist heavy-equipment transport with clear delivery quotations, realistic timing, and site-access requirements confirmed before dispatch.
           </p>
         </section>
 
         <section className="mb-8 grid gap-4 md:grid-cols-3">
-          <div className="rounded-xl border border-[#2e6b3e]/10 bg-white p-5 shadow-sm">
-            <Clock className="mb-4 h-6 w-6 text-[#2e6b3e]" />
-            <h2 className="text-lg font-bold text-[#262626]">Order by 2:00 PM CST</h2>
+          <div className="rounded-xl border border-[#01428a]/10 bg-white p-5 shadow-sm">
+            <Clock className="mb-4 h-6 w-6 text-[#01428a]" />
+            <h2 className="text-lg font-bold text-[#262626]">Confirmed Scheduling</h2>
             <p className="mt-2 text-sm leading-6 text-gray-600">
-              Orders placed before the 2:00 PM CST cutoff are processed, packed, and shipped the same business day.
+              Delivery is scheduled after cleared payment, machine preparation, and confirmation that the destination can safely receive the excavator.
             </p>
           </div>
-          <div className="rounded-xl border border-[#2e6b3e]/10 bg-white p-5 shadow-sm">
-            <PackageCheck className="mb-4 h-6 w-6 text-[#2e6b3e]" />
-            <h2 className="text-lg font-bold text-[#262626]">Free Standard Shipping</h2>
+          <div className="rounded-xl border border-[#01428a]/10 bg-white p-5 shadow-sm">
+            <PackageCheck className="mb-4 h-6 w-6 text-[#01428a]" />
+            <h2 className="text-lg font-bold text-[#262626]">Clear Transport Pricing</h2>
             <p className="mt-2 text-sm leading-6 text-gray-600">
-              Free shipping on all orders across the United States with no minimum spend required.
+              The applicable delivery charge, or confirmation that delivery is included, is provided before your order is finalised.
             </p>
           </div>
-          <div className="rounded-xl border border-[#2e6b3e]/10 bg-white p-5 shadow-sm">
-            <ShieldCheck className="mb-4 h-6 w-6 text-[#2e6b3e]" />
-            <h2 className="text-lg font-bold text-[#262626]">Insured Deliveries</h2>
+          <div className="rounded-xl border border-[#01428a]/10 bg-white p-5 shadow-sm">
+            <ShieldCheck className="mb-4 h-6 w-6 text-[#01428a]" />
+            <h2 className="text-lg font-bold text-[#262626]">Specialist Transport</h2>
             <p className="mt-2 text-sm leading-6 text-gray-600">
-              All shipments include full insurance, protective packaging, and end-to-end tracking updates.
+              Excavators are moved using transport appropriate to their dimensions, weight, destination, and unloading requirements.
             </p>
           </div>
         </section>
 
-        <section className="mb-8 rounded-2xl border border-[#2e6b3e]/10 bg-white p-6 shadow-sm sm:p-8">
+        <section className="mb-8 rounded-2xl border border-[#01428a]/10 bg-white p-6 shadow-sm sm:p-8">
           <div className="flex flex-col gap-3 border-b border-gray-100 pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="text-2xl font-bold text-[#262626]">Delivery Timelines</h2>
-              <p className="mt-2 text-sm text-gray-600">Estimated total delivery: <strong>5–10 business days</strong> (0–1 day handling + 5–9 days transit). Same-day dispatch applies to orders placed before 2:00 PM CST on business days.</p>
+              <p className="mt-2 text-sm text-gray-600">Delivery timing varies by <strong>machine, preparation requirements, destination, permits, and carrier availability</strong>. Your estimated schedule is confirmed in writing before dispatch.</p>
             </div>
-            <span className="inline-flex w-fit rounded-full bg-[#e3e823] px-3.5 py-1 text-sm font-semibold text-[#2e6b3e]">
-              Same-day dispatch cutoff: 2:00 PM CST
+            <span className="inline-flex w-fit rounded-full bg-[#d8941a] px-3.5 py-1 text-sm font-semibold text-[#01428a]">
+              Delivery dates are estimates unless guaranteed in writing
             </span>
           </div>
 
@@ -171,7 +165,7 @@ export default function ShippingPolicyPage() {
               <ul className="mt-4 space-y-3 text-sm leading-6 text-gray-600">
                 {section.items.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#2e6b3e]" />
+                    <span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#01428a]" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -180,30 +174,30 @@ export default function ShippingPolicyPage() {
           ))}
         </section>
 
-        <section className="mt-8 rounded-2xl border border-[#2e6b3e]/10 bg-white p-6 shadow-sm sm:p-8">
+        <section className="mt-8 rounded-2xl border border-[#01428a]/10 bg-white p-6 shadow-sm sm:p-8">
           <h2 className="text-2xl font-bold text-[#262626]">Need Help With Shipping?</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-gray-600">
-            If you have questions about your delivery or need assistance tracking a package, reach out to our support team:
+            If you have questions about an excavator delivery, site access, unloading, or an existing transport booking, reach out to our support team:
           </p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            <div className="flex items-center gap-3 rounded-xl bg-[#f4f7f5] p-4">
-              <MapPin className="h-5 w-5 text-[#2e6b3e]" />
-              <span className="text-sm font-medium text-[#262626]">United States</span>
+            <div className="flex items-center gap-3 rounded-xl bg-[#f4f8fc] p-4">
+              <MapPin className="h-5 w-5 text-[#01428a]" />
+              <span className="text-sm font-medium text-[#262626]">United Kingdom</span>
             </div>
-            <div className="flex items-center gap-3 rounded-xl bg-[#f4f7f5] p-4">
-              <Mail className="h-5 w-5 text-[#2e6b3e]" />
-              <span className="text-sm font-medium text-[#262626]">contact@tazoota.com</span>
+            <div className="flex items-center gap-3 rounded-xl bg-[#f4f8fc] p-4">
+              <Mail className="h-5 w-5 text-[#01428a]" />
+              <span className="text-sm font-medium text-[#262626]">contact@weteextees.com</span>
             </div>
-            <div className="flex items-center gap-3 rounded-xl bg-[#f4f7f5] p-4">
-              <Clock className="h-5 w-5 text-[#2e6b3e]" />
-              <span className="text-sm font-medium text-[#262626]">Mon-Fri, 9 AM-5 PM CST</span>
+            <div className="flex items-center gap-3 rounded-xl bg-[#f4f8fc] p-4">
+              <Clock className="h-5 w-5 text-[#01428a]" />
+              <span className="text-sm font-medium text-[#262626]">Mon-Fri, 9 AM-5 PM GMT/BST</span>
             </div>
           </div>
 
           <Link
             href="/contact"
-            className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#2e6b3e] px-5 py-3 text-sm font-semibold text-[#f0f7f2] transition hover:bg-[#082317]"
+            className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#01428a] px-5 py-3 text-sm font-semibold text-[#f1f6fb] transition hover:bg-[#002b59]"
           >
             Contact Support
           </Link>

@@ -38,7 +38,7 @@ export async function GET() {
     // Email options
     const mailOptions = {
       from: EMAIL_USER,
-      to: 'contacthappydeel@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'contact@weteextees.com',
       subject: 'Test Email - Checkout System',
       html: emailContent,
     };

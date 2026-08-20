@@ -46,7 +46,7 @@ export default function ScrollLockDebug() {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #10b981;
+      background: #01428a;
       color: white;
       padding: 1rem 2rem;
       border-radius: 0.5rem;

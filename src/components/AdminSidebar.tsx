@@ -250,7 +250,7 @@ export default function AdminSidebar() {
         {/* Admin Profile Card */}
         <div className="mx-4 my-4 p-4 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-2xl border border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#0b2a17] to-[#2e6b3e] rounded-full flex items-center justify-center ring-2 ring-white shadow-lg">
+            <div className="w-10 h-10 bg-gradient-to-br from-[#01428a] to-[#01428a] rounded-full flex items-center justify-center ring-2 ring-white shadow-lg">
               <span className="text-white font-bold text-sm">A</span>
             </div>
             <div className="flex-1 min-w-0">
@@ -258,7 +258,7 @@ export default function AdminSidebar() {
                 {isSuperAdmin ? 'Super Admin' : (isAdmin ? 'Admin' : 'Administrator')}
               </div>
               <div className="text-xs text-gray-500 flex items-center gap-1">
-                <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
                 Online
               </div>
             </div>
@@ -284,7 +284,7 @@ export default function AdminSidebar() {
                     className={`
                       flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200
                       ${active
-                        ? 'bg-[#051a10] text-white shadow-lg shadow-[#051a10]/30'
+                        ? 'bg-[#00234a] text-white shadow-lg shadow-[#00234a]/30'
                         : 'text-gray-600 hover:bg-gray-100 hover:text-[#262626]'
                       }
                     `}
@@ -302,7 +302,7 @@ export default function AdminSidebar() {
                       )}
                     </div>
                     {item.badge !== undefined && item.badge > 0 && (
-                      <span className={`text-xs px-2 py-0.5 rounded-full font-semibold min-w-[1.5rem] text-center ${active ? 'bg-[#2e6b3e]/20 text-[#f0f7f2]' : 'bg-red-500 text-white'
+                      <span className={`text-xs px-2 py-0.5 rounded-full font-semibold min-w-[1.5rem] text-center ${active ? 'bg-[#01428a]/20 text-[#f1f6fb]' : 'bg-red-500 text-white'
                         }`}>
                         {item.badge}
                       </span>
@@ -318,7 +318,7 @@ export default function AdminSidebar() {
                   className={`
                     w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200
                     ${moreNavItems.some((i) => isActive(i.path))
-                      ? 'bg-[#051a10] text-white shadow-lg shadow-[#051a10]/30'
+                      ? 'bg-[#00234a] text-white shadow-lg shadow-[#00234a]/30'
                       : 'text-gray-600 hover:bg-gray-100 hover:text-[#262626]'
                     }
                   `}
@@ -356,7 +356,7 @@ export default function AdminSidebar() {
                           className={`
                             flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200
                             ${active
-                              ? 'bg-[#051a10] text-white shadow-lg shadow-[#051a10]/30'
+                              ? 'bg-[#00234a] text-white shadow-lg shadow-[#00234a]/30'
                               : 'text-gray-600 hover:bg-gray-100 hover:text-[#262626]'
                             }
                           `}
@@ -401,7 +401,7 @@ export default function AdminSidebar() {
 
               {/* GoLinks */}
               <a
-                href="https://go.Tazoota.com/"
+                href="https://go.weteextees.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
@@ -469,7 +469,7 @@ export default function AdminSidebar() {
                     className={`
                       flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200
                       ${active
-                        ? 'bg-[#051a10] text-white shadow-lg shadow-[#051a10]/30'
+                        ? 'bg-[#00234a] text-white shadow-lg shadow-[#00234a]/30'
                         : 'text-gray-600 hover:bg-gray-50'
                       }
                     `}

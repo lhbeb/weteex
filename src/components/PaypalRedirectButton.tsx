@@ -61,7 +61,7 @@ const PaypalRedirectButton: React.FC<PaypalRedirectButtonProps> = ({
         cancel_return: `${window.location.origin}/checkout?payment=cancelled`,
         notify_url: `${window.location.origin}/api/paypal/ipn`,
         rm: '0',
-        bn: 'Tazoota_BuyNow_WPS_US',
+        bn: 'WeteexTeextees_BuyNow_WPS_US',
         ...buildPaypalAddressFields(shippingData),
       };
 
@@ -101,7 +101,7 @@ const PaypalRedirectButton: React.FC<PaypalRedirectButtonProps> = ({
         disabled={disabled || isLoading}
         aria-label="Checkout with PayPal"
         className="w-full py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-95 active:scale-[0.98]"
-        style={{ backgroundColor: '#EFC154' }}
+        style={{ backgroundColor: '#e6b553' }}
       >
         {isLoading ? (
           <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#003087]" />

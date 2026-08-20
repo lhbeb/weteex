@@ -32,17 +32,17 @@ function getSafeStripeError(error: any): string {
 
     if (isSensitive) {
         // Return generic error for sensitive issues
-        return 'Payment processing is temporarily unavailable. Please email contact@tazoota.com';
+        return 'Payment processing is temporarily unavailable. Please email contact@weteextees.com';
     }
 
     // For non-sensitive errors, we can show a slightly more specific message
     // but still avoid technical jargon
     if (error.type === 'card_error') {
-        return 'There was an issue with your payment method. Please try a different card or email contact@tazoota.com';
+        return 'There was an issue with your payment method. Please try a different card or email contact@weteextees.com';
     }
 
     // Generic fallback for any other errors
-    return 'An error occurred during payment processing. Please email contact@tazoota.com';
+    return 'An error occurred during payment processing. Please email contact@weteextees.com';
 }
 
 export async function POST(request: NextRequest) {

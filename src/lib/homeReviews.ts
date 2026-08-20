@@ -1,6 +1,6 @@
 import type { Review } from '@/types/product';
 
-// The live homepage feed is restricted to lawn-mower product reviews.
+// The live homepage feed is restricted to excavator product reviews.
 // Keep the server-rendered fallback empty rather than showing reviews from
 // unrelated legacy products while the live feed is loading.
 export const homeReviews: Review[] = [];

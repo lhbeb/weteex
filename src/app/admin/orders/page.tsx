@@ -492,7 +492,7 @@ export default function AdminOrdersPage() {
   const getEmailStatusBadge = (order: Order) => {
     if (order.email_sent) {
       return (
-        <span className="inline-flex items-center gap-1 rounded-md bg-green-100 px-2 py-1 text-xs font-semibold text-green-700">
+        <span className="inline-flex items-center gap-1 rounded-md bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-700">
           <MailCheck className="h-3 w-3" />
           Sent
         </span>
@@ -530,7 +530,7 @@ export default function AdminOrdersPage() {
       <div className="mb-4 flex justify-end">
         <button
           onClick={() => setShowExportDialog(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-[#0b2a17] text-white rounded-lg hover:bg-[#3a7f4b] transition-colors"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-[#01428a] text-white rounded-lg hover:bg-[#00366f] transition-colors"
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4" /></svg>
           Export Orders (CSV)
@@ -549,7 +549,7 @@ export default function AdminOrdersPage() {
             <div className="space-y-3 mb-6">
               <button
                 onClick={() => handleExport('converted')}
-                className="w-full text-left p-4 border-2 border-green-200 bg-green-50 rounded-xl hover:bg-green-100 hover:border-green-300 transition-colors"
+                className="w-full text-left p-4 border-2 border-blue-200 bg-blue-50 rounded-xl hover:bg-blue-100 hover:border-blue-300 transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -558,7 +558,7 @@ export default function AdminOrdersPage() {
                       Export only orders marked as converted ({convertedOrders} orders)
                     </div>
                   </div>
-                  <CheckCircle2 className="h-6 w-6 text-green-600 flex-shrink-0" />
+                  <CheckCircle2 className="h-6 w-6 text-blue-600 flex-shrink-0" />
                 </div>
               </button>
 
@@ -579,7 +579,7 @@ export default function AdminOrdersPage() {
 
               <button
                 onClick={() => handleExport('all')}
-                className="w-full text-left p-4 border-2 border-[#0b2a17]/20 bg-[#0b2a17]/5 rounded-xl hover:bg-[#0b2a17]/10 hover:border-[#0b2a17]/30 transition-colors"
+                className="w-full text-left p-4 border-2 border-[#01428a]/20 bg-[#01428a]/5 rounded-xl hover:bg-[#01428a]/10 hover:border-[#01428a]/30 transition-colors"
               >
                 <div className="flex items-center justify-between">
                   <div>
@@ -588,7 +588,7 @@ export default function AdminOrdersPage() {
                       Export all orders regardless of conversion status ({orders.length} orders)
                     </div>
                   </div>
-                  <Package className="h-6 w-6 text-[#0b2a17] flex-shrink-0" />
+                  <Package className="h-6 w-6 text-[#01428a] flex-shrink-0" />
                 </div>
               </button>
             </div>
@@ -609,15 +609,15 @@ export default function AdminOrdersPage() {
           <div className="text-sm text-gray-600 mb-1">Total Orders</div>
           <div className="text-2xl font-bold text-[#262626]">{orders.length}</div>
         </div>
-        <div className="bg-white rounded-lg shadow p-4 border-2 border-green-500">
+        <div className="bg-white rounded-lg shadow p-4 border-2 border-blue-500">
           <div className="text-sm text-gray-600 mb-1">Converted Orders</div>
-          <div className="text-2xl font-bold text-green-600">
+          <div className="text-2xl font-bold text-blue-600">
             {convertedOrders}
           </div>
         </div>
         <div className="bg-white rounded-lg shadow p-4">
           <div className="text-sm text-gray-600 mb-1">Emails Sent</div>
-          <div className="text-2xl font-bold text-green-600">
+          <div className="text-2xl font-bold text-blue-600">
             {emailsSent}
           </div>
         </div>
@@ -627,9 +627,9 @@ export default function AdminOrdersPage() {
             {emailsFailed}
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow p-4 border-2 border-green-500">
+        <div className="bg-white rounded-lg shadow p-4 border-2 border-blue-500">
           <div className="text-sm text-gray-600 mb-1">Converted Revenue</div>
-          <div className="text-2xl font-bold text-green-600">
+          <div className="text-2xl font-bold text-blue-600">
             ${convertedRevenue.toFixed(2)}
           </div>
         </div>
@@ -637,15 +637,15 @@ export default function AdminOrdersPage() {
 
       {/* Retry Failed Emails Button */}
       {orders.filter(o => !o.email_sent).length > 0 && (
-        <div className="mb-4 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        <div className="mb-4 bg-[#fff8e8] border border-[#f7d795] rounded-lg p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <AlertCircle className="h-5 w-5 text-yellow-600" />
+              <AlertCircle className="h-5 w-5 text-[#b97810]" />
               <div>
-                <div className="font-semibold text-yellow-900">
+                <div className="font-semibold text-[#523305]">
                   {orders.filter(o => !o.email_sent).length} order(s) with failed emails
                 </div>
-                <div className="text-sm text-yellow-700">
+                <div className="text-sm text-[#925c0a]">
                   These emails will retry automatically, or you can retry them manually now
                 </div>
               </div>
@@ -653,7 +653,7 @@ export default function AdminOrdersPage() {
             <button
               onClick={handleRetryAllFailed}
               disabled={retryingAll}
-              className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center gap-2 px-4 py-2 bg-[#b97810] text-white rounded-lg hover:bg-[#925c0a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <RefreshCw className={`h-4 w-4 ${retryingAll ? 'animate-spin' : ''}`} />
               {retryingAll ? 'Retrying...' : 'Retry All Failed Emails'}
@@ -673,7 +673,7 @@ export default function AdminOrdersPage() {
               placeholder="Search by customer name, email, product, or address..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2e6b3e] focus:border-[#2e6b3e] outline-none"
+              className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none"
             />
             {searchQuery && (
               <button
@@ -693,7 +693,7 @@ export default function AdminOrdersPage() {
               <select
                 value={emailFilter}
                 onChange={(e) => setEmailFilter(e.target.value as 'all' | 'sent' | 'failed')}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2e6b3e] focus:border-[#2e6b3e] outline-none bg-white"
+                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none bg-white"
               >
                 <option value="all">All Orders</option>
                 <option value="sent">Email Sent ✅</option>
@@ -705,7 +705,7 @@ export default function AdminOrdersPage() {
               <select
                 value={conversionFilter}
                 onChange={(e) => setConversionFilter(e.target.value as 'all' | 'converted' | 'not_converted')}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2e6b3e] focus:border-[#2e6b3e] outline-none bg-white"
+                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none bg-white"
               >
                 <option value="all">All Orders</option>
                 <option value="converted">Converted ✅</option>
@@ -740,7 +740,7 @@ export default function AdminOrdersPage() {
             </label>
             <button
               onClick={handleSelectAllFiltered}
-              className="text-xs text-[#2e6b3e] hover:underline font-medium"
+              className="text-xs text-[#01428a] hover:underline font-medium"
             >
               {filteredOrders.length > 0 && filteredOrders.every(o => selectedOrderIds.includes(o.id))
                 ? 'Deselect All'
@@ -800,7 +800,7 @@ export default function AdminOrdersPage() {
                   isSelected
                     ? 'border-red-400 bg-red-50/40 ring-1 ring-red-400'
                     : order.is_converted
-                    ? 'border-green-300 bg-green-50'
+                    ? 'border-blue-300 bg-blue-50'
                     : 'bg-white border-gray-100 hover:border-gray-200'
                 }`}
               >
@@ -824,7 +824,7 @@ export default function AdminOrdersPage() {
                     </div>
 
                     {/* Customer Avatar */}
-                    <div className="h-10 w-10 bg-gradient-to-br from-[#0b2a17] to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
+                    <div className="h-10 w-10 bg-gradient-to-br from-[#01428a] to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
                       {order.customer_name?.charAt(0)?.toUpperCase() || '?'}
                     </div>
 
@@ -838,7 +838,7 @@ export default function AdminOrdersPage() {
                         <span>{order.customer_name}</span>
                       </h3>
                       {order.is_converted && (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
                           <CheckCircle2 className="h-3 w-3" />
                           Converted
                         </span>
@@ -848,12 +848,12 @@ export default function AdminOrdersPage() {
                         if (!isStripeFlow) return null;
                         
                         if (order.status === 'paid') return (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-medium rounded-full">
                             <DollarSign className="h-3 w-3" /> Paid
                           </span>
                         );
                         if (order.status === 'pending_payment') return (
-                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs font-medium rounded-full">
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-[#ffedc2] text-[#925c0a] text-xs font-medium rounded-full">
                             Pending Payment
                           </span>
                         );
@@ -904,8 +904,8 @@ export default function AdminOrdersPage() {
                         if (!flow) return null;
                         const flowLabels: Record<string, { label: string; color: string }> = {
                           'stripe': { label: '💳 Stripe', color: 'bg-violet-100 text-violet-700' },
-                          'kofi': { label: '☕ Ko-fi', color: 'bg-yellow-100 text-yellow-700' },
-                          'buymeacoffee': { label: '☕ Buy Me a Coffee', color: 'bg-amber-100 text-amber-700' },
+                          'kofi': { label: '☕ Ko-fi', color: 'bg-[#ffedc2] text-[#925c0a]' },
+                          'buymeacoffee': { label: '☕ Buy Me a Coffee', color: 'bg-[#ffedc2] text-[#925c0a]' },
                           'external': { label: '🔗 External', color: 'bg-gray-100 text-gray-600' },
                           'paypal-invoice': { label: '🔵 PayPal Invoice', color: 'bg-blue-100 text-blue-700' },
                           'paypal-unclaimed': { label: '🔵 PayPal Unclaimed', color: 'bg-cyan-100 text-cyan-700' },
@@ -938,7 +938,7 @@ export default function AdminOrdersPage() {
 
               {/* Expanded Details */}
               {expandedOrderId === order.id && (
-                <div className={`px-4 pb-4 border-t ${order.is_converted ? 'border-green-200' : 'border-gray-100'}`}>
+                <div className={`px-4 pb-4 border-t ${order.is_converted ? 'border-blue-200' : 'border-gray-100'}`}>
                   <div className="pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {/* Customer Details */}
                     <div>
@@ -961,7 +961,7 @@ export default function AdminOrdersPage() {
                             className="opacity-0 group-hover:opacity-100 transition-opacity"
                           >
                             {copiedField === `email-${order.id}` ? (
-                              <CheckCircle2 className="h-4 w-4 text-green-500" />
+                              <CheckCircle2 className="h-4 w-4 text-blue-500" />
                             ) : (
                               <Copy className="h-4 w-4 text-gray-400 hover:text-gray-600" />
                             )}
@@ -979,7 +979,7 @@ export default function AdminOrdersPage() {
                               className="opacity-0 group-hover:opacity-100 transition-opacity"
                             >
                               {copiedField === `phone-${order.id}` ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-500" />
+                                <CheckCircle2 className="h-4 w-4 text-blue-500" />
                               ) : (
                                 <Copy className="h-4 w-4 text-gray-400 hover:text-gray-600" />
                               )}
@@ -1050,7 +1050,7 @@ export default function AdminOrdersPage() {
                           className="opacity-0 group-hover:opacity-100 transition-opacity"
                         >
                           {copiedField === `address-${order.id}` ? (
-                            <CheckCircle2 className="h-4 w-4 text-green-500" />
+                            <CheckCircle2 className="h-4 w-4 text-blue-500" />
                           ) : (
                             <Copy className="h-4 w-4 text-gray-400 hover:text-gray-600" />
                           )}
@@ -1072,7 +1072,7 @@ export default function AdminOrdersPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
-                            className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-[#0b2a17] hover:text-[#3a7f4b] hover:bg-[#0b2a17]/5 rounded-lg transition-colors"
+                            className="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-[#01428a] hover:text-[#00366f] hover:bg-[#01428a]/5 rounded-lg transition-colors"
                             title="View product"
                           >
                             <Eye className="h-3 w-3" />
@@ -1093,8 +1093,8 @@ export default function AdminOrdersPage() {
                           const flow = order.product_checkout_flow;
                           const flowLabels: Record<string, { label: string; color: string }> = {
                             'stripe': { label: '💳 Stripe', color: 'bg-violet-100 text-violet-700' },
-                            'kofi': { label: '☕ Ko-fi', color: 'bg-yellow-100 text-yellow-700' },
-                            'buymeacoffee': { label: '☕ Buy Me a Coffee', color: 'bg-amber-100 text-amber-700' },
+                            'kofi': { label: '☕ Ko-fi', color: 'bg-[#ffedc2] text-[#925c0a]' },
+                            'buymeacoffee': { label: '☕ Buy Me a Coffee', color: 'bg-[#ffedc2] text-[#925c0a]' },
                             'external': { label: '🔗 External', color: 'bg-gray-100 text-gray-600' },
                             'paypal-invoice': { label: '🔵 PayPal Invoice', color: 'bg-blue-100 text-blue-700' },
                             'paypal-unclaimed': { label: '🔵 PayPal Unclaimed', color: 'bg-cyan-100 text-cyan-700' },
@@ -1135,7 +1135,7 @@ export default function AdminOrdersPage() {
                       className="inline-flex items-center gap-2 px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium hover:bg-blue-200 transition-all"
                     >
                       {copiedField === `order-${order.id}` ? (
-                        <CheckCircle2 className="h-4 w-4 text-green-600" />
+                        <CheckCircle2 className="h-4 w-4 text-blue-600" />
                       ) : (
                         <Copy className="h-4 w-4" />
                       )}
@@ -1148,7 +1148,7 @@ export default function AdminOrdersPage() {
                           handleRetryEmail(order.id);
                         }}
                         disabled={retryingOrderId === order.id}
-                        className="inline-flex items-center gap-2 px-3 py-2 bg-[#2e6b3e]/10 text-[#2e6b3e] rounded-lg text-sm font-medium hover:bg-[#2e6b3e]/15 disabled:opacity-50 transition-all"
+                        className="inline-flex items-center gap-2 px-3 py-2 bg-[#01428a]/10 text-[#01428a] rounded-lg text-sm font-medium hover:bg-[#01428a]/15 disabled:opacity-50 transition-all"
                       >
                         {retryingOrderId === order.id ? (
                           <RefreshCw className="h-4 w-4 animate-spin" />
@@ -1167,7 +1167,7 @@ export default function AdminOrdersPage() {
                           handleMarkAsConverted(order.id);
                         }}
                         disabled={markingConverted === order.id}
-                        className="inline-flex items-center gap-2 px-3 py-2 bg-green-100 text-green-700 rounded-lg text-sm font-medium hover:bg-green-200 disabled:opacity-50 transition-all"
+                        className="inline-flex items-center gap-2 px-3 py-2 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium hover:bg-blue-200 disabled:opacity-50 transition-all"
                         title="Mark this order as converted (Super Admin only)"
                       >
                         {markingConverted === order.id ? (
@@ -1187,7 +1187,7 @@ export default function AdminOrdersPage() {
                           handleUnmarkConverted(order.id);
                         }}
                         disabled={unmarkingConverted === order.id}
-                        className="inline-flex items-center gap-2 px-3 py-2 bg-yellow-100 text-yellow-700 rounded-lg text-sm font-medium hover:bg-yellow-200 disabled:opacity-50 transition-all"
+                        className="inline-flex items-center gap-2 px-3 py-2 bg-[#ffedc2] text-[#925c0a] rounded-lg text-sm font-medium hover:bg-[#f7d795] disabled:opacity-50 transition-all"
                         title="Undo conversion (Super Admin only)"
                       >
                         {unmarkingConverted === order.id ? (
@@ -1254,7 +1254,7 @@ export default function AdminOrdersPage() {
                   key={pageNum}
                   onClick={() => setCurrentPage(pageNum)}
                   className={`min-w-[40px] h-10 rounded-lg font-medium transition-all ${currentPage === pageNum
-                    ? 'bg-[#0b2a17] text-white'
+                    ? 'bg-[#01428a] text-white'
                     : 'bg-white border border-gray-200 text-gray-600 hover:bg-gray-50'
                     }`}
                 >

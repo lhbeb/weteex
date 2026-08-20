@@ -1,4 +1,4 @@
-const DEFAULT_BASE_URL = 'https://tazoota.com';
+const DEFAULT_BASE_URL = 'https://weteextees.com';
 
 const ENV_BASE_URL_CANDIDATES: Array<string | null | undefined> = [
   process.env.APP_BASE_URL,

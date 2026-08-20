@@ -18,7 +18,7 @@ function CopyBadge({ label, value }: { label: string; value: string }) {
     <button
       onClick={handleCopy}
       className={`flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-lg transition-colors
-        ${copied ? 'bg-green-50 text-green-600 border border-green-200' : 'bg-gray-100 text-gray-600 border border-transparent hover:bg-gray-200'}`}
+        ${copied ? 'bg-blue-50 text-blue-600 border border-blue-200' : 'bg-gray-100 text-gray-600 border border-transparent hover:bg-gray-200'}`}
       title={`Copy ${label}`}
     >
       <span className="text-gray-400 font-normal">{label}:</span> {value}

@@ -38,6 +38,9 @@ yarn-error.log*
 .env.*
 !.env.example
 
+# Scraped product media is kept locally for later storage upload.
+data/minikubota-images/
+
 # vercel
 .vercel
 

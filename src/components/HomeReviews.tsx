@@ -286,7 +286,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
               <p className="text-gray-600 mb-6">Share your experience and help other customers choose with confidence.</p>
               <button
                 onClick={() => setShowReviewForm(true)}
-                className="bg-[#e3e823] hover:bg-[#e3e823]/90 text-[#2e6b3e] px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+                className="bg-[#d8941a] hover:bg-[#d8941a]/90 text-[#01428a] px-6 py-3 rounded-lg font-medium transition-colors duration-200"
               >
                 Write a Review
               </button>
@@ -307,8 +307,8 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 {/* Rating Summary */}
                 <div>
-                  <h2 className="text-2xl font-bold text-[#262626] mb-1">What Tazoota Customers Say</h2>
-                  <p className="text-sm text-gray-600 mb-3">Real feedback on our products, service, and shopping experience.</p>
+                  <h2 className="text-2xl font-bold text-[#262626] mb-1">What Compact Excavator Buyers Say</h2>
+                  <p className="text-sm text-gray-600 mb-3">Feedback on machine configurations, sales support, value, and delivery coordination.</p>
                   <div className="flex items-center gap-4">
                     <div className="text-4xl font-bold text-[#262626]">{reviewStats.averageRating.toFixed(1)}</div>
                     <div>
@@ -316,7 +316,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                         {[...Array(5)].map((_, i) => (
                           <Star 
                             key={i}
-                            className={`h-5 w-5 ${i < Math.floor(reviewStats.averageRating) ? 'text-[#2e6b3e] fill-[#2e6b3e]' : 'text-gray-300'}`}
+                            className={`h-5 w-5 ${i < Math.floor(reviewStats.averageRating) ? 'text-[#01428a] fill-[#01428a]' : 'text-gray-300'}`}
                           />
                         ))}
                       </div>
@@ -329,7 +329,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                 <div className="flex items-center">
                   <button
                     onClick={() => setShowReviewForm(true)}
-                    className="bg-[#e3e823] hover:bg-[#e3e823]/90 text-[#2e6b3e] px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
+                    className="bg-[#d8941a] hover:bg-[#d8941a]/90 text-[#01428a] px-6 py-3 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2"
                   >
                     <Send className="h-4 w-4" />
                     Write a Review
@@ -363,7 +363,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                           <h3 className="font-medium text-[#262626] flex items-center gap-2 flex-wrap">
                             {review.author}
                               {review.verified && (
-                              <span className="flex items-center text-[#2e6b3e] text-xs whitespace-nowrap">
+                              <span className="flex items-center text-[#01428a] text-xs whitespace-nowrap">
                                 <CheckCircle2 className="h-3.5 w-3.5 mr-1" />
                                 Verified
                               </span>
@@ -378,7 +378,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                           onClick={() => handleLike(review.id)}
                           className={`flex items-center gap-1.5 px-2 py-1 rounded-md transition-colors duration-200 text-xs flex-shrink-0 ${
                             liked[review.id] 
-                              ? 'bg-[#2e6b3e] text-[#f0f7f2]' 
+                              ? 'bg-[#01428a] text-[#f1f6fb]' 
                               : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-300'
                           }`}
                           aria-pressed={liked[review.id]}
@@ -394,7 +394,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
 
                   {review.productTitle && review.productSlug && (
                     <div className="mb-2">
-                      <span className="text-xs text-[#2e6b3e] hover:text-[#082317] hover:underline cursor-default inline-flex items-center gap-1">
+                      <span className="text-xs text-[#01428a] hover:text-[#002b59] hover:underline cursor-default inline-flex items-center gap-1">
                         {review.productTitle}
                       </span>
                     </div>
@@ -405,7 +405,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i}
-                          className={`h-3.5 w-3.5 ${i < review.rating ? 'text-[#2e6b3e] fill-[#2e6b3e]' : 'text-gray-300'}`}
+                          className={`h-3.5 w-3.5 ${i < review.rating ? 'text-[#01428a] fill-[#01428a]' : 'text-gray-300'}`}
                         />
                       ))}
                     </div>
@@ -423,7 +423,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                         <button
                           key={imgIndex}
                           onClick={() => setSelectedImage(img)}
-                          className="relative w-16 h-16 rounded-md overflow-hidden bg-gray-200 group cursor-pointer hover:ring-2 ring-[#0b2a17] transition-all duration-200"
+                          className="relative w-16 h-16 rounded-md overflow-hidden bg-gray-200 group cursor-pointer hover:ring-2 ring-[#01428a] transition-all duration-200"
                         >
                           <Image
                             src={img}
@@ -499,7 +499,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
                     placeholder="Enter your name"
                   />
                 </div>
@@ -512,7 +512,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     type="text"
                     value={formData.orderId}
                     onChange={(e) => setFormData({ ...formData, orderId: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
                     placeholder="Enter your order ID (optional)"
                   />
                 </div>
@@ -527,7 +527,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                         key={i}
                         type="button"
                         onClick={() => setFormData({ ...formData, rating: i + 1 })}
-                        className={`p-1 ${i < formData.rating ? 'text-[#f4de40]' : 'text-gray-300'}`}
+                        className={`p-1 ${i < formData.rating ? 'text-[#e3ad3f]' : 'text-gray-300'}`}
                       >
                         <Star className="h-6 w-6 fill-current" />
                       </button>
@@ -544,7 +544,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     required
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
                     placeholder="Summarize your experience"
                   />
                 </div>
@@ -558,7 +558,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     rows={4}
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent resize-none"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent resize-none"
                     placeholder="Share your detailed experience..."
                   />
                 </div>
@@ -568,7 +568,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     Upload Photos (Optional)
                   </label>
                   <div className="space-y-3">
-                    <label className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#2e6b3e] hover:bg-[#2e6b3e]/10 transition-colors duration-200">
+                    <label className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#01428a] hover:bg-[#01428a]/10 transition-colors duration-200">
                       <Upload className="h-5 w-5 text-gray-500" />
                       <span className="text-sm text-gray-600">Choose photos to upload</span>
                       <input
@@ -614,7 +614,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                       </p>
                     )}
                     {uploadedImages.length >= 5 && (
-                      <p className="text-xs text-amber-600">
+                      <p className="text-xs text-[#b97810]">
                         Maximum 5 photos allowed
                       </p>
                     )}
@@ -643,7 +643,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                       isSubmitting 
                         ? 'bg-gray-400 cursor-not-allowed text-white' 
-                        : 'bg-[#e3e823] hover:bg-[#e3e823]/90 text-[#2e6b3e]'
+                        : 'bg-[#d8941a] hover:bg-[#d8941a]/90 text-[#01428a]'
                     }`}
                   >
                     {isSubmitting ? 'Submitting...' : 'Submit Review'}
@@ -657,7 +657,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
 
       {/* Success Message */}
       {showSuccess && (
-        <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+        <div className="fixed top-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5" />
             <span>Review submitted successfully!</span>

@@ -10,22 +10,22 @@ const TermsPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold text-[#262626] mb-2">Tazoota Terms of Service</h1>
+        <h1 className="text-4xl font-bold text-[#262626] mb-2">Weteex / Teextees Machinery Terms of Sale</h1>
         <p className="text-gray-600 mb-8">Last Updated: {currentDate}</p>
         
         <div className="prose max-w-none text-gray-700 space-y-8">
           <p className="text-lg leading-relaxed">
-            Welcome to Tazoota. By accessing or using our website, marketplace, or services, you agree to be bound by these Terms of Service. Please read them carefully. If you do not agree, please discontinue using the site.
+            Weteex / Teextees is the trading brand used on this website by Gooba Global LTD, a company registered in England and Wales under company number 13107870. By accessing our website or purchasing an excavator, you agree to these Terms of Service.
           </p>
 
           {/* Section 1: Overview */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">1. Overview</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Tazoota operates as a direct retailer and as a curated marketplace.</li>
-              <li>We source products through auctions, private sellers, liquidators, wholesalers, and other third-party suppliers.</li>
-              <li>We also allow approved private sellers to list items on our platform after a full inspection by our team.</li>
-              <li>All purchases made through Tazoota are processed under these Terms.</li>
+              <li>Weteex / Teextees sells excavators and related heavy equipment at competitive prices.</li>
+              <li>Machines may be new or used and may be sourced through manufacturers, distributors, equipment suppliers, trade partners, or other lawful channels.</li>
+              <li>The seller named on your invoice is Gooba Global LTD unless a listing or written sales agreement expressly states otherwise.</li>
+              <li>All purchases made through Weteex / Teextees are processed under these Terms.</li>
             </ul>
           </div>
 
@@ -34,7 +34,7 @@ const TermsPage = () => {
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">2. Account Terms</h2>
             <ul className="list-disc pl-6 space-y-2">
               <li>You must be 18 years or older to use this service.</li>
-              <li>You must provide accurate and complete information during account creation.</li>
+              <li>You must provide accurate and complete contact, billing, delivery, and business information.</li>
               <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
               <li>You must notify us immediately of any unauthorized access or security concerns.</li>
             </ul>
@@ -42,38 +42,38 @@ const TermsPage = () => {
 
           {/* Section 3: Marketplace and Private Seller Terms */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">3. Marketplace and Private Seller Terms</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">3. Quotations, Orders, and Machine Availability</h2>
             <p className="mb-4">
-              Tazoota hosts a controlled marketplace where approved private sellers may offer products.
+              Excavator availability can change quickly. A website listing, conversation, or quotation is not acceptance of an order until we issue written confirmation and receive any required payment or deposit.
             </p>
 
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.1 Seller Onboarding Process</h3>
+            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.1 Quotations and Deposits</h3>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>Private sellers must be screened and approved before listing items.</li>
-              <li>Sellers send their inventory to our warehouse, where it is inspected, authenticated, tested, and verified before any listing goes live.</li>
+              <li>Quotations are valid only for the period stated and may exclude delivery, taxes, duties, registration, or optional attachments unless expressly included.</li>
+              <li>Any deposit requirements, payment milestones, cancellation terms, and estimated delivery arrangements will be stated before the order is confirmed.</li>
             </ul>
 
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.2 Fulfillment Process</h3>
-            <p className="mb-2">When you purchase an item from a third-party seller:</p>
+            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.2 Order Confirmation</h3>
+            <p className="mb-2">Before completing an excavator purchase:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>It is clearly indicated on the product page.</li>
-              <li>The seller sends the item to our warehouse if it is not already stored with us.</li>
-              <li>Our inspection team confirms the condition, functionality, and price accuracy.</li>
-              <li>Only after passing inspection is the item shipped to the customer.</li>
+              <li>Review the full machine description, condition, specification, price, and included equipment.</li>
+              <li>Confirm the delivery site, access requirements, unloading responsibility, and any transport charge.</li>
+              <li>Ask for any additional documents or inspection information you require before paying.</li>
+              <li>Retain the written order confirmation and invoice for your records.</li>
             </ul>
             <p className="mb-4">
-              Tazoota reserves the right to reject, refund, or cancel any order if the item fails inspection.
+              We may reject, refund, or cancel an order if a machine becomes unavailable, material listing information is found to be incorrect, payment cannot be verified, or delivery cannot be arranged safely.
             </p>
 
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.3 Seller Responsibility</h3>
-            <p className="mb-2">Sellers on the Tazoota platform are responsible for:</p>
+            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.3 Buyer Responsibility</h3>
+            <p className="mb-2">The buyer is responsible for:</p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>The authenticity of their products</li>
-              <li>Providing accurate condition descriptions</li>
-              <li>Meeting our quality and safety standards</li>
+              <li>Selecting a machine suitable for the intended work and operating environment</li>
+              <li>Providing safe and accurate delivery-site and access information</li>
+              <li>Ensuring that operators are properly trained and that the machine is used, maintained, insured, and registered as required</li>
             </ul>
             <p>
-              Tazoota is not responsible for inaccurate representations made by sellers, although we take all reasonable steps to verify product condition before shipment.
+              Nothing in these Terms limits rights or remedies that cannot lawfully be excluded, including applicable consumer rights.
             </p>
           </div>
 
@@ -82,32 +82,32 @@ const TermsPage = () => {
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">4. Product Terms</h2>
             <ul className="list-disc pl-6 space-y-2">
               <li>We aim to provide accurate and detailed product descriptions.</li>
-              <li>We sell new, open-box, refurbished, and pre owned items, each clearly labeled.</li>
-              <li>All used or open-box electronics are tested prior to sale.</li>
+              <li>We sell new and used excavators, with the stated condition identified in the individual listing.</li>
+              <li>Hours, year, specification, attachments, service history, and inspection information are based on the records available to us and will be described as accurately as reasonably possible.</li>
               <li>Product availability is not guaranteed until an order is processed.</li>
-              <li>Prices may change at any time due to market conditions and sourcing costs.</li>
+              <li>Prices may change before order confirmation because of availability, exchange rates, transport costs, taxes, duties, or market conditions.</li>
               <li>We reserve the right to modify, limit, or discontinue any product or listing.</li>
             </ul>
           </div>
 
           {/* Section 5: Sourcing Transparency */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">5. Sourcing Transparency</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">5. Condition, Inspection, and Specifications</h2>
             <p className="mb-4">
-              By using our website, you acknowledge that Tazoota sources products through:
+              Information supplied for an excavator may include:
             </p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>Online auctions and bidding platforms</li>
-              <li>Private sellers and independent sourcers</li>
-              <li>Liquidation and return departments of major retailers</li>
-              <li>Garage sales, local auctions, and community sales</li>
-              <li>Wholesalers and bulk suppliers</li>
+              <li>Manufacturer and model details</li>
+              <li>Year, serial or identification information where available</li>
+              <li>Recorded operating hours and stated service history</li>
+              <li>Included buckets, attachments, accessories, or documentation</li>
+              <li>Known defects, wear, repairs, or cosmetic condition disclosed to us</li>
             </ul>
             <p>
-              These sourcing methods allow us to offer competitive pricing.
+              Buyers should review all available information and may request an independent inspection before purchase where practical.
             </p>
             <p className="mt-2">
-              You agree that cosmetic variations, packaging differences, or shelf pull characteristics may occur with certain items unless stated otherwise.
+              Used machinery will show wear consistent with its age and use. Photographs and videos form part of the description but may not reveal every mark, repair, or mechanical issue.
             </p>
           </div>
 
@@ -115,18 +115,18 @@ const TermsPage = () => {
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">6. Shipping Policy</h2>
             <p className="mb-4">
-              Free standard shipping applies to all orders within the United States and United Kingdom.
+              Excavators are delivered using suitable heavy-equipment transport. Delivery cost and timing are confirmed for each order based on the machine and destination.
             </p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Same-day shipping is available for orders placed before 2:00 PM CST.</li>
-              <li>Standard processing time is 0 to 1 business day.</li>
-              <li>Domestic USA delivery time is 5 to 9 business days.</li>
-              <li>United Kingdom delivery time is 5 to 9 business days.</li>
-              <li>All orders qualify for free standard shipping with no minimum spend required.</li>
-              <li>Tracking information is sent to the customer via email once the order ships.</li>
+              <li>Delivery estimates begin after payment clears and any required checks or preparation are complete.</li>
+              <li>Dates are estimates unless we expressly agree a guaranteed date in writing.</li>
+              <li>The buyer must provide suitable access, ground conditions, and unloading arrangements.</li>
+              <li>Failed delivery, redelivery, storage, permits, escorts, cranes, or specialist unloading may incur additional charges.</li>
+              <li>Risk transfers in accordance with the applicable consumer law or the written business sales agreement.</li>
+              <li>Inspect the machine on delivery and record visible transport damage on the delivery document before signing.</li>
             </ul>
             <p className="mt-4">
-              Tazoota is not responsible for delays caused by carriers or incorrect shipping information provided by the customer.
+              We are not responsible for delays caused by events outside our reasonable control, but this does not affect statutory consumer rights.
             </p>
           </div>
 
@@ -138,8 +138,8 @@ const TermsPage = () => {
               <li>Credit and debit cards</li>
               <li>Visa, Mastercard, American Express</li>
               <li>PayPal</li>
-              <li>Shop Pay</li>
-              <li>Apple Pay</li>
+              <li>Bank transfer where stated on the invoice</li>
+              <li>Other methods expressly offered during checkout</li>
             </ul>
             <p className="mt-4">
               All payments must be received in full before an order is processed.
@@ -149,16 +149,16 @@ const TermsPage = () => {
           {/* Section 8: Returns and Satisfaction Guarantee */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">8. Returns and Satisfaction Guarantee</h2>
-            <p className="mb-4">Your satisfaction is our priority.</p>
+            <p className="mb-4">Return and cancellation rights depend on whether you buy as a consumer or a business and on the written terms agreed for the machine.</p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>We offer a 30 day hassle free return policy.</li>
-              <li>Items must be returned in the same condition received.</li>
-              <li>Refunds are issued after the item passes inspection at our warehouse.</li>
-              <li>Exchanges are available when inventory permits.</li>
-              <li>We work quickly to resolve any concerns, disputes, or issues.</li>
+              <li>UK consumers purchasing at a distance may have a statutory right to cancel within 14 days after delivery, subject to applicable exceptions.</li>
+              <li>After notifying us of cancellation, the consumer must return the machine within the legally applicable period.</li>
+              <li>The buyer may be responsible for the direct cost of returning bulky machinery where the law permits and where disclosed before purchase.</li>
+              <li>A deduction may be made for diminished value caused by handling beyond what is necessary to establish the machine&apos;s nature, characteristics, and functioning.</li>
+              <li>Business purchases are governed by the quotation, invoice, or sales agreement and do not receive consumer cancellation rights.</li>
             </ul>
             <p className="mt-4">
-              Marketplace seller products also fall under this guarantee unless specifically stated otherwise.
+              Please read our Return & Exchange Policy and contact us before arranging any return. Statutory rights for faulty or misdescribed goods are not affected.
             </p>
           </div>
 
@@ -166,10 +166,10 @@ const TermsPage = () => {
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">9. Limitation of Liability</h2>
             <p className="mb-4">
-              Tazoota is not liable for indirect, incidental, punitive, or consequential damages arising from your use of our services, products, or platform.
+              To the fullest extent permitted by law, Gooba Global LTD is not liable for indirect or consequential loss, business interruption, loss of profit, loss of contract, hire costs, or downtime arising from a machine or its use.
             </p>
             <p>
-              However, we are committed to resolving legitimate customer concerns and will work with you to reach a fair and reasonable solution.
+              Nothing excludes liability where exclusion is prohibited by law, including liability for death or personal injury caused by negligence, fraud, or fraudulent misrepresentation.
             </p>
           </div>
 
@@ -177,13 +177,13 @@ const TermsPage = () => {
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">10. Fraud Prevention and Compliance</h2>
             <p className="mb-4">
-              Tazoota monitors orders for unusual activity to protect customers and sellers.
+              Weteex / Teextees monitors orders for unusual activity to protect customers and the company.
             </p>
             <p className="mb-4">
               We reserve the right to cancel or delay orders suspected of fraud or unauthorized use of payment methods.
             </p>
             <p>
-              Creating false accounts, listing products fraudulently, or misrepresenting product ownership is strictly prohibited.
+              False information, fraudulent payments, sanctions evasion, unlawful export, or attempted misuse of our services is strictly prohibited.
             </p>
           </div>
 
@@ -200,20 +200,20 @@ const TermsPage = () => {
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">Email:</div>
-                <div className="text-gray-600">contact@tazoota.com</div>
+                <div className="text-gray-600">contact@weteextees.com</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">UK Registered Office:</div>
-                <div className="text-gray-600">Choats Rd, Barking, Dagenham RM9 6BF, United Kingdom</div>
+                <div className="text-gray-600">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</div>
               </div>
               <div>
-                <div className="font-medium text-[#262626] mb-1">US Dispatch Center:</div>
-                <div className="text-gray-600">5850 E Raines Rd, Memphis, TN 38115, United States</div>
+                <div className="font-medium text-[#262626] mb-1">Registered Company:</div>
+                <div className="text-gray-600">Gooba Global LTD · Company number 13107870</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">Hours:</div>
-                <div className="text-gray-600">Monday to Friday, 9:00 AM to 5:00 PM CST</div>
-                <div className="text-gray-600">Saturday, 10:00 AM to 3:00 PM CST</div>
+                <div className="text-gray-600">Monday to Friday, 9:00 AM to 5:00 PM GMT/BST</div>
+                <div className="text-gray-600">Saturday, by appointment</div>
                 <div className="text-gray-600">Sunday, Closed</div>
               </div>
             </div>

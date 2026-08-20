@@ -52,7 +52,7 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="bg-[#2e6b3e] py-16 px-4">
+    <section className="bg-[#01428a] py-16 px-4">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="flex justify-center mb-6">
@@ -62,11 +62,11 @@ const NewsletterSection = () => {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Join Tazoota&apos;s Project List
+            Get Compact Excavator Updates
           </h2>
 
           <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Be first to discover new lawn mowers, garden equipment, power tools, and limited-time offers—useful ideas for your next project, without the inbox clutter.
+            Be first to hear about AGT mini excavators, compact machine configurations, new attachments, and competitive machinery offers.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -80,7 +80,7 @@ const NewsletterSection = () => {
                     if (error) setError('');
                   }}
                   placeholder="Your email address"
-                  className="w-full px-4 py-3 rounded-lg border-0 text-[#262626] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#2e6b3e] transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg border-0 text-[#262626] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#01428a] transition-all duration-200"
                   disabled={isSubmitting || isSuccess}
                 />
               </div>
@@ -88,11 +88,11 @@ const NewsletterSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || isSuccess}
-                className="bg-[#e3e823] text-[#2e6b3e] hover:bg-[#e3e823]/90 disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-lg font-bold transition-all duration-200 flex items-center justify-center gap-2 min-w-[140px] shadow-lg shadow-black/10"
+                className="bg-[#d8941a] text-[#01428a] hover:bg-[#d8941a]/90 disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-lg font-bold transition-all duration-200 flex items-center justify-center gap-2 min-w-[140px] shadow-lg shadow-black/10"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#2e6b3e]"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#01428a]"></div>
                     Signing Up...
                   </>
                 ) : isSuccess ? (
@@ -119,7 +119,7 @@ const NewsletterSection = () => {
 
             {isSuccess && (
               <div className="flex justify-center mt-3">
-                <p className="text-green-300 font-semibold bg-white/10 px-4 py-1.5 rounded-md text-sm shadow-sm backdrop-blur-sm border border-green-300/20">
+                <p className="text-blue-300 font-semibold bg-white/10 px-4 py-1.5 rounded-md text-sm shadow-sm backdrop-blur-sm border border-blue-300/20">
                   Thanks for subscribing! Check your email for confirmation.
                 </p>
               </div>
@@ -127,7 +127,7 @@ const NewsletterSection = () => {
           </form>
 
           <p className="text-white/60 text-sm mt-6 opacity-80">
-            Practical updates for real projects. Unsubscribe anytime.
+            Useful buying information for contractors and businesses. Unsubscribe anytime.
           </p>
         </div>
       </div>

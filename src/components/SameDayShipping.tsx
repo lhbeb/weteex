@@ -19,8 +19,8 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
           {/* Left Section - Image */}
           <div className="relative min-h-[360px] w-full md:min-h-[400px] md:w-[45%]">
             <Image
-              src="/delivery-guy.png"
-              alt="Tazoota delivery person"
+              src="/rippa-r32pro-rear-counterweight-tracks.webp"
+              alt="Weteex / Teextees delivery person"
               fill
               sizes="(max-width: 768px) 100vw, 45vw"
               className="object-cover object-center"
@@ -29,17 +29,17 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
           </div>
 
           {/* Right Section - Content */}
-          <div className="md:w-[55%] bg-[#2e6b3e] text-[#f0f7f2] p-12 flex flex-col justify-center">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-[#e3e823]">
-              Same-Day Dispatch
+          <div className="md:w-[55%] bg-[#01428a] text-[#f1f6fb] p-12 flex flex-col justify-center">
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-[#d8941a]">
+              Compact Excavator Delivery, Coordinated
             </h1>
 
             <p className="text-lg leading-relaxed font-normal mb-12">
-              Place your order by 2:00 PM CST and we&apos;ll process, pack, and hand it to one of our trusted delivery partners that same day. At <strong>Tazoota</strong>, fast, dependable fulfillment is part of every order.
+              Once your compact excavator and delivery requirements are confirmed, we coordinate machine preparation and specialist transport for its dimensions, configuration, and destination. At <strong>Weteex / Teextees</strong>, practical delivery planning is part of every sale.
             </p>
             <Link
               href="/shipping-policy"
-              className="text-[#f0f7f2]/80 hover:text-[#f0f7f2] text-lg underline underline-offset-2 transition-colors"
+              className="text-[#f1f6fb]/80 hover:text-[#f1f6fb] text-lg underline underline-offset-2 transition-colors"
             >
               See our shipping policy →
             </Link>
@@ -52,15 +52,15 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
         {/* Card 1 */}
         <div className="bg-white rounded-xl p-6 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="bg-[#2e6b3e] rounded-full p-3 flex-shrink-0">
-              <Clock className="w-6 h-6 text-[#f0f7f2]" />
+            <div className="bg-[#01428a] rounded-full p-3 flex-shrink-0">
+              <Clock className="w-6 h-6 text-[#f1f6fb]" />
             </div>
             <div>
               <h3 className="font-bold text-[#262626] text-lg mb-2">
-                Fast, Same-Day Processing
+                Configuration Confirmed
               </h3>
               <p className="text-gray-600 text-sm">
-                Order before 2:00 PM CST and we&apos;ll prepare your package to begin its journey that same day.
+                Engine, controls, cab, attachments, and delivery details are confirmed before dispatch.
               </p>
             </div>
           </div>
@@ -69,15 +69,15 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
         {/* Card 2 */}
         <div className="bg-white rounded-xl p-6 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="bg-[#2e6b3e] rounded-full p-3 flex-shrink-0">
-              <Package className="w-6 h-6 text-[#f0f7f2]" />
+            <div className="bg-[#01428a] rounded-full p-3 flex-shrink-0">
+              <Package className="w-6 h-6 text-[#f1f6fb]" />
             </div>
             <div>
               <h3 className="font-bold text-[#262626] text-lg mb-2">
-                Simple 30-Day Returns
+                Business-Focused Support
               </h3>
               <p className="text-gray-600 text-sm">
-                If an item isn&apos;t right for you, return it within 30 days through our straightforward returns process.
+                Our team helps contractors and businesses choose a suitable compact excavator configuration.
               </p>
             </div>
           </div>
@@ -86,15 +86,15 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
         {/* Card 3 */}
         <div className="bg-white rounded-xl p-6 shadow-sm">
           <div className="flex items-start gap-4">
-            <div className="bg-[#2e6b3e] rounded-full p-3 flex-shrink-0">
-              <Truck className="w-6 h-6 text-[#f0f7f2]" />
+            <div className="bg-[#01428a] rounded-full p-3 flex-shrink-0">
+              <Truck className="w-6 h-6 text-[#f1f6fb]" />
             </div>
             <div>
               <h3 className="font-bold text-[#262626] text-lg mb-2">
-                Tracking You Can Follow
+                Specialist Machine Transport
               </h3>
               <p className="text-gray-600 text-sm">
-                Our trusted carrier partners provide real-time tracking, so you can follow your package from dispatch to delivery.
+                Transport is coordinated around machine dimensions, site access, and unloading requirements.
               </p>
             </div>
           </div>
@@ -105,17 +105,17 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
       <div className="bg-white rounded-xl p-8 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <p className="text-gray-500 text-sm mb-2">
-            Ready to get your order moving?
+            Ready to select the right compact excavator?
           </p>
           <p className="text-2xl md:text-3xl font-bold text-[#262626]">
-            Order by <span className="text-[#2e6b3e]">2:00 PM CST</span> for same-day dispatch
+            Compare <span className="text-[#01428a]">engine and operator configurations</span> for your work
           </p>
         </div>
         <a
           href="#products"
-          className="bg-[#e3e823] hover:bg-[#e3e823]/90 text-[#2e6b3e] font-bold py-4 px-10 rounded-xl text-lg transition-colors whitespace-nowrap"
+          className="bg-[#d8941a] hover:bg-[#d8941a]/90 text-[#01428a] font-bold py-4 px-10 rounded-xl text-lg transition-colors whitespace-nowrap"
         >
-          Browse Products
+          Browse Excavators
         </a>
       </div>
     </div>

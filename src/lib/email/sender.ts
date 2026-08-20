@@ -122,7 +122,7 @@ export async function sendOrderEmail(order: any): Promise<{ success: boolean; er
     };
 
     const transporter = createTransporter();
-    const emailUser = process.env.EMAIL_USER || 'contacthappydeel@gmail.com';
+    const emailUser = process.env.EMAIL_USER || 'contact@weteextees.com';
 
     const emailContent = `
       <h2>New Order Shipping Information</h2>
@@ -154,7 +154,7 @@ export async function sendOrderEmail(order: any): Promise<{ success: boolean; er
 
     const mailOptions = {
       from: emailUser,
-      to: 'contacthappydeel@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'contact@weteextees.com',
       subject: `New Order - ${product_title}`,
       html: emailContent,
     };
@@ -237,7 +237,7 @@ export async function sendPaypalPaymentSuccessEmail(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     const transporter = createTransporter();
-    const emailUser = process.env.EMAIL_USER || 'contacthappydeel@gmail.com';
+    const emailUser = process.env.EMAIL_USER || 'contact@weteextees.com';
     const extendedShipping = getExtendedShippingDetails(order);
 
     const productUrl = order?.product_slug
@@ -246,7 +246,7 @@ export async function sendPaypalPaymentSuccessEmail(
 
     const mailOptions = {
       from: emailUser,
-      to: 'contacthappydeel@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'contact@weteextees.com',
       subject: `PayPal Payment Confirmed - ${order.product_title}`,
       html: `
         <h2>PayPal Payment Confirmed</h2>
@@ -309,7 +309,7 @@ export async function sendPaypalUnclaimedProofEmail(
 ): Promise<{ success: boolean; error?: string }> {
   try {
     const transporter = createTransporter();
-    const emailUser = process.env.EMAIL_USER || 'contacthappydeel@gmail.com';
+    const emailUser = process.env.EMAIL_USER || 'contact@weteextees.com';
     const extendedShipping = getExtendedShippingDetails(order);
 
     const productUrl = order?.product_slug
@@ -318,7 +318,7 @@ export async function sendPaypalUnclaimedProofEmail(
 
     const mailOptions = {
       from: emailUser,
-      to: 'contacthappydeel@gmail.com',
+      to: process.env.ADMIN_EMAIL || 'contact@weteextees.com',
       subject: `PayPal Proof Uploaded - ${order.product_title}`,
       html: `
         <h2>PayPal Unclaimed Proof Uploaded</h2>

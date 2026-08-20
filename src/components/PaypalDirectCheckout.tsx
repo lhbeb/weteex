@@ -78,7 +78,7 @@ const PaypalDirectCheckout: React.FC<PaypalDirectCheckoutProps> = ({
       cancel_return: `${window.location.origin}/checkout?payment=cancelled`,
       notify_url: `${window.location.origin}/api/paypal/ipn`,
       rm: '0',
-      bn: 'Tazoota_BuyNow_WPS_US',
+      bn: 'WeteexTeextees_BuyNow_WPS_US',
       ...buildPaypalAddressFields(shippingData),
     };
 
@@ -110,7 +110,7 @@ const PaypalDirectCheckout: React.FC<PaypalDirectCheckoutProps> = ({
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-[#0b2a17]/40 backdrop-blur-sm animate-in fade-in duration-300"
+        className="absolute inset-0 bg-[#01428a]/40 backdrop-blur-sm animate-in fade-in duration-300"
         onClick={!isRedirecting ? onClose : undefined}
       />
 
@@ -145,20 +145,20 @@ const PaypalDirectCheckout: React.FC<PaypalDirectCheckoutProps> = ({
           <div className="mb-5 p-4 bg-gray-50 rounded-2xl border border-gray-100">
             <div className="flex justify-between items-start mb-1">
               <h4 className="font-semibold text-gray-900 line-clamp-2 pr-4 text-sm">{product.title}</h4>
-              <span className="font-bold text-[#0b2a17] whitespace-nowrap text-base">
+              <span className="font-bold text-[#01428a] whitespace-nowrap text-base">
                 {currencySymbol}{product.price.toFixed(2)}
               </span>
             </div>
             <div className="text-xs text-gray-500 flex items-center gap-1 mt-1">
-              <CheckCircle className="h-3 w-3 text-green-500" />
+              <CheckCircle className="h-3 w-3 text-blue-500" />
               Free Express Delivery
             </div>
           </div>
 
           <div className="mb-5 flex items-start gap-3 rounded-2xl border border-blue-100 bg-blue-50 p-4">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#0b2a17]" aria-hidden="true" />
+            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#01428a]" aria-hidden="true" />
             <div className="min-w-0">
-              <p className="mb-1 text-xs font-semibold uppercase text-[#0b2a17]">Delivery address</p>
+              <p className="mb-1 text-xs font-semibold uppercase text-[#01428a]">Delivery address</p>
               <address className="not-italic text-sm leading-5 text-gray-700">
                 {addressLines.map((line, index) => <div key={`${index}-${line}`}>{line}</div>)}
               </address>
@@ -195,8 +195,8 @@ const PaypalDirectCheckout: React.FC<PaypalDirectCheckoutProps> = ({
               <button
                 onClick={handlePayWithPayPal}
                 disabled={!resolvedPayeeEmail}
-                className="w-full py-4 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 hover:brightness-95 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-yellow-300/30"
-                style={{ backgroundColor: '#EFC154' }}
+                className="w-full py-4 rounded-2xl font-bold text-base transition-all duration-200 flex items-center justify-center gap-2 hover:brightness-95 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-[#edbd62]/30"
+                style={{ backgroundColor: '#e6b553' }}
                 aria-label="Pay with PayPal"
               >
                 <Image

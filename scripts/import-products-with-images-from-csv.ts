@@ -197,7 +197,7 @@ async function importProducts(csvPath: string) {
           price,
           images: resolvedImageUrl ? [resolvedImageUrl] : [],
           condition: 'New',
-          category: mainCategory || 'Lawn Mowers',
+          category: mainCategory || 'Excavators',
           brand,
           payee_email: '',
           checkout_link: '',

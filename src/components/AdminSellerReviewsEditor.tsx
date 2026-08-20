@@ -97,8 +97,8 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
       {/* Header */}
       <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center">
-            <Star className="h-4 w-4 text-amber-500 fill-amber-400" />
+          <div className="w-8 h-8 rounded-xl bg-[#fff8e8] border border-[#ffedc2] flex items-center justify-center">
+            <Star className="h-4 w-4 text-[#d8941a] fill-[#e2a439]" />
           </div>
           <div>
             <h2 className="font-semibold text-[#262626] text-sm">Native Reviews</h2>
@@ -125,7 +125,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
           <button
             type="button"
             onClick={addReview}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#0b2a17] text-white text-xs font-medium rounded-xl hover:bg-[#3a7f4b] transition-all shadow-sm"
+            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#01428a] text-white text-xs font-medium rounded-xl hover:bg-[#00366f] transition-all shadow-sm"
           >
             <Plus className="h-3.5 w-3.5" />
             Add Review
@@ -136,8 +136,8 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
       <div className="divide-y divide-gray-100">
         {reviews.length === 0 ? (
           <div className="py-14 text-center">
-            <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mx-auto mb-3">
-              <Star className="h-6 w-6 text-amber-300" />
+            <div className="w-12 h-12 bg-[#fff8e8] rounded-xl flex items-center justify-center mx-auto mb-3">
+              <Star className="h-6 w-6 text-[#edbd62]" />
             </div>
             <p className="text-sm text-gray-500 font-medium">No native reviews yet</p>
             <p className="text-xs text-gray-400 mt-1">Click &quot;Add Review&quot; to create one.</p>
@@ -157,7 +157,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                     {[1, 2, 3, 4, 5].map(s => (
                       <Star
                         key={s}
-                        className={`h-3.5 w-3.5 ${s <= review.rating ? 'text-amber-400 fill-amber-400' : 'text-gray-200 fill-gray-200'}`}
+                        className={`h-3.5 w-3.5 ${s <= review.rating ? 'text-[#e2a439] fill-[#e2a439]' : 'text-gray-200 fill-gray-200'}`}
                       />
                     ))}
                   </div>
@@ -210,7 +210,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                           value={review.author || ''}
                           onChange={(e) => updateReview(review.id, 'author', e.target.value)}
                           placeholder="e.g. John Doe"
-                          className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#0b2a17] focus:border-[#0b2a17] outline-none transition-all text-sm"
+                          className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all text-sm"
                         />
                       </div>
                       <div>
@@ -222,7 +222,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                           type="date"
                           value={toInputDate(review.date)}
                           onChange={(e) => updateReview(review.id, 'date', e.target.value)}
-                          className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#0b2a17] focus:border-[#0b2a17] outline-none transition-all text-sm"
+                          className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all text-sm"
                         />
                       </div>
                     </div>
@@ -238,7 +238,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                           value={review.productTitle || ''}
                           onChange={(e) => updateReview(review.id, 'productTitle', e.target.value)}
                           placeholder="e.g. Vintage Camera"
-                          className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#0b2a17] focus:border-[#0b2a17] outline-none transition-all text-sm"
+                          className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all text-sm"
                         />
                       </div>
                       <div>
@@ -254,8 +254,8 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                               <Star
                                 className={`h-5 w-5 transition-colors ${
                                   star <= (review.rating || 0)
-                                    ? 'text-amber-400 fill-amber-400'
-                                    : 'text-gray-200 fill-gray-200 hover:text-amber-300 hover:fill-amber-300'
+                                    ? 'text-[#e2a439] fill-[#e2a439]'
+                                    : 'text-gray-200 fill-gray-200 hover:text-[#edbd62] hover:fill-[#edbd62]'
                                 }`}
                               />
                             </button>
@@ -273,7 +273,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                         value={review.title || ''}
                         onChange={(e) => updateReview(review.id, 'title', e.target.value)}
                         placeholder="e.g. Great quality!"
-                        className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#0b2a17] focus:border-[#0b2a17] outline-none transition-all text-sm"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all text-sm"
                       />
                     </div>
 
@@ -285,7 +285,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                         onChange={(e) => updateReview(review.id, 'content', e.target.value)}
                         rows={3}
                         placeholder="The actual review text..."
-                        className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#0b2a17] focus:border-[#0b2a17] outline-none transition-all text-sm resize-y"
+                        className="w-full px-3 py-2 border border-gray-200 rounded-xl bg-white focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all text-sm resize-y"
                       />
                     </div>
 
@@ -300,7 +300,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                         <button
                           type="button"
                           onClick={() => addImageSlot(review.id)}
-                          className="inline-flex items-center gap-1 text-xs font-medium text-[#0b2a17] hover:text-[#3a7f4b] transition-colors"
+                          className="inline-flex items-center gap-1 text-xs font-medium text-[#01428a] hover:text-[#00366f] transition-colors"
                         >
                           <Plus className="h-3.5 w-3.5" />
                           Add Image
@@ -340,7 +340,7 @@ export default function AdminSellerReviewsEditor({ reviews, onChange }: Props) {
                                   className={`relative flex-shrink-0 inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium cursor-pointer transition-colors ${
                                     isUploading
                                       ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                                      : 'bg-[#0b2a17]/8 text-[#0b2a17] hover:bg-[#0b2a17]/15'
+                                      : 'bg-[#01428a]/8 text-[#01428a] hover:bg-[#01428a]/15'
                                   }`}
                                 >
                                   <Upload className="h-3.5 w-3.5" />

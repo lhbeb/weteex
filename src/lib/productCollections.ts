@@ -1,27 +1,22 @@
 export const PRODUCT_COLLECTION_OPTIONS = [
-  { value: 'lawn-garden', label: 'Lawn & Garden' },
-  { value: 'power-tools', label: 'Power Tools & Equipment' },
-  { value: 'electronics', label: 'Electronics' },
+  { value: 'excavators', label: 'Excavators' },
+  { value: 'attachments', label: 'Excavator Attachments' },
 ] as const;
 
 export function getCollectionsForCategory(category: string): string[] {
   const normalized = category.toLowerCase().trim();
 
+  if (/attachment|hydraulic thumb|bucket|auger|ripper/.test(normalized)) {
+    return ['attachments'];
+  }
+
   if (
-    /mower|bike|bicycle|ebike|e-bike|scooter|tent|pool|swimming|trimmer|blower/.test(
+    /excavator/.test(
       normalized,
     )
   ) {
-    return ['lawn-garden'];
+    return ['excavators'];
   }
 
-  if (/pressure washer|vacuum|power|generator|tool|hardware/.test(normalized)) {
-    return ['power-tools'];
-  }
-
-  if (/console|electronic|camera/.test(normalized)) {
-    return ['electronics'];
-  }
-
-  return ['lawn-garden'];
+  return ['excavators'];
 }

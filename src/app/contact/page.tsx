@@ -21,21 +21,21 @@ export default function ContactPage() {
     '@graph': [
       {
         '@type': 'ContactPage',
-        '@id': 'https://tazoota.com/contact#webpage',
-        'url': 'https://tazoota.com/contact',
-        'name': 'Contact Us | Tazoota',
+        '@id': 'https://weteextees.com/contact#webpage',
+        'url': 'https://weteextees.com/contact',
+        'name': 'Contact Us | Weteex / Teextees',
         'description':
-          'Contact Tazoota customer support team. Reach us by phone, email, or send us a direct message.',
+          'Contact Weteex / Teextees about compact excavator configurations, pricing, ordering, collection, and specialist delivery.',
         'mainEntity': {
-          '@id': 'https://tazoota.com/#organization',
+          '@id': 'https://weteextees.com/#organization',
         },
       },
       {
         '@type': 'Organization',
-        '@id': 'https://tazoota.com/#organization',
-        'name': 'Tazoota',
-        'url': 'https://tazoota.com',
-        'email': 'contact@tazoota.com',
+        '@id': 'https://weteextees.com/#organization',
+        'name': 'Weteex / Teextees',
+        'url': 'https://weteextees.com',
+        'email': 'contact@weteextees.com',
         'telephone': ['+19083256283'],
         'contactPoint': [
           {
@@ -46,24 +46,14 @@ export default function ContactPage() {
             'availableLanguage': ['en'],
           },
         ],
-        'address': [
-          {
-            '@type': 'PostalAddress',
-            'streetAddress': 'Choats Rd',
-            'addressLocality': 'Barking',
-            'addressRegion': 'Dagenham',
-            'postalCode': 'RM9 6BF',
-            'addressCountry': 'GB',
-          },
-          {
-            '@type': 'PostalAddress',
-            'streetAddress': '5850 E Raines Rd',
-            'addressLocality': 'Memphis',
-            'addressRegion': 'TN',
-            'postalCode': '38115',
-            'addressCountry': 'US',
-          },
-        ],
+        'address': {
+          '@type': 'PostalAddress',
+          'streetAddress': '71-75 Shelton Street',
+          'addressLocality': 'London',
+          'addressRegion': 'Greater London',
+          'postalCode': 'WC2H 9JQ',
+          'addressCountry': 'GB',
+        },
       },
     ],
   };
@@ -114,7 +104,7 @@ export default function ContactPage() {
             <div className="p-6 sm:p-8">
               <h1 className="text-3xl font-bold text-[#262626] mb-2">Contact Us</h1>
               <p className="text-gray-600 mb-8">
-                Have questions? We&#39;d love to hear from you. Send us a message and we&#39;ll respond as soon as possible.
+                Ask about engine options, controls, cab configurations, attachments, pricing, or delivery. Our machinery team will help you compare the available choices.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Contact Form */}
@@ -131,7 +121,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
@@ -146,7 +136,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
@@ -160,15 +150,15 @@ export default function ContactPage() {
                         value={formData.contactReason}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent bg-white"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent bg-white"
                         disabled={isSending}
                       >
                         <option value="">Select a reason</option>
-                        <option value="selling">Selling on Tazoota</option>
+                        <option value="selling">Compact excavator sales inquiry</option>
                         <option value="order-inquiry">Inquiring about an order</option>
                         <option value="track-order">Track my order</option>
                         <option value="return-refund">Return or refund request</option>
-                        <option value="product-question">Product question</option>
+                        <option value="product-question">Machine or configuration question</option>
                         <option value="partnership">Partnership or business inquiry</option>
                         <option value="general">General inquiry</option>
                         <option value="other">Other</option>
@@ -185,7 +175,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
@@ -200,13 +190,13 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
                     <button
                       type="submit"
-                      className={`w-full bg-[#e3e823] hover:bg-[#e3e823]/90 text-[#2e6b3e] font-medium py-3 rounded-lg transition-colors duration-300 ${isSending ? 'opacity-60 cursor-not-allowed' : ''}`}
+                      className={`w-full bg-[#d8941a] hover:bg-[#d8941a]/90 text-[#01428a] font-medium py-3 rounded-lg transition-colors duration-300 ${isSending ? 'opacity-60 cursor-not-allowed' : ''}`}
                       disabled={isSending}
                     >
                       {isSending ? 'Sending...' : 'Send Message'}
@@ -221,38 +211,38 @@ export default function ContactPage() {
                   <h2 className="text-xl font-bold text-[#262626] mb-6">Get in Touch</h2>
                   <div className="space-y-6">
                     <div className="flex items-start">
-                      <Building2 className="h-6 w-6 text-[#0b2a17] mt-1 shrink-0" />
+                      <Building2 className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
                       <div className="ml-4">
                         <h3 className="font-medium text-[#262626]">UK Registered Office</h3>
-                        <p className="text-gray-600 mt-1">Choats Rd, Barking, Dagenham RM9 6BF, United Kingdom</p>
+                        <p className="text-gray-600 mt-1">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <MapPin className="h-6 w-6 text-[#0b2a17] mt-1 shrink-0" />
+                      <MapPin className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#262626]">US Dispatch Center</h3>
-                        <p className="text-gray-600 mt-1">5850 E Raines Rd, Memphis, TN 38115, United States</p>
+                        <h3 className="font-medium text-[#262626]">Registered Company</h3>
+                        <p className="text-gray-600 mt-1">Gooba Global LTD · Company number 13107870</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <Phone className="h-6 w-6 text-[#0b2a17] mt-1 shrink-0" />
+                      <Phone className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
                       <div className="ml-4">
                         <h3 className="font-medium text-[#262626]">Phone Support</h3>
                         <p className="text-gray-600 mt-1"><span className="font-semibold">Phone:</span> +19083256283</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <Mail className="h-6 w-6 text-[#0b2a17] mt-1 shrink-0" />
+                      <Mail className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
                       <div className="ml-4">
                         <h3 className="font-medium text-[#262626]">Email</h3>
-                        <p className="text-gray-600 mt-1">contact@tazoota.com</p>
+                        <p className="text-gray-600 mt-1">contact@weteextees.com</p>
                       </div>
                     </div>
                     <div className="border-t border-gray-200 pt-6">
                       <h3 className="font-medium text-[#262626] mb-2">Business Hours</h3>
                       <ul className="text-gray-600 space-y-1">
-                        <li>Monday - Friday: 9:00 AM - 5:00 PM CST</li>
-                        <li>Saturday: 10:00 AM - 3:00 PM CST</li>
+                        <li>Monday - Friday: 9:00 AM - 5:00 PM GMT/BST</li>
+                        <li>Saturday: By appointment</li>
                         <li>Sunday: Closed</li>
                       </ul>
                     </div>
@@ -265,7 +255,7 @@ export default function ContactPage() {
       </div>
       {/* Success Message */}
       {showSuccess && (
-        <div className="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg">
+        <div className="fixed bottom-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg">
           Your message has been sent successfully!
         </div>
       )}

@@ -3,7 +3,7 @@ import { getAllProducts } from '@/lib/data';
 import { formatValidSku, mapConditionToGmc } from '@/lib/conditions';
 import type { Product } from '@/types/product';
 
-const BASE_URL = 'https://tazoota.com';
+const BASE_URL = 'https://weteextees.com';
 const SUPPORTED_COUNTRIES = ['US'] as const;
 const SUPPORTED_CURRENCIES = ['USD'] as const;
 const GMC_TITLE_MAX_LENGTH = 150;
@@ -27,8 +27,11 @@ const SHIPPING_BY_COUNTRY: Record<FeedCountry, {
  * Full taxonomy: https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt
  */
 const GOOGLE_PRODUCT_CATEGORY_MAP: Record<string, string> = {
-  'Lawn Mowers': '2962',
-  'Ride Mowers': '2962',
+  'Excavators': '1795',
+  'Mini Excavators': '1795',
+  'AGT Mini Excavators': '1795',
+  'Excavator Attachments': '1795',
+  'Attachments': '1795',
   'Power Tools': '1167',
   'Generators': '696',
   'Garden Equipment': '4217',
@@ -39,7 +42,7 @@ const GOOGLE_PRODUCT_CATEGORY_MAP: Record<string, string> = {
   'Fashion': '1604',
   'Hobbies': '8',
   'Entertainment': '8',
-  'Home & Garden': '536',
+  'Construction Machinery': '1795',
   'default': '536',
 };
 
@@ -190,8 +193,8 @@ export async function GET(request: NextRequest) {
         const price = `${Number(product.price).toFixed(2)} ${productCurrency}`;
         const availability = product.inStock === false ? 'out_of_stock' : 'in_stock';
         const condition = mapConditionToGmc(product.condition);
-        const brand = escapeXml(product.brand || 'Tazoota');
-        const category = escapeXml(product.category || 'Home & Garden');
+        const brand = escapeXml(product.brand || 'Weteex / Teextees');
+        const category = escapeXml(product.category || 'Excavators');
         const googleProductCategory = getGoogleProductCategory(product.category);
         const feedImages = getFeedImageUrls(product);
         const imageLink = escapeXml(feedImages[0]);
@@ -241,9 +244,9 @@ export async function GET(request: NextRequest) {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>Tazoota Google Merchant Center Feed${targetLabel}${currencyLabel}</title>
+    <title>Weteex / Teextees Google Merchant Center Feed${targetLabel}${currencyLabel}</title>
     <link>${BASE_URL}</link>
-    <description>Tazoota products for the United States${currencyLabel}</description>
+    <description>Weteex / Teextees products for the United States${currencyLabel}</description>
     ${itemsXml}
   </channel>
 </rss>`;

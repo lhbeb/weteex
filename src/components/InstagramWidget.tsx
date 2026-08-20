@@ -9,11 +9,11 @@ const InstagramWidget: React.FC = () => {
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <div className="flex items-center space-x-4 mb-6">
           {/* Profile Picture with Instagram Gradient Ring */}
-          <div className="w-20 h-20 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full p-0.5 flex-shrink-0">
+          <div className="w-20 h-20 bg-gradient-to-tr from-[#e2a439] via-red-500 to-purple-500 rounded-full p-0.5 flex-shrink-0">
             <div className="w-full h-full bg-white rounded-full overflow-hidden">
               <Image
-                src="/pdp.png"
-                alt="Tazoota Profile"
+                src="/weteex-machines-mark.svg"
+                alt="Weteex / Teextees Profile"
                 width={80}
                 height={80}
                 className="h-full w-full object-cover"
@@ -23,9 +23,9 @@ const InstagramWidget: React.FC = () => {
 
           {/* Profile Info */}
           <div className="flex-grow">
-            <h3 className="font-bold text-[#262626] text-xl mb-1">@tazoota_official</h3>
-            <p className="text-sm text-gray-700">tazoota</p>
-            <p className="mb-3 text-xs font-medium text-gray-500">Home &amp; Garden Store</p>
+            <h3 className="font-bold text-[#262626] text-xl mb-1">@weteexmachines_official</h3>
+            <p className="text-sm text-gray-700">weteexmachines</p>
+            <p className="mb-3 text-xs font-medium text-gray-500">Excavators &amp; Construction Machinery</p>
 
             {/* Statistics */}
             <div className="flex items-center space-x-6 text-sm">
@@ -47,7 +47,7 @@ const InstagramWidget: React.FC = () => {
 
         {/* Follow Button */}
         <a
-          href="https://www.instagram.com/tazoota_official/"
+          href="https://www.instagram.com/weteexmachines_official/"
           target="_blank"
           rel="noopener noreferrer"
           className="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"

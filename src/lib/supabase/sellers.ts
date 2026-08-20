@@ -76,12 +76,12 @@ function shuffleReviews(reviews: Review[]): Review[] {
   return shuffled;
 }
 
-function isLawnMowerText(value: unknown): boolean {
-  return typeof value === 'string' && /\bmowers?\b/i.test(value);
+function isExcavatorText(value: unknown): boolean {
+  return typeof value === 'string' && /\bexcavators?\b/i.test(value);
 }
 
-function isLawnMowerReview(review: Review): boolean {
-  return isLawnMowerText(review.productTitle) || isLawnMowerText(review.productSlug);
+function isExcavatorReview(review: Review): boolean {
+  return isExcavatorText(review.productTitle) || isExcavatorText(review.productSlug);
 }
 
 function shouldIncludeNativeSellerReview(
@@ -94,13 +94,13 @@ function shouldIncludeNativeSellerReview(
   );
 
   // Keep generic store reviews, but a review that names a product may appear on
-  // the homepage only when that lawn-mower product is currently featured.
+  // the homepage only when that excavator product is currently featured.
   if (!hasProductReference) return true;
 
   const productTitle = review.productTitle?.trim().toLowerCase();
   const productSlug = review.productSlug?.trim().toLowerCase();
 
-  return isLawnMowerReview(review) && (
+  return isExcavatorReview(review) && (
     (Boolean(productTitle) && featuredProductTitles.has(productTitle!)) ||
     (Boolean(productSlug) && featuredProductSlugs.has(productSlug!))
   );
@@ -147,7 +147,7 @@ export async function getHomeReviewsFeed(limit: number = 6): Promise<{
     const publishedProductReviews = featuredProducts
       .filter(
         (product) =>
-          [product.title, product.slug, product.category].some(isLawnMowerText),
+          [product.title, product.slug, product.category].some(isExcavatorText),
       )
       .flatMap((product) =>
         (Array.isArray(product.reviews) ? product.reviews : []).map((review) => ({

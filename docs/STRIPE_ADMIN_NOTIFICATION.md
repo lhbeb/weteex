@@ -201,9 +201,9 @@ const transporter = nodemailer.createTransporter({
 ## 🎨 Email Design
 
 ### **Color Scheme:**
-- **Green** (#10b981) - Payment success header
+- **Green** (#01428a) - Payment success header
 - **Blue** (#2563eb) - Product details
-- **Orange** (#f59e0b) - Shipping information
+- **Orange** (#d8941a) - Shipping information
 - **Red** (#ef4444) - Action required
 
 ### **Responsive:**

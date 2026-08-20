@@ -85,13 +85,13 @@ function ThankYouContent() {
 
   // Always show success (Stripe only redirects here if payment succeeded)
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         {/* Success Card */}
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12 text-center">
           {/* Success Icon */}
-          <div className="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-            <CheckCircle className="w-12 h-12 text-green-600" />
+          <div className="mx-auto w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+            <CheckCircle className="w-12 h-12 text-blue-600" />
           </div>
 
           {/* Main Message */}
@@ -113,7 +113,7 @@ function ThankYouContent() {
                 {orderDetails.orderId || orderDetails.sessionId}
               </p>
               {orderDetails.amount && (
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-blue-600">
                   ${(orderDetails.amount / 100).toFixed(2)} {orderDetails.currency?.toUpperCase()}
                 </p>
               )}
@@ -167,8 +167,8 @@ function ThankYouContent() {
             </p>
             <div className="space-y-1 text-sm">
               <p className="text-gray-700">
-                📧 <a href="mailto:contact@tazoota.com" className="text-blue-600 hover:text-blue-700 font-medium">
-                  contact@tazoota.com
+                📧 <a href="mailto:contact@weteextees.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                  contact@weteextees.com
                 </a>
               </p>
               <p className="text-gray-700">
@@ -183,7 +183,7 @@ function ThankYouContent() {
           <div className="flex justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#0b2a17] hover:bg-[#3a7f4b] text-white font-medium rounded-lg transition-colors duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#01428a] hover:bg-[#00366f] text-white font-medium rounded-lg transition-colors duration-200"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Continue Shopping
@@ -207,7 +207,7 @@ function ThankYouContent() {
 // Loading fallback component
 function LoadingState() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12 text-center">
           <div className="mx-auto w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6">

@@ -12,11 +12,11 @@ const InstagramSection: React.FC = () => {
               {/* Profile Info */}
               <div className="flex items-center space-x-4">
                 {/* Profile Picture with Instagram Gradient Border */}
-                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 rounded-full p-0.5 flex-shrink-0">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-tr from-[#e2a439] via-red-500 to-purple-500 rounded-full p-0.5 flex-shrink-0">
                   <div className="w-full h-full bg-white rounded-full overflow-hidden">
                     <Image
-                      src="/pdp.png"
-                      alt="Tazoota Profile"
+                      src="/weteex-machines-mark.svg"
+                      alt="Weteex / Teextees Profile"
                       width={80}
                       height={80}
                       className="object-cover w-full h-full"
@@ -26,10 +26,10 @@ const InstagramSection: React.FC = () => {
 
                 {/* Profile Details */}
                 <div className="flex-grow">
-                  <h3 className="font-bold text-[#262626] text-lg sm:text-xl mb-1">@tazoota_official</h3>
-                  <p className="text-gray-700 text-sm sm:text-base">tazoota</p>
+                  <h3 className="font-bold text-[#262626] text-lg sm:text-xl mb-1">@weteexmachines_official</h3>
+                  <p className="text-gray-700 text-sm sm:text-base">weteexmachines</p>
                   <p className="mb-2 text-xs font-medium text-gray-500 sm:text-sm">
-                    Home &amp; Garden Store
+                    Excavators &amp; Construction Machinery
                   </p>
 
                   {/* Statistics */}
@@ -53,7 +53,7 @@ const InstagramSection: React.FC = () => {
               {/* Follow Us Button */}
               <div className="flex-shrink-0">
                 <a
-                  href="https://www.instagram.com/tazoota_official/"
+                  href="https://www.instagram.com/weteexmachines_official/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"

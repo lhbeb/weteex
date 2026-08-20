@@ -8,7 +8,7 @@ const CookiesPage = () => (
       <div className="prose max-w-none text-gray-700 space-y-8">
         {/* Introduction */}
         <p className="text-lg leading-relaxed">
-          This Cookies Policy explains how Tazoota uses cookies and similar tracking technologies on our website. By using our website, you agree to the use of cookies as described in this policy.
+          This Cookies Policy explains how Weteex / Teextees, operated by Gooba Global LTD (company number 13107870), uses cookies and similar technologies. We ask for consent before placing non-essential cookies; strictly necessary cookies may be used without consent where permitted by law.
         </p>
 
         {/* What Are Cookies */}
@@ -108,16 +108,16 @@ const CookiesPage = () => (
             </div>
             <div>
               <div className="font-medium text-[#262626] mb-1">Email:</div>
-              <div className="text-gray-600">contact@tazoota.com</div>
+              <div className="text-gray-600">contact@weteextees.com</div>
             </div>
             <div>
               <div className="font-medium text-[#262626] mb-1">Address:</div>
-              <div className="text-gray-600">5850 E Raines Rd, Memphis, TN 38115, United States</div>
+              <div className="text-gray-600">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</div>
             </div>
             <div>
               <div className="font-medium text-[#262626] mb-1">Hours:</div>
-              <div className="text-gray-600">Monday to Friday: 9:00 AM to 5:00 PM CST</div>
-              <div className="text-gray-600">Saturday: 10:00 AM to 3:00 PM CST</div>
+              <div className="text-gray-600">Monday to Friday: 9:00 AM to 5:00 PM GMT/BST</div>
+              <div className="text-gray-600">Saturday: by appointment</div>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@ const CookiesPage = () => (
         <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 mt-10">
           <h3 className="text-xl font-bold text-[#262626] mb-3">Important Note</h3>
           <p>
-            By continuing to use our website, you agree to our use of cookies as described in this policy. If you do not agree, please adjust your browser settings accordingly.
+            You can accept or reject non-essential cookies through the consent controls available on our website and can change your browser settings at any time. Rejecting non-essential cookies should not prevent access to the core shopping experience.
           </p>
         </div>
       </div>

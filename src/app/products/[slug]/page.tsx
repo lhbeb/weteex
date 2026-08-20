@@ -7,7 +7,7 @@ import ProductPageClient from './ProductPageClient';
 import type { Metadata, ResolvingMetadata } from 'next';
 
 // Hardcoded base URL (no environment variable needed)
-const BASE_URL = 'https://tazoota.com';
+const BASE_URL = 'https://weteextees.com';
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
@@ -15,13 +15,13 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     const { slug } = await params;
-    if (!slug) return { title: 'Product Not Found | Tazoota' };
+    if (!slug) return { title: 'Machinery Not Found | Weteex / Teextees' };
 
     let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
     if (!product) product = await getProductBySlug(slug);
-    if (!product) return { title: 'Product Not Found | Tazoota' };
+    if (!product) return { title: 'Machinery Not Found | Weteex / Teextees' };
 
-    const title = `${product.title || 'Product'} - ${product.brand || ''} | ${product.category || ''} | Tazoota`;
+    const title = `${product.title || 'Machinery'} - ${product.brand || ''} | ${product.category || ''} | Weteex / Teextees`;
     const description = (product.description || '').substring(0, 155) + '...';
     const canonicalUrl = `${BASE_URL}/products/${product.slug}`;
     const currencyCode = product.currency || 'USD';
@@ -44,7 +44,7 @@ export async function generateMetadata(
         title,
         description,
         url: canonicalUrl,
-        siteName: 'Tazoota',
+        siteName: 'Weteex / Teextees',
         type: 'website',
         images: imageUrls,
       },
@@ -67,8 +67,8 @@ export async function generateMetadata(
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
-      title: 'Product | Tazoota',
-      description: 'Browse our products on Tazoota',
+      title: 'Machinery | Weteex / Teextees',
+      description: 'Browse excavators and construction machinery from Weteex / Teextees',
     };
   }
 }
@@ -145,7 +145,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         "url": `${BASE_URL}/products/${p.slug}`,
         "seller": {
           "@type": "Organization",
-          "name": "Tazoota"
+          "name": "Weteex / Teextees"
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",

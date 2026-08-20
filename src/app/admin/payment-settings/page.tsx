@@ -270,10 +270,10 @@ export default function PaymentSettingsPage() {
                 <div className="max-w-6xl space-y-6">
                     {statusMessage && (
                         <div className={`p-4 rounded-xl flex items-start gap-3 ${
-                            statusMessage.type === 'success' ? 'bg-green-50 border border-green-200 text-green-800' : 'bg-red-50 border border-red-200 text-red-800'
+                            statusMessage.type === 'success' ? 'bg-blue-50 border border-blue-200 text-blue-800' : 'bg-red-50 border border-red-200 text-red-800'
                         }`}>
                             {statusMessage.type === 'success' ? (
-                                <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-green-600" />
+                                <CheckCircle2 className="h-5 w-5 flex-shrink-0 mt-0.5 text-blue-600" />
                             ) : (
                                 <XCircle className="h-5 w-5 flex-shrink-0 mt-0.5 text-red-600" />
                             )}
@@ -293,7 +293,7 @@ export default function PaymentSettingsPage() {
                                 <div>
                                     <h3 className="font-semibold text-[#262626] text-base">Stripe Integration</h3>
                                     <div className="flex items-center gap-2 mt-1">
-                                        <div className={`w-2 h-2 rounded-full ${isConfigured ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                                        <div className={`w-2 h-2 rounded-full ${isConfigured ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
                                         <p className="text-sm text-gray-500">{isConfigured ? 'Active & Configured' : 'Not Configured'}</p>
                                     </div>
                                 </div>
@@ -306,7 +306,7 @@ export default function PaymentSettingsPage() {
                                 <select
                                     value={mode}
                                     onChange={(e) => setMode(e.target.value)}
-                                    className="w-full sm:w-1/2 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent text-sm"
+                                    className="w-full sm:w-1/2 px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent text-sm"
                                 >
                                     <option value="test">Test Mode</option>
                                     <option value="live">Live Mode</option>
@@ -321,7 +321,7 @@ export default function PaymentSettingsPage() {
                                     value={publishableKey}
                                     onChange={(e) => setPublishableKey(e.target.value)}
                                     placeholder="pk_..."
-                                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent text-sm font-mono"
+                                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent text-sm font-mono"
                                     required
                                 />
                                 <p className="text-xs text-gray-500 mt-1.5 ml-1">Publicly exposed key used for frontend integrations.</p>
@@ -335,7 +335,7 @@ export default function PaymentSettingsPage() {
                                         value={secretKey}
                                         onChange={(e) => setSecretKey(e.target.value)}
                                         placeholder="sk_..."
-                                        className="w-full px-4 py-2.5 pr-12 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent text-sm font-mono"
+                                        className="w-full px-4 py-2.5 pr-12 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent text-sm font-mono"
                                         required
                                     />
                                     <button
@@ -346,7 +346,7 @@ export default function PaymentSettingsPage() {
                                         {showSecret ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                     </button>
                                 </div>
-                                <p className="text-xs text-amber-600 mt-1.5 ml-1 flex items-center gap-1">
+                                <p className="text-xs text-[#b97810] mt-1.5 ml-1 flex items-center gap-1">
                                     <AlertCircle className="h-3.5 w-3.5" /> 
                                     Keep this secret. This is never exposed to the browser.
                                 </p>
@@ -356,7 +356,7 @@ export default function PaymentSettingsPage() {
                                 <button
                                     type="submit"
                                     disabled={isSaving}
-                                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#0b2a17] text-white rounded-xl hover:bg-[#3a7f4b] transition-colors text-sm font-medium shadow-lg shadow-[#0b2a17]/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#01428a] text-white rounded-xl hover:bg-[#00366f] transition-colors text-sm font-medium shadow-lg shadow-[#01428a]/25 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isSaving ? (
                                         <>
@@ -384,7 +384,7 @@ export default function PaymentSettingsPage() {
                                 <div>
                                     <h3 className="font-semibold text-[#262626] text-base">PayPal Redirect Checkout</h3>
                                     <div className="flex items-center gap-2 mt-1">
-                                        <div className={`w-2 h-2 rounded-full ${isPaypalConfigured ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                                        <div className={`w-2 h-2 rounded-full ${isPaypalConfigured ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
                                         <p className="text-sm text-gray-500">{isPaypalConfigured ? 'Active — Receiving Payments' : 'Not Configured'}</p>
                                     </div>
                                 </div>
@@ -399,7 +399,7 @@ export default function PaymentSettingsPage() {
                                     value={paypalEmail}
                                     onChange={(e) => setPaypalEmail(e.target.value)}
                                     placeholder="e.g. me@paypal.com"
-                                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0b2a17] focus:border-transparent text-sm"
+                                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent text-sm"
                                     required
                                 />
                                 <p className="text-xs text-gray-500 mt-1.5 ml-1">Enter the PayPal email that should receive buyer payments through the PayPal Standard redirect flow.</p>
@@ -436,7 +436,7 @@ export default function PaymentSettingsPage() {
                                 <div>
                                     <h3 className="font-semibold text-[#262626] text-base">PayPal Orders API Checkout</h3>
                                     <div className="flex items-center gap-2 mt-1">
-                                        <div className={`w-2 h-2 rounded-full ${isPaypalApiConfigured ? 'bg-green-500' : 'bg-gray-300'}`}></div>
+                                        <div className={`w-2 h-2 rounded-full ${isPaypalApiConfigured ? 'bg-blue-500' : 'bg-gray-300'}`}></div>
                                         <p className="text-sm text-gray-500">
                                             {isPaypalApiConfigured ? `Active in ${paypalApiMode === 'live' ? 'Live' : 'Sandbox'} mode` : 'Not Configured'}
                                         </p>
@@ -515,7 +515,7 @@ export default function PaymentSettingsPage() {
                                             {showPaypalApiSecret ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                         </button>
                                     </div>
-                                    <p className="text-xs text-amber-600 mt-1.5 ml-1 flex items-center gap-1">
+                                    <p className="text-xs text-[#b97810] mt-1.5 ml-1 flex items-center gap-1">
                                         <AlertCircle className="h-3.5 w-3.5" />
                                         Use the Client Secret from your PayPal Developer app, never your PayPal account password.
                                     </p>

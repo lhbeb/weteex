@@ -56,7 +56,7 @@ Both SUPER_ADMIN and ADMIN roles can:
   }}
   disabled={togglingFeatured === product.slug || (!(product.isFeatured || product.is_featured) && featuredCount >= FEATURE_LIMIT)}
   className={`p-2 rounded-lg transition-colors ${(product.isFeatured || product.is_featured)
-    ? 'bg-amber-500 hover:bg-amber-600'
+    ? 'bg-[#d8941a] hover:bg-[#b97810]'
     : 'bg-white hover:bg-gray-100'
     } disabled:opacity-50`}
   title={(product.isFeatured || product.is_featured) ? 'Remove from featured' : 'Add to featured'}

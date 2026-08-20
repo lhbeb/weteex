@@ -49,7 +49,7 @@ export default function StripeEmbeddedCheckout({
         setStripePromise(loadStripe(data.publishableKey));
       } catch (error) {
         console.error('Failed to load Stripe config:', error);
-        setConfigError('Payment is temporarily unavailable. Please email contact@tazoota.com.');
+        setConfigError('Payment is temporarily unavailable. Please email contact@weteextees.com.');
       }
     };
 
@@ -62,14 +62,14 @@ export default function StripeEmbeddedCheckout({
   }).format(product.price);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#dde8df] via-[#f8fafc] to-[#f0fdfa] px-0 py-0 sm:px-4 sm:py-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#dce9f6] via-[#f8fafc] to-[#edf6ff] px-0 py-0 sm:px-4 sm:py-8">
       <div className="mx-auto w-full max-w-6xl overflow-hidden bg-white shadow-none sm:rounded-3xl sm:border sm:border-gray-100 sm:shadow-2xl">
         <div className="border-b border-gray-100 p-5 sm:p-8">
           {onBack && (
             <button
               type="button"
               onClick={onBack}
-              className="mb-5 inline-flex items-center gap-2 text-sm font-medium text-[#0b2a17] transition-colors hover:text-[#3a7f4b]"
+              className="mb-5 inline-flex items-center gap-2 text-sm font-medium text-[#01428a] transition-colors hover:text-[#00366f]"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to checkout
@@ -78,21 +78,21 @@ export default function StripeEmbeddedCheckout({
 
           <div className="mb-6 flex flex-col items-center text-center">
             <span className="mb-2 inline-flex items-center justify-center rounded-full bg-blue-100 p-2">
-              <Check className="h-7 w-7 text-[#0b2a17]" />
+              <Check className="h-7 w-7 text-[#01428a]" />
             </span>
             <h1 className="text-2xl font-extrabold tracking-tight text-[#262626] sm:text-3xl">
               Secure Payment
             </h1>
             <p className="mt-2 text-base text-gray-600">
-              Complete your payment below without leaving Tazoota.
+              Complete your payment below without leaving Weteex / Teextees.
             </p>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-2">
             <div className="rounded-2xl border border-blue-100 bg-blue-50 p-5">
               <div className="mb-2 flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-[#0b2a17]" />
-                <span className="font-semibold text-[#0b2a17]">Confirmed Delivery Address</span>
+                <MapPin className="h-5 w-5 text-[#01428a]" />
+                <span className="font-semibold text-[#01428a]">Confirmed Delivery Address</span>
               </div>
               <div className="leading-relaxed text-gray-800">
                 {shippingData.streetAddress && <div>{shippingData.streetAddress}</div>}
@@ -106,7 +106,7 @@ export default function StripeEmbeddedCheckout({
                 )}
               </div>
               {shippingData.email && (
-                <div className="mt-3 flex items-center gap-2 text-[#0b2a17]">
+                <div className="mt-3 flex items-center gap-2 text-[#01428a]">
                   <Mail className="h-5 w-5" />
                   <span>{shippingData.email}</span>
                 </div>
@@ -120,12 +120,12 @@ export default function StripeEmbeddedCheckout({
               <div className="text-lg font-bold leading-tight text-[#262626]">{product.title}</div>
               {sellerName && (
                 <div className="mt-1 text-sm text-gray-500">
-                  Sold by: <span className="font-medium text-[#0b2a17]">{sellerName}</span>
+                  Sold by: <span className="font-medium text-[#01428a]">{sellerName}</span>
                 </div>
               )}
               <div className="mt-5 flex items-end justify-between border-t border-gray-100 pt-4">
                 <span className="text-sm font-semibold text-gray-500">Total</span>
-                <span className="text-2xl font-extrabold text-[#0b2a17]">{formattedPrice}</span>
+                <span className="text-2xl font-extrabold text-[#01428a]">{formattedPrice}</span>
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function StripeEmbeddedCheckout({
             </EmbeddedCheckoutProvider>
           ) : (
             <div className="flex min-h-[420px] flex-col items-center justify-center">
-              <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-[#0b2a17]/25 border-t-[#0b2a17]" />
+              <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-[#01428a]/25 border-t-[#01428a]" />
               <span className="font-medium text-gray-700">Loading secure payment form...</span>
             </div>
           )}

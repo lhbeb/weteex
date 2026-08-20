@@ -21,7 +21,7 @@ interface ErrorLog {
 }
 
 const TYPE_COLORS: Record<string, string> = {
-  client: 'bg-[#2e6b3e]/10 text-[#2e6b3e] border-[#2e6b3e]/20',
+  client: 'bg-[#01428a]/10 text-[#01428a] border-[#01428a]/20',
   api: 'bg-blue-100 text-blue-700 border-blue-200',
   server: 'bg-red-100 text-red-700 border-red-200',
 };
@@ -156,7 +156,7 @@ export default function ErrorLogPage() {
             <button
               key={t}
               onClick={() => setFilterType(t)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${filterType === t ? 'bg-[#0b2a17] text-white' : 'text-gray-600 hover:bg-gray-100'}`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${filterType === t ? 'bg-[#01428a] text-white' : 'text-gray-600 hover:bg-gray-100'}`}
             >
               {t.charAt(0).toUpperCase() + t.slice(1)}
             </button>
@@ -168,7 +168,7 @@ export default function ErrorLogPage() {
             <button
               key={val}
               onClick={() => setFilterResolved(val)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${filterResolved === val ? 'bg-[#0b2a17] text-white' : 'text-gray-600 hover:bg-gray-100'}`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${filterResolved === val ? 'bg-[#01428a] text-white' : 'text-gray-600 hover:bg-gray-100'}`}
             >
               {label}
             </button>
@@ -184,7 +184,7 @@ export default function ErrorLogPage() {
         </div>
       ) : logs.length === 0 ? (
         <div className="bg-white rounded-2xl border border-gray-200 py-16 text-center">
-          <CheckCircle className="h-10 w-10 text-green-400 mx-auto mb-3" />
+          <CheckCircle className="h-10 w-10 text-blue-400 mx-auto mb-3" />
           <p className="text-gray-500 font-medium">No errors found</p>
           <p className="text-gray-400 text-sm mt-1">Great news — your app is clean!</p>
         </div>
@@ -200,9 +200,9 @@ export default function ErrorLogPage() {
                 className="flex items-start gap-3 p-4 cursor-pointer"
                 onClick={() => setExpanded(expanded === log.id ? null : log.id)}
               >
-                <div className={`mt-0.5 flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center ${log.resolved ? 'bg-green-50' : 'bg-red-50'}`}>
+                <div className={`mt-0.5 flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center ${log.resolved ? 'bg-blue-50' : 'bg-red-50'}`}>
                   {log.resolved
-                    ? <CheckCircle className="h-4 w-4 text-green-500" />
+                    ? <CheckCircle className="h-4 w-4 text-blue-500" />
                     : <AlertTriangle className="h-4 w-4 text-red-500" />
                   }
                 </div>
@@ -234,7 +234,7 @@ export default function ErrorLogPage() {
                     onClick={() => markResolved(log.id, !log.resolved)}
                     disabled={resolving === log.id}
                     title={log.resolved ? 'Mark unresolved' : 'Mark resolved'}
-                    className={`p-1.5 rounded-lg transition-colors ${log.resolved ? 'hover:bg-[#2e6b3e]/10 text-[#2e6b3e]' : 'hover:bg-green-50 text-green-500'}`}
+                    className={`p-1.5 rounded-lg transition-colors ${log.resolved ? 'hover:bg-[#01428a]/10 text-[#01428a]' : 'hover:bg-blue-50 text-blue-500'}`}
                   >
                     <CheckCircle className="h-4 w-4" />
                   </button>
@@ -289,19 +289,19 @@ export default function ErrorLogPage() {
                         value={resolveNote}
                         onChange={e => setResolveNote(e.target.value)}
                         placeholder="Optional resolution note..."
-                        className="flex-1 text-xs px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-[#0b2a17]"
+                        className="flex-1 text-xs px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-[#01428a]"
                       />
                       <button
                         onClick={() => markResolved(log.id, true)}
                         disabled={resolving === log.id}
-                        className="px-3 py-2 text-xs font-semibold bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                        className="px-3 py-2 text-xs font-semibold bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
                       >
                         Mark resolved
                       </button>
                     </div>
                   )}
                   {log.resolved && log.resolved_note && (
-                    <p className="text-xs text-green-700 bg-green-50 rounded-lg px-3 py-2">
+                    <p className="text-xs text-blue-700 bg-blue-50 rounded-lg px-3 py-2">
                       ✓ {log.resolved_note}
                     </p>
                   )}

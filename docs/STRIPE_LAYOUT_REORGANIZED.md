@@ -218,7 +218,7 @@ Completely reorganized the Stripe checkout layout to follow a logical, user-frie
 ```tsx
 // Before: Two separate cards
 <div className="bg-blue-50">Address</div>
-<div className="bg-green-50">Email</div>
+<div className="bg-blue-50">Email</div>
 
 // After: One card with both
 <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 sm:p-5">

@@ -24,29 +24,29 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Tazoota - Power Your Outdoor and Home Projects With Confidence",
-  description: "Shop lawn mowers, power tools, portable generators, and garden essentials at Tazoota. Reliable outdoor equipment for every task. Fast shipping, fair prices, and secure checkout.",
-  keywords: "Tazoota, lawn mowers, power tools, portable generators, garden equipment, outdoor power equipment, ride mowers, garden essentials, outdoor tools, home improvement, power equipment",
-  authors: [{ name: "Tazoota" }],
-  creator: "Tazoota",
-  publisher: "Tazoota",
+  title: "Weteex / Teextees - AGT Mini Excavators & Attachments",
+  description: "Explore competitively priced AGT mini excavators, compact 1-ton machines, excavator attachments, and practical operator configurations.",
+  keywords: "Teextees, Weteex, Weteex / Teextees, AGT mini excavators, mini excavators, excavator attachments, 1-ton excavators, diggers, construction machinery, excavators for sale",
+  authors: [{ name: "Weteex / Teextees" }],
+  creator: "Weteex / Teextees",
+  publisher: "Weteex / Teextees",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://tazoota.com"),
+  metadataBase: new URL("https://weteextees.com"),
   openGraph: {
-    title: "Tazoota - Power Your Outdoor and Home Projects With Confidence",
-    description: "Shop lawn mowers, power tools, portable generators, and garden essentials at Tazoota. Reliable outdoor equipment for every task.",
-    url: "https://tazoota.com",
-    siteName: "Tazoota",
+    title: "Weteex / Teextees - AGT Mini Excavators & Attachments",
+    description: "Explore competitively priced AGT mini excavators, compact machines, attachments, and practical operator configurations.",
+    url: "https://weteextees.com",
+    siteName: "Weteex / Teextees",
     images: [
       {
-        url: "/g7x.jpeg",
-        width: 1200,
-        height: 630,
-        alt: "Tazoota - Outdoor Power Equipment & Garden Essentials",
+        url: "/Rippa-R32-miniekskavaator6-scaled.jpg",
+        width: 1608,
+        height: 969,
+        alt: "Weteex / Teextees - Excavators and Heavy Machinery",
       },
     ],
     locale: "en_US",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tazoota - Power Your Outdoor and Home Projects With Confidence",
-    description: "Shop lawn mowers, power tools, portable generators, and garden essentials at Tazoota. Reliable outdoor equipment for every task.",
-    images: ["/g7x.jpeg"],
+    title: "Weteex / Teextees - AGT Mini Excavators & Attachments",
+    description: "Explore competitively priced AGT mini excavators, compact machines, attachments, and practical operator configurations.",
+    images: ["/Rippa-R32-miniekskavaator6-scaled.jpg"],
   },
   robots: {
     index: true,
@@ -79,8 +79,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={dmSans.variable}>
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-        <link rel="preload" href="/logosvg.svg" as="image" type="image/svg+xml" />
+        <link rel="icon" href="/weteex-machines-mark.svg" type="image/svg+xml" />
+        <link rel="preload" href="/weteex-machines-logo.svg" as="image" type="image/svg+xml" />
         {/* Facebook Domain Verification */}
         <meta name="facebook-domain-verification" content="k3ytyf6hqaa462mz10uzwnmugj0d0o" />
         <meta name="msvalidate.01" content="75494FC1101908256EEEA046C47C3264" />
@@ -106,32 +106,32 @@ export default function RootLayout({
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Organization",
-                "name": "Tazoota",
-                "url": "https://tazoota.com",
-                "logo": "https://tazoota.com/logosvg.svg",
-                "description": "Tazoota - Power Your Outdoor and Home Projects With Confidence. Discover reliable lawn mowers, power tools, generators, and garden essentials.",
+                "name": "Weteex / Teextees",
+                "url": "https://weteextees.com",
+                "logo": "https://weteextees.com/weteex-machines-logo.svg",
+                "legalName": "Gooba Global LTD",
+                "identifier": "13107870",
+                "description": "Weteex / Teextees is a UK-based excavator and construction machinery retailer operated by Gooba Global LTD.",
                 "sameAs": [
-                  "https://www.tiktok.com/@tazoota",
-                  "https://www.instagram.com/tazoota_official/",
-                  "https://www.pinterest.com/tazoota_official"
+                  "https://www.tiktok.com/@weteexmachines",
+                  "https://www.instagram.com/weteexmachines_official/",
+                  "https://www.pinterest.com/weteexmachines_official"
                 ],
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "contactType": "customer service",
-                  "email": "contact@tazoota.com",
+                  "email": "contact@weteextees.com",
                   "telephone": "+19083256283",
-                  "areaServed": ["US"]
+                  "areaServed": ["GB"]
                 },
-                "address": [
-                  {
-                    "@type": "PostalAddress",
-                    "streetAddress": "5850 E Raines Rd",
-                    "addressLocality": "Memphis",
-                    "addressRegion": "TN",
-                    "postalCode": "38115",
-                    "addressCountry": "US"
-                  }
-                ]
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "71-75 Shelton Street",
+                  "addressLocality": "London",
+                  "addressRegion": "Greater London",
+                  "postalCode": "WC2H 9JQ",
+                  "addressCountry": "GB"
+                }
               })
             }}
           />
@@ -146,14 +146,14 @@ export default function RootLayout({
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                "name": "Tazoota",
-                "url": "https://tazoota.com",
-                "description": "Tazoota - Power Your Outdoor and Home Projects With Confidence. Discover reliable lawn mowers, power tools, generators, and garden essentials.",
+                "name": "Weteex / Teextees",
+                "url": "https://weteextees.com",
+                "description": "Weteex / Teextees offers excavators and construction machinery at competitive prices.",
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {
                     "@type": "EntryPoint",
-                    "urlTemplate": "https://tazoota.com/api/products/search?q={search_term_string}"
+                    "urlTemplate": "https://weteextees.com/api/products/search?q={search_term_string}"
                   },
                   "query-input": "required name=search_term_string"
                 }

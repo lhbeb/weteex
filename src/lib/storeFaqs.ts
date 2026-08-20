@@ -7,19 +7,19 @@ export interface StoreFaq {
 
 export const STORE_FAQS: readonly StoreFaq[] = [
   {
-    question: 'What products does Tazoota sell?',
+    question: 'What machinery does Weteex / Teextees mainly sell?',
     answer:
-      'Tazoota specializes in outdoor and home-project equipment, including lawn mowers, blowers, pressure washers, hardware, vacuum cleaners, and related essentials.',
+      'Weteex / Teextees mainly sells AGT mini excavators, compact and 1-ton excavators, and excavator attachments. Available machines may include RATO or Kubota engine options, pilot controls, enclosed cabs, air conditioning, side swing, hydraulic thumbs, and other configurations. Each listing states exactly what is included.',
   },
   {
-    question: 'Are your products new or pre-owned?',
+    question: 'Are your excavators new or pre-owned?',
     answer:
-      'Product condition varies by item. The exact condition is displayed on each product page so you can review it before adding the item to your cart.',
+      'Machine condition varies by listing. The stated condition, model information, configuration, and available operating details are shown on the excavator page for review before ordering.',
   },
   {
     question: 'How do I place an order?',
     answer:
-      'Choose a product, add it to your cart, and continue to checkout. Review the product, delivery address, total price, and available payment instructions before completing your order.',
+      'Choose an excavator, review its engine and operator configuration, add it to your cart, and continue to checkout. Confirm the machine, delivery address, total price, and payment instructions before completing your order.',
   },
   {
     question: 'Where do you ship and how long does delivery take?',
@@ -45,12 +45,12 @@ export const STORE_FAQS: readonly StoreFaq[] = [
   {
     question: 'Can I exchange an item?',
     answer:
-      'Exchanges are accepted for eligible items when replacement inventory is available. Contact our support team within 30 days of delivery before sending anything back.',
+      'Exchanges may be available for eligible excavators when suitable replacement inventory exists. Contact our support team before operating, transporting, or returning a machine.',
   },
   {
     question: 'Is local pickup available?',
     answer:
-      'Local pickup is available only for eligible products and must be confirmed by our team. Please wait for a pickup-ready confirmation before travelling to the pickup location.',
+      'Collection is available only for eligible excavators and must be arranged with our team in advance. Never travel to a collection location until you receive written confirmation.',
     linkHref: '/local-pickup',
     linkLabel: 'View the Local Pickup Guide',
   },
@@ -60,9 +60,9 @@ export const STORE_FAQS: readonly StoreFaq[] = [
       'Contact us as soon as possible. We will try to help before fulfillment begins, but changes or cancellations cannot be guaranteed after an order has entered processing or shipped.',
   },
   {
-    question: 'How can I contact Tazoota?',
+    question: 'How can I contact Weteex / Teextees?',
     answer:
-      'You can use our contact form, email contact@tazoota.com, or call +19083256283 during published support hours.',
+      'You can use our contact form, email contact@weteextees.com, or call +19083256283 during published support hours.',
     linkHref: '/contact',
     linkLabel: 'Contact our team',
   },

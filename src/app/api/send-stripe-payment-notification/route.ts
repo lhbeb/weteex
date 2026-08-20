@@ -45,8 +45,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Admin email address
-    const adminEmail = process.env.ADMIN_EMAIL || 'contacthappydeel@gmail.com';
-    const fromEmail = process.env.EMAIL_USER || 'contacthappydeel@gmail.com';
+    const adminEmail = process.env.ADMIN_EMAIL || 'contact@weteextees.com';
+    const fromEmail = process.env.EMAIL_USER || 'contact@weteextees.com';
 
     // Create email content
     const emailHtml = `
@@ -65,11 +65,11 @@ export async function POST(request: NextRequest) {
           
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); padding: 30px; text-align: center;">
+            <td style="background: linear-gradient(135deg, #01428a 0%, #00366f 100%); padding: 30px; text-align: center;">
               <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: bold;">
                 ✅ Stripe Payment Successful!
               </h1>
-              <p style="margin: 10px 0 0 0; color: #d1fae5; font-size: 16px;">
+              <p style="margin: 10px 0 0 0; color: #dbeafe; font-size: 16px;">
                 A customer has completed payment via Stripe
               </p>
             </td>
@@ -78,8 +78,8 @@ export async function POST(request: NextRequest) {
           <!-- Payment Details -->
           <tr>
             <td style="padding: 30px;">
-              <div style="background-color: #f0fdf4; border-left: 4px solid #10b981; padding: 20px; margin-bottom: 25px; border-radius: 4px;">
-                <h2 style="margin: 0 0 15px 0; color: #065f46; font-size: 18px;">
+              <div style="background-color: #eff6ff; border-left: 4px solid #01428a; padding: 20px; margin-bottom: 25px; border-radius: 4px;">
+                <h2 style="margin: 0 0 15px 0; color: #002b59; font-size: 18px;">
                   💳 Payment Information
                 </h2>
                 <table width="100%" cellpadding="8" cellspacing="0">
@@ -89,12 +89,12 @@ export async function POST(request: NextRequest) {
                   </tr>
                   <tr>
                     <td style="color: #6b7280; font-size: 14px;">Amount:</td>
-                    <td style="color: #059669; font-size: 16px; font-weight: bold;">$${(paymentIntent.amount / 100).toFixed(2)} ${paymentIntent.currency.toUpperCase()}</td>
+                    <td style="color: #00366f; font-size: 16px; font-weight: bold;">$${(paymentIntent.amount / 100).toFixed(2)} ${paymentIntent.currency.toUpperCase()}</td>
                   </tr>
                   <tr>
                     <td style="color: #6b7280; font-size: 14px;">Status:</td>
                     <td>
-                      <span style="background-color: #10b981; color: #ffffff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase;">
+                      <span style="background-color: #01428a; color: #ffffff; padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; text-transform: uppercase;">
                         ${paymentIntent.status}
                       </span>
                     </td>
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
               </div>
 
               <!-- Product Details -->
-              <div style="background-color: #eef4ef; border-left: 4px solid #2563eb; padding: 20px; margin-bottom: 25px; border-radius: 4px;">
+              <div style="background-color: #eef5fb; border-left: 4px solid #2563eb; padding: 20px; margin-bottom: 25px; border-radius: 4px;">
                 <h2 style="margin: 0 0 15px 0; color: #1e40af; font-size: 18px;">
                   📦 Product Details
                 </h2>
@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
               </div>
 
               <!-- Customer & Shipping Details -->
-              <div style="background-color: #fef3c7; border-left: 4px solid #f59e0b; padding: 20px; margin-bottom: 25px; border-radius: 4px;">
+              <div style="background-color: #fff1cf; border-left: 4px solid #d8941a; padding: 20px; margin-bottom: 25px; border-radius: 4px;">
                 <h2 style="margin: 0 0 15px 0; color: #92400e; font-size: 18px;">
                   📍 Shipping Information
                 </h2>
@@ -173,9 +173,9 @@ export async function POST(request: NextRequest) {
 
           <!-- Footer -->
           <tr>
-            <td style="background-color: #f8f9f8; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
+            <td style="background-color: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb;">
               <p style="margin: 0 0 10px 0; color: #6b7280; font-size: 12px;">
-                This is an automated notification from Tazoota
+                This is an automated notification from Weteex / Teextees
               </p>
               <p style="margin: 0; color: #9ca3af; font-size: 11px;">
                 Payment processed at ${new Date().toLocaleString('en-US', {

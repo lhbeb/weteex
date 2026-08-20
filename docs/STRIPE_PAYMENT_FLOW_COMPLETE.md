@@ -77,8 +77,8 @@ if (paymentIntent && paymentIntent.status === 'succeeded') {
 if (paymentSuccess) {
     return (
         <div className="flex flex-col items-center justify-center py-12">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <Check className="h-8 w-8 text-green-600" />
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <Check className="h-8 w-8 text-blue-600" />
             </div>
             <h3 className="text-2xl font-bold text-[#262626] mb-2">Payment Successful!</h3>
             <p className="text-gray-600">Redirecting to confirmation page...</p>

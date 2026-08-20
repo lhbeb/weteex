@@ -176,11 +176,11 @@ export default function QuickAddProductPage() {
           )}
 
           {success && createdProduct && (
-            <div className="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-start gap-3">
-              <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+            <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <div className="font-semibold text-green-800">Product Created Successfully!</div>
-                <div className="text-sm text-green-700 mt-1">
+                <div className="font-semibold text-blue-800">Product Created Successfully!</div>
+                <div className="text-sm text-blue-700 mt-1">
                   Redirecting to edit page for &quot;{createdProduct.title}&quot;...
                 </div>
               </div>
@@ -203,7 +203,7 @@ export default function QuickAddProductPage() {
                 >
                   Load Sample
                 </button>
-                <label className="px-4 py-2 text-sm bg-[#2e6b3e] text-white rounded-lg hover:bg-[#1f4c2a] cursor-pointer flex items-center gap-2">
+                <label className="px-4 py-2 text-sm bg-[#01428a] text-white rounded-lg hover:bg-[#00366f] cursor-pointer flex items-center gap-2">
                   <FileJson className="h-4 w-4" />
                   Upload JSON File
                   <input
@@ -225,15 +225,15 @@ export default function QuickAddProductPage() {
                   value={jsonInput}
                   onChange={(e) => setJsonInput(e.target.value)}
                   rows={20}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#2e6b3e] focus:border-[#2e6b3e] font-mono text-sm"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-[#01428a] focus:border-[#01428a] font-mono text-sm"
                   placeholder='{\n  "slug": "product-slug",\n  "title": "Product Title",\n  "description": "...",\n  "price": 99.99,\n  ...\n}'
                 />
               </div>
 
-              <div className="bg-[#0b2a17]/5 border border-[#0b2a17]/20 rounded-lg p-4">
-                <div className="text-sm text-[#3a7f4b]">
+              <div className="bg-[#01428a]/5 border border-[#01428a]/20 rounded-lg p-4">
+                <div className="text-sm text-[#00366f]">
                   <div className="font-semibold mb-2">Required Fields:</div>
-                  <ul className="list-disc list-inside space-y-1 text-[#3a7f4b]">
+                  <ul className="list-disc list-inside space-y-1 text-[#00366f]">
                     <li>slug, title, description, price</li>
                     <li>brand, category, condition</li>
                     <li>checkoutLink (or checkout_link)</li>
@@ -241,7 +241,7 @@ export default function QuickAddProductPage() {
                     <li>collections (array of strings)</li>
                     <li>images (array of image URLs)</li>
                   </ul>
-                  <div className="mt-3 text-[#0b2a17]">
+                  <div className="mt-3 text-[#01428a]">
                     <strong>Optional:</strong> payeeEmail, reviews, meta, rating, reviewCount, currency, inStock
                   </div>
                 </div>
@@ -251,7 +251,7 @@ export default function QuickAddProductPage() {
                 <button
                   type="submit"
                   disabled={loading || !jsonInput.trim()}
-                  className="flex items-center gap-2 px-6 py-2 bg-[#2e6b3e] text-white rounded-lg hover:bg-[#1f4c2a] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex items-center gap-2 px-6 py-2 bg-[#01428a] text-white rounded-lg hover:bg-[#00366f] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Upload className="h-5 w-5" />
                   {loading ? 'Creating Product...' : 'Create Product'}

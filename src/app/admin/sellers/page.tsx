@@ -79,7 +79,7 @@ export default function SellersPage() {
         </div>
         <Link
           href="/admin/sellers/new"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0b2a17] text-white text-sm font-medium rounded-xl hover:bg-[#3a7f4b] transition-all shadow-sm hover:shadow-md whitespace-nowrap"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#01428a] text-white text-sm font-medium rounded-xl hover:bg-[#00366f] transition-all shadow-sm hover:shadow-md whitespace-nowrap"
         >
           <Plus className="h-4 w-4" />
           Add Seller
@@ -91,7 +91,7 @@ export default function SellersPage() {
         {[
           { label: 'Total Sellers', value: sellers.length, icon: Users, color: 'bg-blue-50 text-blue-600' },
           { label: 'With Avatars', value: sellers.filter(s => s.avatarUrl).length, icon: User, color: 'bg-purple-50 text-purple-600' },
-          { label: 'With Location', value: sellers.filter(s => s.location).length, icon: MapPin, color: 'bg-green-50 text-green-600' },
+          { label: 'With Location', value: sellers.filter(s => s.location).length, icon: MapPin, color: 'bg-blue-50 text-blue-600' },
         ].map(({ label, value, icon: Icon, color }) => (
           <div key={label} className="bg-white rounded-2xl border border-gray-200 p-4 flex items-center gap-3">
             <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${color}`}>
@@ -116,7 +116,7 @@ export default function SellersPage() {
               placeholder="Search by name or username…"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-[#0b2a17] focus:border-[#0b2a17] outline-none transition-all"
+              className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all"
             />
           </div>
         </div>
@@ -161,8 +161,8 @@ export default function SellersPage() {
                       </span>
                     )}
                     {(seller as any).nativeReviews?.length > 0 && (
-                      <span className="flex items-center gap-1 text-xs text-amber-600">
-                        <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                      <span className="flex items-center gap-1 text-xs text-[#b97810]">
+                        <Star className="h-3 w-3 fill-[#e2a439] text-[#e2a439]" />
                         {(seller as any).nativeReviews.length} review{(seller as any).nativeReviews.length !== 1 ? 's' : ''}
                       </span>
                     )}

@@ -43,13 +43,13 @@ export async function POST(request: NextRequest) {
     // Email content
     const emailContent = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2e6b3e;">New Newsletter Subscription</h2>
+        <h2 style="color: #01428a;">New Newsletter Subscription</h2>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Date:</strong> ${new Date().toLocaleString()}</p>
-        <p><strong>Source:</strong> Tazoota Website Newsletter</p>
+        <p><strong>Source:</strong> Weteex / Teextees Website Newsletter</p>
         <hr style="border: 1px solid #eee; margin: 20px 0;">
         <p style="color: #666; font-size: 14px;">
-          This email was sent from the newsletter subscription form on your Tazoota website.
+          This email was sent from the newsletter subscription form on your Weteex / Teextees website.
         </p>
       </div>
     `;
@@ -57,8 +57,8 @@ export async function POST(request: NextRequest) {
     // Email options
     const mailOptions = {
       from: emailUser,
-      to: 'contacthappydeel@gmail.com',
-      subject: 'New Newsletter Subscription - Tazoota',
+      to: process.env.ADMIN_EMAIL || 'contact@weteextees.com',
+      subject: 'New Newsletter Subscription - Weteex / Teextees',
       html: emailContent,
     };
 

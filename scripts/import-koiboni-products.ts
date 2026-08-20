@@ -3,11 +3,11 @@ import fs from 'fs';
 import path from 'path';
 import { getCollectionsForCategory } from '../src/lib/productCollections';
 
-const SUPABASE_URL = process.env.TAZOOTA_SUPABASE_URL;
-const SUPABASE_SERVICE_ROLE_KEY = process.env.TAZOOTA_SUPABASE_SERVICE_ROLE_KEY;
+const SUPABASE_URL = process.env.WETEEX_MACHINES_SUPABASE_URL;
+const SUPABASE_SERVICE_ROLE_KEY = process.env.WETEEX_MACHINES_SUPABASE_SERVICE_ROLE_KEY;
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY) {
-  console.error('Missing TAZOOTA_SUPABASE_URL or TAZOOTA_SUPABASE_SERVICE_ROLE_KEY.');
+  console.error('Missing WETEEX_MACHINES_SUPABASE_URL or WETEEX_MACHINES_SUPABASE_SERVICE_ROLE_KEY.');
   process.exit(1);
 }
 
@@ -132,9 +132,9 @@ async function importProducts(jsonPath: string) {
       price,
       images: product.images && product.images.length ? product.images : (product.image_url ? [product.image_url] : []),
       condition: 'Brand New',
-      category: product.product_type || 'Lawn Mowers',
-      brand: product.vendor || 'Tazoota',
-      payee_email: 'admin@tazoota.com',
+      category: product.product_type || 'Excavators',
+      brand: product.vendor || 'Weteex / Teextees',
+      payee_email: 'admin@weteextees.com',
       checkout_link: product.url,
       checkout_flow: 'paypal-direct' as const,
       currency: product.currency || 'USD',

@@ -116,7 +116,7 @@ Both components maintain the Instagram aesthetic:
 
 1. **Gradient Border**
    ```css
-   bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500
+   bg-gradient-to-tr from-[#e2a439] via-red-500 to-purple-500
    ```
    - Classic Instagram gradient
    - Yellow → Red → Purple transition

@@ -12,15 +12,7 @@ interface SearchPageClientProps {
 }
 
 const CATALOG_CATEGORIES = [
-  "Blowers",
-  "Hardware",
-  "Lawn Mowers",
-  "Pressure Washers",
-  "Swimming Pools",
-  "Bikes",
-  "Electric Scooters",
-  "Tents",
-  "Vacuum Cleaners",
+  "Excavators",
 ] as const;
 
 function getExactCatalogCategory(value: string): string {
@@ -140,7 +132,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
   const searchParams = useSearchParams();
   const queryParam = searchParams.get("query") || initialQuery || "";
   const categoryParam = searchParams.get("category") || initialCategory || "";
-  // Old and cached navbar links used `?query=Lawn Mowers`. Treat known catalog
+  // Older and cached navbar links may use category names. Treat known catalog
   // names as exact categories so accessory copy cannot leak into the results.
   const exactCategory = categoryParam.trim() || getExactCatalogCategory(queryParam);
   const activeTerm = exactCategory || queryParam;
@@ -212,9 +204,9 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
     return (
       <main className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="h-12 w-12 text-[#0b2a17] animate-spin mx-auto mb-4" />
+          <Loader2 className="h-12 w-12 text-[#01428a] animate-spin mx-auto mb-4" />
           <p className="text-gray-600 text-lg">Loading &quot;{activeTerm}&quot;...</p>
-          <p className="text-gray-500 text-sm mt-2">Finding products in our database</p>
+          <p className="text-gray-500 text-sm mt-2">Finding matching excavator configurations</p>
         </div>
       </main>
     );
@@ -235,7 +227,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
     return (
       <main className="min-h-screen bg-gray-50">
         <div className="container mx-auto px-4 py-16 text-center">
-          <p className="text-gray-600 text-lg">Enter a search term to find products</p>
+          <p className="text-gray-600 text-lg">Search by excavator model, engine, cab, control system, or attachment</p>
         </div>
       </main>
     );
@@ -246,7 +238,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
       {products.length === 0 ? (
         <div className="container mx-auto px-4 py-16 text-center">
           <p className="text-gray-600 text-lg mb-2">
-            No products found for &quot;{activeTerm}&quot;
+            No matching machinery found for &quot;{activeTerm}&quot;
           </p>
           <p className="text-gray-500 text-sm">
             Try searching with different keywords or check your spelling
@@ -259,7 +251,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
               {exactCategory ? exactCategory : <>Search Results for &quot;{queryParam}&quot;</>}
             </h1>
             <p className="text-gray-600">
-              Found {products.length} {products.length === 1 ? "product" : "products"}
+              Found {products.length} {products.length === 1 ? "machine" : "machines"}
             </p>
           </div>
           
@@ -278,7 +270,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
                   className={`px-4 py-2 rounded-lg ${
                     currentPage === 1
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#0b2a17]/10"
+                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10"
                   }`}
                 >
                   Previous
@@ -292,7 +284,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
                   className={`px-4 py-2 rounded-lg ${
                     currentPage === totalPages
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#0b2a17]/10"
+                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10"
                   }`}
                 >
                   Next
