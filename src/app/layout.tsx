@@ -5,7 +5,6 @@ import "./globals.css";
 import ClientHeader from "@/components/ClientHeader";
 import Footer from "@/components/Footer";
 import NewsletterSection from "@/components/NewsletterSection";
-import InstagramSection from "@/components/InstagramSection";
 import ErrorBoundaryWrapper from "@/components/ErrorBoundary";
 import CookieConsent from "@/components/CookieConsent";
 import Script from "next/script";
@@ -79,7 +78,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={dmSans.variable}>
       <head>
-        <link rel="icon" href="/weteex-machines-mark.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.png" type="image/png" sizes="200x200" />
         <link rel="preload" href="/weteex-machines-logo.svg" as="image" type="image/svg+xml" />
         {/* Facebook Domain Verification */}
         <meta name="facebook-domain-verification" content="k3ytyf6hqaa462mz10uzwnmugj0d0o" />
@@ -172,9 +171,6 @@ export default function RootLayout({
               <main className="flex-grow">
                 {children}
               </main>
-              <Suspense fallback={null}>
-                <InstagramSection />
-              </Suspense>
               <NewsletterSection />
               <div className="h-4 bg-white md:h-6" aria-hidden="true" />
               <Footer />

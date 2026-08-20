@@ -8,9 +8,10 @@ import type { Product } from '@/types/product';
 
 interface FeaturedProductProps {
   product: Product;
+  largeImage?: boolean;
 }
 
-const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product }) => {
+const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, largeImage = false }) => {
   if (!product) {
     return null;
   }
@@ -20,23 +21,24 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product }) => {
   const isSoldOut = inStock === false;
 
   return (
-    <div className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-md md:flex-row">
-      <div className="relative w-full overflow-hidden md:w-2/5 md:h-full">
+    <div className={`group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-md md:flex-row ${largeImage ? 'md:min-h-[480px]' : ''}`}>
+      <div className={`relative w-full overflow-hidden ${largeImage ? 'min-h-[320px] md:min-h-[480px] md:w-[55%]' : 'md:h-full md:w-2/5'}`}>
         <div className="absolute left-4 top-4 z-10 rounded-full bg-[#01428a] px-3 py-1 text-sm font-medium text-[#f1f6fb] shadow-sm">
           <div className="flex items-center gap-1">
             <Award className="h-4 w-4" />
             <span>Top Deals</span>
           </div>
         </div>
-        <div className="relative w-full aspect-square md:h-full md:aspect-auto">
+        <div className={largeImage ? 'relative h-full min-h-[320px] w-full md:min-h-[480px]' : 'relative aspect-square w-full md:h-full md:aspect-auto'}>
           {primaryImage ? (
             <>
               <Image
                 src={primaryImage}
                 alt={title}
                 fill
+                priority={largeImage}
                 className={`object-cover transition-transform duration-500 group-hover:scale-[1.02] ${isSoldOut ? 'opacity-50' : ''}`}
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                sizes={largeImage ? '(max-width: 768px) 100vw, 55vw' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
                 unoptimized
               />
               {isSoldOut && (
@@ -57,7 +59,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product }) => {
         </div>
       </div>
 
-      <div className="flex w-full flex-1 flex-col p-5 sm:p-6 md:w-3/5 md:h-full md:overflow-hidden md:justify-start">
+      <div className={`flex w-full flex-1 flex-col p-5 sm:p-6 md:overflow-hidden md:justify-start ${largeImage ? 'md:w-[45%] md:justify-center md:p-8' : 'md:h-full md:w-3/5'}`}>
         <div className="space-y-3 md:space-y-2.5">
           <h3 className="line-clamp-2 text-lg font-medium leading-snug text-[#262626] md:text-xl">
             {title}
@@ -77,7 +79,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product }) => {
           )}
         </div>
 
-        <div className="mt-4 md:mt-3 flex flex-col gap-2 sm:flex-row sm:gap-2">
+        <div className={`${largeImage ? 'mt-6' : 'mt-4 md:mt-3'} flex flex-col gap-2 sm:flex-row sm:gap-2`}>
           <Link
             href={`/products/${slug}`}
             className="flex-1 flex items-center justify-center rounded-lg bg-[#01428a] py-2 px-3 text-sm font-semibold text-[#f1f6fb] transition-colors duration-300 hover:bg-[#002b59] whitespace-nowrap"

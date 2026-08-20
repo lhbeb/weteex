@@ -5,7 +5,8 @@ import ProductGrid from '@/components/ProductGrid';
 import HomeReviews from '@/components/HomeReviews';
 import CategorySection from '@/components/CategorySection';
 import PopularCategories from '@/components/PopularCategories';
-import { getFeaturedProducts } from '@/lib/data';
+import TyphonSpotlight from '@/components/TyphonSpotlight';
+import { getFeaturedProducts, getProductBySlug } from '@/lib/data';
 import { homeReviews, homeReviewsStats } from '@/lib/homeReviews';
 import ScrollToTop from '@/components/ScrollToTop';
 import { FEATURED_PRODUCT_LIMIT } from '@/config/products';
@@ -15,7 +16,12 @@ export default async function HomePage() {
     // Treat featured status as the homepage's data boundary. Keeping this
     // defensive check here prevents any future data-source regression from
     // leaking a non-featured product into a homepage section.
-    const featuredProducts = (await getFeaturedProducts()).filter(
+    const [featuredProductResults, typhonProduct] = await Promise.all([
+      getFeaturedProducts(),
+      getProductBySlug('pkubotad1105retractabletracksaccabinkLvM'),
+    ]);
+
+    const featuredProducts = featuredProductResults.filter(
       (product) => product.isFeatured === true,
     );
 
@@ -38,6 +44,8 @@ export default async function HomePage() {
         <ScrollToTop />
       </Suspense>
       <Hero />
+
+      {typhonProduct && <TyphonSpotlight product={typhonProduct} />}
 
       <PopularCategories products={featuredProducts} />
 
