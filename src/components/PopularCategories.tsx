@@ -2,52 +2,74 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/types/product';
 
-const POPULAR_CATEGORY_NAMES = [
-  'Modern Dining Chairs',
-  'Solid Wood & Rattan',
-  'Dining & Coffee Tables',
-  'Marble & Ceramic Tops',
-] as const;
+interface CategoryDefinition {
+  name: string;
+  query: string;
+  matcher: (p: Product) => boolean;
+}
+
+const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
+  {
+    name: 'Modern Dining Chairs',
+    query: 'chair',
+    matcher: (p) =>
+      (p.slug.includes('chair') || p.slug.includes('ely') || p.slug.includes('muret')) &&
+      !p.slug.includes('rattan') &&
+      !p.slug.includes('table'),
+  },
+  {
+    name: 'Solid Wood & Rattan',
+    query: 'rattan',
+    matcher: (p) =>
+      p.slug.includes('rattan') ||
+      p.slug.includes('wicker') ||
+      p.slug.includes('ruben') ||
+      p.slug.includes('swing'),
+  },
+  {
+    name: 'Dining & Coffee Tables',
+    query: 'table',
+    matcher: (p) =>
+      (p.slug.includes('table') || p.slug.includes('savis')) &&
+      !p.slug.includes('marble') &&
+      !p.slug.includes('ceramic'),
+  },
+  {
+    name: 'Marble & Ceramic Tops',
+    query: 'marble',
+    matcher: (p) =>
+      p.slug.includes('marble') ||
+      p.slug.includes('ceramic'),
+  },
+];
 
 interface PopularCategoriesProps {
   products: Product[];
 }
 
-function matchesCategory(product: Product, categoryName: string): boolean {
-  const productText = [product.title, product.description, product.category, product.brand]
-    .filter(Boolean)
-    .join(' ')
-    .toLowerCase();
-  const target = categoryName.trim().toLowerCase();
-  if (target.includes('chair')) {
-    return /chair|stoel|seat|seating/.test(productText);
-  }
-  if (target.includes('rattan') || target.includes('wood')) {
-    return /rattan|rotan|wicker|oak|walnut|wood/.test(productText);
-  }
-  if (target.includes('table')) {
-    return /table|tafel|coffee|dining table/.test(productText);
-  }
-  if (target.includes('marble') || target.includes('ceramic')) {
-    return /marble|marmer|ceramic|keramiek|stone/.test(productText);
-  }
-  return true;
-}
-
 export default function PopularCategories({ products }: PopularCategoriesProps) {
-  const categories = POPULAR_CATEGORY_NAMES.map((name, index) => {
-    const categoryProducts = products.filter((product) =>
-      matchesCategory(product, name),
+  const usedImageUrls = new Set<string>();
+
+  const categories = CATEGORY_DEFINITIONS.map((def, index) => {
+    const matchedProducts = products.filter(def.matcher);
+
+    // Pick an unused image first, otherwise fallback to first matched or distributed product
+    let chosenProduct = matchedProducts.find(
+      (p) => p.images?.[0] && !usedImageUrls.has(p.images[0]),
     );
 
-    // Pick distinct featured image or distributed product image
-    const chosenProduct =
-      categoryProducts.find((product) => product.images?.[0]) ||
-      products[index % products.length];
+    if (!chosenProduct) {
+      chosenProduct = matchedProducts[0] || products[index % products.length];
+    }
+
+    if (chosenProduct?.images?.[0]) {
+      usedImageUrls.add(chosenProduct.images[0]);
+    }
 
     return {
-      name,
-      count: categoryProducts.length || products.length,
+      name: def.name,
+      query: def.query,
+      count: matchedProducts.length || 1,
       image: chosenProduct?.images?.[0] || '/bg.png',
     };
   }).filter((category) => category.image);
@@ -82,7 +104,7 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
             {categories.map((category) => (
               <Link
                 key={category.name}
-                href={`/search?query=${encodeURIComponent(category.name)}`}
+                href={`/search?query=${encodeURIComponent(category.query || category.name)}`}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#DCE5DE] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#D1A966]/60"
                 aria-label={`Shop ${category.name}`}
               >
