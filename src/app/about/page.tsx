@@ -54,11 +54,11 @@ export default function AboutPage() {
         'telephone': ['+447533408378'],
         'address': {
           '@type': 'PostalAddress',
-          'streetAddress': '71-75 Shelton Street',
-          'addressLocality': 'London',
-          'addressRegion': 'Greater London',
-          'postalCode': 'WC2H 9JQ',
-          'addressCountry': 'GB',
+          'streetAddress': 'Hochalmstraße 10',
+          'addressLocality': 'München',
+          'addressRegion': 'Bayern',
+          'postalCode': '81825',
+          'addressCountry': 'DE',
         },
         'contactPoint': [
           {
@@ -107,7 +107,7 @@ export default function AboutPage() {
                 Weteextees is a dedicated online destination specializing in curated antiques, fine modern seating, and rare vintage decor.
               </p>
               <p>
-                Our London office is located at 71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ. Deliveries and viewings for specialty pieces are arranged with care.
+                Our office is located at Hochalmstraße 10, 81825 München, Bayern, Germany. Deliveries and viewings for specialty pieces are arranged with care.
               </p>
               <Link href="/contact" className="inline-flex font-semibold text-[#1D2E24] hover:text-[#D1A966] hover:underline">
                 Contact our curation team
@@ -336,9 +336,9 @@ export default function AboutPage() {
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <MapPin className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">UK Office Address</div>
+                <div className="font-medium text-[#1E2621]">Office Address</div>
               </div>
-              <div className="text-gray-600 ml-8">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</div>
+              <div className="text-gray-600 ml-8">Hochalmstraße 10, 81825 München, Bayern, Germany</div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">

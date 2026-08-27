@@ -48,11 +48,11 @@ export default function ContactPage() {
         ],
         'address': {
           '@type': 'PostalAddress',
-          'streetAddress': '71-75 Shelton Street',
-          'addressLocality': 'London',
-          'addressRegion': 'Greater London',
-          'postalCode': 'WC2H 9JQ',
-          'addressCountry': 'GB',
+          'streetAddress': 'Hochalmstraße 10',
+          'addressLocality': 'München',
+          'addressRegion': 'Bayern',
+          'postalCode': '81825',
+          'addressCountry': 'DE',
         },
       },
     ],
@@ -213,8 +213,8 @@ export default function ContactPage() {
                     <div className="flex items-start">
                       <Building2 className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">UK Registered Office</h3>
-                        <p className="text-gray-600 mt-1">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</p>
+                        <h3 className="font-medium text-[#1E2621]">Business Office</h3>
+                        <p className="text-gray-600 mt-1">Hochalmstraße 10, 81825 München, Bayern, Germany</p>
                       </div>
                     </div>
                     <div className="flex items-start">

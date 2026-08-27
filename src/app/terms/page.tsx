@@ -120,7 +120,7 @@ const TermsPage = () => {
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">Office Address:</div>
-                <div className="text-gray-600">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</div>
+                <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Germany</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">Website:</div>

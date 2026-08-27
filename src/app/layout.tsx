@@ -123,11 +123,11 @@ export default function RootLayout({
                 },
                 "address": {
                   "@type": "PostalAddress",
-                  "streetAddress": "71-75 Shelton Street",
-                  "addressLocality": "London",
-                  "addressRegion": "Greater London",
-                  "postalCode": "WC2H 9JQ",
-                  "addressCountry": "GB"
+                  "streetAddress": "Hochalmstraße 10",
+                  "addressLocality": "München",
+                  "addressRegion": "Bayern",
+                  "postalCode": "81825",
+                  "addressCountry": "DE"
                 }
               })
             }}

@@ -38,7 +38,7 @@ const Footer = () => {
                 <MapPin className="h-5 w-5 shrink-0 text-[#D1A966] mr-2 mt-1" />
                 <div>
                   <span className="block font-semibold text-white">Registered Office</span>
-                  <span className="text-[#DCE5DE]">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</span>
+                  <span className="text-[#DCE5DE]">Hochalmstraße 10, 81825 München, Bayern, Germany</span>
                 </div>
               </div>
             </div>

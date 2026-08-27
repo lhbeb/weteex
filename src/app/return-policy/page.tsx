@@ -239,7 +239,7 @@ export default function ReturnPolicyPage() {
                 <div className="text-sm text-gray-600 pl-7 space-y-2">
                   <div>
                     <strong className="text-gray-900 block">Weteextees</strong>
-                    71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ
+                    Hochalmstraße 10, 81825 München, Bayern, Germany
                   </div>
                 </div>
               </div>
