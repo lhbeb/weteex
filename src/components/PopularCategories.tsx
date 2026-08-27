@@ -13,27 +13,35 @@ const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
     name: 'Moderne Esszimmerstühle',
     query: 'chair',
     matcher: (p) =>
-      (p.slug.includes('chair') || p.slug.includes('ely') || p.slug.includes('muret') || p.slug.includes('stoel')) &&
-      !p.slug.includes('rattan') &&
-      !p.slug.includes('table'),
+      (p.slug.includes('ely') ||
+        p.slug.includes('chantelle') ||
+        p.slug.includes('challans') ||
+        p.slug.includes('gien') ||
+        p.slug.includes('muret') ||
+        (p.slug.includes('chair') && !p.slug.includes('rattan') && !p.slug.includes('wicker') && !p.slug.includes('swing'))) &&
+      !p.slug.includes('table') &&
+      !p.slug.includes('tafel'),
   },
   {
     name: 'Massivholz & Rattan',
     query: 'rattan',
     matcher: (p) =>
-      p.slug.includes('rattan') ||
-      p.slug.includes('wicker') ||
       p.slug.includes('ruben') ||
-      p.slug.includes('rotan') ||
-      p.slug.includes('swing'),
+      p.slug.includes('charles') ||
+      p.slug.includes('swing') ||
+      p.slug.includes('relaxstoel') ||
+      p.slug.includes('wicker') ||
+      (p.slug.includes('rotan') && !p.slug.includes('bijzettafel')),
   },
   {
     name: 'Ess- & Couchtische',
     query: 'table',
     matcher: (p) =>
-      (p.slug.includes('table') || p.slug.includes('tafel') || p.slug.includes('savis')) &&
-      !p.slug.includes('marble') &&
-      !p.slug.includes('ceramic'),
+      p.slug.includes('beveled-edge') ||
+      p.slug.includes('savis') ||
+      p.slug.includes('bijzettafel') ||
+      p.slug.includes('coffee-table') ||
+      (p.slug.includes('dining-table') && !p.slug.includes('marble') && !p.slug.includes('ceramic')),
   },
   {
     name: 'Marmor- & Keramikplatten',
@@ -42,7 +50,8 @@ const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
       p.slug.includes('marble') ||
       p.slug.includes('marmer') ||
       p.slug.includes('ceramic') ||
-      p.slug.includes('keramisch'),
+      p.slug.includes('keramisch') ||
+      p.slug.includes('calacatta'),
   },
 ];
 
@@ -117,6 +126,7 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
                     src={category.image}
                     alt={`${category.name} collection`}
                     fill
+                    unoptimized
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     className="object-contain p-4 sm:p-6 transition-transform duration-500 group-hover:scale-105"
                   />

@@ -18,11 +18,10 @@ export default async function HomePage() {
     // Filter strictly for verified furniture and chair products
     const featuredProducts = featuredProductResults.filter(
       (product) =>
-        product.isFeatured === true ||
         product.category === 'Modern Chairs & Furniture' ||
         product.collections?.includes('modern-furniture') ||
-        /chair|table|desk|sofa|dining|rattan|wood|boucl|ceramic|marble/.test(
-          `${product.title || ''} ${product.category || ''}`.toLowerCase(),
+        /\b(?:chair|table|desk|sofa|dining|rattan|wood|boucle|ceramic|marble|stoel|tafel|sessel)\b/i.test(
+          `${product.title || ''} ${product.category || ''}`,
         ),
     );
 
