@@ -303,7 +303,7 @@ const Header = () => {
         {/* Navigation Bar */}
         <div suppressHydrationWarning={true} className="hidden lg:block bg-[#1D2E24] border-t border-white/10">
           <div suppressHydrationWarning={true} className="container mx-auto px-4">
-            <nav className="flex items-center gap-6 bg-[#1D2E24] py-3 font-sans">
+            <nav className="flex items-center justify-center gap-5 xl:gap-7 bg-[#1D2E24] py-2.5 font-sans">
               {catalogNavigation.map((item) => (
                 <Link
                   key={item.label}
