@@ -4,7 +4,7 @@ import { formatValidSku, mapConditionToGmc } from '@/lib/conditions';
 import type { Product } from '@/types/product';
 
 const BASE_URL = 'https://weteextees.com';
-const SUPPORTED_COUNTRIES = ['DE', 'EU', 'US'] as const;
+const SUPPORTED_COUNTRIES = ['DE', 'AT', 'FR', 'NL', 'BE', 'IT', 'ES', 'US'] as const;
 const SUPPORTED_CURRENCIES = ['EUR', 'USD'] as const;
 const GMC_TITLE_MAX_LENGTH = 150;
 const GMC_DESCRIPTION_MAX_LENGTH = 5000;
@@ -14,13 +14,19 @@ type FeedCountry = (typeof SUPPORTED_COUNTRIES)[number];
 type FeedCurrency = (typeof SUPPORTED_CURRENCIES)[number];
 
 const DEFAULT_CURRENCY: FeedCurrency = 'EUR';
+const DEFAULT_COUNTRY: FeedCountry = 'DE';
 
 const SHIPPING_BY_COUNTRY: Record<FeedCountry, {
   service: string;
   currency: FeedCurrency;
 }> = {
-  DE: { service: 'Standardversand (Kostenlos)', currency: 'EUR' },
-  EU: { service: 'Kostenlose Lieferung (EU)', currency: 'EUR' },
+  DE: { service: 'Kostenloser Standardversand (Deutschland)', currency: 'EUR' },
+  AT: { service: 'Kostenloser Standardversand (Österreich)', currency: 'EUR' },
+  FR: { service: 'Livraison standard gratuite (France)', currency: 'EUR' },
+  NL: { service: 'Gratis standaardlevering (Nederland)', currency: 'EUR' },
+  BE: { service: 'Gratis standaardlevering (België)', currency: 'EUR' },
+  IT: { service: 'Spedizione standard gratuita (Italia)', currency: 'EUR' },
+  ES: { service: 'Envío estándar gratuito (España)', currency: 'EUR' },
   US: { service: 'Free Standard Shipping', currency: 'USD' },
 };
 
@@ -170,7 +176,7 @@ export async function GET(request: NextRequest) {
 
     const targetCountries: readonly FeedCountry[] = country
       ? [country]
-      : SUPPORTED_COUNTRIES;
+      : [DEFAULT_COUNTRY];
     const targetCurrency = currency ?? DEFAULT_CURRENCY;
 
     const itemsXml = products

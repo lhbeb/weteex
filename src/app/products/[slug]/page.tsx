@@ -21,7 +21,7 @@ export async function generateMetadata(
     if (!product) product = await getProductBySlug(slug);
     if (!product) return { title: 'Product Not Found | Weteextees' };
 
-    const title = `${product.title || 'Product'} - ${product.brand || ''} | ${product.category || ''} | Weteextees`;
+    const title = `${product.title || 'Produkt'} - ${product.brand || 'Weteextees'} | ${product.category || 'Möbel'} | Weteextees`;
     const description = (product.description || '').substring(0, 155) + '...';
     const canonicalUrl = `${BASE_URL}/products/${product.slug}`;
     const currencyCode = product.currency || 'EUR';
@@ -30,7 +30,7 @@ export async function generateMetadata(
 
     const imageUrls = (product.images || []).map(img => ({
       url: new URL(img, BASE_URL).toString(),
-      alt: product!.title || 'Product image',
+      alt: product!.title || 'Produktbild',
     }));
 
     return {
@@ -54,21 +54,21 @@ export async function generateMetadata(
         description,
         images: imageUrls.map(i => i.url),
       },
-      // Extra OG product tags consumed by Facebook, Pinterest, Google Shopping
+      // Extra OG product tags consumed by Google Shopping & Facebook
       other: {
         'og:type': 'product',
         'product:price:amount': price,
         'product:price:currency': currencyCode,
         'product:availability': inStock ? 'in stock' : 'out of stock',
-        'product:brand': product.brand || '',
+        'product:brand': product.brand || 'Weteextees',
         'product:retailer_item_id': product.slug || '',
       },
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
-      title: 'Antiques & Modern Furniture | Weteextees',
-      description: 'Browse authentic antiques, modern chairs, vintage collectibles, and decorative pieces from Weteextees',
+      title: 'Möbel & Designer-Stühle | Weteextees',
+      description: 'Entdecken Sie handverlesene moderne Möbel, ergonomische Esszimmerstühle und Tische von Weteextees.',
     };
   }
 }
@@ -117,25 +117,25 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     const priceValidUntil = new Date();
     priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
 
-    // Generate Product Schema for Rich Snippets
+    // Generate Product Schema for Rich Snippets (EU & Google Merchant Center compliant)
     const productSchema: Record<string, any> = {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": p.title || 'Product',
+      "name": p.title || 'Produkt',
       "description": p.description || '',
       "image": (p.images || []).map((img: string) => {
         try { return new URL(img, BASE_URL).toString(); } catch { return img; }
       }),
       "brand": {
         "@type": "Brand",
-        "name": p.brand || ''
+        "name": p.brand || 'Weteextees'
       },
-      "category": p.category || '',
+      "category": p.category || 'Möbel',
       "sku": formatValidSku(p, slug),
       "offers": {
         "@type": "Offer",
         "price": p.price || 0,
-        "priceCurrency": p.currency || "EUR",
+        "priceCurrency": "EUR",
         "validFrom": new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
         "priceValidUntil": priceValidUntil.toISOString().slice(0, 10),
         "availability": inStock
@@ -149,12 +149,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
-          "applicableCountry": ["US"],
+          "name": "Weteextees Widerrufsbelehrung & Rückgaberichtlinie",
+          "merchantReturnLink": `${BASE_URL}/return-policy`,
+          "applicableCountry": ["DE", "AT", "FR", "NL", "BE", "IT", "ES"],
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
           "merchantReturnDays": 30,
           "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/FreeReturn",
-          "returnLabelSource": "https://schema.org/ReturnLabelDownloadAndPrint",
+          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
           "restockingFee": 0,
           "refundType": "https://schema.org/FullRefund"
         },
@@ -164,24 +165,51 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             "shippingRate": {
               "@type": "MonetaryAmount",
               "value": 0,
-              "currency": "USD"
+              "currency": "EUR"
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "US"
+              "addressCountry": "DE"
             },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
               "handlingTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
+                "minValue": 1,
+                "maxValue": 2,
                 "unitCode": "DAY"
               },
               "transitTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 5,
-                "maxValue": 9,
+                "minValue": 2,
+                "maxValue": 5,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": 0,
+              "currency": "EUR"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "AT"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 2,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 2,
+                "maxValue": 5,
                 "unitCode": "DAY"
               }
             }
@@ -202,7 +230,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       };
       productSchema["review"] = ((p.reviews || []) as any[]).slice(0, 5).map((review: any) => ({
         "@type": "Review",
-        "author": { "@type": "Person", "name": review.author || 'Anonymous' },
+        "author": { "@type": "Person", "name": review.author || 'Verifizierter Kunde' },
         "reviewRating": {
           "@type": "Rating",
           "ratingValue": review.rating || 0,
@@ -219,14 +247,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE_URL },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": `${BASE_URL}/#products` },
+        { "@type": "ListItem", "position": 1, "name": "Startseite", "item": BASE_URL },
+        { "@type": "ListItem", "position": 2, "name": "Möbelkollektionen", "item": `${BASE_URL}/#collection` },
         {
           "@type": "ListItem", "position": 3,
-          "name": p.category || 'Category',
-          "item": `${BASE_URL}/#products?category=${encodeURIComponent(p.category || '')}`
+          "name": p.category || 'Möbel',
+          "item": `${BASE_URL}/#collection?category=${encodeURIComponent(p.category || '')}`
         },
-        { "@type": "ListItem", "position": 4, "name": p.title || 'Product', "item": `${BASE_URL}/products/${p.slug}` }
+        { "@type": "ListItem", "position": 4, "name": p.title || 'Produkt', "item": `${BASE_URL}/products/${p.slug}` }
       ]
     };
 

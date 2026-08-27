@@ -48,8 +48,8 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-[#D1A966] mb-4">Navigation</h3>
             <ul className="space-y-2 text-[#DCE5DE]">
               <li><Link href="/" className="hover:text-[#D1A966] transition-colors duration-300">Startseite</Link></li>
-              <li><Link href="/#products" className="hover:text-[#D1A966] transition-colors duration-300">Alle Möbel &amp; Stühle</Link></li>
-              <li><Link href="/#featured" className="hover:text-[#D1A966] transition-colors duration-300">Ausgewählte Stücke</Link></li>
+              <li><Link href="/#collection" className="hover:text-[#D1A966] transition-colors duration-300">Alle Möbel &amp; Stühle</Link></li>
+              <li><Link href="/#furniture-antiques" className="hover:text-[#D1A966] transition-colors duration-300">Ausgewählte Stücke</Link></li>
               <li><Link href="/track" className="hover:text-[#D1A966] transition-colors duration-300">Sendungsverfolgung</Link></li>
               <li><Link href="/contact" className="hover:text-[#D1A966] transition-colors duration-300">Kontakt</Link></li>
             </ul>

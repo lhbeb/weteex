@@ -626,6 +626,9 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                   </>
                 )}
               </div>
+              <p className="mt-1 text-xs text-[#5C6B61]">
+                inkl. MwSt., kostenloser versicherter Speditionsversand nach Deutschland &amp; EU
+              </p>
 
               <ClientOnly>
                 {viewedCount !== null && viewedCount > 0 && (

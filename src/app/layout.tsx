@@ -144,7 +144,7 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "name": "Weteextees",
                 "url": "https://weteextees.com",
-                "description": "Weteextees is your destination for authentic antiques, modern furniture, vintage collectibles, and decorative pieces.",
+                "description": "Weteextees ist Ihre Adresse für handverlesene moderne Möbel, ergonomische Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {
