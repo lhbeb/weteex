@@ -69,15 +69,15 @@ const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="container relative z-10 mx-auto px-4 py-8 md:py-10">
-        <div className="mx-auto grid w-full max-w-7xl overflow-hidden rounded-xl shadow-xl md:min-h-[420px] md:grid-cols-[0.9fr_1.1fr] md:items-stretch">
+      <div className="container relative z-10 mx-auto px-4 py-4 sm:py-6 md:py-7">
+        <div className="mx-auto grid w-full max-w-7xl overflow-hidden rounded-xl shadow-xl md:min-h-[350px] md:grid-cols-[0.9fr_1.1fr] md:items-stretch">
           {/* Content panel */}
-          <div className="order-2 flex w-full flex-col justify-center bg-[#1D2E24] p-6 sm:p-8 md:order-1 md:p-10 lg:p-12">
+          <div className="order-2 flex w-full flex-col justify-center bg-[#1D2E24] p-5 sm:p-7 md:order-1 md:p-8 lg:p-9">
             {/* Heading with typing animation */}
-            <h1 className="max-w-[620px] text-2xl font-bold leading-tight text-[#F6F8F5] md:text-3xl lg:text-[36px]">
+            <h1 className="max-w-[620px] text-xl font-bold leading-tight text-[#F6F8F5] sm:text-2xl md:text-3xl lg:text-[32px]">
               <span
                 ref={typingTextRef}
-                className="mb-2 block min-h-[2.4em] sm:min-h-[1.3em] text-[#D1A966] transition-all"
+                className="mb-1.5 block min-h-[2.2em] sm:min-h-[1.2em] text-[#D1A966] transition-all"
               >
                 {placeholder}
               </span>
@@ -87,21 +87,21 @@ const Hero = () => {
             </h1>
 
             {/* Description */}
-            <p className="mt-4 max-w-[580px] text-sm leading-relaxed text-[#F6F8F5]/85 md:text-base">
+            <p className="mt-3 max-w-[580px] text-xs leading-relaxed text-[#F6F8F5]/85 sm:text-sm md:text-base">
               Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke, die Ihr Wohnerlebnis bereichern.
             </p>
 
             {/* Shop Now Button */}
             <a
-              href="#products"
-              className="mt-6 inline-flex w-fit items-center justify-center rounded-lg bg-[#D1A966] px-7 py-3 text-sm font-bold text-[#142019] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#DEBC80] hover:shadow-lg"
+              href="/#collection"
+              className="mt-5 inline-flex w-fit items-center justify-center rounded-lg bg-[#D1A966] px-6 py-2.5 text-xs sm:text-sm font-bold text-[#142019] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#DEBC80] hover:shadow-lg"
             >
               Möbelkollektion entdecken
             </a>
           </div>
 
           {/* Image panel */}
-          <div className="relative order-1 min-h-[280px] overflow-hidden md:order-2 md:min-h-0 bg-stone-900">
+          <div className="relative order-1 min-h-[200px] overflow-hidden md:order-2 md:min-h-0 bg-stone-900">
             <Image
               src="/bg.png"
               alt="Authentic antiques and modern furniture collection"

@@ -46,14 +46,14 @@ const CategorySection: React.FC<CategorySectionProps> = ({
   }
 
   return (
-    <section id="furniture-antiques" className="py-16 bg-white">
+    <section id="furniture-antiques" className="py-10 sm:py-12 bg-white">
       <div className="container mx-auto px-4">
         <div className="w-full max-w-7xl mx-auto">
-          <div className="mb-12 text-left">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1E2621] mb-4">
+          <div className="mb-6 sm:mb-8 text-left">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1E2621] mb-2">
               {title}
             </h2>
-            <p className="max-w-2xl text-lg text-[#5C6B61]">
+            <p className="max-w-2xl text-sm sm:text-base text-[#5C6B61]">
               {subtitle}
             </p>
           </div>

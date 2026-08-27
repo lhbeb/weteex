@@ -96,17 +96,17 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
       : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5';
 
   return (
-    <section className="w-full bg-[#F6F8F5] py-12 sm:py-16 md:py-20" aria-labelledby="popular-categories-title">
+    <section className="w-full bg-[#F6F8F5] py-8 sm:py-10 md:py-12" aria-labelledby="popular-categories-title">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-7xl">
-          <div className="mb-8 md:mb-12 text-left">
+          <div className="mb-5 md:mb-7 text-left">
             <h2
               id="popular-categories-title"
-              className="text-3xl font-extrabold tracking-tight text-[#1D2E24] sm:text-4xl md:text-5xl"
+              className="text-2xl font-bold tracking-tight text-[#1D2E24] sm:text-3xl md:text-4xl"
             >
               Entdecken Sie unsere Möbelkollektionen
             </h2>
-            <p className="mt-3 text-base sm:text-lg text-[#5C6B61] max-w-3xl">
+            <p className="mt-2 text-sm sm:text-base text-[#5C6B61] max-w-3xl">
               Entdecken Sie ergonomische Esszimmerstühle, handgeflochtenes Rattan, Tische aus massivem Eichen- und Walnussholz sowie luxuriöse Keramikplatten.
             </p>
           </div>
