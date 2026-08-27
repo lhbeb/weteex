@@ -18,12 +18,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
 });
 
 const HANDLES = [
-  'eetkamerstoel-met-rotan-rug-charles-eik-naturel-rotan-gebroken-wit',
-  'eetkamerstoel-ely-rechthoekige-stoffen-zitting-essenhout-vdf115',
-  'eetkamerstoel-muret-geweven-touw-zitting-eik',
-  'gien-eetkamerstoel-coffee-bean',
-  'eetkamerstoel-chantelle-acacia-walnoot-hout-met-touw-weven-ztting-kopie',
-  'low-dining-dining-chair-challans-walnut-boucle',
+  'jaren-60-retro-relaxstoel-rotan-zwart-hout-zwart-velvet-zwart',
+  'rotan-bijzettafel-maeva-zwart-naturel-rotan-45-45-43cm',
 ];
 
 function stripHtml(html: string): string {
