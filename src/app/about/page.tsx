@@ -17,7 +17,7 @@ import {
   Leaf,
   Headphones,
   MapPin,
-  Phone,
+  MessageSquare,
   Mail,
   Clock,
 } from 'lucide-react';
@@ -51,7 +51,6 @@ export default function AboutPage() {
         'description':
           'Antiques and modern furniture retailer providing authentic antiques and unique decorative pieces.',
         'email': 'contact@weteextees.com',
-        'telephone': ['+447533408378'],
         'address': {
           '@type': 'PostalAddress',
           'streetAddress': 'Hochalmstraße 10',
@@ -63,10 +62,10 @@ export default function AboutPage() {
         'contactPoint': [
           {
             '@type': 'ContactPoint',
-            'telephone': '+447533408378',
             'contactType': 'customer service',
-            'areaServed': ['GB', 'US', 'EU'],
-            'availableLanguage': ['en'],
+            'email': 'contact@weteextees.com',
+            'areaServed': ['DE', 'EU', 'GB', 'US'],
+            'availableLanguage': ['en', 'de'],
           },
         ],
       },
@@ -328,7 +327,7 @@ export default function AboutPage() {
         <div className="bg-white rounded-2xl shadow-lg border border-[#DCE5DE] p-8">
           <div className="flex items-center gap-4 mb-6">
             <div className="p-3 bg-[#1D2E24]/10 rounded-xl">
-              <Phone className="h-8 w-8 text-[#1D2E24]" />
+              <MessageSquare className="h-8 w-8 text-[#1D2E24]" />
             </div>
             <h3 className="text-2xl font-bold text-[#1E2621]">Contact Information</h3>
           </div>
@@ -349,15 +348,11 @@ export default function AboutPage() {
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
-                <Phone className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Phone</div>
+                <MessageSquare className="h-5 w-5 text-[#1D2E24]" />
+                <div className="font-medium text-[#1E2621]">Live Chat</div>
               </div>
-              <div className="ml-8 space-y-3 text-gray-600">
-                <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:gap-1">
-                  <a href="tel:+447533408378" className="whitespace-nowrap hover:text-[#1D2E24] transition-colors">
-                    +44 7533 408378
-                  </a>
-                </div>
+              <div className="ml-8 text-gray-600">
+                24/7 Online Instant Support
               </div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">

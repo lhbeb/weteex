@@ -41,18 +41,16 @@ const Header = () => {
   const isCheckoutPage = pathname === '/checkout';
 
   const announcements = [
-    <a
-      key="contact-phone"
-      href="https://wa.me/447533408378"
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      key="contact-chat"
+      href="/contact"
       className="flex items-center gap-1.5 hover:underline"
     >
-      <span>📞</span>
-      <span>Inquiries &amp; Orders:</span>
-      <span className="font-bold underline">+44 7533 408378</span>
-      <span className="hidden md:inline text-xs opacity-80">(Mon–Fri 9:00 AM – 6:00 PM EST)</span>
-    </a>,
+      <span>💬</span>
+      <span>Live Support:</span>
+      <span className="font-bold underline">Chat Support 24/7</span>
+      <span className="hidden md:inline text-xs opacity-80">(Instant online assistance)</span>
+    </Link>,
     <a
       key="contact-email"
       href="mailto:contact@weteextees.com"

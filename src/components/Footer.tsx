@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, MessageSquare, MapPin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -23,10 +23,10 @@ const Footer = () => {
             </p>
             <div className="space-y-2">
               <div className="flex items-center">
-                <Phone className="h-5 w-5 shrink-0 text-[#D1A966] mr-2" />
-                <a href="tel:+447533408378" className="hover:text-[#D1A966] transition-colors duration-300">
-                  <span className="font-semibold text-white">Customer support:</span> +44 7533 408378
-                </a>
+                <MessageSquare className="h-5 w-5 shrink-0 text-[#D1A966] mr-2" />
+                <span className="text-[#DCE5DE]">
+                  <span className="font-semibold text-white">Chat support:</span> 24/7
+                </span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-[#D1A966] mr-2" />

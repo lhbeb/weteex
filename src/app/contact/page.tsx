@@ -2,7 +2,7 @@
 // Registered business office and GMC support details
 
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Building2 } from 'lucide-react';
+import { Mail, MessageSquare, MapPin, Building2 } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -35,15 +35,13 @@ export default function ContactPage() {
         '@id': 'https://weteextees.com/#organization',
         'name': 'Weteextees',
         'url': 'https://weteextees.com',
-        'email': 'contact@weteextees.com',
-        'telephone': ['+447533408378'],
         'contactPoint': [
           {
             '@type': 'ContactPoint',
-            'telephone': '+447533408378',
             'contactType': 'customer service',
-            'areaServed': ['US', 'GB'],
-            'availableLanguage': ['en'],
+            'email': 'contact@weteextees.com',
+            'areaServed': ['DE', 'EU', 'US', 'GB'],
+            'availableLanguage': ['en', 'de'],
           },
         ],
         'address': {
@@ -225,10 +223,10 @@ export default function ContactPage() {
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <Phone className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
+                      <MessageSquare className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">Phone Support</h3>
-                        <p className="text-gray-600 mt-1"><span className="font-semibold">Phone:</span> +44 7533 408378</p>
+                        <h3 className="font-medium text-[#1E2621]">Live Chat Support</h3>
+                        <p className="text-gray-600 mt-1"><span className="font-semibold">Availability:</span> 24/7 Online Instant Support</p>
                       </div>
                     </div>
                     <div className="flex items-start">

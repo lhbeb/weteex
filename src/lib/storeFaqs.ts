@@ -62,7 +62,7 @@ export const STORE_FAQS: readonly StoreFaq[] = [
   {
     question: 'How can I contact Weteextees specialists?',
     answer:
-      'You can reach our team via our contact form, email contact@weteextees.com, or call +44 7533 408378 during business hours.',
+      'You can reach our team via our 24/7 live chat, contact form, or direct email at contact@weteextees.com.',
     linkHref: '/contact',
     linkLabel: 'Contact our team',
   },

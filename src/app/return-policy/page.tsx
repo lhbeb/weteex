@@ -7,7 +7,7 @@ import {
   CreditCard,
   Building2,
   Mail,
-  Phone,
+  MessageSquare,
   PackageCheck,
   FileText,
   HelpCircle,
@@ -168,7 +168,7 @@ export default function ReturnPolicyPage() {
             <p>Please contact us to obtain <strong>written return authorisation</strong> before sending any item:</p>
             <ol className="list-decimal pl-6 space-y-3">
               <li>
-                <strong>Contact us</strong> at <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> or call <span className="font-semibold">+44 7533 408378</span>.
+                <strong>Contact us</strong> at <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> or via our <span className="font-semibold">24/7 Live Chat</span>.
               </li>
               <li>
                 <strong>Receive return instructions</strong>. We will confirm the return address and any special packaging or courier guidelines.
@@ -215,11 +215,11 @@ export default function ReturnPolicyPage() {
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE] grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24]">
-                  <Phone className="w-5 h-5 text-[#1D2E24]" />
-                  <span>Phone</span>
+                  <MessageSquare className="w-5 h-5 text-[#1D2E24]" />
+                  <span>Live Chat</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7 space-y-1">
-                  <div>+44 7533 408378</div>
+                  <div>24/7 Online Instant Assistance</div>
                 </div>
 
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24] pt-2">

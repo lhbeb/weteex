@@ -103,8 +103,8 @@ const CookiesPage = () => (
           </p>
           <div className="bg-gray-50 rounded-lg p-6 space-y-3">
             <div>
-              <div className="font-medium text-[#262626] mb-1">Phone:</div>
-              <div className="text-gray-600">+44 7533 408378</div>
+              <div className="font-medium text-[#262626] mb-1">Live Support:</div>
+              <div className="text-gray-600">24/7 Live Chat Support</div>
             </div>
             <div>
               <div className="font-medium text-[#262626] mb-1">Email:</div>

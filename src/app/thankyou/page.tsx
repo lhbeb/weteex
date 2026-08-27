@@ -172,9 +172,7 @@ function ThankYouContent() {
                 </a>
               </p>
               <p className="text-gray-700">
-                📞 <a href="tel:+447533408378" className="text-[#1D2E24] hover:text-[#D1A966] font-medium">
-                  +44 7533 408378
-                </a>
+                💬 <span className="text-[#1D2E24] font-medium">24/7 Live Chat Support Available</span>
               </p>
             </div>
           </div>
