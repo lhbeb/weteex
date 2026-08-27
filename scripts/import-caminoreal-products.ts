@@ -391,7 +391,7 @@ async function main() {
 
     const folderPath = path.join(baseDir, folderName);
     const imageFiles = (await fs.readdir(folderPath))
-      .filter(f => /\.(png|webp|jpe?g|avif)$/i.test(f))
+      .filter(f => /\.(png|webp|jpe?g|avif)$/i.test(f) && f !== '01.png')
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }));
 
     const uploadedUrls: string[] = [];
