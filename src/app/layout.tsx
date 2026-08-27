@@ -23,9 +23,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Weteextees - Authentic Antiques & Modern Furniture",
-  description: "Your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
-  keywords: "Weteextees, Weteextees.com, authentic antiques, modern furniture, modern chairs, vintage collectibles, decorative pieces, antique furniture, home decor, unique collectibles",
+  title: "Weteextees - Transform Your Home with Timeless Furniture",
+  description: "Discover premium-quality furniture designed to bring comfort, elegance, and style to every room. Shop modern, classic, and space-saving pieces crafted to enhance your living experience.",
+  keywords: "Weteextees, Weteextees.com, timeless furniture, modern furniture, modern chairs, authentic antiques, space-saving furniture, living room decor, premium furniture",
   authors: [{ name: "Weteextees" }],
   creator: "Weteextees",
   publisher: "Weteextees",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://weteextees.com"),
   openGraph: {
-    title: "Weteextees - Authentic Antiques & Modern Furniture",
-    description: "Your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
+    title: "Weteextees - Transform Your Home with Timeless Furniture",
+    description: "Discover premium-quality furniture designed to bring comfort, elegance, and style to every room. Shop modern, classic, and space-saving pieces crafted to enhance your living experience.",
     url: "https://weteextees.com",
     siteName: "Weteextees",
     images: [
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
         url: "/bg.png",
         width: 1608,
         height: 969,
-        alt: "Weteextees - Authentic Antiques & Modern Furniture",
+        alt: "Weteextees - Transform Your Home with Timeless Furniture",
       },
     ],
     locale: "en_US",
@@ -53,8 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Weteextees - Authentic Antiques & Modern Furniture",
-    description: "Your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
+    title: "Weteextees - Transform Your Home with Timeless Furniture",
+    description: "Discover premium-quality furniture designed to bring comfort, elegance, and style to every room. Shop modern, classic, and space-saving pieces crafted to enhance your living experience.",
     images: ["/bg.png"],
   },
   robots: {
