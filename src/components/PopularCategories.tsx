@@ -3,10 +3,10 @@ import Link from 'next/link';
 import type { Product } from '@/types/product';
 
 const POPULAR_CATEGORY_NAMES = [
-  'Modern Chairs & Furniture',
-  'Authentic Antiques',
-  'Vintage Collectibles',
-  'Decorative Pieces',
+  'Modern Dining Chairs',
+  'Solid Wood & Rattan',
+  'Dining & Coffee Tables',
+  'Marble & Ceramic Tops',
 ] as const;
 
 interface PopularCategoriesProps {
@@ -19,19 +19,19 @@ function matchesCategory(product: Product, categoryName: string): boolean {
     .join(' ')
     .toLowerCase();
   const target = categoryName.trim().toLowerCase();
-  if (target.includes('chair') || target.includes('furniture')) {
-    return /chair|furniture|table|desk|sofa|stool|cabinet|stand/.test(productText) || productText.length > 0;
+  if (target.includes('chair')) {
+    return /chair|stoel|seat|seating/.test(productText);
   }
-  if (target.includes('antique')) {
-    return /antique|vintage|wood|carved|century|classic|historical/.test(productText) || productText.length > 0;
+  if (target.includes('rattan') || target.includes('wood')) {
+    return /rattan|rotan|wicker|oak|walnut|wood/.test(productText);
   }
-  if (target.includes('collectible')) {
-    return /collectible|vintage|retro|rare|signed|edition|metal/.test(productText) || productText.length > 0;
+  if (target.includes('table')) {
+    return /table|tafel|coffee|dining table/.test(productText);
   }
-  if (target.includes('decorative') || target.includes('piece')) {
-    return /decor|vase|sculpture|ceramic|pottery|lamp|art|ornament|mirror/.test(productText) || productText.length > 0;
+  if (target.includes('marble') || target.includes('ceramic')) {
+    return /marble|marmer|ceramic|keramiek|stone/.test(productText);
   }
-  return false;
+  return true;
 }
 
 export default function PopularCategories({ products }: PopularCategoriesProps) {
@@ -42,9 +42,8 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
 
     // Pick distinct featured image or distributed product image
     const chosenProduct =
-      products[index % products.length] ||
-      categoryProducts.find((product) => product.isFeatured && product.images?.[0]) ||
-      categoryProducts.find((product) => product.images?.[0]);
+      categoryProducts.find((product) => product.images?.[0]) ||
+      products[index % products.length];
 
     return {
       name,
@@ -71,10 +70,10 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
               id="popular-categories-title"
               className="text-3xl font-extrabold tracking-tight text-[#1D2E24] sm:text-4xl md:text-5xl"
             >
-              Explore Our Curated Ranges
+              Explore Our Furniture Collections
             </h2>
             <p className="mt-3 text-base sm:text-lg text-[#5C6B61] max-w-3xl">
-              From ergonomic modern chairs and accent furniture to certified antiques, rare vintage collectibles, and unique decorative art.
+              Discover ergonomic dining chairs, handcrafted rattan weaves, solid oak &amp; walnut tables, and luxury ceramic centerpieces.
             </p>
           </div>
 
