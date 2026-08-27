@@ -141,7 +141,7 @@ function AddressFields({
   const countryField = form.requiresCountry ? (
     <div>
       <label htmlFor={fieldId('countryCode')} className="block text-sm font-semibold text-gray-700 mb-3">
-        Country / Region *
+        Land / Region *
       </label>
       <CountrySelect
         id={fieldId('countryCode')}
@@ -149,7 +149,7 @@ function AddressFields({
         value={form.shippingData.countryCode}
         onChange={form.handleInputChange as any}
         countries={form.featuredCountries}
-        placeholder="Select delivery country"
+        placeholder="Lieferland auswählen"
         required
       />
     </div>
@@ -160,7 +160,7 @@ function AddressFields({
     <div>
       <label htmlFor={fieldId('fullName')} className="block text-sm font-semibold text-gray-700 mb-3">
         {!mobile && <User className="inline h-4 w-4 mr-1 text-gray-500" />}
-        Full Name *
+        Vollständiger Name *
       </label>
       <input
         type="text"
@@ -170,7 +170,7 @@ function AddressFields({
         onChange={form.handleInputChange}
         required
         className={inputClassName}
-        placeholder="Enter your full name"
+        placeholder="Vor- und Nachname"
         autoComplete="name"
       />
     </div>
@@ -300,7 +300,7 @@ function AddressFields({
     <div>
       <label htmlFor={fieldId('email')} className="block text-sm font-semibold text-gray-700 mb-3">
         {!mobile && <Mail className="inline h-4 w-4 mr-1" />}
-        Email Address *
+        E-Mail-Adresse *
       </label>
       <input
         type="email"
@@ -310,7 +310,7 @@ function AddressFields({
         onChange={form.handleInputChange}
         required
         pattern={mobile ? undefined : '[^\\s@]+@[^\\s@]+\\.[^\\s@]+'}
-        title={mobile ? undefined : 'Please enter a valid email address (e.g., example@email.com)'}
+        title={mobile ? undefined : 'Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@beispiel.de)'}
         className={
           mobile
             ? `${inputClassName} transition-colors duration-200`
@@ -320,7 +320,7 @@ function AddressFields({
                   : 'border-gray-200 focus:ring-[#1D2E24] focus:border-[#1D2E24]'
               }`
         }
-        placeholder="Enter your email address"
+        placeholder="ihre.email@beispiel.de"
         autoComplete="email"
       />
       {mobile && form.emailError && (
@@ -382,11 +382,11 @@ function ContinueButton({
         <>
           <div className="animate-spin rounded-full h-6 w-6 border-b-3 border-white mr-3" />
           <span className="text-xl font-bold">
-            {isSendingEmail ? 'Confirming Address...' : 'Redirecting...'}
+            {isSendingEmail ? 'Adresse wird geprüft...' : 'Weiterleitung...'}
           </span>
         </>
       ) : (
-        <span className="text-xl font-bold">Continue to Payment</span>
+        <span className="text-xl font-bold">Weiter zur Zahlung</span>
       )}
     </button>
   );
@@ -396,15 +396,15 @@ function SecureCheckoutInfo({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className={`${mobile ? 'lg:hidden mt-4 mb-4 space-y-2' : 'hidden lg:block mt-8 space-y-4'} flex flex-col items-center justify-center text-center w-full`}>
       <div className="text-sm text-gray-600">
-        <span className="font-semibold text-[#1D2E24]">Secure Checkout</span> - SSL Encrypted
+        <span className="font-semibold text-[#1D2E24]">Sichere Kasse</span> - SSL-verschlüsselt
       </div>
       <p className="text-xs text-gray-500 max-w-sm">
-        Shop with confidence - Your payment information is protected by industry-leading encryption
+        Sicher einkaufen - Ihre Daten werden nach modernsten Sicherheitsstandards geschützt
       </p>
       <div className="flex items-center justify-center">
         <Image
           src="/secure-checkout.png"
-          alt="Secure Checkout"
+          alt="Sichere Zahlung"
           width={192}
           height={192}
           className="h-12 w-auto"
@@ -415,15 +415,15 @@ function SecureCheckoutInfo({ mobile = false }: { mobile?: boolean }) {
       </div>
       <div className={`flex flex-wrap items-center justify-center text-xs text-gray-500 mt-2 ${mobile ? 'gap-2 px-4' : 'gap-3'}`}>
         <Link href="/terms" className="hover:text-[#1D2E24] hover:underline transition-colors">
-          Terms of Service
+          AGB
         </Link>
         <span className="text-gray-300">•</span>
         <Link href="/return-policy" className="hover:text-[#1D2E24] hover:underline transition-colors">
-          Refund and Return Policy
+          Widerrufsbelehrung &amp; Rückgabe
         </Link>
         <span className="text-gray-300">•</span>
         <Link href="/shipping-policy" className="hover:text-[#1D2E24] hover:underline transition-colors">
-          Shipping Policy
+          Versandrichtlinien
         </Link>
       </div>
     </div>
@@ -477,8 +477,8 @@ export default function CheckoutShippingStep({
         <div className="container mx-auto px-4">
           <Link href={`/products/${product.slug}`} className="inline-flex items-center text-[#1D2E24] hover:text-[#D1A966] mb-4 text-sm font-medium">
             <ArrowLeft className="h-3.5 w-3.5 mr-1.5" />
-            <span className="hidden sm:inline">Back To Product</span>
-            <span className="sm:hidden">Back</span>
+            <span className="hidden sm:inline">Zurück zum Produkt</span>
+            <span className="sm:hidden">Zurück</span>
           </Link>
 
           <div className="lg:hidden mb-4">
@@ -507,12 +507,12 @@ export default function CheckoutShippingStep({
                     <h3 className="font-semibold text-[#1E2621] text-base line-clamp-1 mb-1">{product.title}</h3>
                     <p className="text-[#1D2E24] font-bold text-xl mb-1">{price}</p>
                     {sellerName && (
-                      <p className="mb-1 flex min-w-0 items-center gap-1.5 text-sm text-[#5C6B61]" aria-label={`Seller: ${sellerName}`}>
+                      <p className="mb-1 flex min-w-0 items-center gap-1.5 text-sm text-[#5C6B61]" aria-label={`Verkäufer: ${sellerName}`}>
                         <Store className="h-4 w-4 shrink-0 text-[#1E2621]" aria-hidden="true" />
                         <span className="truncate font-medium text-[#1E2621]">{sellerName}</span>
                       </p>
                     )}
-                    <p className="text-gray-400 text-xs leading-tight">Tap To View/Hide Summary</p>
+                    <p className="text-gray-400 text-xs leading-tight">Tippen für Details</p>
                   </div>
                 </div>
                 <ChevronDown className={`h-6 w-6 ml-3 flex-shrink-0 text-gray-600 transition-transform duration-200 ${showMobileOrderSummary ? 'rotate-180' : ''}`} />
@@ -521,19 +521,19 @@ export default function CheckoutShippingStep({
               {showMobileOrderSummary && (
                 <div className="px-4 pb-4 border-t border-gray-100 mt-4 pt-4 space-y-4">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-[#5C6B61]">Quantity</span>
+                    <span className="text-[#5C6B61]">Menge</span>
                     <span className="font-medium">{cartItem.quantity}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-[#5C6B61]">Subtotal</span>
+                    <span className="text-[#5C6B61]">Zwischensumme</span>
                     <span className="font-medium">{price}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-[#5C6B61]">Shipping</span>
-                    <span className="font-semibold text-[#1D2E24]">Free</span>
+                    <span className="text-[#5C6B61]">Versand</span>
+                    <span className="font-semibold text-[#1D2E24]">Kostenlos</span>
                   </div>
                   <div className="border-t border-gray-200 pt-3 flex justify-between items-center">
-                    <span className="text-base font-semibold text-[#1E2621]">Total</span>
+                    <span className="text-base font-semibold text-[#1E2621]">Gesamtsumme</span>
                     <span className="text-lg font-bold text-[#1D2E24]">{price}</span>
                   </div>
                 </div>
@@ -545,7 +545,7 @@ export default function CheckoutShippingStep({
             <div className="max-w-7xl mx-auto flex gap-4 lg:gap-8 items-start">
               <div className="flex-1 bg-white rounded-2xl shadow-sm p-6 lg:p-8 border border-[#DCE5DE] flex justify-center">
                 <div className="w-full max-w-[750px]">
-                  <h2 className="text-xl lg:text-2xl font-bold text-[#1E2621] mb-6 lg:mb-8 text-left">Delivery Address</h2>
+                  <h2 className="text-xl lg:text-2xl font-bold text-[#1E2621] mb-6 lg:mb-8 text-left">Lieferadresse &amp; Bestelldaten</h2>
                   <form onSubmit={onSubmit} className="space-y-6">
                     <AddressFields form={form} />
                     <div className="hidden lg:block mt-8">
@@ -574,7 +574,7 @@ export default function CheckoutShippingStep({
 
                   {/* Header */}
                   <div className="px-6 pt-6 pb-5 border-b border-gray-100">
-                    <h2 className="text-base font-semibold text-gray-400 uppercase tracking-widest">Order Summary</h2>
+                    <h2 className="text-base font-semibold text-gray-400 uppercase tracking-widest">Bestellübersicht</h2>
                   </div>
 
                   {/* Product row */}
@@ -595,7 +595,7 @@ export default function CheckoutShippingStep({
                       <h3 className="font-semibold text-[#1E2621] text-sm leading-snug line-clamp-2">{product.title}</h3>
 
                       {sellerName && (
-                        <div className="flex items-center gap-1.5" aria-label={`Seller: ${sellerName}`}>
+                        <div className="flex items-center gap-1.5" aria-label={`Verkäufer: ${sellerName}`}>
                           <Store className="h-3.5 w-3.5 shrink-0 text-gray-400" aria-hidden="true" />
                           <span className="truncate text-xs text-gray-500 font-medium">{sellerName}</span>
                         </div>
@@ -608,11 +608,11 @@ export default function CheckoutShippingStep({
                         </span>
                         {(product as ProductWithSelectedSize).selectedSize && (
                           <span className="bg-[#1D2E24]/10 text-[#1D2E24] text-xs font-semibold px-2.5 py-1 rounded-full">
-                            Size: {(product as ProductWithSelectedSize).selectedSize}
+                            Größe: {(product as ProductWithSelectedSize).selectedSize}
                           </span>
                         )}
                         <span className="bg-[#F6F8F5] text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full border border-[#DCE5DE]">
-                          Qty {cartItem.quantity}
+                          Menge {cartItem.quantity}
                         </span>
                       </div>
                     </div>
@@ -625,25 +625,25 @@ export default function CheckoutShippingStep({
                       type="button"
                       onClick={onClearCart}
                       className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-red-500 transition-colors px-3 py-1.5 rounded-full hover:bg-red-50"
-                      aria-label="Remove item"
+                      aria-label="Artikel entfernen"
                     >
                       <Trash className="h-3.5 w-3.5" />
-                      Remove
+                      Entfernen
                     </button>
                   </div>
 
                   {/* Totals */}
                   <div className="border-t border-gray-100 px-6 py-5 space-y-3">
                     <div className="flex justify-between text-sm">
-                      <span className="text-[#5C6B61]">Subtotal</span>
+                      <span className="text-[#5C6B61]">Zwischensumme</span>
                       <span className="font-medium text-[#1E2621]">{price}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-[#5C6B61]">Shipping</span>
-                      <span className="font-semibold text-[#1D2E24]">Free</span>
+                      <span className="text-[#5C6B61]">Versand</span>
+                      <span className="font-semibold text-[#1D2E24]">Kostenlos</span>
                     </div>
                     <div className="border-t border-gray-100 pt-3 flex justify-between items-center">
-                      <span className="text-sm font-semibold text-[#1E2621]">Total</span>
+                      <span className="text-sm font-semibold text-[#1E2621]">Gesamtsumme</span>
                       <span className="text-lg font-bold text-[#1D2E24]">{price}</span>
                     </div>
                   </div>
@@ -655,7 +655,7 @@ export default function CheckoutShippingStep({
 
           <div className="lg:hidden">
             <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100">
-              <h2 className="text-xl font-bold text-[#262626] mb-6">Delivery Address</h2>
+              <h2 className="text-xl font-bold text-[#262626] mb-6">Lieferadresse &amp; Bestelldaten</h2>
               <form onSubmit={onSubmit} className="space-y-6">
                 <AddressFields form={form} mobile />
 
@@ -667,7 +667,7 @@ export default function CheckoutShippingStep({
                     <div>
                       <p className="text-sm font-medium text-red-800">{checkoutError}</p>
                       <button type="button" onClick={onDismissCheckoutError} className="text-xs text-red-600 underline mt-1">
-                        Dismiss
+                        Schließen
                       </button>
                     </div>
                   </div>
@@ -677,8 +677,8 @@ export default function CheckoutShippingStep({
                   <MobileCheckoutCTA
                     disabled={isSendingEmail || isRedirecting}
                     isLoading={isSendingEmail || isRedirecting}
-                    loadingLabel={isSendingEmail ? 'Confirming Address...' : 'Redirecting...'}
-                    label="Continue to Payment"
+                    loadingLabel={isSendingEmail ? 'Adresse wird geprüft...' : 'Weiterleitung...'}
+                    label="Weiter zur Zahlung"
                   />
                 )}
 

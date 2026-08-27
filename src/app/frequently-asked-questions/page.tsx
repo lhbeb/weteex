@@ -4,9 +4,9 @@ import { ArrowRight, HelpCircle, Plus } from 'lucide-react';
 import { STORE_FAQS } from '@/lib/storeFaqs';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions | Weteextees',
+  title: 'Häufig gestellte Fragen (FAQ) | Weteextees',
   description:
-    'Find answers about Weteextees authentic antiques, modern furniture, condition reports, ordering, specialist delivery, returns, and support.',
+    'Antworten auf die wichtigsten Fragen zu unseren modernen Möbeln, Stühlen, Tischen, Speditionslieferung, Rückgaben und Support bei Weteextees.',
   alternates: {
     canonical: 'https://weteextees.com/frequently-asked-questions',
   },
@@ -39,10 +39,10 @@ export default function FrequentlyAskedQuestionsPage() {
             <HelpCircle className="h-6 w-6" aria-hidden="true" />
           </div>
           <h1 className="max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl text-[#F6F8F5]">
-            Frequently Asked Questions
+            Häufig gestellte Fragen (FAQ)
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-7 text-[#F6F8F5]/85 sm:text-lg">
-            Straightforward answers about our authentic antiques, modern furniture, vintage collectibles, custom packaging, and delivery.
+            Hier finden Sie Antworten zu unseren handverlesenen Möbeln, Bestellabläufen, Speditionslieferungen und Rückgabemöglichkeiten.
           </p>
         </div>
       </section>
@@ -77,16 +77,16 @@ export default function FrequentlyAskedQuestionsPage() {
 
           <div className="mt-10 flex flex-col items-start justify-between gap-5 rounded-2xl bg-gradient-to-r from-[#1D2E24] to-[#142019] p-6 text-[#F6F8F5] sm:flex-row sm:items-center sm:p-8 border border-[#D1A966]/20">
             <div>
-              <h2 className="text-xl font-bold sm:text-2xl text-[#D1A966]">Still need help?</h2>
+              <h2 className="text-xl font-bold sm:text-2xl text-[#D1A966]">Haben Sie weitere Fragen?</h2>
               <p className="mt-2 text-sm text-[#F6F8F5]/80 sm:text-base">
-                Send us your question and our specialist curation team will assist you.
+                Unser Team steht Ihnen rund um die Uhr per Live-Chat oder Kontaktformular zur Verfügung.
               </p>
             </div>
             <Link
               href="/contact"
               className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-[#D1A966] px-5 py-3 text-sm font-bold text-[#142019] transition-colors hover:bg-[#DEBC80]"
             >
-              Contact Us
+              Kontakt aufnehmen
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>

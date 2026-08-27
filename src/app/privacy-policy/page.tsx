@@ -3,124 +3,97 @@ import React from 'react';
 const PrivacyPolicyPage = () => (
   <div className="min-h-screen flex flex-col bg-gray-50 py-12">
     <div className="container mx-auto px-4 max-w-4xl">
-      <h1 className="text-4xl font-bold text-[#262626] mb-8">Privacy Policy</h1>
+      <h1 className="text-4xl font-bold text-[#262626] mb-8">Datenschutzerklärung (DSGVO)</h1>
       
       <div className="prose max-w-none text-gray-700 space-y-8">
         {/* Introduction */}
         <p className="text-lg leading-relaxed">
-          Welcome to Weteextees (Weteextees.com). This page explains what personal data we collect, why we use it, how we protect it, and your rights when you browse our website, request condition reports, or place an order for antiques, furniture, or collectibles.
+          Willkommen bei Weteextees (Weteextees.com). Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie darüber, welche Daten wir erheben, wie wir sie verarbeiten und welche Rechte Ihnen gemäß der Datenschutz-Grundverordnung (DSGVO) zustehen.
         </p>
 
         {/* Information We Collect */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Information We Collect</h2>
-          <p className="mb-4">We collect information in the following ways:</p>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">1. Verantwortliche Stelle</h2>
+          <p className="mb-4">
+            Verantwortlicher im Sinne der DSGVO ist:
+            <br />
+            <strong>Weteextees</strong>
+            <br />
+            Hochalmstraße 10, 81825 München, Bayern, Deutschland
+            <br />
+            E-Mail: <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:underline">contact@weteextees.com</a>
+          </p>
+        </div>
 
-          <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">Information You Provide</h3>
-          <p className="mb-4">You may provide personal information when you:</p>
+        <div>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">2. Erhebung und Speicherung personenbezogener Daten</h2>
+          <p className="mb-4">Wir verarbeiten personenbezogene Daten, wenn Sie:</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Create an account</li>
-            <li>Inquire about an antique piece, request a condition report, or place an order</li>
-            <li>Sign up for our newsletter</li>
-            <li>Contact our curation and customer service team</li>
-            <li>Participate in surveys or promotions</li>
+            <li>Unsere Website besuchen (Server-Logfiles, IP-Adresse, Browsertyp, aufgerufene Seiten)</li>
+            <li>Eine Bestellung aufgeben (Name, Lieferadresse, Rechnungsadresse, E-Mail-Adresse, Zahlungsdaten)</li>
+            <li>Unseren Kundenservice oder Live-Chat kontaktieren</li>
           </ul>
           <p className="mb-4">
-            This information may include your name, email address, phone number, billing and delivery address, order correspondence, and payment details processed securely by our payment providers.
-          </p>
-
-          <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">Information Collected Automatically</h3>
-          <p className="mb-4">When you visit our website, we may automatically collect:</p>
-          <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>IP address</li>
-            <li>Browser type</li>
-            <li>Device information</li>
-            <li>Pages viewed</li>
-            <li>Time spent on pages</li>
-            <li>Cookies and tracking data</li>
-          </ul>
-          <p>
-            This helps us improve your browsing experience and maintain website functionality.
+            Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO zur Vertragserfüllung oder vorvertraglicher Maßnahmen sowie Art. 6 Abs. 1 lit. f DSGVO zur Wahrung berechtigter Interessen (Betrieb und Sicherheit der Website).
           </p>
         </div>
 
         {/* How We Use Your Information */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">How We Use Your Information</h2>
-          <p className="mb-4">We use your information to:</p>
-          <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Process and fulfill your orders, including provenance documentation and specialized packaging</li>
-            <li>Coordinate insured white-glove transport and provide delivery updates</li>
-            <li>Respond to condition report inquiries and customer support requests</li>
-            <li>Send order confirmations, delivery schedules, and receipts</li>
-            <li>Send curated marketing communications with your consent</li>
-            <li>Improve our website performance, inventory selection, and user experience</li>
-            <li>Prevent fraudulent transactions and protect our customers and platform</li>
-          </ul>
-        </div>
-
-        {/* Information Sharing */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Information Sharing</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">3. Weitergabe von Daten an Dritte</h2>
           <p className="mb-4">
-            We do not sell or rent your personal information to third parties. We share information only with:
+            Eine Weitergabe Ihrer persönlichen Daten erfolgt ausschließlich an Partner, die zur Bestellabwicklung erforderlich sind:
           </p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Specialist shipping and freight carriers to fulfill deliveries</li>
-            <li>Secure payment processors to handle checkout authorizations</li>
-            <li>Professional service providers who help operate our platform</li>
-            <li>Law enforcement or regulatory authorities where required by applicable law</li>
+            <li><strong>Logistik- und Transportunternehmen</strong> (zur Auslieferung der bestellten Möbel)</li>
+            <li><strong>Zahlungsdienstleister</strong> (z.B. Stripe, PayPal zur sicheren Zahlungsabwicklung)</li>
+            <li><strong>IT- und Hosting-Dienstleister</strong> zur sicheren Bereitstellung unserer Plattform</li>
           </ul>
+          <p>
+            Eine Übermittlung zu Werbezwecken an sonstige Dritte findet ausdrücklich nicht statt.
+          </p>
         </div>
 
         {/* Data Security */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Data Security</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">4. Datensicherheit &amp; SSL-Verschlüsselung</h2>
           <p className="mb-4">
-            We employ modern industry-standard physical, electronic, and administrative safeguards to protect your personal information against unauthorized access, loss, or alteration.
+            Wir nutzen auf unserer Website moderne SSL-/TLS-Verschlüsselungstechnologien, um die Übertragung Ihrer persönlichen Daten und Bestellungen bestmöglich gegen unbefugte Zugriffe zu schützen.
           </p>
         </div>
 
         {/* Your Rights */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Your Rights</h2>
-          <p className="mb-4">Under applicable data protection laws, you have the right to:</p>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">5. Ihre Betroffenenrechte</h2>
+          <p className="mb-4">Nach den Bestimmungen der DSGVO stehen Ihnen folgende Rechte zu:</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Access the personal data we hold about you</li>
-            <li>Request correction of inaccurate or incomplete information</li>
-            <li>Request deletion of your personal data where retention is not legally required</li>
-            <li>Object to or restrict certain processing activities</li>
-            <li>Opt out of marketing communications at any time</li>
+            <li><strong>Auskunftsrecht (Art. 15 DSGVO)</strong> über die von uns verarbeiteten Daten</li>
+            <li><strong>Recht auf Berichtigung (Art. 16 DSGVO)</strong> unrichtiger Daten</li>
+            <li><strong>Recht auf Löschung (Art. 17 DSGVO)</strong> vorbehaltlich gesetzlicher Aufbewahrungspflichten</li>
+            <li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</strong></li>
+            <li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</strong></li>
+            <li><strong>Widerspruchsrecht (Art. 21 DSGVO)</strong> gegen bestimmte Verarbeitungen</li>
           </ul>
         </div>
 
         {/* Contact Us */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Contact Us</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">6. Kontakt bei Datenschutzfragen</h2>
           <p className="mb-4">
-            If you have questions about this Privacy Policy or your personal information, please contact our data privacy coordinator:
+            Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten oder zur Ausübung Ihrer Betroffenenrechte wenden Sie sich bitte an:
           </p>
           <div className="bg-gray-50 rounded-lg p-6 space-y-3">
             <div>
-              <div className="font-medium text-[#262626] mb-1">Live Support:</div>
-              <div className="text-gray-600">24/7 Live Chat Support</div>
+              <div className="font-medium text-[#262626] mb-1">Live-Chat:</div>
+              <div className="text-gray-600">24/7 Live-Chat-Support auf der Website</div>
             </div>
             <div>
-              <div className="font-medium text-[#262626] mb-1">Email:</div>
+              <div className="font-medium text-[#262626] mb-1">E-Mail:</div>
               <div className="text-gray-600">contact@weteextees.com</div>
             </div>
             <div>
-              <div className="font-medium text-[#262626] mb-1">Office Address:</div>
-              <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Germany</div>
-            </div>
-            <div>
-              <div className="font-medium text-[#262626] mb-1">Website:</div>
-              <div className="text-gray-600">Weteextees.com</div>
-            </div>
-            <div>
-              <div className="font-medium text-[#262626] mb-1">Hours:</div>
-              <div className="text-gray-600">Monday to Friday: 9:00 AM to 5:00 PM GMT/BST</div>
-              <div className="text-gray-600">Saturday: by appointment</div>
+              <div className="font-medium text-[#262626] mb-1">Geschäftsanschrift:</div>
+              <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
             </div>
           </div>
         </div>

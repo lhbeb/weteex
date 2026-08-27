@@ -74,11 +74,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ open, onClose }) => {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search modern furniture, antiques, collectibles..."
+            placeholder="Moderne Stühle, Tische und Möbel suchen..."
             className="bg-transparent outline-none border-0 flex-1 min-w-0 text-[#1E2621] placeholder-[#5C6B61]/70 text-lg"
             autoFocus={open}
             onKeyDown={handleKeyDown}
-            aria-label="Search collection"
+            aria-label="Kollektion durchsuchen"
           />
           {query.length > 0 && (
             <ArrowRight className="h-5 w-5 text-[#D1A966] animate-bounce-x ml-1" aria-label="Press Enter to search" />

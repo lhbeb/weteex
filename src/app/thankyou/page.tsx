@@ -96,25 +96,25 @@ function ThankYouContent() {
 
           {/* Main Message */}
           <h1 className="text-3xl md:text-4xl font-bold text-[#1E2621] mb-4">
-            {isSuccessful ? 'Thank You for Your Order!' : 'Payment Verification Pending...'}
+            {isSuccessful ? 'Vielen Dank für Ihre Bestellung!' : 'Zahlungsbestätigung ausstehend...'}
           </h1>
 
           <p className="text-lg text-[#5C6B61] mb-8 leading-relaxed">
             {isSuccessful
-              ? 'Your payment has been successfully recorded and your order is queued for manual processing. We will send you an email confirmation shortly once verified.' 
-              : 'Your payment is still processing or awaiting backend verification. We will process your order and send a confirmation email once it is completely confirmed.'}
+              ? 'Ihre Zahlung wurde erfolgreich erfasst und Ihre Bestellung wird nun von unserem Logistikteam bearbeitet. Sie erhalten in Kürze eine Bestätigungs-E-Mail.' 
+              : 'Ihre Zahlung wird aktuell geprüft. Sobald die Bestätigung vorliegt, senden wir Ihnen Ihre Bestelldetails per E-Mail zu.'}
           </p>
 
           {/* Order Details */}
           {orderDetails && (
             <div className="bg-[#F6F8F5] rounded-xl p-6 mb-8 border border-[#DCE5DE]">
-              <p className="text-sm text-gray-500 mb-2">Order ID</p>
+              <p className="text-sm text-gray-500 mb-2">Bestellnummer</p>
               <p className="text-lg font-mono font-semibold text-[#1E2621] mb-4">
                 {orderDetails.orderId || orderDetails.sessionId}
               </p>
               {orderDetails.amount && (
                 <p className="text-2xl font-bold text-[#1D2E24]">
-                  ${(orderDetails.amount / 100).toFixed(2)} {orderDetails.currency?.toUpperCase()}
+                  {((orderDetails.amount / 100)).toFixed(2).replace('.', ',')} €
                 </p>
               )}
             </div>
@@ -123,7 +123,7 @@ function ThankYouContent() {
           {/* Next Steps */}
           <div className="bg-[#F6F8F5] rounded-xl p-6 mb-8 border border-[#DCE5DE]">
             <h2 className="text-xl font-semibold text-[#1E2621] mb-4">
-              What happens next?
+              Wie geht es weiter?
             </h2>
 
             <div className="space-y-4">
@@ -132,8 +132,8 @@ function ThankYouContent() {
                   <Clock className="w-4 h-4 text-[#D1A966]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-medium text-[#1E2621]">Order Processing</h3>
-                  <p className="text-sm text-[#5C6B61]">We&apos;ll process your order within 24-48 hours</p>
+                  <h3 className="font-medium text-[#1E2621]">Auftragsbearbeitung</h3>
+                  <p className="text-sm text-[#5C6B61]">Ihre Möbel werden innerhalb von 24–48 Stunden transportsicher verpackt</p>
                 </div>
               </div>
 
@@ -142,8 +142,8 @@ function ThankYouContent() {
                   <Mail className="w-4 h-4 text-[#D1A966]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-medium text-[#1E2621]">Email Confirmation</h3>
-                  <p className="text-sm text-[#5C6B61]">You&apos;ll receive an email with your order details and tracking number</p>
+                  <h3 className="font-medium text-[#1E2621]">E-Mail-Bestätigung &amp; Sendungsnummer</h3>
+                  <p className="text-sm text-[#5C6B61]">Sie erhalten eine E-Mail mit allen Bestelldetails und der Sendungsverfolgung</p>
                 </div>
               </div>
 
@@ -152,8 +152,8 @@ function ThankYouContent() {
                   <Package className="w-4 h-4 text-[#D1A966]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-medium text-[#1E2621]">Shipping</h3>
-                  <p className="text-sm text-[#5C6B61]">Your order will arrive within 5-9 business days</p>
+                  <h3 className="font-medium text-[#1E2621]">Versicherte Zustellung</h3>
+                  <p className="text-sm text-[#5C6B61]">Die Lieferung erfolgt in der Regel innerhalb von 3–7 Werktagen</p>
                 </div>
               </div>
             </div>
@@ -161,9 +161,9 @@ function ThankYouContent() {
 
           {/* Contact Info */}
           <div className="bg-[#F6F8F5] rounded-xl p-6 mb-8 border border-[#DCE5DE]">
-            <h3 className="font-semibold text-[#1E2621] mb-2">Need Help?</h3>
+            <h3 className="font-semibold text-[#1E2621] mb-2">Haben Sie Fragen?</h3>
             <p className="text-sm text-[#5C6B61] mb-3">
-              If you have any questions about your order, don&apos;t hesitate to reach out:
+              Unser Kundenservice steht Ihnen jederzeit gerne zur Verfügung:
             </p>
             <div className="space-y-1 text-sm">
               <p className="text-gray-700">
@@ -172,7 +172,7 @@ function ThankYouContent() {
                 </a>
               </p>
               <p className="text-gray-700">
-                💬 <span className="text-[#1D2E24] font-medium">24/7 Live Chat Support Available</span>
+                💬 <span className="text-[#1D2E24] font-medium">24/7 Live-Chat-Support verfügbar</span>
               </p>
             </div>
           </div>
@@ -184,7 +184,7 @@ function ThankYouContent() {
               className="inline-flex items-center justify-center px-6 py-3 bg-[#1D2E24] hover:bg-[#142019] text-[#F6F8F5] font-semibold rounded-lg transition-colors duration-200"
             >
               <ArrowLeft className="w-4 h-4 mr-2 text-[#D1A966]" />
-              Continue Shopping
+              Weiter einkaufen
             </Link>
           </div>
         </div>
@@ -193,8 +193,8 @@ function ThankYouContent() {
         <div className="text-center mt-8">
           <p className="text-sm text-[#5C6B61]">
             {isSuccessful
-              ? 'You will receive a confirmation email once our team reviews your order' 
-              : 'We will notify you by email once your payment clears'}
+              ? 'Sie erhalten eine Bestätigungs-E-Mail, sobald unser Team Ihre Bestellung bearbeitet hat.' 
+              : 'Wir informieren Sie per E-Mail, sobald Ihre Zahlung verbucht wurde.'}
           </p>
         </div>
       </div>
@@ -212,10 +212,10 @@ function LoadingState() {
             <Loader2 className="w-12 h-12 text-[#1D2E24] animate-spin" />
           </div>
           <h1 className="text-3xl md:text-4xl font-bold text-[#1E2621] mb-4">
-            Loading...
+            Wird geladen...
           </h1>
           <p className="text-lg text-[#5C6B61]">
-            Please wait a moment.
+            Bitte haben Sie einen Moment Geduld.
           </p>
         </div>
       </div>

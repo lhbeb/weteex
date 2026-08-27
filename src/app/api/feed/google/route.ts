@@ -134,10 +134,10 @@ function buildShippingXml(
         <g:country>${country}</g:country>
         <g:service>${shipping.service}</g:service>
         <g:price>0.00 ${itemCurrency}</g:price>
-        <g:min_handling_time>0</g:min_handling_time>
-        <g:max_handling_time>1</g:max_handling_time>
-        <g:min_transit_time>5</g:min_transit_time>
-        <g:max_transit_time>9</g:max_transit_time>
+        <g:min_handling_time>1</g:min_handling_time>
+        <g:max_handling_time>2</g:max_handling_time>
+        <g:min_transit_time>2</g:min_transit_time>
+        <g:max_transit_time>5</g:max_transit_time>
       </g:shipping>`;
     })
     .join('');
@@ -237,14 +237,14 @@ export async function GET(request: NextRequest) {
       })
       .join('');
 
-    const targetLabel = country ? ` (${country})` : ' (US)';
+    const targetLabel = country ? ` (${country})` : ' (DE/EU)';
     const currencyLabel = currency ? ` in ${currency}` : '';
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
     <title>Weteextees Google Merchant Center Feed${targetLabel}${currencyLabel}</title>
     <link>${BASE_URL}</link>
-    <description>Weteextees products for the United States${currencyLabel}</description>
+    <description>Weteextees Produkte für Deutschland und die EU${currencyLabel}</description>
     ${itemsXml}
   </channel>
 </rss>`;

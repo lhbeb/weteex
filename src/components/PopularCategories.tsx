@@ -10,36 +10,39 @@ interface CategoryDefinition {
 
 const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
   {
-    name: 'Modern Dining Chairs',
+    name: 'Moderne Esszimmerstühle',
     query: 'chair',
     matcher: (p) =>
-      (p.slug.includes('chair') || p.slug.includes('ely') || p.slug.includes('muret')) &&
+      (p.slug.includes('chair') || p.slug.includes('ely') || p.slug.includes('muret') || p.slug.includes('stoel')) &&
       !p.slug.includes('rattan') &&
       !p.slug.includes('table'),
   },
   {
-    name: 'Solid Wood & Rattan',
+    name: 'Massivholz & Rattan',
     query: 'rattan',
     matcher: (p) =>
       p.slug.includes('rattan') ||
       p.slug.includes('wicker') ||
       p.slug.includes('ruben') ||
+      p.slug.includes('rotan') ||
       p.slug.includes('swing'),
   },
   {
-    name: 'Dining & Coffee Tables',
+    name: 'Ess- & Couchtische',
     query: 'table',
     matcher: (p) =>
-      (p.slug.includes('table') || p.slug.includes('savis')) &&
+      (p.slug.includes('table') || p.slug.includes('tafel') || p.slug.includes('savis')) &&
       !p.slug.includes('marble') &&
       !p.slug.includes('ceramic'),
   },
   {
-    name: 'Marble & Ceramic Tops',
+    name: 'Marmor- & Keramikplatten',
     query: 'marble',
     matcher: (p) =>
       p.slug.includes('marble') ||
-      p.slug.includes('ceramic'),
+      p.slug.includes('marmer') ||
+      p.slug.includes('ceramic') ||
+      p.slug.includes('keramisch'),
   },
 ];
 
@@ -92,10 +95,10 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
               id="popular-categories-title"
               className="text-3xl font-extrabold tracking-tight text-[#1D2E24] sm:text-4xl md:text-5xl"
             >
-              Explore Our Furniture Collections
+              Entdecken Sie unsere Möbelkollektionen
             </h2>
             <p className="mt-3 text-base sm:text-lg text-[#5C6B61] max-w-3xl">
-              Discover ergonomic dining chairs, handcrafted rattan weaves, solid oak &amp; walnut tables, and luxury ceramic centerpieces.
+              Entdecken Sie ergonomische Esszimmerstühle, handgeflochtenes Rattan, Tische aus massivem Eichen- und Walnussholz sowie luxuriöse Keramikplatten.
             </p>
           </div>
 

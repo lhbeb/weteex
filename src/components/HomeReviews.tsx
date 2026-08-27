@@ -282,13 +282,13 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                   <Star key={i} className="h-8 w-8 text-gray-300" />
                 ))}
               </div>
-              <h3 className="text-xl font-semibold text-[#1E2621] mb-2">Be the First to Review</h3>
-              <p className="text-[#5C6B61] mb-6">Share your experience and help other customers choose with confidence.</p>
+              <h3 className="text-xl font-semibold text-[#1E2621] mb-2">Schreiben Sie die erste Bewertung</h3>
+              <p className="text-[#5C6B61] mb-6">Teilen Sie Ihre Erfahrungen und helfen Sie anderen Kunden bei der Auswahl.</p>
               <button
                 onClick={() => setShowReviewForm(true)}
                 className="bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] px-6 py-3 rounded-lg font-bold transition-colors duration-200"
               >
-                Write a Review
+                Bewertung schreiben
               </button>
             </div>
           </div>
@@ -307,8 +307,8 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                 {/* Rating Summary */}
                 <div>
-                  <h2 className="text-2xl font-bold text-[#1E2621] mb-1">What Our Customers Say</h2>
-                  <p className="text-sm text-[#5C6B61] mb-3">Verified reviews on piece condition, authenticity, modern furniture quality, and insured delivery.</p>
+                  <h2 className="text-2xl font-bold text-[#1E2621] mb-1">Was unsere Kunden sagen</h2>
+                  <p className="text-sm text-[#5C6B61] mb-3">Verifizierte Kundenbewertungen zu Qualität, Zustand, Materialverarbeitung und geschützter Speditionslieferung.</p>
                   <div className="flex items-center gap-4">
                     <div className="text-4xl font-bold text-[#1E2621]">{reviewStats.averageRating.toFixed(1)}</div>
                     <div>
@@ -320,7 +320,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                           />
                         ))}
                       </div>
-                      <p className="text-sm text-[#5C6B61] mt-1">Based on {reviewStats.totalReviews} reviews</p>
+                      <p className="text-sm text-[#5C6B61] mt-1">Basierend auf {reviewStats.totalReviews} Bewertungen</p>
                     </div>
                   </div>
                 </div>
@@ -332,7 +332,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     className="bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] px-6 py-3 rounded-lg font-bold transition-colors duration-200 flex items-center gap-2"
                   >
                     <Send className="h-4 w-4" />
-                    Write a Review
+                    Bewertung schreiben
                   </button>
                 </div>
               </div>
@@ -365,7 +365,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                               {review.verified && (
                               <span className="flex items-center text-[#1D2E24] text-xs font-semibold whitespace-nowrap">
                                 <CheckCircle2 className="h-3.5 w-3.5 mr-1 text-[#1D2E24]" />
-                                Verified
+                                Verifizierter Kauf
                               </span>
                             )}
                           </h3>
@@ -492,7 +492,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
               <form onSubmit={handleSubmitReview} className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Name
+                    Ihr Name *
                   </label>
                   <input
                     type="text"
@@ -500,26 +500,26 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
-                    placeholder="Enter your name"
+                    placeholder="Vor- und Nachname"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Order ID
+                    Bestellnummer (optional)
                   </label>
                   <input
                     type="text"
                     value={formData.orderId}
                     onChange={(e) => setFormData({ ...formData, orderId: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
-                    placeholder="Enter your order ID (optional)"
+                    placeholder="z.B. WTX-10293"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Rating
+                    Bewertung *
                   </label>
                   <div className="flex gap-1">
                     {[...Array(5)].map((_, i) => (
@@ -537,7 +537,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Review Title
+                    Titel der Bewertung *
                   </label>
                   <input
                     type="text"
@@ -545,13 +545,13 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
-                    placeholder="Summarize your experience"
+                    placeholder="Kurze Zusammenfassung Ihrer Erfahrung"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Review Content
+                    Ihre Bewertung *
                   </label>
                   <textarea
                     required
@@ -559,18 +559,18 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent resize-none"
-                    placeholder="Share your detailed experience..."
+                    placeholder="Beschreiben Sie die Qualität, Verpackung und Lieferung..."
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Upload Photos (Optional)
+                    Fotos hinzufügen (optional)
                   </label>
                   <div className="space-y-3">
                     <label className="flex items-center justify-center gap-2 px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-[#1D2E24] hover:bg-[#1D2E24]/10 transition-colors duration-200">
                       <Upload className="h-5 w-5 text-gray-500" />
-                      <span className="text-sm text-gray-600">Choose photos to upload</span>
+                      <span className="text-sm text-gray-600">Fotos auswählen</span>
                       <input
                         type="file"
                         accept="image/*"
@@ -598,7 +598,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                                 type="button"
                                 onClick={() => handleRemoveImage(index)}
                                 className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
-                                aria-label="Remove image"
+                                aria-label="Foto entfernen"
                               >
                                 <X className="h-3 w-3" />
                               </button>
@@ -610,12 +610,12 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                     
                     {uploadedImages.length > 0 && uploadedImages.length < 5 && (
                       <p className="text-xs text-gray-500">
-                        {uploadedImages.length} of 5 photos uploaded
+                        {uploadedImages.length} von 5 Fotos hochgeladen
                       </p>
                     )}
                     {uploadedImages.length >= 5 && (
                       <p className="text-xs text-[#b97810]">
-                        Maximum 5 photos allowed
+                        Maximal 5 Fotos erlaubt
                       </p>
                     )}
                   </div>
@@ -635,7 +635,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                       : 'text-gray-700 hover:bg-gray-50'
                   }`}
                 >
-                  Cancel
+                  Abbrechen
                 </button>
                   <button
                     type="submit"
@@ -646,7 +646,7 @@ const HomeReviews: React.FC<HomeReviewsProps> = ({
                         : 'bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] font-bold'
                     }`}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit Review'}
+                    {isSubmitting ? 'Wird gesendet...' : 'Bewertung absenden'}
                   </button>
                 </div>
               </form>

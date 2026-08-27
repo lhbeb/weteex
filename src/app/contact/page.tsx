@@ -100,9 +100,9 @@ export default function ContactPage() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-xl shadow-sm overflow-hidden">
             <div className="p-6 sm:p-8">
-              <h1 className="text-3xl font-bold text-[#262626] mb-2">Contact Us</h1>
+              <h1 className="text-3xl font-bold text-[#262626] mb-2">Kontakt &amp; Kundenservice</h1>
               <p className="text-gray-600 mb-8">
-                Inquiring about an antique piece, modern chair, condition report, custom sourcing, or delivery? Our specialist team is here to assist you.
+                Haben Sie Fragen zu unseren modernen Möbeln, Esstischen, Stühlen, Ihrer Bestellung oder der Speditionslieferung? Unser Kundenservice berät Sie gerne.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Contact Form */}
@@ -110,7 +110,7 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Name
+                        Name *
                       </label>
                       <input
                         type="text"
@@ -121,11 +121,12 @@ export default function ContactPage() {
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
+                        placeholder="Vor- und Nachname"
                       />
                     </div>
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Email
+                        E-Mail-Adresse *
                       </label>
                       <input
                         type="email"
@@ -136,11 +137,12 @@ export default function ContactPage() {
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
+                        placeholder="ihre.email@beispiel.de"
                       />
                     </div>
                     <div>
                       <label htmlFor="contactReason" className="block text-sm font-medium text-gray-700 mb-1">
-                        Why are you contacting us? <span className="text-red-500">*</span>
+                        Grund Ihrer Anfrage <span className="text-red-500">*</span>
                       </label>
                       <select
                         id="contactReason"
@@ -151,20 +153,20 @@ export default function ContactPage() {
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent bg-white"
                         disabled={isSending}
                       >
-                        <option value="">Select a reason</option>
-                        <option value="selling">Antique or furniture sales inquiry</option>
-                        <option value="order-inquiry">Inquiring about an order</option>
-                        <option value="track-order">Track my order</option>
-                        <option value="return-refund">Return or refund request</option>
-                        <option value="product-question">Condition or piece detail question</option>
-                        <option value="partnership">Partnership or trade inquiry</option>
-                        <option value="general">General inquiry</option>
-                        <option value="other">Other</option>
+                        <option value="">Bitte wählen</option>
+                        <option value="selling">Frage zu Möbeln &amp; Stühlen</option>
+                        <option value="order-inquiry">Frage zu einer bestehenden Bestellung</option>
+                        <option value="track-order">Sendungsverfolgung / Lieferstatus</option>
+                        <option value="return-refund">Rückgabe oder Widerruf</option>
+                        <option value="product-question">Material &amp; Maße</option>
+                        <option value="partnership">Gewerbliche Anfragen &amp; Kooperationen</option>
+                        <option value="general">Allgemeine Anfrage</option>
+                        <option value="other">Sonstiges</option>
                       </select>
                     </div>
                     <div>
                       <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                        Subject
+                        Betreff *
                       </label>
                       <input
                         type="text"
@@ -175,11 +177,12 @@ export default function ContactPage() {
                         required
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
+                        placeholder="Worum geht es?"
                       />
                     </div>
                     <div>
                       <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                        Message
+                        Ihre Nachricht *
                       </label>
                       <textarea
                         id="message"
@@ -190,6 +193,7 @@ export default function ContactPage() {
                         rows={4}
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
+                        placeholder="Beschreiben Sie Ihr Anliegen möglichst genau..."
                       />
                     </div>
                     <button
@@ -197,7 +201,7 @@ export default function ContactPage() {
                       className={`w-full bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] font-bold py-3 rounded-lg transition-colors duration-300 ${isSending ? 'opacity-60 cursor-not-allowed' : ''}`}
                       disabled={isSending}
                     >
-                      {isSending ? 'Sending...' : 'Send Message'}
+                      {isSending ? 'Wird gesendet...' : 'Nachricht absenden'}
                     </button>
                     {error && (
                       <div className="mt-2 text-red-600 text-sm">{error}</div>
@@ -206,42 +210,41 @@ export default function ContactPage() {
                 </div>
                 {/* Contact Information */}
                 <div className="bg-[#F6F8F5] p-6 rounded-lg border border-[#DCE5DE]">
-                  <h2 className="text-xl font-bold text-[#1E2621] mb-6">Get in Touch</h2>
+                  <h2 className="text-xl font-bold text-[#1E2621] mb-6">Kontaktdaten</h2>
                   <div className="space-y-6">
                     <div className="flex items-start">
                       <Building2 className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">Business Office</h3>
-                        <p className="text-gray-600 mt-1">Hochalmstraße 10, 81825 München, Bayern, Germany</p>
+                        <h3 className="font-medium text-[#1E2621]">Geschäftsanschrift</h3>
+                        <p className="text-gray-600 mt-1">Hochalmstraße 10, 81825 München, Bayern, Deutschland</p>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <MapPin className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">Brand &amp; Website</h3>
+                        <h3 className="font-medium text-[#1E2621]">Marke &amp; Online-Shop</h3>
                         <p className="text-gray-600 mt-1">Weteextees · Weteextees.com</p>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <MessageSquare className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">Live Chat Support</h3>
-                        <p className="text-gray-600 mt-1"><span className="font-semibold">Availability:</span> 24/7 Online Instant Support</p>
+                        <h3 className="font-medium text-[#1E2621]">Live-Chat-Support</h3>
+                        <p className="text-gray-600 mt-1"><span className="font-semibold">Erreichbarkeit:</span> 24/7 Online-Sofort-Chat</p>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <Mail className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">Email</h3>
+                        <h3 className="font-medium text-[#1E2621]">E-Mail</h3>
                         <p className="text-gray-600 mt-1">contact@weteextees.com</p>
                       </div>
                     </div>
                     <div className="border-t border-gray-200 pt-6">
-                      <h3 className="font-medium text-[#262626] mb-2">Business Hours</h3>
+                      <h3 className="font-medium text-[#262626] mb-2">Servicezeiten</h3>
                       <ul className="text-gray-600 space-y-1">
-                        <li>Monday - Friday: 9:00 AM - 5:00 PM GMT/BST</li>
-                        <li>Saturday: By appointment</li>
-                        <li>Sunday: Closed</li>
+                        <li>Montag – Freitag: 09:00 – 17:00 Uhr (MEZ)</li>
+                        <li>Live-Chat: 24 Stunden, 7 Tage die Woche besetzt</li>
                       </ul>
                     </div>
                   </div>
@@ -253,8 +256,8 @@ export default function ContactPage() {
       </div>
       {/* Success Message */}
       {showSuccess && (
-        <div className="fixed bottom-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg">
-          Your message has been sent successfully!
+        <div className="fixed bottom-4 right-4 bg-[#1D2E24] text-white px-6 py-3 rounded-lg shadow-lg">
+          Ihre Nachricht wurde erfolgreich versendet!
         </div>
       )}
     </div>

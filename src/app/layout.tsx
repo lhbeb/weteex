@@ -23,9 +23,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Weteextees - Transform Your Home with Timeless Furniture",
-  description: "Discover premium-quality furniture designed to bring comfort, elegance, and style to every room. Shop modern, classic, and space-saving pieces crafted to enhance your living experience.",
-  keywords: "Weteextees, Weteextees.com, timeless furniture, modern furniture, modern chairs, authentic antiques, space-saving furniture, living room decor, premium furniture",
+  title: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
+  description: "Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke für Ihr Zuhause.",
+  keywords: "Weteextees, Weteextees.com, zeitlose Möbel, moderne Möbel, Esszimmerstühle, Rattanmöbel, platzsparende Möbel, Wohnzimmermöbel, Premium-Möbel Deutschland",
   authors: [{ name: "Weteextees" }],
   creator: "Weteextees",
   publisher: "Weteextees",
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://weteextees.com"),
   openGraph: {
-    title: "Weteextees - Transform Your Home with Timeless Furniture",
-    description: "Discover premium-quality furniture designed to bring comfort, elegance, and style to every room. Shop modern, classic, and space-saving pieces crafted to enhance your living experience.",
+    title: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
+    description: "Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke für Ihr Zuhause.",
     url: "https://weteextees.com",
     siteName: "Weteextees",
     images: [
@@ -45,16 +45,16 @@ export const metadata: Metadata = {
         url: "/bg.png",
         width: 1608,
         height: 969,
-        alt: "Weteextees - Transform Your Home with Timeless Furniture",
+        alt: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
       },
     ],
-    locale: "en_US",
+    locale: "de_DE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Weteextees - Transform Your Home with Timeless Furniture",
-    description: "Discover premium-quality furniture designed to bring comfort, elegance, and style to every room. Shop modern, classic, and space-saving pieces crafted to enhance your living experience.",
+    title: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
+    description: "Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke für Ihr Zuhause.",
     images: ["/bg.png"],
   },
   robots: {
@@ -76,7 +76,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="de" className={dmSans.variable}>
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" sizes="200x200" />
         <link rel="preload" href="/weteex-machines-logo.svg" as="image" type="image/svg+xml" />
@@ -108,7 +108,7 @@ export default function RootLayout({
                 "name": "Weteextees",
                 "url": "https://weteextees.com",
                 "logo": "https://weteextees.com/weteex-machines-logo.svg",
-                "description": "Weteextees is your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
+                "description": "Weteextees ist Ihre Adresse für hochwertige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
                 "sameAs": [
                   "https://www.tiktok.com/@weteexmachines",
                   "https://www.instagram.com/weteexmachines_official/",

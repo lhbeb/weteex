@@ -84,9 +84,9 @@ export default function AboutPage() {
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-[#1D2E24] to-[#142019] text-[#F6F8F5] py-16 border-b border-[#D1A966]/20">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h1 className="text-5xl font-bold mb-6 text-[#F6F8F5]">About Weteextees</h1>
+          <h1 className="text-5xl font-bold mb-6 text-[#F6F8F5]">Über Weteextees</h1>
           <p className="text-xl text-[#F6F8F5]/90 leading-relaxed max-w-3xl mx-auto">
-            Weteextees is your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces. We connect design enthusiasts and collectors with exceptional craftsmanship.
+            Weteextees ist Ihre Adresse für handverlesene moderne Stühle, edle Massivholz- und Rattanmöbel, Designtische und zeitlose Wohnkultur. Wir verbinden Designliebhaber mit meisterhafter Handwerkskunst.
           </p>
         </div>
       </div>
@@ -99,17 +99,17 @@ export default function AboutPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#1D2E24] text-[#D1A966]">
                 <MapPin className="h-6 w-6" />
               </div>
-              <h2 className="mt-4 text-2xl font-bold text-[#1E2621]">Proudly UK-based</h2>
+              <h2 className="mt-4 text-2xl font-bold text-[#1E2621]">Standort München</h2>
             </div>
             <div className="space-y-4 text-base leading-7 text-gray-700">
               <p>
-                Weteextees is a dedicated online destination specializing in curated antiques, fine modern seating, and rare vintage decor.
+                Weteextees ist ein spezialisierter Online-Shop für hochwertige moderne Möbelstücke, ergonomische Sitzmöbel und langlebige Design-Esstische.
               </p>
               <p>
-                Our office is located at Hochalmstraße 10, 81825 München, Bayern, Germany. Deliveries and viewings for specialty pieces are arranged with care.
+                Unsere Geschäftsanschrift befindet sich in der Hochalmstraße 10, 81825 München, Bayern, Deutschland. Alle Möbelstücke werden sorgfältig geprüft und transportsicher versendet.
               </p>
               <Link href="/contact" className="inline-flex font-semibold text-[#1D2E24] hover:text-[#D1A966] hover:underline">
-                Contact our curation team
+                Kontakt zu unserem Serviceteam
               </Link>
             </div>
           </div>
@@ -118,10 +118,10 @@ export default function AboutPage() {
         {/* How We Curate */}
         <div className="bg-white rounded-2xl shadow-lg border border-[#DCE5DE] p-8 mb-12">
           <div className="mb-6">
-            <h2 className="text-3xl font-bold text-[#1E2621]">Our Philosophy &amp; Curation Approach</h2>
+            <h2 className="text-3xl font-bold text-[#1E2621]">Unsere Philosophie &amp; Qualitätsanspruch</h2>
           </div>
           <p className="text-gray-700 mb-8 text-lg">
-            We believe that extraordinary living spaces are built on a harmonious dialogue between historic character and modern innovation. Every piece in our collection is hand-selected for authenticity, design value, and enduring aesthetic appeal.
+            Wir glauben, dass ein schönes Zuhause auf der perfekten Harmonie zwischen natürlicher Materialästhetik, erstklassiger Ergonomie und handwerklicher Präzision beruht. Jedes Möbelstück in unserem Sortiment wird mit größter Sorgfalt ausgewählt.
           </p>
 
           <div className="space-y-6">
@@ -131,9 +131,9 @@ export default function AboutPage() {
                   1
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Authentic Antiques</h3>
+                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Moderne Esszimmerstühle &amp; Sessel</h3>
                   <p className="text-gray-700">
-                    Rare historical furnishings, carved woodwork, and heritage pieces sourced from vetted estates, collectors, and artisanal workshops with verified provenance.
+                    Ergonomische, formschöne Stühle mit Stoffbezügen, Bouclé-Polsterung und massiven Holzgestellen für höchsten Sitzkomfort.
                   </p>
                 </div>
               </div>
@@ -145,9 +145,9 @@ export default function AboutPage() {
                   2
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Modern Chairs &amp; Furniture</h3>
+                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Naturrattan &amp; Massivholz</h3>
                   <p className="text-gray-700">
-                    Contemporary ergonomic chairs, sleek statement tables, and architectural accent pieces crafted with premium materials and timeless silhouettes.
+                    Handgeflochtene Wiener-Geflecht- und Rattan-Elemente, kombiniert mit Eichen-, Akazien- und Walnussholz für natürliche Eleganz.
                   </p>
                 </div>
               </div>
@@ -159,9 +159,9 @@ export default function AboutPage() {
                   3
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Unique Vintage Collectibles</h3>
+                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Esstische &amp; Couchtische</h3>
                   <p className="text-gray-700">
-                    Carefully preserved design artifacts, limited-run collectibles, and retro showpieces that bring history and distinct individuality to your collection.
+                    Hochwertige Tische aus massivem Holz, Marmor und Keramik, die zum Mittelpunkt jedes Wohn- und Essbereichs werden.
                   </p>
                 </div>
               </div>
@@ -173,9 +173,9 @@ export default function AboutPage() {
                   4
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">One-of-a-Kind Decorative Pieces</h3>
+                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Transparente Produktangaben</h3>
                   <p className="text-gray-700">
-                    Artistic vases, sculptural lighting, hand-blown glass, ceramics, and handcrafted ornaments designed to elevate any interior aesthetic.
+                    Detaillierte Maßangaben, Materialbeschreibungen und hochauflösende Fotografien für jedes einzelne Möbelstück.
                   </p>
                 </div>
               </div>
@@ -187,9 +187,9 @@ export default function AboutPage() {
                   5
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Transparent Condition &amp; Provenance</h3>
+                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Sicherer &amp; versicherter Transport</h3>
                   <p className="text-gray-700">
-                    We provide high-resolution photography, accurate measurements, era assessments, and comprehensive condition notes for every listed piece.
+                    Spezialverpackung und zuverlässige Logistikpartner stellen sicher, dass Ihre Bestellung unversehrt bei Ihnen eintrifft.
                   </p>
                 </div>
               </div>
@@ -202,12 +202,12 @@ export default function AboutPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D1A966]/20 text-[#D1A966] rounded-full mb-6">
             <Target className="h-8 w-8" />
           </div>
-          <h2 className="text-3xl font-bold mb-4 text-[#D1A966]">Our Mission</h2>
+          <h2 className="text-3xl font-bold mb-4 text-[#D1A966]">Unsere Mission</h2>
           <p className="text-xl text-[#F6F8F5]/90 mb-4">
-            To provide interior lovers, collectors, and discerning homeowners with exceptional antique and modern pieces that inspire and endure.
+            Wohnräume mit zeitlos schönen, langlebigen und stilvollen Möbeln zu bereichern, die durch Qualität und Ästhetik begeistern.
           </p>
           <p className="text-lg text-[#F6F8F5]/85">
-            Whether you are curating a single statement modern chair or searching for a century-old antique heirloom, our commitment is to provide unmatched authenticity, quality, and white-glove customer care.
+            Vom einzelnen Esszimmerstuhl bis zur kompletten Essgruppe garantieren wir erstklassige Verarbeitung, faire Preise und einen zuvorkommenden Kundenservice.
           </p>
         </div>
 
@@ -217,48 +217,48 @@ export default function AboutPage() {
             <div className="p-3 bg-[#D1A966] rounded-xl">
               <Sparkles className="h-8 w-8 text-[#142019]" />
             </div>
-            <h2 className="text-3xl font-bold text-[#1E2621]">What Makes Us Different</h2>
+            <h2 className="text-3xl font-bold text-[#1E2621]">Was uns auszeichnet</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <Package className="h-6 w-6 text-[#1D2E24]" />
-                <h3 className="text-xl font-bold text-[#1E2621]">Expertly Curated</h3>
+                <h3 className="text-xl font-bold text-[#1E2621]">Kuratierte Auswahl</h3>
               </div>
-              <p className="text-gray-700">Every item is individually selected and authenticated by knowledgeable specialists passionate about design and history.</p>
+              <p className="text-gray-700">Jedes Modell wird hinsichtlich Verarbeitung, Stabilität und Designästhetik gründlich geprüft.</p>
             </div>
 
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <Eye className="h-6 w-6 text-[#1D2E24]" />
-                <h3 className="text-xl font-bold text-[#1E2621]">Accurate Details</h3>
+                <h3 className="text-xl font-bold text-[#1E2621]">Genaue Details</h3>
               </div>
-              <p className="text-gray-700">We disclose historical eras, material compositions, patina, dimensions, and condition characteristics transparently.</p>
+              <p className="text-gray-700">Wir nennen Materialien, Holzarten, Abmessungen und Pflegehinweise klar und verständlich.</p>
             </div>
 
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <DollarSign className="h-6 w-6 text-[#1D2E24]" />
-                <h3 className="text-xl font-bold text-[#1E2621]">Fair Direct Pricing</h3>
+                <h3 className="text-xl font-bold text-[#1E2621]">Faire Direktpreise</h3>
               </div>
-              <p className="text-gray-700">By streamlining sourcing and operating online, we offer authentic antiques and designer modern furniture at accessible rates.</p>
+              <p className="text-gray-700">Durch den Verzicht auf Zwischenhändler bieten wir erstklassige Designmöbel zu attraktiven Preisen an.</p>
             </div>
 
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <Headphones className="h-6 w-6 text-[#1D2E24]" />
-                <h3 className="text-xl font-bold text-[#1E2621]">White-Glove Support</h3>
+                <h3 className="text-xl font-bold text-[#1E2621]">Rundum-Service</h3>
               </div>
-              <p className="text-gray-700">From pre-purchase consultations to custom protective packing and insured tracked shipping, we ensure peace of mind.</p>
+              <p className="text-gray-700">Von der Beratung bis zur sicheren Speditionslieferung sind wir jederzeit für Sie erreichbar.</p>
             </div>
 
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE] md:col-span-2">
               <div className="flex items-center gap-3 mb-3">
                 <Leaf className="h-6 w-6 text-[#1D2E24]" />
-                <h3 className="text-xl font-bold text-[#1E2621]">Sustainable Heritage</h3>
+                <h3 className="text-xl font-bold text-[#1E2621]">Langlebige Materialien</h3>
               </div>
-              <p className="text-gray-700">Investing in authentic vintage and antique furniture preserves heirloom craftsmanship and supports sustainable, circular design.</p>
+              <p className="text-gray-700">Massivholz und Naturgeflecht sind nachhaltige Werkstoffe, die über viele Jahre Freude bereiten.</p>
             </div>
           </div>
         </div>
@@ -269,7 +269,7 @@ export default function AboutPage() {
             <div className="p-3 bg-[#D1A966] rounded-xl">
               <Heart className="h-8 w-8 text-[#142019]" />
             </div>
-            <h2 className="text-3xl font-bold text-[#1E2621]">Our Values</h2>
+            <h2 className="text-3xl font-bold text-[#1E2621]">Unsere Werte</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -277,48 +277,48 @@ export default function AboutPage() {
               <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#D1A966]">
                 <Shield className="h-8 w-8 text-[#142019]" />
               </div>
-              <h3 className="font-bold text-[#1E2621] text-lg">Authenticity</h3>
+              <h3 className="font-bold text-[#1E2621] text-lg">Qualität</h3>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 text-center border border-[#DCE5DE]">
               <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#D1A966]">
                 <Award className="h-8 w-8 text-[#142019]" />
               </div>
-              <h3 className="font-bold text-[#1E2621] text-lg">Artisanship</h3>
+              <h3 className="font-bold text-[#1E2621] text-lg">Handwerk</h3>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 text-center border border-[#DCE5DE]">
               <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#D1A966]">
                 <Users className="h-8 w-8 text-[#142019]" />
               </div>
-              <h3 className="font-bold text-[#1E2621] text-lg">Collector Trust</h3>
+              <h3 className="font-bold text-[#1E2621] text-lg">Vertrauen</h3>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 text-center border border-[#DCE5DE]">
               <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-[#D1A966]">
                 <Zap className="h-8 w-8 text-[#142019]" />
               </div>
-              <h3 className="font-bold text-[#1E2621] text-lg">Design Excellence</h3>
+              <h3 className="font-bold text-[#1E2621] text-lg">Design</h3>
             </div>
           </div>
         </div>
 
         {/* Company Highlights */}
         <div className="bg-gradient-to-r from-[#1D2E24] to-[#142019] rounded-2xl shadow-lg p-10 mb-12 text-[#F6F8F5] border border-[#D1A966]/20">
-          <h3 className="text-3xl font-bold mb-8 text-center text-[#D1A966]">Our Commitment</h3>
+          <h3 className="text-3xl font-bold mb-8 text-center text-[#D1A966]">Unser Versprechen</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
               <div className="text-4xl font-bold mb-2 text-[#D1A966]">100%</div>
-              <div className="text-[#F6F8F5]/80 text-sm">authenticated pieces</div>
+              <div className="text-[#F6F8F5]/80 text-sm">Geprüfte Qualität</div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-              <div className="text-4xl font-bold mb-2 text-[#D1A966]">UK</div>
-              <div className="text-[#F6F8F5]/80 text-sm">based studio</div>
+              <div className="text-4xl font-bold mb-2 text-[#D1A966]">DE</div>
+              <div className="text-[#F6F8F5]/80 text-sm">Standort München</div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-              <div className="text-4xl font-bold mb-2 text-[#D1A966]">White-Glove</div>
-              <div className="text-[#F6F8F5]/80 text-sm">insured delivery</div>
+              <div className="text-4xl font-bold mb-2 text-[#D1A966]">Kostenlos</div>
+              <div className="text-[#F6F8F5]/80 text-sm">Versicherter Versand</div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-              <div className="text-4xl font-bold mb-2 text-[#D1A966]">Curated</div>
-              <div className="text-[#F6F8F5]/80 text-sm">furniture &amp; decor</div>
+              <div className="text-4xl font-bold mb-2 text-[#D1A966]">30 Tage</div>
+              <div className="text-[#F6F8F5]/80 text-sm">Rückgaberecht</div>
             </div>
           </div>
         </div>
@@ -329,48 +329,47 @@ export default function AboutPage() {
             <div className="p-3 bg-[#1D2E24]/10 rounded-xl">
               <MessageSquare className="h-8 w-8 text-[#1D2E24]" />
             </div>
-            <h3 className="text-2xl font-bold text-[#1E2621]">Contact Information</h3>
+            <h3 className="text-2xl font-bold text-[#1E2621]">Kontakt &amp; Impressum-Angaben</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <MapPin className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Office Address</div>
+                <div className="font-medium text-[#1E2621]">Geschäftsanschrift</div>
               </div>
-              <div className="text-gray-600 ml-8">Hochalmstraße 10, 81825 München, Bayern, Germany</div>
+              <div className="text-gray-600 ml-8">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <MapPin className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Brand &amp; Store</div>
+                <div className="font-medium text-[#1E2621]">Marke &amp; Online-Shop</div>
               </div>
               <div className="text-gray-600 ml-8">Weteextees · Weteextees.com</div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <MessageSquare className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Live Chat</div>
+                <div className="font-medium text-[#1E2621]">Live-Chat</div>
               </div>
               <div className="ml-8 text-gray-600">
-                24/7 Online Instant Support
+                24/7 Online-Sofort-Chat verfügbar
               </div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <Mail className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Email:</div>
+                <div className="font-medium text-[#1E2621]">E-Mail:</div>
               </div>
               <div className="text-gray-600 ml-8">contact@weteextees.com</div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <Clock className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Business Hours:</div>
+                <div className="font-medium text-[#1E2621]">Bürozeiten:</div>
               </div>
               <div className="text-gray-600 ml-8 space-y-1">
-                <div>Monday to Friday, 9:00 AM to 5:00 PM GMT/BST</div>
-                <div>Saturday, by appointment</div>
-                <div>Sunday, Closed</div>
+                <div>Montag bis Freitag, 09:00 bis 17:00 Uhr (MEZ)</div>
+                <div>Live-Chat: Rund um die Uhr (24/7) besetzt</div>
               </div>
             </div>
           </div>

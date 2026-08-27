@@ -13,7 +13,7 @@ const Hero = () => {
     const element = typingTextRef.current;
     if (!element) return;
 
-    const words = ['Modern Chairs & Furniture', 'Authentic Antiques', 'Space-Saving Designs', 'Timeless Elegance'];
+    const words = ['Moderne Stühle & Möbel', 'Massivholz & Rattan', 'Elegante Esstische', 'Zeitlose Wohnkultur'];
     let isAnimating = true;
     let currentIndex = 0;
 
@@ -82,13 +82,13 @@ const Hero = () => {
                 {placeholder}
               </span>
               <span className="block leading-tight">
-                Transform Your Home with Timeless Furniture
+                Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln
               </span>
             </h1>
 
             {/* Description */}
             <p className="mt-4 max-w-[580px] text-sm leading-relaxed text-[#F6F8F5]/85 md:text-base">
-              Discover premium-quality furniture designed to bring comfort, elegance, and style to every room. Shop modern, classic, and space-saving pieces crafted to enhance your living experience.
+              Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke, die Ihr Wohnerlebnis bereichern.
             </p>
 
             {/* Shop Now Button */}
@@ -96,7 +96,7 @@ const Hero = () => {
               href="#products"
               className="mt-6 inline-flex w-fit items-center justify-center rounded-lg bg-[#D1A966] px-7 py-3 text-sm font-bold text-[#142019] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#DEBC80] hover:shadow-lg"
             >
-              Shop Timeless Furniture
+              Möbelkollektion entdecken
             </a>
           </div>
 

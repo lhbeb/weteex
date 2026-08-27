@@ -635,13 +635,13 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         <div className="flex items-center text-[#1D2E24]">
                           <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-1.5 text-[#D1A966]" />
                           <span className="text-xs sm:text-sm font-medium">
-                            {viewedCount.toLocaleString()} viewed in the last 24 hours
+                            {viewedCount.toLocaleString()} in den letzten 24 Stunden angesehen
                           </span>
                         </div>
                       </div>
                       <div className="flex items-center">
                         <div className="w-2 h-2 bg-[#D1A966] rounded-full animate-pulse mr-2"></div>
-                        <span className="text-xs text-[#1D2E24] font-medium hidden sm:inline">Live activity</span>
+                        <span className="text-xs text-[#1D2E24] font-medium hidden sm:inline">Live-Aktivität</span>
                       </div>
                     </div>
                   </div>
@@ -653,7 +653,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                 <div ref={sizeSelectorRef} className="mt-6 border-t border-[#DCE5DE] pt-6">
                   <div className="flex items-center justify-between mb-3">
                     <label className="text-sm font-bold text-[#1E2621] uppercase tracking-wide flex items-center gap-1.5">
-                      <Ruler className="h-4 w-4 text-[#5C6B61]" /> Select Size <span className="text-red-500 font-bold">*</span>
+                      <Ruler className="h-4 w-4 text-[#5C6B61]" /> Größe / Variante wählen <span className="text-red-500 font-bold">*</span>
                     </label>
                   </div>
 
@@ -671,7 +671,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                           selectedSizeRange === 'mens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'
                         }`}
                       >
-                        Men&apos;s Sizing
+                        Standard
                       </button>
                       <button
                         type="button"
@@ -684,7 +684,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                           selectedSizeRange === 'womens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'
                         }`}
                       >
-                        Women&apos;s Sizing
+                        Kompakt
                       </button>
                     </div>
                   )}
@@ -698,30 +698,33 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                           setSelectedSize(size);
                           setSizeError(false);
                         }}
-                        className={`py-3 px-2 text-sm font-semibold rounded-xl border-2 transition-all duration-200 ${
+                        type="button"
+                        className={`py-3 px-2 rounded-xl text-sm font-bold border transition-all duration-200 ${
                           selectedSize === size
-                            ? 'bg-[#1D2E24] border-[#1D2E24] text-[#F6F8F5] shadow-md transform scale-[1.02]'
-                            : sizeError
-                            ? 'bg-red-50 border-red-200 text-red-700 hover:border-red-300'
-                            : 'bg-white border-[#DCE5DE] text-gray-700 hover:border-[#1D2E24] hover:bg-[#F6F8F5]'
+                            ? 'border-[#1D2E24] bg-[#1D2E24] text-[#F6F8F5] shadow-sm'
+                            : 'border-[#DCE5DE] bg-white text-[#1E2621] hover:border-[#1D2E24] hover:bg-[#F6F8F5]'
                         }`}
                       >
                         {size}
                       </button>
                     ))}
                   </div>
+                  {sizeError && (
+                    <p className="mt-2 text-xs font-semibold text-red-500">
+                      Bitte wählen Sie eine Größe / Variante aus.
+                    </p>
+                  )}
                 </div>
               )}
 
-              {/* Mobile Sticky Buttons */}
-              <div className="lg:mt-8 lg:space-y-3 fixed bottom-0 left-0 right-0 z-50 lg:relative lg:z-auto bg-white border-t border-gray-200 lg:border-0 lg:bg-transparent px-4 py-3 lg:px-0 lg:py-0 shadow-lg lg:shadow-none lg:space-y-3 space-y-2">
-                {product && product.inStock === false ? (
-                  /* Sold Out / Offer Expired Message */
+              {/* Action Buttons Section */}
+              <div className="mt-8 space-y-3">
+                {product && (product.inStock === false || product.checkoutLink === '#') ? (
                   <div className="w-full bg-gray-100 rounded-lg py-3 px-4 text-center">
                     <p className="text-sm text-gray-600">
                       {product.checkoutLink === '#'
-                        ? 'Sorry, this offer has expired'
-                        : 'Sorry, this product is sold out'}
+                        ? 'Dieses Angebot ist leider abgelaufen'
+                        : 'Dieses Produkt ist derzeit leider ausverkauft'}
                     </p>
                   </div>
                 ) : (
@@ -732,7 +735,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         onClick={handleShare}
                         className="lg:hidden flex-shrink-0 w-14 h-14 bg-[#F6F8F5] hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors duration-200 group border border-[#DCE5DE]"
                         style={{ color: '#5C6B61' }}
-                        aria-label="Share product"
+                        aria-label="Produkt teilen"
                       >
                         <svg className="h-6 w-6 group-hover:opacity-80 transition-opacity" fill="currentColor" fillRule="nonzero" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                           <path d="M4.86197 3.52794L7.52828 0.861631L7.53151 0.858423C7.59476 0.795922 7.6674 0.748648 7.74485 0.716601C7.82346 0.684006 7.90965 0.666016 8.00004 0.666016C8.18414 0.666016 8.3508 0.740635 8.47145 0.861278L11.1381 3.52794C11.3985 3.78829 11.3985 4.2104 11.1381 4.47075C10.8778 4.7311 10.4557 4.7311 10.1953 4.47075L8.66671 2.94216V10.666C8.66671 11.0342 8.36823 11.3327 8.00004 11.3327C7.63185 11.3327 7.33337 11.0342 7.33337 10.666V2.94216L5.80478 4.47075C5.54443 4.7311 5.12232 4.7311 4.86197 4.47075C4.60162 4.2104 4.60162 3.78829 4.86197 3.52794Z"></path>
@@ -740,58 +743,26 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         </svg>
                       </button>
                       <button onClick={handleAddToCart} disabled={isAddingToCart || isBuyingNow} className="flex-1 lg:w-full bg-[#1D2E24] hover:bg-[#142019] text-[#F6F8F5] py-3 lg:py-4 px-6 rounded-xl font-bold transition-colors duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base shadow-sm">
-                        {isAddingToCart ? <><div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#D1A966] mr-2"></div>Adding to Cart...</> : <><ShoppingCart className="h-5 w-5 mr-2 text-[#D1A966]" />Add to Cart</>}
+                        {isAddingToCart ? <><div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#D1A966] mr-2"></div>Wird hinzugefügt...</> : <><ShoppingCart className="h-5 w-5 mr-2 text-[#D1A966]" />In den Warenkorb</>}
                       </button>
                     </div>
-                    {(product.checkoutFlow === 'paypal-invoice' || product.checkoutFlow === 'paypal-unclaimed' || product.checkoutFlow === 'paypal-direct' || product.checkoutFlow === 'paypal-api') ? (
-                      <div className="hidden lg:flex flex-col gap-1.5">
-                        <button
-                          onClick={handleBuyNow}
-                          disabled={isAddingToCart || isBuyingNow}
-                          className="w-full py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-95 active:scale-[0.98] bg-[#D1A966] text-[#142019]"
-                          aria-label="Checkout with PayPal"
-                        >
-                          {isBuyingNow ? (
-                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#142019]" />
-                          ) : (
-                            <Image
-                              src="/PayPal-checkout.png"
-                              alt="PayPal Checkout"
-                              width={150}
-                              height={24}
-                              className="h-6 w-auto object-contain"
-                            />
-                          )}
-                        </button>
-                        <p className="flex items-center justify-center gap-1.5 text-[11px] text-gray-400 font-medium tracking-wide">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-gray-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                          </svg>
-                          {(product.checkoutFlow === 'paypal-invoice' || product.checkoutFlow === 'paypal-unclaimed')
-                            ? "Secure & protected — you'll receive a PayPal invoice by email to complete payment"
-                            : 'Secure & protected — pay instantly with your PayPal account'
-                          }
-                        </p>
-                      </div>
-                    ) : (
-                      <button
-                        onClick={handleBuyNow}
-                        disabled={isAddingToCart || isBuyingNow}
-                        className="hidden lg:flex w-full bg-transparent border-2 border-[#1D2E24] hover:border-[#142019] text-[#1D2E24] hover:text-[#142019] hover:bg-[#1D2E24]/5 py-4 px-6 rounded-xl font-bold transition-colors duration-200 items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        {isBuyingNow ? (
-                          <>
-                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#1D2E24] mr-2"></div>
-                            Processing...
-                          </>
-                        ) : (
-                          <>
-                            <Zap className="h-5 w-5 mr-2 text-[#D1A966]" />
-                            Buy Now
-                          </>
-                        )}
-                      </button>
-                    )}
+                    <button
+                      onClick={handleBuyNow}
+                      disabled={isAddingToCart || isBuyingNow}
+                      className="hidden lg:flex w-full bg-transparent border-2 border-[#1D2E24] hover:border-[#142019] text-[#1D2E24] hover:text-[#142019] hover:bg-[#1D2E24]/5 py-4 px-6 rounded-xl font-bold transition-colors duration-200 items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isBuyingNow ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#1D2E24] mr-2"></div>
+                          Wird geladen...
+                        </>
+                      ) : (
+                        <>
+                          <Zap className="h-5 w-5 mr-2 text-[#D1A966]" />
+                          Sofort kaufen
+                        </>
+                      )}
+                    </button>
                   </>
                 )}
               </div>
@@ -800,7 +771,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                 <ClientOnly><ShippingInfo targetMarket={product?.meta?.targetMarket} /></ClientOnly>
               </div>
               <div className="mt-8 lg:hidden">
-                <h2 className="text-xl font-bold text-[#1E2621] mb-4">Item Description from the Seller</h2>
+                <h2 className="text-xl font-bold text-[#1E2621] mb-4">Artikelbeschreibung</h2>
                 <div className="rounded-[20px] border border-[#DCE5DE] bg-white px-5 py-5">
                   <p className="whitespace-pre-line text-sm leading-7 text-[#5C6B61]">
                     {showFullDescription ? descriptionText : descriptionPreview}
@@ -811,7 +782,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                       onClick={() => setShowFullDescription((current) => !current)}
                       className="mt-4 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
                     >
-                      {showFullDescription ? "Show less" : "Show more"}
+                      {showFullDescription ? "Weniger anzeigen" : "Mehr anzeigen"}
                     </button>
                   )}
                 </div>
@@ -821,7 +792,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
 
           <div className="mt-12 hidden lg:block">
             <section className="rounded-[24px] border border-[#DCE5DE] bg-white px-8 py-8">
-              <h2 className="text-2xl font-bold text-[#1E2621]">Item Description from the Seller</h2>
+              <h2 className="text-2xl font-bold text-[#1E2621]">Artikelbeschreibung</h2>
               <p className="mt-4 whitespace-pre-line text-[15px] leading-8 text-[#5C6B61]">
                 {showFullDescription ? descriptionText : descriptionPreview}
               </p>
@@ -831,7 +802,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                   onClick={() => setShowFullDescription((current) => !current)}
                   className="mt-5 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
                 >
-                  {showFullDescription ? "Show less" : "Show more"}
+                  {showFullDescription ? "Weniger anzeigen" : "Mehr anzeigen"}
                 </button>
               )}
             </section>
@@ -841,9 +812,9 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
           <div className="mt-16 w-full">
             <section className="rounded-[24px] border border-[#DCE5DE] bg-white">
               <div className="border-b border-[#DCE5DE] px-6 py-6 sm:px-8">
-                <h2 className="text-2xl font-bold text-[#1E2621]">Frequently Asked Questions</h2>
+                <h2 className="text-2xl font-bold text-[#1E2621]">Häufig gestellte Fragen (FAQ)</h2>
                 <p className="mt-2 max-w-2xl text-sm leading-7 text-[#5C6B61]">
-                  Quick answers to the things shoppers usually want to know before placing an order.
+                  Antworten auf die wichtigsten Fragen zu Versand, Qualität, Bezahlung und Rückgabe.
                 </p>
               </div>
 

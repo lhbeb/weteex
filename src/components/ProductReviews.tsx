@@ -72,7 +72,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
 
   const formatDate = (dateString: string) => {
     try {
-      return new Date(dateString).toLocaleDateString('en-US', {
+      return new Date(dateString).toLocaleDateString('de-DE', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
@@ -105,26 +105,13 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
     };
   }, [selectedImage]);
 
-  // If no reviews, show a message
   if (reviews.length === 0) {
-    return (
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100">
-        <div className="p-8 text-center">
-          <div className="flex justify-center mb-4">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="h-8 w-8 text-gray-300" />
-            ))}
-          </div>
-          <h3 className="text-xl font-semibold text-[#262626] mb-2">No Reviews Yet</h3>
-          <p className="text-gray-600">Be the first to share your experience with this machine.</p>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   return (
     <>
-      <div className="bg-white rounded-xl shadow-sm border border-[#DCE5DE]">
+      <div className="bg-white rounded-xl shadow-sm border border-[#DCE5DE] overflow-hidden">
         {/* Reviews Header */}
         <div className="border-b border-gray-200 p-6">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
@@ -133,7 +120,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
               <h2 className="text-2xl font-bold text-[#1E2621] mb-2">
                 {sellerName && sellerUsername ? (
                   <>
-                    Reviews from{' '}
+                    Bewertungen zu Angeboten von{' '}
                     <Link
                       href={`/sellers/${sellerUsername}`}
                       className="text-[#1D2E24] hover:text-[#D1A966] hover:underline inline-flex items-center gap-1"
@@ -141,10 +128,9 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                       {sellerName}
                       <ExternalLink className="h-4 w-4" />
                     </Link>
-                    &apos;s listings
                   </>
                 ) : (
-                  'Reviews from this listing or similar other listings on Weteextees'
+                  'Kundenbewertungen zu diesem und ähnlichen Möbelstücken auf Weteextees'
                 )}
               </h2>
               <div className="flex items-center gap-4">
@@ -158,7 +144,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                       />
                     ))}
                   </div>
-                  <p className="text-sm text-[#5C6B61] mt-1">Based on {totalReviews} reviews</p>
+                  <p className="text-sm text-[#5C6B61] mt-1">Basierend auf {totalReviews} Bewertungen</p>
                 </div>
               </div>
             </div>
@@ -185,18 +171,18 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
         <div className="border-b border-gray-200 p-4">
           <div className="flex items-center justify-between">
             <span className="text-sm text-[#5C6B61]">
-              Showing {sortedReviews.length} of {totalReviews} reviews
+              Zeige {sortedReviews.length} von {totalReviews} Bewertungen
             </span>
             <div className="relative">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
+                className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent text-sm"
               >
-                <option value="recent">Most Recent</option>
-                <option value="helpful">Most Helpful</option>
-                <option value="highest">Highest Rated</option>
-                <option value="lowest">Lowest Rated</option>
+                <option value="recent">Neueste zuerst</option>
+                <option value="helpful">Hilfreichste zuerst</option>
+                <option value="highest">Beste Bewertung</option>
+                <option value="lowest">Niedrigste Bewertung</option>
               </select>
               <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 pointer-events-none text-gray-400" />
             </div>
@@ -233,7 +219,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
                         {review.verified && (
                           <span className="flex items-center text-[#1D2E24] font-semibold text-sm">
                             <CheckCircle2 className="h-4 w-4 mr-1 text-[#1D2E24]" />
-                            Verified Purchase
+                            Verifizierter Kauf
                           </span>
                         )}
                       </h3>

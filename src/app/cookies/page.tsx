@@ -3,52 +3,45 @@ import React from 'react';
 const CookiesPage = () => (
   <div className="min-h-screen flex flex-col bg-gray-50 py-12">
     <div className="container mx-auto px-4 max-w-4xl">
-      <h1 className="text-4xl font-bold text-[#262626] mb-8">Cookies Policy</h1>
+      <h1 className="text-4xl font-bold text-[#262626] mb-8">Cookie-Richtlinie</h1>
       
       <div className="prose max-w-none text-gray-700 space-y-8">
         {/* Introduction */}
         <p className="text-lg leading-relaxed">
-          This Cookies Policy explains how Weteextees (Weteextees.com) uses cookies and similar technologies. We ask for consent before placing non-essential cookies; strictly necessary cookies may be used without consent where permitted by law.
+          Diese Cookie-Richtlinie erläutert, wie Weteextees (Weteextees.com) Cookies und ähnliche Technologien einsetzt, um Ihnen ein optimales Einkaufserlebnis zu ermöglichen.
         </p>
 
         {/* What Are Cookies */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">What Are Cookies</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Was sind Cookies?</h2>
           <p>
-            Cookies are small text files stored on your computer or mobile device when you visit a website. They help websites function properly, improve performance, and provide valuable information to site owners.
+            Cookies sind kleine Textdateien, die beim Besuch einer Website auf Ihrem Endgerät gespeichert werden. Sie dienen dazu, grundlegende Funktionen des Shops (wie den Warenkorb) bereitzustellen und die Website-Nutzung zu optimieren.
           </p>
         </div>
 
         {/* Types of Cookies We Use */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Types of Cookies We Use</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Arten der von uns verwendeten Cookies</h2>
           
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Essential Cookies</h3>
+              <h3 className="text-xl font-bold text-[#262626] mb-2">Technisch notwendige Cookies</h3>
               <p>
-                These cookies are required for the website to operate. They support functions such as page navigation, secure login, and access to restricted areas.
+                Diese Cookies sind für den grundlegenden Betrieb des Online-Shops unerlässlich. Sie ermöglichen beispielsweise den Warenkorb, den sicheren Bezahlvorgang und die Seitennavigation.
               </p>
             </div>
             
             <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Performance Cookies</h3>
+              <h3 className="text-xl font-bold text-[#262626] mb-2">Funktionale Cookies</h3>
               <p>
-                These cookies collect anonymous data about how visitors use our website. They help us understand user behavior and improve website performance.
+                Diese Cookies speichern Ihre bevorzugten Einstellungen wie Währung oder Sprachauswahl, um Ihren nächsten Besuch komfortabler zu gestalten.
               </p>
             </div>
             
             <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Functionality Cookies</h3>
+              <h3 className="text-xl font-bold text-[#262626] mb-2">Analyse- und Performance-Cookies</h3>
               <p>
-                These cookies remember choices you make, such as language preferences, and provide enhanced and more personalized features.
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-bold text-[#262626] mb-2">Targeting Cookies</h3>
-              <p>
-                These cookies may be placed on our site by advertising partners. They help create a profile of your interests and show you relevant ads on other websites.
+                Mit Hilfe dieser Cookies erfassen wir anonymisierte Daten über die Nutzung unserer Website, um unser Produktangebot und die Ladezeiten stetig zu verbessern.
               </p>
             </div>
           </div>
@@ -56,78 +49,38 @@ const CookiesPage = () => (
 
         {/* Cookie Management */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Cookie Management</h2>
-          
-          <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">How to Control Cookies</h3>
-          <p className="mb-4">You can control cookies in several ways. You can:</p>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Verwaltung und Deaktivierung von Cookies</h2>
+          <p className="mb-4">Sie können die Speicherung von Cookies in Ihren Browser-Einstellungen steuern:</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Delete cookies stored on your device</li>
-            <li>Set your browser to block cookies</li>
-            <li>Choose to accept or decline cookies when prompted</li>
+            <li>Bereits gespeicherte Cookies auf Ihrem Gerät löschen</li>
+            <li>Das Setzen von Cookies grundsätzlich blockieren</li>
+            <li>Sich vor dem Setzen eines Cookies benachrichtigen lassen</li>
           </ul>
           <p>
-            Please note that disabling certain cookies may affect website functionality or limit access to specific features.
-          </p>
-        </div>
-
-        {/* Third-Party Cookies */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Third-Party Cookies</h2>
-          <p className="mb-4">
-            We may use services provided by trusted third parties that use cookies, such as:
-          </p>
-          <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Google Analytics for website performance and analytics</li>
-            <li>PayPal for secure payment processing</li>
-            <li>Social media platforms for sharing and engagement</li>
-            <li>Advertising partners for targeted advertising</li>
-          </ul>
-          <p>
-            These third parties have their own privacy and cookie policies.
-          </p>
-        </div>
-
-        {/* Updates to This Policy */}
-        <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Updates to This Policy</h2>
-          <p>
-            We may revise this Cookies Policy from time to time. Any changes will be posted on this page with an updated effective date.
+            Bitte beachten Sie, dass bei der Deaktivierung technisch notwendiger Cookies bestimmte Funktionen des Online-Shops (z.B. der Bestellabschluss) beeinträchtigt sein können.
           </p>
         </div>
 
         {/* Contact Us */}
         <div>
-          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Contact Us</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">Kontakt</h2>
           <p className="mb-4">
-            If you have questions about our Cookies Policy, please contact us:
+            Haben Sie Fragen zu unserer Cookie-Richtlinie? Kontaktieren Sie uns gerne:
           </p>
           <div className="bg-gray-50 rounded-lg p-6 space-y-3">
             <div>
-              <div className="font-medium text-[#262626] mb-1">Live Support:</div>
-              <div className="text-gray-600">24/7 Live Chat Support</div>
+              <div className="font-medium text-[#262626] mb-1">Live-Chat:</div>
+              <div className="text-gray-600">24/7 Live-Chat auf der Website</div>
             </div>
             <div>
-              <div className="font-medium text-[#262626] mb-1">Email:</div>
+              <div className="font-medium text-[#262626] mb-1">E-Mail:</div>
               <div className="text-gray-600">contact@weteextees.com</div>
             </div>
             <div>
-              <div className="font-medium text-[#262626] mb-1">Address:</div>
-              <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Germany</div>
-            </div>
-            <div>
-              <div className="font-medium text-[#262626] mb-1">Hours:</div>
-              <div className="text-gray-600">Monday to Friday: 9:00 AM to 5:00 PM GMT/BST</div>
-              <div className="text-gray-600">Saturday: by appointment</div>
+              <div className="font-medium text-[#262626] mb-1">Geschäftsanschrift:</div>
+              <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
             </div>
           </div>
-        </div>
-
-        {/* Important Note */}
-        <div className="bg-blue-50 p-6 rounded-lg border border-blue-200 mt-10">
-          <h3 className="text-xl font-bold text-[#262626] mb-3">Important Note</h3>
-          <p>
-            You can accept or reject non-essential cookies through the consent controls available on our website and can change your browser settings at any time. Rejecting non-essential cookies should not prevent access to the core shopping experience.
-          </p>
         </div>
       </div>
     </div>

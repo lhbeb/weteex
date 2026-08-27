@@ -31,17 +31,17 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
           {/* Right Section - Content */}
           <div className="md:w-[55%] bg-[#1D2E24] text-[#F6F8F5] p-12 flex flex-col justify-center">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-[#D1A966]">
-              Same Day Shipping
+              Versand am selben Werktag
             </h1>
 
             <p className="text-lg leading-relaxed font-normal mb-12 text-[#F6F8F5]/90">
-              Order by 2:00 PM EST and we&apos;ll process, pack, and ship your order the same day. At <strong>Weteextees</strong>, we deliver speed and reliability you can count on with trusted delivery partners.
+              Bestellen Sie bis 14:00 Uhr und wir bearbeiten, verpacken und versenden Ihre Bestellung noch am selben Tag. Bei <strong>Weteextees</strong> bieten wir Schnelligkeit und Zuverlässigkeit mit vertrauenswürdigen Lieferpartnern.
             </p>
             <Link
               href="/shipping-policy"
               className="text-[#D1A966] hover:text-[#DEBC80] text-lg underline underline-offset-2 transition-colors font-medium"
             >
-              View shipping policy →
+              Versandrichtlinien ansehen →
             </Link>
           </div>
         </div>
@@ -57,10 +57,10 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             </div>
             <div>
               <h3 className="font-bold text-[#1E2621] text-lg mb-2">
-                Authenticity Guaranteed
+                Geprüfte Qualität
               </h3>
               <p className="text-[#5C6B61] text-sm">
-                Each piece undergoes thorough provenance and condition verification before dispatch.
+                Jedes Möbelstück durchläuft vor dem Versand eine strenge Qualitäts- und Oberflächenkontrolle.
               </p>
             </div>
           </div>
@@ -74,10 +74,10 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             </div>
             <div>
               <h3 className="font-bold text-[#1E2621] text-lg mb-2">
-                Protective Packaging
+                Sichere Schutzverpackung
               </h3>
               <p className="text-[#5C6B61] text-sm">
-                Custom cushioning and reinforced crating to safeguard delicate antiques and fine furniture.
+                Individuelle Polsterung und verstärkte Kanten schützen edle Hölzer, Rattan und Steinplatten.
               </p>
             </div>
           </div>
@@ -91,10 +91,10 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             </div>
             <div>
               <h3 className="font-bold text-[#1E2621] text-lg mb-2">
-                Tracked Specialist Logistics
+                Verfolgte Fachspedition
               </h3>
               <p className="text-[#5C6B61] text-sm">
-                Direct insured delivery with milestone tracking updates directly to your door.
+                Direkte, vollversicherte Zustellung mit lückenloser Sendungsverfolgung bis zu Ihrer Haustür.
               </p>
             </div>
           </div>
@@ -105,17 +105,17 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
       <div className="bg-white rounded-xl p-8 shadow-sm border border-[#DCE5DE] flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <p className="text-[#5C6B61] text-sm mb-2 font-medium">
-            Ready to find your next statement piece?
+            Bereit für Ihr neues Lieblingsstück?
           </p>
           <p className="text-2xl md:text-3xl font-bold text-[#1E2621]">
-            Discover <span className="text-[#1D2E24] underline decoration-[#D1A966] decoration-2">authentic antiques &amp; modern designs</span> for your space
+            Entdecken Sie <span className="text-[#1D2E24] underline decoration-[#D1A966] decoration-2">moderne Möbel &amp; zeitlose Designs</span> für Ihr Zuhause
           </p>
         </div>
         <a
           href="#products"
           className="bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] font-bold py-4 px-10 rounded-xl text-lg transition-colors whitespace-nowrap shadow-sm"
         >
-          Browse All Pieces
+          Alle Möbel ansehen
         </a>
       </div>
     </div>

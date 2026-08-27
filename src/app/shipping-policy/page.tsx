@@ -9,46 +9,46 @@ export const metadata: Metadata = {
 };
 
 const timeline = [
-  ['Order confirmation', 'Immediate after cleared payment and verification'],
-  ['Item preparation & crating', '1–3 business days for delicate packing and inspection'],
-  ['Courier dispatch & tracking', 'Direct tracked delivery with insured couriers'],
-  ['Estimated delivery window', '3–7 business days (UK & regional), confirmed in writing'],
+  ['Auftragsbestätigung', 'Unmittelbar nach Zahlungseingang und Überprüfung'],
+  ['Vorbereitung & Schutzverpackung', '1–2 Werktage für Qualitätsprüfung und transportsichere Verpackung'],
+  ['Übergabe an Fachspedition', 'Versicherter Transport mit lückenloser Sendungsverfolgung'],
+  ['Voraussichtliche Lieferzeit', '3–7 Werktage innerhalb Deutschlands und der EU'],
 ];
 
 const policySections = [
   {
-    title: 'Delivery Pricing & Insurance',
+    title: 'Versandkosten & Transportversicherung',
     items: [
-      'Standard shipping rates or free delivery promotions are stated clearly at checkout',
-      'All antique furniture and fragile collectibles are fully insured against transit loss or damage',
-      'White-glove room-of-choice delivery options may be selected or quoted upon request',
+      'Der Standardversand für Möbelstücke und Stühle ist kostenlos in ganz Deutschland und der EU',
+      'Jede Sendung ist zu 100 % gegen Transportschäden und Verlust versichert',
+      'Die Auslieferung erfolgt über renommierte Möbel- und Paketspeditionen',
     ],
   },
   {
-    title: 'Order Tracking & Notifications',
+    title: 'Sendungsverfolgung & Benachrichtigungen',
     items: [
-      'A shipping confirmation email with tracking links is provided upon courier collection',
-      'Milestone updates and courier delivery window estimates are provided directly',
-      'Contact our team anytime to check the status of your specialty shipment',
-      'Unexpected weather or transit delays are communicated promptly',
+      'Sie erhalten bei Versand eine E-Mail mit Tracking-Nummer und Link zur Sendungsverfolgung',
+      'Bei Speditionslieferungen kündigt der Zusteller den Liefertermin vorab an',
+      'Unser Support-Team unterstützt Sie jederzeit bei Fragen zum aktuellen Lieferstatus',
+      'Unerwartete witterungsbedingte Verzögerungen werden transparent kommuniziert',
     ],
   },
   {
-    title: 'Delivery Access & Receiving',
+    title: 'Lieferadresse & Empfang',
     items: [
-      'The buyer must provide a valid delivery address, contact phone number, and access details',
-      'Please check door, hallway, and staircase clearances for large furniture pieces before delivery',
-      'Notify us in advance of any building access codes, gate restrictions, or elevator requirements',
-      'An adult recipient must be available to sign for high-value antique deliveries',
+      'Bitte geben Sie eine vollständige Lieferadresse mit Straße, Hausnummer und Postleitzahl an',
+      'Prüfen Sie bei größeren Möbelstücken bitte vorab die Maße von Türen, Fluren und Treppenhäusern',
+      'Teilen Sie uns eventuelle Besonderheiten (z.B. Etage, Aufzug) rechtzeitig mit',
+      'Die Annahme sollte durch eine volljährige Person erfolgen',
     ],
   },
   {
-    title: 'Delivery Inspection & Care',
+    title: 'Warenannahme & Schadenskontrolle',
     items: [
-      'Our items are packed with reinforced museum-grade crating and cushioned wraps',
-      'Inspect outer packaging and your item upon arrival before signing courier paperwork',
-      'Note any obvious exterior box damage on the driver delivery note immediately',
-      'Contact our support team within 48 hours with photos if any damage is discovered',
+      'Unsere Möbel werden in verstärkten Spezialverpackungen geliefert',
+      'Bitte prüfen Sie die Verpackung bei Übergabe auf äußere Beschädigungen',
+      'Sichtbare Verpackungsschäden bitte direkt auf dem Übergabeschein des Fahrers vermerken',
+      'Sollte ein Artikel beschädigt sein, kontaktieren Sie uns bitte innerhalb von 48 Stunden mit Fotos',
     ],
   },
 ];
@@ -61,29 +61,29 @@ export default function ShippingPolicyPage() {
         '@type': 'WebPage',
         '@id': 'https://weteextees.com/shipping-policy',
         'url': 'https://weteextees.com/shipping-policy',
-        'name': 'Shipping & Delivery Policy | Weteextees',
+        'name': 'Versandrichtlinien & Lieferzeiten | Weteextees',
         'description':
-          'Weteextees shipping and delivery policy for authentic antiques, modern furniture, and collectibles.',
+          'Versand- und Lieferbedingungen für moderne Möbel, Stühle und Tische von Weteextees mit versichertem Transport und Speditionsversand.',
       },
       {
         '@type': 'OfferShippingDetails',
-        '@id': 'https://weteextees.com/shipping-policy#shipping-gb',
+        '@id': 'https://weteextees.com/shipping-policy#shipping-de',
         'shippingDestination': {
           '@type': 'DefinedRegion',
-          'addressCountry': 'GB',
+          'addressCountry': 'DE',
         },
         'deliveryTime': {
           '@type': 'ShippingDeliveryTime',
           'handlingTime': {
             '@type': 'QuantitativeValue',
             'minValue': 1,
-            'maxValue': 3,
+            'maxValue': 2,
             'unitCode': 'DAY',
           },
           'transitTime': {
             '@type': 'QuantitativeValue',
             'minValue': 2,
-            'maxValue': 7,
+            'maxValue': 5,
             'unitCode': 'DAY',
           },
         },
@@ -103,36 +103,36 @@ export default function ShippingPolicyPage() {
         <section className="mb-10 rounded-2xl bg-gradient-to-r from-[#1D2E24] to-[#142019] px-6 py-8 text-[#F6F8F5] sm:px-8 sm:py-10 shadow-lg border border-[#D1A966]/20">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#D1A966]/30 bg-[#1D2E24] px-3.5 py-1.5 text-sm font-semibold text-[#D1A966]">
             <Truck className="h-4 w-4" />
-            Specialist Antique &amp; Furniture Shipping
+            Fachspedition &amp; Möbellogistik
           </div>
           <h1 className="max-w-3xl text-3xl font-bold leading-tight sm:text-5xl text-[#F6F8F5]">
-            Shipping &amp; Delivery Policy
+            Versandrichtlinien &amp; Lieferzeiten
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[#F6F8F5]/85 sm:text-lg">
-            Weteextees coordinates insured, white-glove packaging and tracked delivery for our authentic antiques, modern furniture, and one-of-a-kind collectibles.
+            Weteextees organisiert einen zuverlässigen, versicherten Transport und spezialisierte Schutzverpackungen für moderne Stühle, Tische und Möbelstücke.
           </p>
         </section>
 
         <section className="mb-8 grid gap-4 md:grid-cols-3">
           <div className="rounded-xl border border-[#DCE5DE] bg-white p-5 shadow-sm">
             <Clock className="mb-4 h-6 w-6 text-[#1D2E24]" />
-            <h2 className="text-lg font-bold text-[#1E2621]">Insured Transit</h2>
+            <h2 className="text-lg font-bold text-[#1E2621]">100% Versicherter Transport</h2>
             <p className="mt-2 text-sm leading-6 text-[#5C6B61]">
-              Every shipment is fully insured with direct courier milestone tracking from our studio to your door.
+              Jede Möbellieferung ist vollständig gegen Transportschäden versichert und verfügt über eine lückenlose Sendungsverfolgung.
             </p>
           </div>
           <div className="rounded-xl border border-[#DCE5DE] bg-white p-5 shadow-sm">
             <PackageCheck className="mb-4 h-6 w-6 text-[#1D2E24]" />
-            <h2 className="text-lg font-bold text-[#1E2621]">Museum-Grade Packing</h2>
+            <h2 className="text-lg font-bold text-[#1E2621]">Schutzverpackung</h2>
             <p className="mt-2 text-sm leading-6 text-[#5C6B61]">
-              Fragile antiques, glassware, and fine furniture are cushioned in multi-layer protective crating.
+              Empfindliche Holzoberflächen, Rattan und Polster werden in mehrlagigen Polstern und stabilen Kartonagen geschützt.
             </p>
           </div>
           <div className="rounded-xl border border-[#DCE5DE] bg-white p-5 shadow-sm">
             <ShieldCheck className="mb-4 h-6 w-6 text-[#1D2E24]" />
-            <h2 className="text-lg font-bold text-[#1E2621]">Dedicated Care</h2>
+            <h2 className="text-lg font-bold text-[#1E2621]">Zuverlässiger Service</h2>
             <p className="mt-2 text-sm leading-6 text-[#5C6B61]">
-              Our specialists coordinate delivery schedules and provide direct customer support throughout transit.
+              Unser Kundenservice steht Ihnen während des gesamten Lieferprozesses mit Rat und Tat zur Seite.
             </p>
           </div>
         </section>
@@ -140,11 +140,11 @@ export default function ShippingPolicyPage() {
         <section className="mb-8 rounded-2xl border border-[#DCE5DE] bg-white p-6 shadow-sm sm:p-8">
           <div className="flex flex-col gap-3 border-b border-gray-100 pb-5 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-[#1E2621]">Delivery Timelines</h2>
-              <p className="mt-2 text-sm text-[#5C6B61]">Delivery timing varies by <strong>item size, delicate packaging requirements, and destination</strong>. Tracking details are emailed immediately upon dispatch.</p>
+              <h2 className="text-2xl font-bold text-[#1E2621]">Ablauf &amp; Lieferzeiten</h2>
+              <p className="mt-2 text-sm text-[#5C6B61]">Die Lieferzeit beträgt in der Regel <strong>3 bis 7 Werktage</strong>. Tracking-Details erhalten Sie per E-Mail nach Versandübergabe.</p>
             </div>
             <span className="inline-flex w-fit rounded-full bg-[#D1A966] px-3.5 py-1 text-sm font-bold text-[#142019]">
-              Fully insured transit on every order
+              Kostenloser Standardversand
             </span>
           </div>
 
@@ -175,15 +175,15 @@ export default function ShippingPolicyPage() {
         </section>
 
         <section className="mt-8 rounded-2xl border border-[#DCE5DE] bg-white p-6 shadow-sm sm:p-8">
-          <h2 className="text-2xl font-bold text-[#1E2621]">Need Help With Delivery?</h2>
+          <h2 className="text-2xl font-bold text-[#1E2621]">Fragen zum Versand?</h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5C6B61]">
-            If you have questions about furniture dimensions, access clearance, custom packing, or tracking an active order, contact our team:
+            Haben Sie Fragen zu Abmessungen, Lieferterminen oder der Sendungsverfolgung? Unser Serviceteam hilft Ihnen gerne:
           </p>
 
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             <div className="flex items-center gap-3 rounded-xl bg-[#F6F8F5] p-4 border border-[#DCE5DE]">
               <MapPin className="h-5 w-5 text-[#1D2E24]" />
-              <span className="text-sm font-medium text-[#1E2621]">United Kingdom</span>
+              <span className="text-sm font-medium text-[#1E2621]">Deutschland &amp; EU</span>
             </div>
             <div className="flex items-center gap-3 rounded-xl bg-[#F6F8F5] p-4 border border-[#DCE5DE]">
               <Mail className="h-5 w-5 text-[#1D2E24]" />
@@ -191,7 +191,7 @@ export default function ShippingPolicyPage() {
             </div>
             <div className="flex items-center gap-3 rounded-xl bg-[#F6F8F5] p-4 border border-[#DCE5DE]">
               <Clock className="h-5 w-5 text-[#1D2E24]" />
-              <span className="text-sm font-medium text-[#1E2621]">Mon-Fri, 9 AM-5 PM GMT/BST</span>
+              <span className="text-sm font-medium text-[#1E2621]">Mo–Fr, 09:00–17:00 Uhr</span>
             </div>
           </div>
 
@@ -199,7 +199,7 @@ export default function ShippingPolicyPage() {
             href="/contact"
             className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#1D2E24] px-5 py-3 text-sm font-semibold text-[#F6F8F5] transition hover:bg-[#142019]"
           >
-            Contact Support
+            Kundenservice kontaktieren
           </Link>
         </section>
       </div>

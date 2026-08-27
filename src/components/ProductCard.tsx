@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <div className="absolute inset-0 bg-[rgba(0,0,0,0.65)] flex items-center justify-center rounded-t-md">
               <div className="bg-[#D1A966] rounded-lg px-5 py-2">
                 <span className="sold-out-badge text-[#142019] text-sm uppercase tracking-wider whitespace-nowrap font-bold">
-                  Sold Out
+                  Ausverkauft
                 </span>
               </div>
             </div>
@@ -62,7 +62,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             className="flex items-center text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition-colors"
           >
             <Eye className="h-4 w-4 mr-1" />
-            <span>View Details</span>
+            <span>Details ansehen</span>
           </Link>
         </div>
       </div>

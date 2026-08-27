@@ -262,14 +262,14 @@ const ProductGrid = ({
             <div className="mb-6 overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
               <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">Filters</p>
-                  <h3 className="text-lg font-semibold text-[#262626]">Refine your search</h3>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">Filter</p>
+                  <h3 className="text-lg font-semibold text-[#262626]">Suche verfeinern</h3>
                 </div>
                 <button
                   type="button"
                   className="rounded-full p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700"
                   onClick={() => setFilterPanelOpen(false)}
-                  aria-label="Close filters"
+                  aria-label="Filter schließen"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -282,7 +282,7 @@ const ProductGrid = ({
                     className="flex w-full items-center justify-between text-sm font-semibold text-[#262626]"
                     onClick={() => handleToggleSection("price")}
                   >
-                    <span>Price range</span>
+                    <span>Preisspanne (€)</span>
                     {expandedSections.price ? (
                       <ChevronUp className="h-4 w-4 text-gray-500" />
                     ) : (
@@ -294,7 +294,7 @@ const ProductGrid = ({
                     <div className="mt-4 flex gap-3">
                       <div className="w-full">
                         <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-500">
-                          Min
+                          Min (€)
                         </label>
                         <input
                           type="number"
@@ -308,7 +308,7 @@ const ProductGrid = ({
                       </div>
                       <div className="w-full">
                         <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-500">
-                          Max
+                          Max (€)
                         </label>
                         <input
                           type="number"
@@ -316,7 +316,7 @@ const ProductGrid = ({
                           onChange={(event) =>
                             setPriceRange((previous) => ({ ...previous, max: event.target.value }))
                           }
-                          placeholder="150"
+                          placeholder="1000"
                           className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D2E24]"
                         />
                       </div>
@@ -331,7 +331,7 @@ const ProductGrid = ({
                     onClick={() => handleToggleSection("brands")}
                   >
                     <span>
-                      Brands
+                      Kollektion &amp; Marke
                       {selectedBrands.length > 0 ? (
                         <span className="ml-1 text-[#1D2E24]">({selectedBrands.length})</span>
                       ) : null}
@@ -373,7 +373,7 @@ const ProductGrid = ({
                           className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1D2E24] hover:underline"
                           onClick={() => setShowAllBrands((previous) => !previous)}
                         >
-                          {showAllBrands ? "Show fewer brands" : `Show all ${brandOptions.length}`}
+                          {showAllBrands ? "Weniger anzeigen" : `Alle ${brandOptions.length} anzeigen`}
                         </button>
                       ) : null}
                     </div>
@@ -387,7 +387,7 @@ const ProductGrid = ({
                     onClick={() => handleToggleSection("conditions")}
                   >
                     <span>
-                      Condition
+                      Zustand
                       {selectedConditions.length > 0 ? (
                         <span className="ml-1 text-[#1D2E24]">({selectedConditions.length})</span>
                       ) : null}
@@ -429,7 +429,7 @@ const ProductGrid = ({
                           className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1D2E24] hover:underline"
                           onClick={() => setShowAllConditions((previous) => !previous)}
                         >
-                          {showAllConditions ? "Show fewer conditions" : `Show all ${conditionOptions.length}`}
+                          {showAllConditions ? "Weniger anzeigen" : `Alle ${conditionOptions.length} anzeigen`}
                         </button>
                       ) : null}
                     </div>
@@ -443,7 +443,7 @@ const ProductGrid = ({
                       className="w-full rounded-xl border border-[#1D2E24] bg-[#1D2E24]/5 px-4 py-3 text-sm font-semibold text-[#1D2E24] transition-colors duration-200 hover:bg-[#1D2E24]/10"
                       onClick={handleClearFilters}
                     >
-                      Clear all filters
+                      Alle Filter zurücksetzen
                     </button>
                   </div>
                 ) : null}
@@ -463,7 +463,7 @@ const ProductGrid = ({
                     onClick={() => setFilterPanelOpen((previous) => !previous)}
                   >
                     <SlidersHorizontal className="h-4 w-4" />
-                    <span>Filters</span>
+                    <span>Filter</span>
                     {activeFilters > 0 ? (
                       <span className="rounded-full bg-[#1D2E24] px-2 py-0.5 text-xs font-semibold text-white">
                         {activeFilters}
@@ -477,10 +477,10 @@ const ProductGrid = ({
                       onChange={(event) => setSortBy(event.target.value as SortOption)}
                       className="appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D2E24]"
                     >
-                      <option value="featured">Default</option>
-                      <option value="price-high">Price: High to Low</option>
-                      <option value="price-low">Price: Low to High</option>
-                      <option value="rating">Highest Rated</option>
+                      <option value="featured">Empfohlen</option>
+                      <option value="price-low">Preis: Niedrig bis Hoch</option>
+                      <option value="price-high">Preis: Hoch bis Niedrig</option>
+                      <option value="rating">Beste Bewertung</option>
                     </select>
                     <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                   </div>
@@ -492,7 +492,7 @@ const ProductGrid = ({
               <div className="mb-6 flex flex-wrap items-center gap-2">
                 {priceRange.min !== "" ? (
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#1D2E24]/10 px-3 py-1.5 text-sm font-medium text-[#1D2E24]">
-                    Min: ${priceRange.min}
+                    Min: {priceRange.min} €
                     <button
                       type="button"
                       className="rounded-full p-0.5 hover:bg-[#1D2E24]/20"
@@ -505,7 +505,7 @@ const ProductGrid = ({
 
                 {priceRange.max !== "" ? (
                   <span className="inline-flex items-center gap-1.5 rounded-full bg-[#1D2E24]/10 px-3 py-1.5 text-sm font-medium text-[#1D2E24]">
-                    Max: ${priceRange.max}
+                    Max: {priceRange.max} €
                     <button
                       type="button"
                       className="rounded-full p-0.5 hover:bg-[#1D2E24]/20"
@@ -552,7 +552,7 @@ const ProductGrid = ({
 
             {paginatedProducts.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="text-gray-500">No items found matching your criteria.</p>
+                <p className="text-gray-500">Keine Möbelstücke für Ihre Auswahlkriterien gefunden.</p>
               </div>
             ) : (
               <>
@@ -577,7 +577,7 @@ const ProductGrid = ({
                 </div>
 
                 {totalPages > 1 ? (
-                  <nav className="mt-8 flex justify-center" aria-label="Pagination">
+                  <nav className="mt-8 flex justify-center" aria-label="Seitennummerierung">
                     <div className="flex items-center gap-1 sm:gap-2">
                       {/* Previous Button */}
                       <button
@@ -588,10 +588,10 @@ const ProductGrid = ({
                             ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                             : "bg-white text-gray-700 border border-gray-300 hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                           }`}
-                        aria-label="Previous page"
+                        aria-label="Vorherige Seite"
                       >
                         <ChevronLeft className="h-4 w-4" />
-                        <span className="hidden sm:inline">Prev</span>
+                        <span className="hidden sm:inline">Zurück</span>
                       </button>
 
                       {/* Page Numbers */}
@@ -615,8 +615,6 @@ const ProductGrid = ({
                         {/* Pages around current page */}
                         {(() => {
                           const pages = [];
-                          // Use consistent range of 2 for SSR compatibility
-                          // CSS classes handle mobile/desktop differences
                           const range = 2;
                           const start = Math.max(1, currentPage - range);
                           const end = Math.min(totalPages, currentPage + range);
@@ -665,9 +663,9 @@ const ProductGrid = ({
                             ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                             : "bg-white text-gray-700 border border-gray-300 hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                           }`}
-                        aria-label="Next page"
+                        aria-label="Nächste Seite"
                       >
-                        <span className="hidden sm:inline">Next</span>
+                        <span className="hidden sm:inline">Weiter</span>
                         <ChevronRight className="h-4 w-4" />
                       </button>
                     </div>

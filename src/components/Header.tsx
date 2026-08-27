@@ -11,12 +11,11 @@ import ClientOnly from './ClientOnly';
 import SearchBar from './SearchBar';
 
 const catalogNavigation = [
-  { label: 'All Collection', href: '/#products' },
-  { label: 'Modern Chairs & Furniture', href: '/search?query=Modern%20Chairs%20Furniture' },
-  { label: 'Authentic Antiques', href: '/search?query=Authentic%20Antiques' },
-  { label: 'Vintage Collectibles', href: '/search?query=Vintage%20Collectibles' },
-  { label: 'Decorative Pieces', href: '/search?query=Decorative%20Pieces' },
-  { label: 'Tables & Accents', href: '/search?query=Tables%20Accents' },
+  { label: 'Alle Kollektionen', href: '/#products' },
+  { label: 'Moderne Stühle & Möbel', href: '/search?query=Moderne%20Stühle%20Möbel' },
+  { label: 'Ess- & Couchtische', href: '/search?query=Tische' },
+  { label: 'Massivholz & Rattan', href: '/search?query=Rattan' },
+  { label: 'Marmor & Keramik', href: '/search?query=Marmor%20Keramik' },
 ] as const;
 
 const desktopNavLinkClass =
@@ -223,7 +222,7 @@ const Header = () => {
               >
                 <input
                   type="text"
-                  placeholder="Search modern chairs, antique furniture, vintage collectibles..."
+                  placeholder="Moderne Stühle, Tische und Möbel durchsuchen..."
                   className="flex-1 bg-transparent outline-none text-sm text-[#f2f5f3] placeholder-gray-300 cursor-pointer"
                   readOnly
                 />
@@ -238,7 +237,7 @@ const Header = () => {
                 <button
                   onClick={() => setIsSearchOpen(true)}
                   className="lg:hidden bg-[#D1A966] text-[#142019] hover:opacity-90 rounded-full p-2"
-                  aria-label="Search products"
+                  aria-label="Produkte suchen"
                 >
                   <Search className="h-5 w-5" />
                 </button>
@@ -248,7 +247,7 @@ const Header = () => {
               <Link
                 href="/contact"
                 className="hidden sm:flex bg-[#D1A966] text-[#142019] hover:opacity-90 rounded-full p-2"
-                aria-label="Help Center"
+                aria-label="Hilfebereich"
               >
                 <Info className="h-5 w-5" />
               </Link>
@@ -257,7 +256,7 @@ const Header = () => {
               <button
                 onClick={handleCartClick}
                 className="relative bg-[#D1A966] text-[#142019] hover:opacity-90 rounded-full p-2"
-                aria-label={`Shopping cart ${cartCount > 0 ? `with ${cartCount} items` : '(empty)'}`}
+                aria-label={`Warenkorb ${cartCount > 0 ? `mit ${cartCount} Artikeln` : '(leer)'}`}
               >
                 <ShoppingCart className="h-5 w-5" />
                 <ClientOnly>
@@ -271,7 +270,7 @@ const Header = () => {
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="lg:hidden bg-[#D1A966] text-[#142019] hover:opacity-90 rounded-full p-2"
-                aria-label="Toggle mobile menu"
+                aria-label="Menü umschalten"
               >
                 {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
@@ -291,7 +290,7 @@ const Header = () => {
               >
                 <input
                   type="text"
-                  placeholder="Search modern chairs, antique furniture, vintage collectibles..."
+                  placeholder="Moderne Stühle, Tische und Möbel durchsuchen..."
                   className="flex-1 bg-transparent outline-none text-sm text-[#f2f5f3] placeholder-gray-300 cursor-pointer"
                   readOnly
                 />
@@ -315,16 +314,16 @@ const Header = () => {
                 </Link>
               ))}
               <Link href="/#featured" className={desktopNavLinkClass}>
-                Featured Pieces
+                Ausgewählte Stücke
               </Link>
               <Link href="/track" className={desktopNavLinkClass}>
-                Track Delivery
+                Sendungsverfolgung
               </Link>
               <Link href="/frequently-asked-questions" className={desktopNavLinkClass}>
-                FAQs
+                FAQ
               </Link>
               <Link href="/contact" className={desktopNavLinkClass}>
-                Contact Us
+                Kontakt
               </Link>
             </nav>
           </div>
@@ -336,13 +335,13 @@ const Header = () => {
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col bg-white font-sans">
                 <Link href="/track" className={`${mobileMenuLinkClass} pb-4 border-b border-gray-200`} onClick={handleMobileMenuClose}>
-                  Track Delivery
+                  Sendungsverfolgung
                 </Link>
                 <Link href="/frequently-asked-questions" className={`${mobileMenuLinkClass} py-4 border-b border-gray-200`} onClick={handleMobileMenuClose}>
-                  FAQs
+                  Häufig gestellte Fragen (FAQ)
                 </Link>
                 <Link href="/contact" className={`${mobileMenuLinkClass} py-4 border-b border-gray-200`} onClick={handleMobileMenuClose}>
-                  Contact Us
+                  Kontakt
                 </Link>
               </nav>
             </div>
@@ -371,7 +370,7 @@ const Header = () => {
                 href="/#featured"
                 className="flex-shrink-0 px-4 py-2 border border-white/20 rounded-full text-sm font-bold text-[#f2f5f3] hover:border-[#D1A966]/60 hover:bg-[#D1A966]/15 transition-colors duration-300 whitespace-nowrap"
               >
-                Featured Pieces
+                Ausgewählte Stücke
               </Link>
             </nav>
           </div>

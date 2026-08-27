@@ -1,7 +1,7 @@
 import React from 'react';
 
 const TermsPage = () => {
-  const currentDate = new Date().toLocaleDateString('en-US', { 
+  const currentDate = new Date().toLocaleDateString('de-DE', { 
     year: 'numeric', 
     month: 'long', 
     day: 'numeric' 
@@ -10,127 +10,103 @@ const TermsPage = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 py-12">
       <div className="container mx-auto px-4 max-w-4xl">
-        <h1 className="text-4xl font-bold text-[#262626] mb-2">Weteextees Terms of Service &amp; Sale</h1>
-        <p className="text-gray-600 mb-8">Last Updated: {currentDate}</p>
+        <h1 className="text-4xl font-bold text-[#262626] mb-2">Allgemeine Geschäftsbedingungen (AGB)</h1>
+        <p className="text-gray-600 mb-8">Stand: {currentDate}</p>
         
         <div className="prose max-w-none text-gray-700 space-y-8">
           <p className="text-lg leading-relaxed">
-            Welcome to Weteextees. By accessing our website (Weteextees.com) or purchasing authentic antiques, modern furniture, or collectibles, you agree to these Terms of Service.
+            Willkommen bei Weteextees. Mit dem Zugriff auf unsere Website (Weteextees.com) oder dem Kauf von modernen Möbeln, Stühlen und Wohnaccessoires erklären Sie sich mit den nachfolgenden Allgemeinen Geschäftsbedingungen einverstanden.
           </p>
 
           {/* Section 1: Overview */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">1. Overview</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">1. Geltungsbereich &amp; Anbieter</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Weteextees specializes in authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.</li>
-              <li>Every piece is curated, cataloged, and described based on verified provenance, vintage characteristics, and specialist assessment.</li>
-              <li>All purchases made through Weteextees are processed under these Terms.</li>
+              <li>Weteextees bietet handverlesene moderne Esszimmerstühle, Rattan- und Massivholzmöbel, Tische und Einrichtungsgegenstände über den Online-Shop an.</li>
+              <li>Vertragspartner ist Weteextees mit Geschäftsanschrift in der Hochalmstraße 10, 81825 München, Bayern, Deutschland.</li>
+              <li>Für alle Bestellungen über diesen Online-Shop gelten ausschließlich die hier vorliegenden AGB in ihrer zum Zeitpunkt der Bestellung gültigen Fassung.</li>
             </ul>
           </div>
 
           {/* Section 2: Account Terms */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">2. Account Terms</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">2. Vertragsschluss &amp; Bestellvorgang</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>You must be 18 years or older to use this service and complete transactions.</li>
-              <li>You must provide accurate and complete contact, billing, and delivery information.</li>
-              <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
-              <li>You must notify us immediately of any unauthorized access or security concerns.</li>
+              <li>Die Präsentation der Produkte im Online-Shop stellt kein rechtlich bindendes Angebot, sondern eine unverbindliche Aufforderung zur Bestellung dar.</li>
+              <li>Durch Anklicken des Buttons &bdquo;Jetzt kaufen&ldquo; bzw. &bdquo;Weiter zur Zahlung&ldquo; geben Sie eine verbindliche Bestellung der im Warenkorb enthaltenen Artikel ab.</li>
+              <li>Die Bestätigung des Bestelleingangs erfolgt unmittelbar nach dem Absenden durch eine automatisierte E-Mail.</li>
             </ul>
           </div>
 
           {/* Section 3: Orders and Product Availability */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">3. Orders, Authenticity, and Item Availability</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">3. Preise, Beschaffenheit &amp; Verfügbarkeit</h2>
             <p className="mb-4">
-              Many of our antique and vintage items are one-of-a-kind. Availability is subject to prior sale until we issue written order confirmation and receive cleared payment.
+              Alle angegebenen Preise sind Endpreise in Euro (€) inklusive der gesetzlichen Mehrwertsteuer.
             </p>
 
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.1 Descriptions and Condition Reports</h3>
+            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.1 Produktbeschreibungen &amp; Naturmaterialien</h3>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>We make every effort to display colors, textures, patinas, and dimensions accurately.</li>
-              <li>Antiques and vintage collectibles inherently exhibit character marks, age-appropriate patina, and historical wear. These are integral attributes of authentic vintage pieces.</li>
+              <li>Wir bemühen uns um eine möglichst originalgetreue Darstellung von Farben, Holzmaserungen und Texturen.</li>
+              <li>Da Holz und Naturrattan Naturmaterialien sind, können leichte Farb- und Strukturabweichungen auftreten. Diese sind Ausdruck natürlicher Qualität und kein Mangel.</li>
             </ul>
 
-            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.2 Order Confirmation</h3>
-            <p className="mb-2">Before completing your purchase:</p>
+            <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">3.2 Zahlungsbedingungen</h3>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              <li>Review the full item description, condition report, measurements, materials, and price.</li>
-              <li>Confirm your delivery address, entry clearances, and contact phone number for carrier scheduling.</li>
-              <li>Retain the written order confirmation and invoice for your records.</li>
+              <li>Ihnen stehen die im Bestellprozess angegebenen sicheren Zahlungsmethoden (Kreditkarte, Stripe, PayPal etc.) zur Verfügung.</li>
+              <li>Der Rechnungsbetrag ist mit Vertragsschluss sofort fällig.</li>
             </ul>
           </div>
 
-          {/* Section 4: Product Terms */}
+          {/* Section 4: Shipping */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">4. Pricing and Payment</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">4. Lieferung, Versand &amp; Transportversicherung</h2>
             <ul className="list-disc pl-6 space-y-2">
-              <li>Prices are shown in the indicated store currency and are subject to change prior to order confirmation.</li>
-              <li>Payment must be authorized in full via our secure checkout before an order is dispatched.</li>
-              <li>We reserve the right to cancel or refund orders where clerical pricing errors or stock conflicts occur.</li>
+              <li>Der Standardversand für Möbelstücke und Stühle ist kostenlos in ganz Deutschland und der EU.</li>
+              <li>Die Lieferung erfolgt per Paketdienst oder spezialisierter Möbelspedition mit lückenloser Sendungsverfolgung.</li>
+              <li>Die Regellieferzeit beträgt 3 bis 7 Werktage nach Zahlungseingang und Auftragsbestätigung.</li>
+              <li>Jede Sendung ist während des Transports zu 100 % versichert.</li>
             </ul>
           </div>
 
-          {/* Section 5: Shipping and Insurance */}
+          {/* Section 5: Widerruf */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">5. Shipping, Packaging, and Insurance</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">5. Widerrufsrecht &amp; Rückgabe</h2>
             <p className="mb-4">
-              All items are shipped using specialized protective packing or crating with tracked, insured couriers.
-            </p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Estimated delivery windows begin after payment clearing and packaging preparation.</li>
-              <li>The recipient must inspect external packaging upon arrival and report transit damage promptly.</li>
-              <li>Please ensure adequate doorway and hallway clearance for large furniture pieces.</li>
-            </ul>
-          </div>
-
-          {/* Section 6: Returns and Cancellations */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">6. Returns and Cancellations</h2>
-            <p className="mb-4">
-              Eligible items may be returned within 30 days of delivery in original condition. Please refer to our Return &amp; Refund Policy for step-by-step instructions.
+              Verbrauchern steht das gesetzliche 14-tägige Widerrufsrecht zu, welches wir auf ein 30-tägiges Rückgaberecht erweitern. Details entnehmen Sie bitte unserer Widerrufsbelehrung &amp; Rückgaberichtlinie.
             </p>
           </div>
 
-          {/* Section 7: Limitation of Liability */}
+          {/* Section 6: Gewährleistung & Haftung */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">7. Limitation of Liability</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">6. Gesetzliche Gewährleistung &amp; Haftung</h2>
             <p className="mb-4">
-              To the fullest extent permitted by law, Weteextees is not liable for indirect or consequential loss or business interruption.
-            </p>
-            <p>
-              Nothing in these Terms excludes or limits statutory consumer rights that cannot lawfully be restricted.
+              Es gelten die gesetzlichen Gewährleistungsrechte. Für Schäden haften wir nach den gesetzlichen Bestimmungen.
             </p>
           </div>
 
-          {/* Section 8: Contact Information */}
+          {/* Section 7: Contact Information */}
           <div>
-            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">8. Contact Information</h2>
+            <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">7. Kontakt &amp; Kundenservice</h2>
             <p className="mb-4">
-              If you have questions about these Terms of Service, please contact us.
+              Bei Fragen zu diesen AGB oder zu Ihrer Bestellung erreichen Sie uns unter:
             </p>
             <div className="bg-gray-50 rounded-lg p-6 space-y-3">
               <div>
-                <div className="font-medium text-[#262626] mb-1">Live Support:</div>
-                <div className="text-gray-600">24/7 Live Chat Support</div>
+                <div className="font-medium text-[#262626] mb-1">Live-Chat:</div>
+                <div className="text-gray-600">24/7 Live-Chat-Support auf der Website</div>
               </div>
               <div>
-                <div className="font-medium text-[#262626] mb-1">Email:</div>
+                <div className="font-medium text-[#262626] mb-1">E-Mail:</div>
                 <div className="text-gray-600">contact@weteextees.com</div>
               </div>
               <div>
-                <div className="font-medium text-[#262626] mb-1">Office Address:</div>
-                <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Germany</div>
+                <div className="font-medium text-[#262626] mb-1">Geschäftsanschrift:</div>
+                <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">Website:</div>
                 <div className="text-gray-600">Weteextees.com</div>
-              </div>
-              <div>
-                <div className="font-medium text-[#262626] mb-1">Hours:</div>
-                <div className="text-gray-600">Monday to Friday, 9:00 AM to 5:00 PM GMT/BST</div>
-                <div className="text-gray-600">Saturday, by appointment</div>
-                <div className="text-gray-600">Sunday, Closed</div>
               </div>
             </div>
           </div>

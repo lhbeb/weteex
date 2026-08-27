@@ -72,7 +72,7 @@ export default function StripeEmbeddedCheckout({
               className="mb-5 inline-flex items-center gap-2 text-sm font-medium text-[#1D2E24] transition-colors hover:text-[#D1A966]"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to checkout
+              Zurück zu den Bestelldaten
             </button>
           )}
 
@@ -81,10 +81,10 @@ export default function StripeEmbeddedCheckout({
               <Check className="h-7 w-7 text-[#D1A966]" />
             </span>
             <h1 className="text-2xl font-extrabold tracking-tight text-[#1E2621] sm:text-3xl">
-              Secure Payment
+              Sichere Bezahlung
             </h1>
             <p className="mt-2 text-base text-[#5C6B61]">
-              Complete your payment below without leaving Weteextees.
+              Schließen Sie Ihre Bestellung hier sicher und verschlüsselt ab.
             </p>
           </div>
 
@@ -92,16 +92,14 @@ export default function StripeEmbeddedCheckout({
             <div className="rounded-2xl border border-[#DCE5DE] bg-[#F6F8F5] p-5">
               <div className="mb-2 flex items-center gap-2">
                 <MapPin className="h-5 w-5 text-[#1D2E24]" />
-                <span className="font-semibold text-[#1D2E24]">Confirmed Delivery Address</span>
+                <span className="font-semibold text-[#1D2E24]">Bestätigte Lieferadresse</span>
               </div>
               <div className="leading-relaxed text-gray-800">
                 {shippingData.streetAddress && <div>{shippingData.streetAddress}</div>}
                 {shippingData.city && <div>{shippingData.city}</div>}
                 {(shippingData.state || shippingData.zipCode) && (
                   <div>
-                    {shippingData.state}
-                    {shippingData.state && shippingData.zipCode ? ', ' : ''}
-                    {shippingData.zipCode}
+                    {shippingData.zipCode} {shippingData.state}
                   </div>
                 )}
               </div>
@@ -115,16 +113,16 @@ export default function StripeEmbeddedCheckout({
 
             <div className="rounded-2xl border border-[#DCE5DE] bg-white p-5 shadow-sm">
               <h2 className="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400">
-                Order Summary
+                Bestellübersicht
               </h2>
               <div className="text-lg font-bold leading-tight text-[#1E2621]">{product.title}</div>
               {sellerName && (
                 <div className="mt-1 text-sm text-[#5C6B61]">
-                  Sold by: <span className="font-semibold text-[#1D2E24]">{sellerName}</span>
+                  Verkäufer: <span className="font-semibold text-[#1D2E24]">{sellerName}</span>
                 </div>
               )}
               <div className="mt-5 flex items-end justify-between border-t border-gray-100 pt-4">
-                <span className="text-sm font-semibold text-gray-500">Total</span>
+                <span className="text-sm font-semibold text-gray-500">Gesamtsumme</span>
                 <span className="text-2xl font-extrabold text-[#1D2E24]">{formattedPrice}</span>
               </div>
             </div>
@@ -143,7 +141,7 @@ export default function StripeEmbeddedCheckout({
           ) : (
             <div className="flex min-h-[420px] flex-col items-center justify-center">
               <div className="mb-4 h-12 w-12 animate-spin rounded-full border-4 border-[#1D2E24]/25 border-t-[#1D2E24]" />
-              <span className="font-medium text-gray-700">Loading secure payment form...</span>
+              <span className="font-medium text-gray-700">Sicheres Zahlungsformular wird geladen...</span>
             </div>
           )}
         </div>

@@ -16,9 +16,9 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Return & Refund Policy | Weteextees',
+  title: 'Widerrufsbelehrung & Rückgaberichtlinie | Weteextees',
   description:
-    'Return, exchange, and cancellation information for authentic antiques, modern furniture, and vintage collectibles purchased from Weteextees.',
+    'Informationen zum gesetzlichen Widerrufsrecht, Rückgabe und Erstattungsrichtlinien für moderne Möbel, Stühle und Tische von Weteextees.',
 };
 
 export default function ReturnPolicyPage() {
@@ -32,9 +32,9 @@ export default function ReturnPolicyPage() {
         'url': 'https://weteextees.com',
         'hasMerchantReturnPolicy': {
           '@type': 'MerchantReturnPolicy',
-          'name': 'Weteextees Return & Refund Policy',
+          'name': 'Weteextees Widerrufsbelehrung & Rückgaberichtlinie',
           'merchantReturnLink': 'https://weteextees.com/return-policy',
-          'applicableCountry': ['GB', 'US'],
+          'applicableCountry': ['DE', 'EU'],
           'returnPolicyCategory': 'https://schema.org/MerchantReturnFiniteReturnWindow',
           'merchantReturnDays': 30,
           'returnMethod': 'https://schema.org/ReturnByMail',
@@ -57,57 +57,57 @@ export default function ReturnPolicyPage() {
         {/* Page Header */}
         <div className="mb-10">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-[#1D2E24] tracking-tight">
-            Return &amp; Refund Policy
+            Widerrufsbelehrung &amp; Rückgaberichtlinie
           </h1>
           <p className="text-[#5C6B61] mt-3 text-base sm:text-lg max-w-2xl">
-            This policy explains cancellation, return, and refund arrangements for authentic antiques, modern furniture, and vintage collectibles purchased from Weteextees.
+            Hier finden Sie alle Informationen zu Ihrem 30-tägigen Rückgaberecht, dem gesetzlichen Widerruf sowie zur unkomplizierten Rückabwicklung bei Weteextees.
           </p>
         </div>
 
         {/* Quick Summary */}
         <div className="bg-white rounded-2xl shadow-sm border border-[#DCE5DE] p-6 sm:p-8 mb-10">
-          <h2 className="text-lg font-bold text-[#1D2E24] mb-5">Quick Overview</h2>
+          <h2 className="text-lg font-bold text-[#1D2E24] mb-5">Überblick auf einen Blick</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <RotateCcw className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Returns</span>
-                <span className="text-sm font-bold text-gray-900">30-Day Policy</span>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Rückgabefrist</span>
+                <span className="text-sm font-bold text-gray-900">30 Tage Rückgaberecht</span>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <RefreshCw className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Exchanges</span>
-                <span className="text-sm font-bold text-gray-900">Subject to Inventory</span>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Umtausch</span>
+                <span className="text-sm font-bold text-gray-900">Nach Verfügbarkeit</span>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <Clock className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Notice Window</span>
-                <span className="text-sm font-bold text-gray-900">14-Day Notice</span>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Widerrufsfrist</span>
+                <span className="text-sm font-bold text-gray-900">14 Tage gesetzlich</span>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <Inbox className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Return Method</span>
-                <span className="text-sm font-bold text-gray-900">Tracked Courier / Mail</span>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Rücksendemethode</span>
+                <span className="text-sm font-bold text-gray-900">Spedition / Paket</span>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <Banknote className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Restocking Fee</span>
-                <span className="text-sm font-bold text-gray-900">No Restocking Fee</span>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Wiedereinlagerung</span>
+                <span className="text-sm font-bold text-gray-900">0 € Gebühren</span>
               </div>
             </div>
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <CreditCard className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
               <div>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Refund Time</span>
-                <span className="text-sm font-bold text-gray-900">Within 14 Days</span>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">Erstattungsdauer</span>
+                <span className="text-sm font-bold text-gray-900">Innerhalb 5–14 Tagen</span>
               </div>
             </div>
           </div>
@@ -118,27 +118,27 @@ export default function ReturnPolicyPage() {
 
           {/* Introduction */}
           <p className="text-lg leading-relaxed text-gray-800">
-            Welcome to <strong className="text-[#1D2E24]">Weteextees</strong>. Because antique pieces and fine furniture are delicate and unique, please contact our support team before arranging any return so safe packaging and delivery instructions can be coordinated.
+            Wir bei <strong className="text-[#1D2E24]">Weteextees</strong> möchten, dass Sie mit Ihren neuen Möbelstücken rundum zufrieden sind. Sollte ein Modell doch nicht in Ihr Raumkonzept passen, können Sie Ihre Bestellung unkompliziert retournieren.
           </p>
 
           {/* 1. Returns */}
           <div className="space-y-4 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3">
               <RotateCcw className="w-6 h-6 text-[#1D2E24]" />
-              <h2 className="text-2xl font-bold text-[#1D2E24]">1. Returns Eligibility</h2>
+              <h2 className="text-2xl font-bold text-[#1D2E24]">1. Rückgabebedingungen &amp; Widerrufsrecht</h2>
             </div>
-            <p>We want you to be delighted with every piece you acquire:</p>
+            <p>Verbrauchern steht ein gesetzliches Widerrufsrecht von 14 Tagen zu, das wir freiwillig auf insgesamt 30 Tage erweitern:</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
               <div className="p-4 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
-                <h3 className="font-bold text-[#1D2E24] text-base mb-1">Transit Damage &amp; Inaccuracies</h3>
+                <h3 className="font-bold text-[#1D2E24] text-base mb-1">Transportschaden oder Abweichung</h3>
                 <p className="text-sm text-gray-700">
-                  Contact us promptly if an item arrives damaged in transit or materially different from the condition report. We will arrange collection, repair, replacement, or a full refund.
+                  Sollte ein Artikel beschädigt geliefert werden oder ein Defekt vorliegen, organisieren wir die kostenlose Abholung und erstatten den vollen Kaufpreis oder liefern Ersatz.
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
-                <h3 className="font-bold text-[#1D2E24] text-base mb-1">30-Day Return Window</h3>
+                <h3 className="font-bold text-[#1D2E24] text-base mb-1">30 Tage Rückgaberecht</h3>
                 <p className="text-sm text-gray-700">
-                  Eligible items may be returned within 30 days of delivery in their original condition and protective packaging.
+                  Sie können unbenutzte Artikel im Originalzustand innerhalb von 30 Tagen nach Erhalt an uns zurücksenden.
                 </p>
               </div>
             </div>
@@ -148,14 +148,14 @@ export default function ReturnPolicyPage() {
           <div className="space-y-4 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3">
               <Clock className="w-6 h-6 text-[#1D2E24]" />
-              <h2 className="text-2xl font-bold text-[#1D2E24]">3. Item Condition Requirements</h2>
+              <h2 className="text-2xl font-bold text-[#1D2E24]">2. Voraussetzungen für die Rückgabe</h2>
             </div>
-            <p className="font-semibold text-gray-900">Returned pieces must be:</p>
+            <p className="font-semibold text-gray-900">Für eine reibungslose Rückerstattung beachten Sie bitte:</p>
             <ul className="list-disc pl-6 space-y-2">
-              <li>In the exact condition received with all accompanying provenance paperwork or authenticity certificates.</li>
-              <li>Packed securely with the original or equivalent protective cushioning and crating.</li>
-              <li>Accompanied by proof of purchase (order number or email confirmation).</li>
-              <li>Free from post-delivery alterations, marks, or structural modifications.</li>
+              <li>Die Möbelstücke müssen sich im Originalzustand ohne Gebrauchsspuren befinden.</li>
+              <li>Bitte verpacken Sie die Ware transportsicher, idealerweise in der Originalverpackung mit Kantenschutz.</li>
+              <li>Legen Sie den Lieferschein oder die Bestellnummer bei.</li>
+              <li>Keine nachträglichen Modifikationen oder Eigenreparaturen an den Artikeln.</li>
             </ul>
           </div>
 
@@ -163,21 +163,21 @@ export default function ReturnPolicyPage() {
           <div className="space-y-4 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3">
               <PackageCheck className="w-6 h-6 text-[#1D2E24]" />
-              <h2 className="text-2xl font-bold text-[#1D2E24]">4. How to Arrange a Return</h2>
+              <h2 className="text-2xl font-bold text-[#1D2E24]">3. Ablauf einer Retoure</h2>
             </div>
-            <p>Please contact us to obtain <strong>written return authorisation</strong> before sending any item:</p>
+            <p>So melden Sie Ihre Rückgabe schnell und unkompliziert an:</p>
             <ol className="list-decimal pl-6 space-y-3">
               <li>
-                <strong>Contact us</strong> at <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> or via our <span className="font-semibold">24/7 Live Chat</span>.
+                <strong>Kundenservice kontaktieren</strong>: Schreiben Sie uns an <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> oder nutzen Sie unseren <span className="font-semibold">24/7 Live-Chat</span>.
               </li>
               <li>
-                <strong>Receive return instructions</strong>. We will confirm the return address and any special packaging or courier guidelines.
+                <strong>Rücksendeanweisungen erhalten</strong>: Wir stellen Ihnen das Retourenetikett oder die Abholvereinbarung zur Verfügung.
               </li>
               <li>
-                <strong>Secure packing &amp; shipment</strong>. Pack the item securely using tracked and insured shipping.
+                <strong>Sichere Verpackung &amp; Versand</strong>: Übergeben Sie das Paket an den Paketdienst oder halten Sie die Möbel für die Spedition bereit.
               </li>
               <li>
-                <strong>Inspection and refund</strong>. Upon safe receipt and condition review, your refund is credited within statutory timeframes.
+                <strong>Prüfung &amp; Erstattung</strong>: Nach Eingang und kurzer Qualitätsprüfung erstatten wir den Betrag unverzüglich.
               </li>
             </ol>
           </div>
@@ -186,11 +186,11 @@ export default function ReturnPolicyPage() {
           <div className="space-y-4 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3">
               <Banknote className="w-6 h-6 text-[#1D2E24]" />
-              <h2 className="text-2xl font-bold text-[#1D2E24]">5. Fees &amp; Restocking</h2>
+              <h2 className="text-2xl font-bold text-[#1D2E24]">4. Gebühren &amp; Wiedereinlagerung</h2>
             </div>
             <div className="p-4 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <p className="font-medium text-gray-800">
-                We do <strong>not</strong> charge restocking fees for eligible returns. For change-of-mind returns, the customer is responsible for direct return shipping costs.
+                Wir berechnen <strong>keine</strong> Wiedereinlagerungsgebühren (Restocking Fee: 0 €).
               </p>
             </div>
           </div>
@@ -199,32 +199,32 @@ export default function ReturnPolicyPage() {
           <div className="space-y-4 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3">
               <CreditCard className="w-6 h-6 text-[#1D2E24]" />
-              <h2 className="text-2xl font-bold text-[#1D2E24]">6. Refund Processing</h2>
+              <h2 className="text-2xl font-bold text-[#1D2E24]">5. Rückerstattung des Kaufpreises</h2>
             </div>
-            <p>Approved refunds are credited directly to your original payment method (Stripe, PayPal, card) within 5–14 business days of receipt and verification.</p>
+            <p>Erstattungen erfolgen automatisch auf das ursprünglich verwendete Zahlungsmittel (Kreditkarte, Stripe, PayPal etc.) innerhalb von 5–14 Werktagen nach Wareneingang.</p>
           </div>
 
           {/* 7. Need Help */}
           <div className="space-y-4 pt-4 border-t border-gray-100">
             <div className="flex items-center gap-3">
               <HelpCircle className="w-6 h-6 text-[#1D2E24]" />
-              <h2 className="text-2xl font-bold text-[#1D2E24]">7. Customer Care</h2>
+              <h2 className="text-2xl font-bold text-[#1D2E24]">6. Kundenservice &amp; Rückfragen</h2>
             </div>
-            <p>Our team is here to assist with any questions regarding your piece:</p>
+            <p>Unser Serviceteam hilft Ihnen bei allen Fragen zur Rückabwicklung:</p>
 
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE] grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-3">
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24]">
                   <MessageSquare className="w-5 h-5 text-[#1D2E24]" />
-                  <span>Live Chat</span>
+                  <span>Live-Chat</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7 space-y-1">
-                  <div>24/7 Online Instant Assistance</div>
+                  <div>24/7 Online-Sofort-Hilfe</div>
                 </div>
 
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24] pt-2">
                   <Mail className="w-5 h-5 text-[#1D2E24]" />
-                  <span>Email</span>
+                  <span>E-Mail</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7">
                   <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a>
@@ -234,12 +234,12 @@ export default function ReturnPolicyPage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24]">
                   <Building2 className="w-5 h-5 text-[#1D2E24]" />
-                  <span>Office Address</span>
+                  <span>Geschäftsanschrift</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7 space-y-2">
                   <div>
                     <strong className="text-gray-900 block">Weteextees</strong>
-                    Hochalmstraße 10, 81825 München, Bayern, Germany
+                    Hochalmstraße 10, 81825 München, Bayern, Deutschland
                   </div>
                 </div>
               </div>
@@ -248,12 +248,12 @@ export default function ReturnPolicyPage() {
 
           {/* Promise Footer */}
           <div className="bg-gradient-to-r from-[#1D2E24] to-[#142019] text-[#F6F8F5] p-6 sm:p-8 rounded-xl shadow-md mt-8 border border-[#D1A966]/20">
-            <h3 className="text-xl font-bold mb-2 text-[#D1A966]">Our Promise</h3>
+            <h3 className="text-xl font-bold mb-2 text-[#D1A966]">Unser Qualitätsversprechen</h3>
             <p className="text-sm sm:text-base text-[#F6F8F5]/85 leading-relaxed">
-              We describe every antique piece, modern furniture item, and collectible accurately and resolve questions with transparency and care.
+              Ihre Zufriedenheit steht für uns an erster Stelle. Sollten Sie Fragen zu Ihrer Lieferung oder Rückgabe haben, steht Ihnen unser Kundenservice 24/7 über den Live-Chat zur Verfügung.
             </p>
             <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
-              <span className="text-xs text-[#F6F8F5]/70">Have a question about your piece?</span>
+              <span className="text-xs text-[#F6F8F5]/70">Haben Sie Fragen zu einem Artikel?</span>
               <Link
                 href="/contact"
                 className="inline-flex items-center px-4 py-2 rounded-lg bg-[#D1A966] text-[#142019] font-bold text-sm hover:bg-[#DEBC80] transition-colors"

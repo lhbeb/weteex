@@ -7,63 +7,51 @@ export interface StoreFaq {
 
 export const STORE_FAQS: readonly StoreFaq[] = [
   {
-    question: 'What items does Weteextees specialize in?',
+    question: 'Auf welche Möbel ist Weteextees spezialisiert?',
     answer:
-      'Weteextees is your premier destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces. Every piece is curated for exceptional craftsmanship, historical character, and design integrity.',
+      'Weteextees ist Ihr Online-Shop für handgefertigte moderne Esszimmerstühle, Naturrattan- und Massivholzmöbel, stilvolle Esstische und zeitlose Wohnaccessoires. Jedes Stück überzeugt durch hochwertige Verarbeitung und edle Materialien.',
   },
   {
-    question: 'How do you verify the authenticity and condition of antiques?',
+    question: 'Wie wird die Qualität und Materialverarbeitung sichergestellt?',
     answer:
-      'Each antique and vintage collectible undergoes careful examination by our specialists. Detailed condition reports, provenance notes, era estimations, and high-resolution photographs are provided on every product page.',
+      'Jedes Möbelstück wird vor dem Versand einer sorgfältigen Qualitätskontrolle unterzogen. Detaillierte Maße, Holzarten, Polsterstoffe und Pflegehinweise finden Sie direkt auf den Produktseiten.',
   },
   {
-    question: 'How do I place an order?',
+    question: 'Wie gebe ich eine Bestellung auf?',
     answer:
-      'Select your desired modern furniture piece, antique, or collectible, review dimensions and details, add it to your cart, and proceed through our secure checkout with your preferred payment method.',
+      'Wählen Sie Ihr gewünschtes Möbelstück aus, prüfen Sie die Abmessungen und legen Sie den Artikel in den Warenkorb. Anschließend führen wir Sie durch den sicheren Bezahlvorgang.',
   },
   {
-    question: 'Where do you ship and how is delicate furniture handled?',
+    question: 'Wohin liefern Sie und wie werden empfindliche Möbel transportiert?',
     answer:
-      'We provide secure, insured shipping with specialized protective packaging and white-glove delivery options for large or delicate furniture and antique items. Handling times and delivery estimates are outlined in our Shipping Policy.',
+      'Wir liefern versandkostenfrei nach ganz Deutschland und in die EU. Große oder empfindliche Möbelstücke werden in verstärkten Spezialverpackungen durch erfahrene Speditionen zugestellt.',
     linkHref: '/shipping-policy',
-    linkLabel: 'Read our Shipping Policy',
+    linkLabel: 'Zu unseren Versandrichtlinien',
   },
   {
-    question: 'How can I track my delivery?',
+    question: 'Wie kann ich meine Sendung verfolgen?',
     answer:
-      'As soon as your piece is prepared and dispatched, tracking details and courier milestone updates are sent to your email. You can also monitor delivery on our Track Order page.',
+      'Sobald Ihre Bestellung an die Spedition übergeben wurde, erhalten Sie eine Versandbestätigung mit Tracking-Nummer per E-Mail. Zudem können Sie den Status auf unserer Seite zur Sendungsverfolgung einsehen.',
     linkHref: '/track',
-    linkLabel: 'Track your order',
+    linkLabel: 'Sendung verfolgen',
   },
   {
-    question: 'What is your return policy?',
+    question: 'Wie funktioniert die Rückgabe?',
     answer:
-      'Eligible items may be returned within 30 calendar days of delivery in their original condition and packaging. Full terms and instructions are available in our Return & Refund Policy.',
+      'Sie können unbenutzte Artikel innerhalb von 30 Kalendertagen nach Erhalt in der Originalverpackung an uns zurückgeben. Alle Details finden Sie in unserer Widerrufsbelehrung & Rückgaberichtlinie.',
     linkHref: '/return-policy',
-    linkLabel: 'Read our Return & Refund Policy',
+    linkLabel: 'Zur Widerrufsbelehrung & Rückgabe',
   },
   {
-    question: 'Can I request an exchange or custom sourcing?',
+    question: 'Kann ich eine Bestellung nach dem Absenden ändern oder stornieren?',
     answer:
-      'If you are seeking a specific era, designer chair, or antique collectible, our support team can assist with alternative available inventory or replacement options.',
+      'Bitte kontaktieren Sie uns schnellstmöglich per 24/7 Live-Chat oder E-Mail. Solange die Ware noch nicht verpackt und an den Transporteur übergeben wurde, passen wir Ihre Bestellung gerne an.',
   },
   {
-    question: 'Is local collection available?',
+    question: 'Wie erreiche ich den Kundenservice von Weteextees?',
     answer:
-      'Local collection is available for select items by prior arrangement only. Please contact us before traveling so our team can prepare your piece.',
-    linkHref: '/local-pickup',
-    linkLabel: 'View the Local Pickup Guide',
-  },
-  {
-    question: 'Can I modify or cancel an order?',
-    answer:
-      'Please contact us immediately. We will do our best to accommodate adjustments before your item has been packed and scheduled for courier dispatch.',
-  },
-  {
-    question: 'How can I contact Weteextees specialists?',
-    answer:
-      'You can reach our team via our 24/7 live chat, contact form, or direct email at contact@weteextees.com.',
+      'Sie erreichen unser Support-Team rund um die Uhr (24/7) über den Live-Chat auf unserer Website oder per E-Mail an contact@weteextees.com.',
     linkHref: '/contact',
-    linkLabel: 'Contact our team',
+    linkLabel: 'Kundenservice kontaktieren',
   },
 ];

@@ -20,7 +20,7 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
               <MapPin className="h-4 w-4" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-[#5C6B61]">Ships from</p>
+              <p className="text-sm font-medium text-[#5C6B61]">Versand aus</p>
               <p className="mt-1 text-sm font-semibold text-[#1E2621]">
                 {market.shipsFrom} {market.shipsFromFlag}
               </p>
@@ -34,8 +34,8 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
               <Truck className="h-4 w-4" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-[#5C6B61]">Estimated delivery</p>
-              <p className="mt-1 text-sm font-semibold text-[#1E2621]">Get it by {deliveryRange}</p>
+              <p className="text-sm font-medium text-[#5C6B61]">Voraussichtliche Lieferung</p>
+              <p className="mt-1 text-sm font-semibold text-[#1E2621]">Zustellung bis {deliveryRange}</p>
               <p className="mt-1 text-sm text-[#5C6B61]">{market.freeShippingText}</p>
             </div>
           </div>
@@ -47,9 +47,9 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
               <RefreshCw className="h-4 w-4" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-[#5C6B61]">Returns</p>
+              <p className="text-sm font-medium text-[#5C6B61]">Rückgabe &amp; Widerruf</p>
               <p className="mt-1 text-sm font-semibold text-[#1E2621]">{market.returnsText}</p>
-              <p className="mt-1 text-sm text-[#5C6B61]">Hassle-free returns</p>
+              <p className="mt-1 text-sm text-[#5C6B61]">Kostenfreie Retourenabwicklung</p>
             </div>
           </div>
         </div>

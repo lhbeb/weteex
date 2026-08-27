@@ -16,8 +16,8 @@ interface CategorySectionProps {
 
 const CategorySection: React.FC<CategorySectionProps> = ({
   products,
-  title = 'Modern Furniture & Antiques',
-  subtitle = 'Authentic antiques, unique vintage collectibles, and modern designer pieces.',
+  title = 'Moderne Möbel & Esszimmerkollektionen',
+  subtitle = 'Hochwertige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.',
   maxDisplay = 8,
   shuffleForVisitor = false,
   visitorShuffleKey = 'home-furniture-antiques',

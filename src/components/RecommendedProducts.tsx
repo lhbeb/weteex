@@ -81,9 +81,9 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ currentProduc
     <section className="mt-8 border-t pt-8">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-[#262626] mb-4">More Curated Pieces to Explore</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mb-4">Weitere kuratierte Möbelstücke entdecken</h2>
           <p className="text-lg text-gray-600 max-w-2xl">
-            Discover complementary modern furniture, authentic antiques, and decorative accents
+            Entdecken Sie passende moderne Stühle, Holztische und stilvolle Wohnakzente für Ihr Zuhause.
           </p>
         </div>
 
@@ -119,7 +119,7 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ currentProduc
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
                   <div className="flex items-center text-sm font-medium text-[#1D2E24] group-hover:text-[#D1A966] transition-colors">
                     <Eye className="h-4 w-4 mr-1" />
-                    <span>View Details</span>
+                    <span>Details ansehen</span>
                   </div>
                   <div className="h-8 w-8 bg-[#1D2E24] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <ShoppingCart className="h-4 w-4 text-[#D1A966]" />
