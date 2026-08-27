@@ -41,17 +41,45 @@ const Header = () => {
   const isCheckoutPage = pathname === '/checkout';
 
   const announcements = [
-    <span key="nav-1">✨ <span className="font-bold">Weteextees</span> — Your destination for authentic antiques and modern furniture</span>,
-    <span key="nav-2">🪑 <span className="font-bold">Modern chairs, vintage collectibles</span> &amp; one-of-a-kind decorative pieces</span>,
-    "whatsapp-contact" // Special marker for WhatsApp announcement
+    <a
+      key="contact-phone"
+      href="https://wa.me/447533408378"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-1.5 hover:underline"
+    >
+      <span>📞</span>
+      <span>Inquiries &amp; Orders:</span>
+      <span className="font-bold underline">+44 7533 408378</span>
+      <span className="hidden md:inline text-xs opacity-80">(Mon–Fri 9:00 AM – 6:00 PM EST)</span>
+    </a>,
+    <a
+      key="contact-email"
+      href="mailto:contact@weteextees.com"
+      className="flex items-center gap-1.5 hover:underline"
+    >
+      <span>✉️</span>
+      <span>Direct Email Inquiries:</span>
+      <span className="font-bold underline">contact@weteextees.com</span>
+      <span className="hidden md:inline text-xs opacity-80">(Average response: under 2 hours)</span>
+    </a>,
+    <Link
+      key="contact-page"
+      href="/contact"
+      className="flex items-center gap-1.5 hover:underline"
+    >
+      <span>💬</span>
+      <span>Need help with a piece or delivery question?</span>
+      <span className="font-bold underline">Contact Our Support Team →</span>
+    </Link>
   ];
 
-  // Announcement bar animation - PRESERVED EXACTLY
+  // Announcement bar animation - auto-rotates contact & inquiry items
   useEffect(() => {
     const startAnnouncementRotation = () => {
       announcementIntervalRef.current = setInterval(() => {
         setCurrentAnnouncement(prev => (prev + 1) % announcements.length);
-      }, 2000);
+      }, 4000);
     };
 
     startAnnouncementRotation();
@@ -81,7 +109,7 @@ const Header = () => {
     setTimeout(() => {
       announcementIntervalRef.current = setInterval(() => {
         setCurrentAnnouncement(prev => (prev + 1) % announcements.length);
-      }, 2000);
+      }, 4000);
     }, 100);
   };
 
@@ -140,44 +168,21 @@ const Header = () => {
 
   return (
     <>
-      {/* Announcement bar - Champagne Gold background with deep olive text */}
+      {/* Announcement bar - Champagne Gold background with deep olive text for contact and inquiries */}
       <div suppressHydrationWarning={true} className="bg-[#D1A966] text-[#142019] py-2 relative overflow-hidden h-[40px] flex items-center">
         <div suppressHydrationWarning={true} className="container mx-auto px-4 flex items-center justify-center relative w-full h-full">
           {/* Announcement Text */}
           <div suppressHydrationWarning={true} className="text-center font-medium px-4 sm:px-14 transition-all duration-500 ease-in-out h-full flex items-center justify-center min-h-[24px]">
-            {announcements[currentAnnouncement] === "whatsapp-contact" ? (
-              <div key={currentAnnouncement} className="flex items-center justify-center animate-fade-in text-xs sm:text-sm md:text-base h-full w-full">
-                <a
-                  href="https://wa.me/447533408378"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 sm:gap-1.5 hover:opacity-80 transition-opacity flex-wrap justify-center"
-                  aria-label="Contact specialists on WhatsApp"
-                >
-                  <Image
-                    src="/whatsapp-svgrepo-com.svg"
-                    alt="WhatsApp"
-                    width={20}
-                    height={20}
-                    className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0"
-                    style={{ filter: 'brightness(0)' }}
-                  />
-                  <span className="whitespace-nowrap">Looking for an antique or modern piece? <span className="font-bold">Speak with our specialists</span></span>
-                  <span className="underline whitespace-nowrap font-bold">+44 7533 408378</span>
-                </a>
-              </div>
-            ) : (
-              <span key={currentAnnouncement} className="inline-block animate-fade-in whitespace-nowrap text-sm sm:text-base h-full flex items-center">
-                {announcements[currentAnnouncement]}
-              </span>
-            )}
+            <div key={currentAnnouncement} className="inline-block animate-fade-in text-xs sm:text-sm md:text-base h-full flex items-center">
+              {announcements[currentAnnouncement]}
+            </div>
           </div>
 
           {/* Desktop Arrows */}
           <button
             onClick={() => handleAnnouncementNavigation('prev')}
             className="hidden sm:block absolute left-4 p-1 hover:bg-[#1D2E24]/10 rounded-full transition-colors duration-200 z-10 text-[#142019]"
-            aria-label="Previous announcement"
+            aria-label="Previous contact announcement"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
@@ -185,7 +190,7 @@ const Header = () => {
           <button
             onClick={() => handleAnnouncementNavigation('next')}
             className="hidden sm:block absolute right-4 p-1 hover:bg-[#1D2E24]/10 rounded-full transition-colors duration-200 z-10 text-[#142019]"
-            aria-label="Next announcement"
+            aria-label="Next contact announcement"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
