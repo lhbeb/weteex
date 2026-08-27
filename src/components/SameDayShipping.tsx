@@ -31,17 +31,17 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
           {/* Right Section - Content */}
           <div className="md:w-[55%] bg-[#1D2E24] text-[#F6F8F5] p-12 flex flex-col justify-center">
             <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 text-[#D1A966]">
-              Careful White-Glove &amp; Insured Delivery
+              Same Day Shipping
             </h1>
 
             <p className="text-lg leading-relaxed font-normal mb-12 text-[#F6F8F5]/90">
-              Every antique piece, modern chair, and decorative collectible is carefully inspected, packed with museum-grade protective packaging, and shipped with full transit insurance. At <strong>Weteextees</strong>, the safe arrival of your unique pieces is our utmost priority.
+              Order by 2:00 PM EST and we&apos;ll process, pack, and ship your order the same day. At <strong>Weteextees</strong>, we deliver speed and reliability you can count on with trusted delivery partners.
             </p>
             <Link
               href="/shipping-policy"
               className="text-[#D1A966] hover:text-[#DEBC80] text-lg underline underline-offset-2 transition-colors font-medium"
             >
-              See our delivery &amp; shipping policy →
+              View shipping policy →
             </Link>
           </div>
         </div>
