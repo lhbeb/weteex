@@ -115,7 +115,7 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ currentProduc
                   </span>
                 </p>
 
-                <div className="text-xl font-bold text-[#1E2621]">${new Intl.NumberFormat('en-US').format(product.price)}</div>
+                <div className="text-xl font-bold text-[#1E2621]">{new Intl.NumberFormat('de-DE').format(product.price)} €</div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
                   <div className="flex items-center text-sm font-medium text-[#1D2E24] group-hover:text-[#D1A966] transition-colors">
                     <Eye className="h-4 w-4 mr-1" />

@@ -67,7 +67,7 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, largeImage =
 
           <div className="flex flex-wrap items-baseline gap-2">
             <span className="text-xl font-semibold text-[#1E2621] md:text-2xl">
-              ${new Intl.NumberFormat('en-US').format(price)}
+              {new Intl.NumberFormat('de-DE').format(price)} €
             </span>
             <span className="text-sm text-[#5C6B61]">Free white-glove shipping</span>
           </div>

@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
             line_items: [
                 {
                     price_data: {
-                        currency: product.currency?.toLowerCase() || 'usd',
+                        currency: product.currency?.toLowerCase() || 'eur',
                         product_data: {
                             name: product.title,
                             description: `Product ID: ${product.slug}`,

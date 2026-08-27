@@ -136,7 +136,7 @@ Technical Details:
     category: 'Modern Chairs & Furniture',
     brand: 'Furnified',
     payee_email: 'contact@weteextees.com',
-    currency: 'USD',
+    currency: 'EUR',
     checkout_link: `/checkout?slug=${slug}`,
     checkout_flow: 'stripe',
     in_stock: true,

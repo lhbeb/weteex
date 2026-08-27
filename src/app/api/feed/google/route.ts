@@ -4,8 +4,8 @@ import { formatValidSku, mapConditionToGmc } from '@/lib/conditions';
 import type { Product } from '@/types/product';
 
 const BASE_URL = 'https://weteextees.com';
-const SUPPORTED_COUNTRIES = ['US'] as const;
-const SUPPORTED_CURRENCIES = ['USD'] as const;
+const SUPPORTED_COUNTRIES = ['DE', 'EU', 'US'] as const;
+const SUPPORTED_CURRENCIES = ['EUR', 'USD'] as const;
 const GMC_TITLE_MAX_LENGTH = 150;
 const GMC_DESCRIPTION_MAX_LENGTH = 5000;
 const SUPPORTED_IMAGE_EXTENSIONS = /\.(?:jpe?g|png|webp|gif|bmp|tiff?)(?:$|\?)/i;
@@ -13,12 +13,14 @@ const SUPPORTED_IMAGE_EXTENSIONS = /\.(?:jpe?g|png|webp|gif|bmp|tiff?)(?:$|\?)/i
 type FeedCountry = (typeof SUPPORTED_COUNTRIES)[number];
 type FeedCurrency = (typeof SUPPORTED_CURRENCIES)[number];
 
-const DEFAULT_CURRENCY: FeedCurrency = 'USD';
+const DEFAULT_CURRENCY: FeedCurrency = 'EUR';
 
 const SHIPPING_BY_COUNTRY: Record<FeedCountry, {
   service: string;
   currency: FeedCurrency;
 }> = {
+  DE: { service: 'Standardversand (Kostenlos)', currency: 'EUR' },
+  EU: { service: 'Kostenlose Lieferung (EU)', currency: 'EUR' },
   US: { service: 'Free Standard Shipping', currency: 'USD' },
 };
 
@@ -152,10 +154,10 @@ export async function GET(request: NextRequest) {
   );
 
   if (country === null) {
-    return new NextResponse('Unsupported country. Use US.', { status: 400 });
+    return new NextResponse(`Unsupported country. Supported: ${SUPPORTED_COUNTRIES.join(', ')}`, { status: 400 });
   }
   if (currency === null) {
-    return new NextResponse('Unsupported currency. Use USD.', { status: 400 });
+    return new NextResponse(`Unsupported currency. Supported: ${SUPPORTED_CURRENCIES.join(', ')}`, { status: 400 });
   }
 
   try {

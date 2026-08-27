@@ -24,7 +24,7 @@ export async function generateMetadata(
     const title = `${product.title || 'Product'} - ${product.brand || ''} | ${product.category || ''} | Weteextees`;
     const description = (product.description || '').substring(0, 155) + '...';
     const canonicalUrl = `${BASE_URL}/products/${product.slug}`;
-    const currencyCode = product.currency || 'USD';
+    const currencyCode = product.currency || 'EUR';
     const price = (product.price || 0).toFixed(2);
     const inStock = product.inStock !== false;
 
@@ -135,7 +135,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       "offers": {
         "@type": "Offer",
         "price": p.price || 0,
-        "priceCurrency": p.currency || "USD",
+        "priceCurrency": p.currency || "EUR",
         "validFrom": new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
         "priceValidUntil": priceValidUntil.toISOString().slice(0, 10),
         "availability": inStock

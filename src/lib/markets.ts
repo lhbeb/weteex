@@ -93,10 +93,10 @@ export const MARKETS: Record<MarketKey, MarketConfig> = {
 };
 
 /** Default fallback market */
-export const DEFAULT_MARKET: MarketConfig = MARKETS.us;
+export const DEFAULT_MARKET: MarketConfig = MARKETS.eu;
 
 /**
- * Get market config for a given key, falling back to US default.
+ * Get market config for a given key, falling back to EU default.
  */
 export function getMarket(key?: string | null): MarketConfig {
   if (!key) return DEFAULT_MARKET;
@@ -107,18 +107,18 @@ export function getMarket(key?: string | null): MarketConfig {
  * Format a price using the market's locale and currency symbol.
  * Uses same-number approach: price entered IS the target-currency price.
  */
-export function formatMarketPrice(price: number, market: MarketConfig): string {
-  const formatted = new Intl.NumberFormat(market.locale, {
+export function formatMarketPrice(price: number, market: MarketConfig = DEFAULT_MARKET): string {
+  const formatted = new Intl.NumberFormat(market.locale || 'de-DE', {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   }).format(price);
-  return `${market.currencySymbol}${formatted}`;
+  return `${formatted} €`;
 }
 
 /**
  * Get estimated delivery date range string for a market.
  */
-export function getDeliveryRange(market: MarketConfig): string {
+export function getDeliveryRange(market: MarketConfig = DEFAULT_MARKET): string {
   const today = new Date();
   const start = new Date(today);
   const end = new Date(today);
@@ -133,9 +133,9 @@ export function getDeliveryRange(market: MarketConfig): string {
 }
 
 export const MARKET_OPTIONS = [
-  { value: '', label: '🌍 Global (Default — USD)' },
-  { value: 'us', label: '🇺🇸 United States (USD)' },
-  { value: 'eu', label: '🇪🇺 European Union (EUR €)' },
+  { value: '', label: '🇪🇺 Deutschland / EU (Default — EUR €)' },
+  { value: 'eu', label: '🇪🇺 Europäische Union (EUR €)' },
+  { value: 'us', label: '🇺🇸 United States (USD $)' },
   { value: 'ca', label: '🇨🇦 Canada (CAD)' },
   { value: 'au', label: '🇦🇺 Australia (AUD)' },
 ] as const;
