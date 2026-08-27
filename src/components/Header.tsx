@@ -41,25 +41,20 @@ const Header = () => {
   const isCheckoutPage = pathname === '/checkout';
 
   const announcements = [
-    <Link
+    <div
       key="contact-chat"
-      href="/contact"
-      className="flex items-center gap-1.5 hover:underline"
+      className="flex items-center gap-1.5"
     >
       <span>💬</span>
-      <span>Live Support:</span>
-      <span className="font-bold underline">Chat Support 24/7</span>
-      <span className="hidden md:inline text-xs opacity-80">(Instant online assistance)</span>
-    </Link>,
+      <span className="font-semibold">Chat support: 24/7</span>
+    </div>,
     <a
       key="contact-email"
       href="mailto:contact@weteextees.com"
       className="flex items-center gap-1.5 hover:underline"
     >
       <span>✉️</span>
-      <span>Direct Email Inquiries:</span>
-      <span className="font-bold underline">contact@weteextees.com</span>
-      <span className="hidden md:inline text-xs opacity-80">(Average response: under 2 hours)</span>
+      <span className="font-semibold">Email: contact@weteextees.com</span>
     </a>,
     <Link
       key="contact-page"
@@ -67,8 +62,7 @@ const Header = () => {
       className="flex items-center gap-1.5 hover:underline"
     >
       <span>💬</span>
-      <span>Need help with a piece or delivery question?</span>
-      <span className="font-bold underline">Contact Our Support Team →</span>
+      <span className="font-semibold">Need help? Contact Us →</span>
     </Link>
   ];
 
