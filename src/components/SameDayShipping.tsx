@@ -48,7 +48,7 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
       </div>
 
       {/* Feature Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         {/* Card 1 */}
         <div className="bg-white rounded-xl p-6 shadow-sm border border-[#DCE5DE]">
           <div className="flex items-start gap-4">
@@ -78,23 +78,6 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
               </h3>
               <p className="text-[#5C6B61] text-sm">
                 Individuelle Polsterung und verstärkte Kanten schützen edle Hölzer, Rattan und Steinplatten.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 3 */}
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-[#DCE5DE]">
-          <div className="flex items-start gap-4">
-            <div className="bg-[#1D2E24] rounded-full p-3 flex-shrink-0">
-              <Truck className="w-6 h-6 text-[#D1A966]" />
-            </div>
-            <div>
-              <h3 className="font-bold text-[#1E2621] text-lg mb-2">
-                Verfolgte Fachspedition
-              </h3>
-              <p className="text-[#5C6B61] text-sm">
-                Direkte, vollversicherte Zustellung mit lückenloser Sendungsverfolgung bis zu Ihrer Haustür.
               </p>
             </div>
           </div>

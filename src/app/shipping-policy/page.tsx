@@ -109,14 +109,14 @@ export default function ShippingPolicyPage() {
             Versandrichtlinien &amp; Lieferzeiten
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[#F6F8F5]/85 sm:text-lg">
-            Weteextees organisiert einen zuverlässigen, versicherten Transport und spezialisierte Schutzverpackungen für moderne Stühle, Tische und Möbelstücke.
+            Weteextees organisiert einen zuverlässigen, versicherten Versand und spezialisierte Schutzverpackungen für moderne Stühle, Tische und Möbelstücke.
           </p>
         </section>
 
         <section className="mb-8 grid gap-4 md:grid-cols-3">
           <div className="rounded-xl border border-[#DCE5DE] bg-white p-5 shadow-sm">
             <Clock className="mb-4 h-6 w-6 text-[#1D2E24]" />
-            <h2 className="text-lg font-bold text-[#1E2621]">100% Versicherter Transport</h2>
+            <h2 className="text-lg font-bold text-[#1E2621]">100% Versicherter Versand</h2>
             <p className="mt-2 text-sm leading-6 text-[#5C6B61]">
               Jede Möbellieferung ist vollständig gegen Transportschäden versichert und verfügt über eine lückenlose Sendungsverfolgung.
             </p>

@@ -187,7 +187,7 @@ export default function AboutPage() {
                   5
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Sicherer &amp; versicherter Transport</h3>
+                  <h3 className="text-xl font-bold text-[#1E2621] mb-2">Sicherer &amp; versicherter Versand</h3>
                   <p className="text-gray-700">
                     Spezialverpackung und zuverlässige Logistikpartner stellen sicher, dass Ihre Bestellung unversehrt bei Ihnen eintrifft.
                   </p>

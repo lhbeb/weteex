@@ -61,7 +61,7 @@ const Header = () => {
       className="flex items-center gap-1.5 hover:underline"
     >
       <span>💬</span>
-      <span className="font-semibold">Need help? Contact Us →</span>
+      <span className="font-semibold">Hilfe benötigt? Kontaktieren Sie uns →</span>
     </Link>
   ];
 
