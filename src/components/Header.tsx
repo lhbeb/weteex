@@ -199,7 +199,7 @@ const Header = () => {
       >
         {/* Top Row: Logo, Search, Actions */}
         <div suppressHydrationWarning={true} className="bg-[#142019] text-[#f2f5f3]">
-          <div suppressHydrationWarning={true} className="container mx-auto px-4 py-4">
+          <div suppressHydrationWarning={true} className="container mx-auto px-4 py-2 sm:py-2.5">
             <div suppressHydrationWarning={true} className="flex items-center justify-between gap-4">
             {/* Weteextees wordmark */}
             <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
