@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: 'Return & Refund Policy | Weteextees',
   description:
-    'Return, exchange, and cancellation information for authentic antiques, modern furniture, and vintage collectibles purchased from Weteextees, operated by Gooba Global LTD.',
+    'Return, exchange, and cancellation information for authentic antiques, modern furniture, and vintage collectibles purchased from Weteextees.',
 };
 
 export default function ReturnPolicyPage() {
@@ -118,7 +118,7 @@ export default function ReturnPolicyPage() {
 
           {/* Introduction */}
           <p className="text-lg leading-relaxed text-gray-800">
-            <strong className="text-[#1D2E24]">Weteextees</strong> is operated by Gooba Global LTD, company number 13107870. Because antique pieces and fine furniture are delicate and unique, please contact our support team before arranging any return so safe packaging and delivery instructions can be coordinated.
+            Welcome to <strong className="text-[#1D2E24]">Weteextees</strong>. Because antique pieces and fine furniture are delicate and unique, please contact our support team before arranging any return so safe packaging and delivery instructions can be coordinated.
           </p>
 
           {/* 1. Returns */}
@@ -136,26 +136,12 @@ export default function ReturnPolicyPage() {
                 </p>
               </div>
               <div className="p-4 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
-                <h3 className="font-bold text-[#1D2E24] text-base mb-1">Change of Mind</h3>
+                <h3 className="font-bold text-[#1D2E24] text-base mb-1">30-Day Return Window</h3>
                 <p className="text-sm text-gray-700">
-                  Consumers have 14 days after delivery to notify us of cancellation. Items must be returned in their original condition and protective packaging within 14 days of notice.
+                  Eligible items may be returned within 30 days of delivery in their original condition and protective packaging.
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* 2. Exchanges */}
-          <div className="space-y-4 pt-4 border-t border-gray-100">
-            <div className="flex items-center gap-3">
-              <RefreshCw className="w-6 h-6 text-[#1D2E24]" />
-              <h2 className="text-2xl font-bold text-[#1D2E24]">2. Exchanges</h2>
-            </div>
-            <p><strong>Exchanges are available where suitable inventory exists.</strong> If you wish to exchange a modern chair or decorative piece for an alternative model or era:</p>
-            <ul className="list-disc pl-6 space-y-2">
-              <li>Contact our curation team prior to returning your item.</li>
-              <li>We will confirm replacement availability and guide you through the return process.</li>
-              <li>Any difference in price will be calculated and settled before replacement dispatch.</li>
-            </ul>
           </div>
 
           {/* 3. Return Window & Conditions */}
@@ -248,11 +234,11 @@ export default function ReturnPolicyPage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24]">
                   <Building2 className="w-5 h-5 text-[#1D2E24]" />
-                  <span>Registered Company</span>
+                  <span>Office Address</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7 space-y-2">
                   <div>
-                    <strong className="text-gray-900 block">Gooba Global LTD · 13107870</strong>
+                    <strong className="text-gray-900 block">Weteextees</strong>
                     71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ
                   </div>
                 </div>

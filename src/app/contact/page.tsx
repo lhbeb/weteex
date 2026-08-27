@@ -220,8 +220,8 @@ export default function ContactPage() {
                     <div className="flex items-start">
                       <MapPin className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">Registered Company</h3>
-                        <p className="text-gray-600 mt-1">Gooba Global LTD · Company number 13107870</p>
+                        <h3 className="font-medium text-[#1E2621]">Brand &amp; Website</h3>
+                        <p className="text-gray-600 mt-1">Weteextees · Weteextees.com</p>
                       </div>
                     </div>
                     <div className="flex items-start">

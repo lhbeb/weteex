@@ -109,7 +109,7 @@ export default function ShippingPolicyPage() {
             Shipping &amp; Delivery Policy
           </h1>
           <p className="mt-5 max-w-3xl text-base leading-7 text-[#F6F8F5]/85 sm:text-lg">
-            Weteextees, operated by Gooba Global LTD (company number 13107870), coordinates insured, white-glove packaging and tracked delivery for our antiques, modern furniture, and one-of-a-kind collectibles.
+            Weteextees coordinates insured, white-glove packaging and tracked delivery for our authentic antiques, modern furniture, and one-of-a-kind collectibles.
           </p>
         </section>
 

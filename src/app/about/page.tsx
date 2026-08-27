@@ -49,7 +49,7 @@ export default function AboutPage() {
         'name': 'Weteextees',
         'url': 'https://weteextees.com',
         'description':
-          'Antiques and modern furniture retailer operated by Gooba Global LTD, company number 13107870.',
+          'Antiques and modern furniture retailer providing authentic antiques and unique decorative pieces.',
         'email': 'contact@weteextees.com',
         'telephone': ['+447533408378'],
         'address': {
@@ -104,10 +104,10 @@ export default function AboutPage() {
             </div>
             <div className="space-y-4 text-base leading-7 text-gray-700">
               <p>
-                Weteextees is operated by Gooba Global LTD, a company registered in England and Wales under company number 13107870.
+                Weteextees is a dedicated online destination specializing in curated antiques, fine modern seating, and rare vintage decor.
               </p>
               <p>
-                Our registered office is 71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ. Deliveries and viewings for specialty pieces are arranged with care.
+                Our London office is located at 71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ. Deliveries and viewings for specialty pieces are arranged with care.
               </p>
               <Link href="/contact" className="inline-flex font-semibold text-[#1D2E24] hover:text-[#D1A966] hover:underline">
                 Contact our curation team
@@ -301,21 +301,21 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Company Stats */}
+        {/* Company Highlights */}
         <div className="bg-gradient-to-r from-[#1D2E24] to-[#142019] rounded-2xl shadow-lg p-10 mb-12 text-[#F6F8F5] border border-[#D1A966]/20">
-          <h3 className="text-3xl font-bold mb-8 text-center text-[#D1A966]">Company Stats</h3>
+          <h3 className="text-3xl font-bold mb-8 text-center text-[#D1A966]">Our Commitment</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-              <div className="text-4xl font-bold mb-2 text-[#D1A966]">13107870</div>
-              <div className="text-[#F6F8F5]/80 text-sm">company number</div>
-            </div>
-            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
-              <div className="text-4xl font-bold mb-2 text-[#D1A966]">UK</div>
-              <div className="text-[#F6F8F5]/80 text-sm">registered company</div>
-            </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
               <div className="text-4xl font-bold mb-2 text-[#D1A966]">100%</div>
               <div className="text-[#F6F8F5]/80 text-sm">authenticated pieces</div>
+            </div>
+            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+              <div className="text-4xl font-bold mb-2 text-[#D1A966]">UK</div>
+              <div className="text-[#F6F8F5]/80 text-sm">based studio</div>
+            </div>
+            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
+              <div className="text-4xl font-bold mb-2 text-[#D1A966]">White-Glove</div>
+              <div className="text-[#F6F8F5]/80 text-sm">insured delivery</div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
               <div className="text-4xl font-bold mb-2 text-[#D1A966]">Curated</div>
@@ -336,16 +336,16 @@ export default function AboutPage() {
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <MapPin className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">UK Registered Office</div>
+                <div className="font-medium text-[#1E2621]">UK Office Address</div>
               </div>
               <div className="text-gray-600 ml-8">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <MapPin className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Company Details</div>
+                <div className="font-medium text-[#1E2621]">Brand &amp; Store</div>
               </div>
-              <div className="text-gray-600 ml-8">Gooba Global LTD · Company number 13107870</div>
+              <div className="text-gray-600 ml-8">Weteextees · Weteextees.com</div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">

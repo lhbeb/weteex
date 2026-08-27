@@ -15,7 +15,7 @@ const TermsPage = () => {
         
         <div className="prose max-w-none text-gray-700 space-y-8">
           <p className="text-lg leading-relaxed">
-            Weteextees is the trading brand used on this website by Gooba Global LTD, a company registered in England and Wales under company number 13107870. By accessing our website or purchasing authentic antiques, modern furniture, or collectibles, you agree to these Terms of Service.
+            Welcome to Weteextees. By accessing our website (Weteextees.com) or purchasing authentic antiques, modern furniture, or collectibles, you agree to these Terms of Service.
           </p>
 
           {/* Section 1: Overview */}
@@ -24,7 +24,6 @@ const TermsPage = () => {
             <ul className="list-disc pl-6 space-y-2">
               <li>Weteextees specializes in authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.</li>
               <li>Every piece is curated, cataloged, and described based on verified provenance, vintage characteristics, and specialist assessment.</li>
-              <li>The seller named on your invoice is Gooba Global LTD unless a listing or written sales agreement expressly states otherwise.</li>
               <li>All purchases made through Weteextees are processed under these Terms.</li>
             </ul>
           </div>
@@ -97,7 +96,7 @@ const TermsPage = () => {
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">7. Limitation of Liability</h2>
             <p className="mb-4">
-              To the fullest extent permitted by law, Gooba Global LTD is not liable for indirect or consequential loss or business interruption.
+              To the fullest extent permitted by law, Weteextees is not liable for indirect or consequential loss or business interruption.
             </p>
             <p>
               Nothing in these Terms excludes or limits statutory consumer rights that cannot lawfully be restricted.
@@ -120,12 +119,12 @@ const TermsPage = () => {
                 <div className="text-gray-600">contact@weteextees.com</div>
               </div>
               <div>
-                <div className="font-medium text-[#262626] mb-1">UK Registered Office:</div>
+                <div className="font-medium text-[#262626] mb-1">Office Address:</div>
                 <div className="text-gray-600">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</div>
               </div>
               <div>
-                <div className="font-medium text-[#262626] mb-1">Registered Company:</div>
-                <div className="text-gray-600">Gooba Global LTD · Company number 13107870</div>
+                <div className="font-medium text-[#262626] mb-1">Website:</div>
+                <div className="text-gray-600">Weteextees.com</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">Hours:</div>

@@ -108,8 +108,6 @@ export default function RootLayout({
                 "name": "Weteextees",
                 "url": "https://weteextees.com",
                 "logo": "https://weteextees.com/weteex-machines-logo.svg",
-                "legalName": "Gooba Global LTD",
-                "identifier": "13107870",
                 "description": "Weteextees is your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
                 "sameAs": [
                   "https://www.tiktok.com/@weteexmachines",
