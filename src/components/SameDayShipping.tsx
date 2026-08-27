@@ -19,8 +19,8 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
           {/* Left Section - Image */}
           <div className="relative min-h-[200px] w-full md:min-h-[240px] md:w-[40%] bg-slate-800">
             <Image
-              src="/bg.png"
-              alt="Weteextees specialist white-glove shipping"
+              src="/versand.png"
+              alt="Weteextees versicherter Speditionsversand"
               fill
               sizes="(max-width: 768px) 100vw, 40vw"
               className="object-cover object-center"
