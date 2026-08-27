@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
 
     // Map contact reason to readable text
     const reasonMap: { [key: string]: string } = {
-      'selling': 'Selling on Weteex / Teextees',
+      'selling': 'Selling on Weteextees',
       'order-inquiry': 'Inquiring about an order',
       'track-order': 'Track my order',
       'return-refund': 'Return or refund request',

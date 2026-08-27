@@ -1,22 +1,28 @@
 export const PRODUCT_COLLECTION_OPTIONS = [
-  { value: 'excavators', label: 'Excavators' },
-  { value: 'attachments', label: 'Excavator Attachments' },
+  { value: 'modern-furniture', label: 'Modern Chairs & Furniture' },
+  { value: 'antiques', label: 'Authentic Antiques' },
+  { value: 'collectibles', label: 'Vintage Collectibles' },
+  { value: 'decor', label: 'Decorative Pieces' },
 ] as const;
 
 export function getCollectionsForCategory(category: string): string[] {
   const normalized = category.toLowerCase().trim();
 
-  if (/attachment|hydraulic thumb|bucket|auger|ripper/.test(normalized)) {
-    return ['attachments'];
+  if (/chair|table|desk|sofa|furniture|stool|bench|modern/.test(normalized)) {
+    return ['modern-furniture'];
   }
 
-  if (
-    /excavator/.test(
-      normalized,
-    )
-  ) {
-    return ['excavators'];
+  if (/antique|vintage|heritage|estate|century|victorian/.test(normalized)) {
+    return ['antiques'];
   }
 
-  return ['excavators'];
+  if (/collectible|statue|sculpture|clock|figure|rare|relic/.test(normalized)) {
+    return ['collectibles'];
+  }
+
+  if (/decor|vase|lamp|lighting|ornament|mirror|glass|art|bowl/.test(normalized)) {
+    return ['decor'];
+  }
+
+  return ['modern-furniture'];
 }

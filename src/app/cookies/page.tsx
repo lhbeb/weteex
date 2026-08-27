@@ -8,7 +8,7 @@ const CookiesPage = () => (
       <div className="prose max-w-none text-gray-700 space-y-8">
         {/* Introduction */}
         <p className="text-lg leading-relaxed">
-          This Cookies Policy explains how Weteex / Teextees, operated by Gooba Global LTD (company number 13107870), uses cookies and similar technologies. We ask for consent before placing non-essential cookies; strictly necessary cookies may be used without consent where permitted by law.
+          This Cookies Policy explains how Weteextees, operated by Gooba Global LTD (company number 13107870), uses cookies and similar technologies. We ask for consent before placing non-essential cookies; strictly necessary cookies may be used without consent where permitted by law.
         </p>
 
         {/* What Are Cookies */}

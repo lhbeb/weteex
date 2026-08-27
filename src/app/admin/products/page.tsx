@@ -670,7 +670,7 @@ export default function AdminProductsPage() {
 
         const condition = (p.condition || 'new').toLowerCase().includes('refurbished') ? 'refurbished'
           : (p.condition || 'new').toLowerCase().includes('used') ? 'used' : 'new';
-        const brand = p.brand || 'Weteex / Teextees';
+        const brand = p.brand || 'Weteextees';
 
         return [
           escapeCSV(pSlug),                                // id

@@ -133,7 +133,7 @@ async function importProducts(jsonPath: string) {
       images: product.images && product.images.length ? product.images : (product.image_url ? [product.image_url] : []),
       condition: 'Brand New',
       category: product.product_type || 'Excavators',
-      brand: product.vendor || 'Weteex / Teextees',
+      brand: product.vendor || 'Weteextees',
       payee_email: 'admin@weteextees.com',
       checkout_link: product.url,
       checkout_flow: 'paypal-direct' as const,

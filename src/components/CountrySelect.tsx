@@ -110,8 +110,8 @@ export default function CountrySelect({
         aria-expanded={isOpen}
         className={`w-full px-4 py-3.5 sm:py-4 border-2 rounded-xl bg-white flex items-center justify-between text-left transition-all duration-200 cursor-pointer select-none ${
           isOpen
-            ? 'border-[#01428a] ring-2 ring-[#01428a]/10 shadow-md'
-            : 'border-gray-200 hover:border-gray-300 shadow-sm'
+            ? 'border-[#1D2E24] ring-2 ring-[#1D2E24]/10 shadow-md'
+            : 'border-[#DCE5DE] hover:border-gray-300 shadow-sm'
         } ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         <div className="flex items-center gap-3 min-w-0 pr-2">
@@ -125,7 +125,7 @@ export default function CountrySelect({
 
           <span
             className={`text-sm sm:text-base font-medium truncate ${
-              selectedCountry ? 'text-[#262626]' : 'text-gray-400'
+              selectedCountry ? 'text-[#1E2621]' : 'text-gray-400'
             }`}
           >
             {selectedCountry ? selectedCountry.name : placeholder}
@@ -134,7 +134,7 @@ export default function CountrySelect({
 
         <ChevronDown
           className={`h-5 w-5 text-gray-400 transition-transform duration-200 flex-shrink-0 ${
-            isOpen ? 'rotate-180 text-[#01428a]' : ''
+            isOpen ? 'rotate-180 text-[#1D2E24]' : ''
           }`}
         />
       </button>
@@ -144,7 +144,7 @@ export default function CountrySelect({
         <div
           role="listbox"
           tabIndex={-1}
-          className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-gray-100 py-2 max-h-72 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-150"
+          className="absolute left-0 right-0 top-full mt-2 z-50 bg-white rounded-2xl shadow-xl border border-[#DCE5DE] py-2 max-h-72 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-150"
         >
           {countries.map(country => {
             const isSelected =
@@ -158,8 +158,8 @@ export default function CountrySelect({
                 onClick={() => handleSelect(country.code)}
                 className={`w-full px-4 py-3 text-left flex items-center justify-between gap-3 text-sm sm:text-base transition-colors cursor-pointer ${
                   isSelected
-                    ? 'bg-[#01428a]/5 text-[#01428a] font-bold'
-                    : 'text-[#262626] hover:bg-gray-50 font-medium'
+                    ? 'bg-[#1D2E24]/5 text-[#1D2E24] font-bold'
+                    : 'text-[#1E2621] hover:bg-[#F6F8F5] font-medium'
                 }`}
               >
                 <div className="flex items-center gap-3 truncate">
@@ -170,7 +170,7 @@ export default function CountrySelect({
                 </div>
 
                 {isSelected && (
-                  <Check className="h-4 w-4 text-[#01428a] flex-shrink-0" />
+                  <Check className="h-4 w-4 text-[#1D2E24] flex-shrink-0" />
                 )}
               </button>
             );

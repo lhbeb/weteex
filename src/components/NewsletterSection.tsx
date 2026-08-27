@@ -52,21 +52,21 @@ const NewsletterSection = () => {
   };
 
   return (
-    <section className="bg-[#01428a] py-16 px-4">
+    <section className="bg-[#1D2E24] py-16 px-4 border-y border-[#D1A966]/20">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center">
           <div className="flex justify-center mb-6">
-            <div className="bg-white/10 backdrop-blur-sm rounded-full p-3">
-              <Mail className="h-8 w-8 text-white" />
+            <div className="bg-[#D1A966]/20 backdrop-blur-sm rounded-full p-3 border border-[#D1A966]/30">
+              <Mail className="h-8 w-8 text-[#D1A966]" />
             </div>
           </div>
 
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Get Compact Excavator Updates
+          <h2 className="text-3xl md:text-4xl font-bold text-[#F6F8F5] mb-4">
+            Get Exclusive Decor &amp; Antique Updates
           </h2>
 
-          <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Be first to hear about AGT mini excavators, compact machine configurations, new attachments, and competitive machinery offers.
+          <p className="text-lg md:text-xl text-[#F6F8F5]/80 mb-8 max-w-2xl mx-auto leading-relaxed">
+            Be first to discover rare antique arrivals, handcrafted modern furniture collections, unique vintage collectibles, and curated seasonal offers.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -80,7 +80,7 @@ const NewsletterSection = () => {
                     if (error) setError('');
                   }}
                   placeholder="Your email address"
-                  className="w-full px-4 py-3 rounded-lg border-0 text-[#262626] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#01428a] transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg border border-[#DCE5DE] bg-[#F6F8F5] text-[#1E2621] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#D1A966] focus:ring-offset-2 focus:ring-offset-[#1D2E24] transition-all duration-200"
                   disabled={isSubmitting || isSuccess}
                 />
               </div>
@@ -88,16 +88,16 @@ const NewsletterSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || isSuccess}
-                className="bg-[#d8941a] text-[#01428a] hover:bg-[#d8941a]/90 disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-lg font-bold transition-all duration-200 flex items-center justify-center gap-2 min-w-[140px] shadow-lg shadow-black/10"
+                className="bg-[#D1A966] text-[#142019] hover:bg-[#DEBC80] disabled:opacity-50 disabled:cursor-not-allowed px-6 py-3 rounded-lg font-bold transition-all duration-200 flex items-center justify-center gap-2 min-w-[140px] shadow-lg shadow-black/10"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#01428a]"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#142019]"></div>
                     Signing Up...
                   </>
                 ) : isSuccess ? (
                   <>
-                    <Check className="h-5 w-5" />
+                    <Check className="h-5 w-5 text-[#142019]" />
                     You&apos;re In!
                   </>
                 ) : (
@@ -119,15 +119,15 @@ const NewsletterSection = () => {
 
             {isSuccess && (
               <div className="flex justify-center mt-3">
-                <p className="text-blue-300 font-semibold bg-white/10 px-4 py-1.5 rounded-md text-sm shadow-sm backdrop-blur-sm border border-blue-300/20">
+                <p className="text-[#DEBC80] font-semibold bg-white/10 px-4 py-1.5 rounded-md text-sm shadow-sm backdrop-blur-sm border border-[#D1A966]/30">
                   Thanks for subscribing! Check your email for confirmation.
                 </p>
               </div>
             )}
           </form>
 
-          <p className="text-white/60 text-sm mt-6 opacity-80">
-            Useful buying information for contractors and businesses. Unsubscribe anytime.
+          <p className="text-[#F6F8F5]/60 text-sm mt-6">
+            Curated inspiration for collectors and interior enthusiasts. Unsubscribe anytime.
           </p>
         </div>
       </div>

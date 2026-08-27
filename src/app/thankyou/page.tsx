@@ -85,21 +85,21 @@ function ThankYouContent() {
 
   // Always show success (Stripe only redirects here if payment succeeded)
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#F6F8F5] flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
         {/* Success Card */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12 text-center">
+        <div className="bg-white rounded-2xl shadow-xl border border-[#DCE5DE] p-8 md:p-12 text-center">
           {/* Success Icon */}
-          <div className="mx-auto w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-            <CheckCircle className="w-12 h-12 text-blue-600" />
+          <div className="mx-auto w-20 h-20 bg-[#1D2E24] rounded-full flex items-center justify-center mb-6">
+            <CheckCircle className="w-12 h-12 text-[#D1A966]" />
           </div>
 
           {/* Main Message */}
-          <h1 className="text-3xl md:text-4xl font-bold text-[#262626] mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#1E2621] mb-4">
             {isSuccessful ? 'Thank You for Your Order!' : 'Payment Verification Pending...'}
           </h1>
 
-          <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+          <p className="text-lg text-[#5C6B61] mb-8 leading-relaxed">
             {isSuccessful
               ? 'Your payment has been successfully recorded and your order is queued for manual processing. We will send you an email confirmation shortly once verified.' 
               : 'Your payment is still processing or awaiting backend verification. We will process your order and send a confirmation email once it is completely confirmed.'}
@@ -107,13 +107,13 @@ function ThankYouContent() {
 
           {/* Order Details */}
           {orderDetails && (
-            <div className="bg-gray-50 rounded-xl p-6 mb-8">
+            <div className="bg-[#F6F8F5] rounded-xl p-6 mb-8 border border-[#DCE5DE]">
               <p className="text-sm text-gray-500 mb-2">Order ID</p>
-              <p className="text-lg font-mono font-semibold text-[#262626] mb-4">
+              <p className="text-lg font-mono font-semibold text-[#1E2621] mb-4">
                 {orderDetails.orderId || orderDetails.sessionId}
               </p>
               {orderDetails.amount && (
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-[#1D2E24]">
                   ${(orderDetails.amount / 100).toFixed(2)} {orderDetails.currency?.toUpperCase()}
                 </p>
               )}
@@ -121,58 +121,58 @@ function ThankYouContent() {
           )}
 
           {/* Next Steps */}
-          <div className="bg-gray-50 rounded-xl p-6 mb-8">
-            <h2 className="text-xl font-semibold text-[#262626] mb-4">
+          <div className="bg-[#F6F8F5] rounded-xl p-6 mb-8 border border-[#DCE5DE]">
+            <h2 className="text-xl font-semibold text-[#1E2621] mb-4">
               What happens next?
             </h2>
 
             <div className="space-y-4">
               <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Clock className="w-4 h-4 text-blue-600" />
+                <div className="w-8 h-8 bg-[#1D2E24] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Clock className="w-4 h-4 text-[#D1A966]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-medium text-[#262626]">Order Processing</h3>
-                  <p className="text-sm text-gray-600">We&apos;ll process your order within 24-48 hours</p>
+                  <h3 className="font-medium text-[#1E2621]">Order Processing</h3>
+                  <p className="text-sm text-[#5C6B61]">We&apos;ll process your order within 24-48 hours</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Mail className="w-4 h-4 text-purple-600" />
+                <div className="w-8 h-8 bg-[#1D2E24] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Mail className="w-4 h-4 text-[#D1A966]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-medium text-[#262626]">Email Confirmation</h3>
-                  <p className="text-sm text-gray-600">You&apos;ll receive an email with your order details and tracking number</p>
+                  <h3 className="font-medium text-[#1E2621]">Email Confirmation</h3>
+                  <p className="text-sm text-[#5C6B61]">You&apos;ll receive an email with your order details and tracking number</p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Package className="w-4 h-4 text-orange-600" />
+                <div className="w-8 h-8 bg-[#1D2E24] rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Package className="w-4 h-4 text-[#D1A966]" />
                 </div>
                 <div className="text-left">
-                  <h3 className="font-medium text-[#262626]">Shipping</h3>
-                  <p className="text-sm text-gray-600">Your order will arrive within 5-9 business days</p>
+                  <h3 className="font-medium text-[#1E2621]">Shipping</h3>
+                  <p className="text-sm text-[#5C6B61]">Your order will arrive within 5-9 business days</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Contact Info */}
-          <div className="bg-blue-50 rounded-xl p-6 mb-8">
-            <h3 className="font-semibold text-[#262626] mb-2">Need Help?</h3>
-            <p className="text-sm text-gray-600 mb-3">
+          <div className="bg-[#F6F8F5] rounded-xl p-6 mb-8 border border-[#DCE5DE]">
+            <h3 className="font-semibold text-[#1E2621] mb-2">Need Help?</h3>
+            <p className="text-sm text-[#5C6B61] mb-3">
               If you have any questions about your order, don&apos;t hesitate to reach out:
             </p>
             <div className="space-y-1 text-sm">
               <p className="text-gray-700">
-                📧 <a href="mailto:contact@weteextees.com" className="text-blue-600 hover:text-blue-700 font-medium">
+                📧 <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] font-medium">
                   contact@weteextees.com
                 </a>
               </p>
               <p className="text-gray-700">
-                📞 <a href="tel:+447533408378" className="text-blue-600 hover:text-blue-700 font-medium">
+                📞 <a href="tel:+447533408378" className="text-[#1D2E24] hover:text-[#D1A966] font-medium">
                   +44 7533 408378
                 </a>
               </p>
@@ -183,9 +183,9 @@ function ThankYouContent() {
           <div className="flex justify-center">
             <Link
               href="/"
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#01428a] hover:bg-[#00366f] text-white font-medium rounded-lg transition-colors duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#1D2E24] hover:bg-[#142019] text-[#F6F8F5] font-semibold rounded-lg transition-colors duration-200"
             >
-              <ArrowLeft className="w-4 h-4 mr-2" />
+              <ArrowLeft className="w-4 h-4 mr-2 text-[#D1A966]" />
               Continue Shopping
             </Link>
           </div>
@@ -193,7 +193,7 @@ function ThankYouContent() {
 
         {/* Footer Note */}
         <div className="text-center mt-8">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-[#5C6B61]">
             {isSuccessful
               ? 'You will receive a confirmation email once our team reviews your order' 
               : 'We will notify you by email once your payment clears'}
@@ -207,16 +207,16 @@ function ThankYouContent() {
 // Loading fallback component
 function LoadingState() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-50 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#F6F8F5] flex items-center justify-center p-4">
       <div className="max-w-2xl w-full">
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-12 text-center">
-          <div className="mx-auto w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-            <Loader2 className="w-12 h-12 text-blue-600 animate-spin" />
+        <div className="bg-white rounded-2xl shadow-xl border border-[#DCE5DE] p-8 md:p-12 text-center">
+          <div className="mx-auto w-20 h-20 bg-[#F6F8F5] rounded-full flex items-center justify-center mb-6">
+            <Loader2 className="w-12 h-12 text-[#1D2E24] animate-spin" />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-[#262626] mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#1E2621] mb-4">
             Loading...
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-[#5C6B61]">
             Please wait a moment.
           </p>
         </div>

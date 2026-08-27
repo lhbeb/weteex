@@ -1,5 +1,5 @@
 -- ============================================================
--- Weteex / Teextees — Add Reviews Column to Sellers Table
+-- Weteextees — Add Reviews Column to Sellers Table
 -- Run this in Supabase SQL Editor
 -- ============================================================
 

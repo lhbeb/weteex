@@ -25,17 +25,13 @@ export default async function HomePage() {
       (product) => product.isFeatured === true,
     );
 
-    const excavatorProducts = featuredProducts
-      .filter(p =>
-        p.collections?.includes('excavators') ||
-        p.category?.trim().toLowerCase() === 'excavators' ||
-        p.category?.trim().toLowerCase().includes('excavator')
+    const decorativeProducts = featuredProducts.filter((product) => {
+      const text = `${product.title || ''} ${product.category || ''} ${product.brand || ''}`.toLowerCase();
+      return (
+        product.collections?.includes('decor') ||
+        product.collections?.includes('collectibles') ||
+        /decor|vase|art|antique|collectible|vintage|ornament|lamp|mirror|accent|sculpture/.test(text)
       );
-
-    const attachmentProducts = featuredProducts.filter((product) => {
-      const productText = `${product.title} ${product.category}`.toLowerCase();
-      return product.collections?.includes('attachments') ||
-        /attachment|hydraulic thumb|bucket|auger|ripper/.test(productText);
     });
 
   return (
@@ -51,8 +47,8 @@ export default async function HomePage() {
 
       <CategorySection
         products={featuredProducts}
-        title="Best-Selling Excavators and Attachments"
-        subtitle="Explore AGT mini excavators, compact 1-ton machines, and practical attachments for businesses and contractors."
+        title="Best-Selling Antiques & Modern Furniture"
+        subtitle="Explore authentic antiques, modern chairs, unique vintage collectibles, and one-of-a-kind decorative pieces."
         maxDisplay={FEATURED_PRODUCT_LIMIT}
         shuffleForVisitor
         visitorShuffleKey="home-featured"
@@ -60,31 +56,31 @@ export default async function HomePage() {
 
       <SameDayShipping />
 
-      {excavatorProducts.length > 0 && (
+      {featuredProducts.length > 0 && (
         <Suspense fallback={null}>
           <ProductGrid
-            products={excavatorProducts}
-            sectionId="excavators"
+            products={featuredProducts}
+            sectionId="collection"
             title=""
             editorialCard={{
-              title: 'Compact Machines. More Ways to Work.',
+              title: 'Authentic Craftsmanship. Timeless Character.',
               description:
-                'Compare AGT mini excavators, compact 1-ton machines, and available attachments alongside engine, pilot-control, cab, air-conditioning, side-swing, and hydraulic-thumb configurations. Choose the setup your work demands at a competitive price.',
+                'From mid-century modern chairs and bespoke furniture to certified vintage collectibles and antique decorative pieces, find handcrafted items that bring personality and elegance to every space.',
             }}
             randomizeForVisitor
-            visitorShuffleKey="home-excavators"
+            visitorShuffleKey="home-furniture"
           />
         </Suspense>
       )}
 
-      {attachmentProducts.length > 0 && (
+      {decorativeProducts.length > 0 && (
         <Suspense fallback={null}>
           <ProductGrid
-            products={attachmentProducts}
-            sectionId="excavator-attachments"
-            title="Attachments That Expand What Your Excavator Can Do"
+            products={decorativeProducts}
+            sectionId="decorative-pieces"
+            title="Unique Decorative Pieces & Vintage Accents"
             randomizeForVisitor
-            visitorShuffleKey="home-excavator-attachments"
+            visitorShuffleKey="home-decor"
           />
         </Suspense>
       )}
@@ -102,7 +98,7 @@ export default async function HomePage() {
       <>
         <Hero />
         <div className="container mx-auto px-4 py-16 text-center">
-          <h2 className="text-2xl font-bold text-[#262626] mb-4">Unable to load machinery</h2>
+          <h2 className="text-2xl font-bold text-[#262626] mb-4">Unable to load collection</h2>
           <p className="text-gray-600">Please refresh the page or try again later.</p>
         </div>
       </>

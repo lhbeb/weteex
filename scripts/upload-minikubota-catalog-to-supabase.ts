@@ -209,7 +209,7 @@ async function main() {
         in_stock: product.in_stock !== false,
         is_featured: productIndex < FEATURED_LIMIT,
         published: true,
-        listed_by: 'Weteex / Teextees',
+        listed_by: 'Weteextees',
         collections,
       };
 

@@ -23,12 +23,12 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Weteex / Teextees - AGT Mini Excavators & Attachments",
-  description: "Explore competitively priced AGT mini excavators, compact 1-ton machines, excavator attachments, and practical operator configurations.",
-  keywords: "Teextees, Weteex, Weteex / Teextees, AGT mini excavators, mini excavators, excavator attachments, 1-ton excavators, diggers, construction machinery, excavators for sale",
-  authors: [{ name: "Weteex / Teextees" }],
-  creator: "Weteex / Teextees",
-  publisher: "Weteex / Teextees",
+  title: "Weteextees - Authentic Antiques & Modern Furniture",
+  description: "Your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
+  keywords: "Weteextees, Weteextees.com, authentic antiques, modern furniture, modern chairs, vintage collectibles, decorative pieces, antique furniture, home decor, unique collectibles",
+  authors: [{ name: "Weteextees" }],
+  creator: "Weteextees",
+  publisher: "Weteextees",
   formatDetection: {
     email: false,
     address: false,
@@ -36,16 +36,16 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://weteextees.com"),
   openGraph: {
-    title: "Weteex / Teextees - AGT Mini Excavators & Attachments",
-    description: "Explore competitively priced AGT mini excavators, compact machines, attachments, and practical operator configurations.",
+    title: "Weteextees - Authentic Antiques & Modern Furniture",
+    description: "Your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
     url: "https://weteextees.com",
-    siteName: "Weteex / Teextees",
+    siteName: "Weteextees",
     images: [
       {
-        url: "/Rippa-R32-miniekskavaator6-scaled.jpg",
+        url: "/bg.png",
         width: 1608,
         height: 969,
-        alt: "Weteex / Teextees - Excavators and Heavy Machinery",
+        alt: "Weteextees - Authentic Antiques & Modern Furniture",
       },
     ],
     locale: "en_US",
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Weteex / Teextees - AGT Mini Excavators & Attachments",
-    description: "Explore competitively priced AGT mini excavators, compact machines, attachments, and practical operator configurations.",
-    images: ["/Rippa-R32-miniekskavaator6-scaled.jpg"],
+    title: "Weteextees - Authentic Antiques & Modern Furniture",
+    description: "Your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
+    images: ["/bg.png"],
   },
   robots: {
     index: true,
@@ -105,12 +105,12 @@ export default function RootLayout({
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Organization",
-                "name": "Weteex / Teextees",
+                "name": "Weteextees",
                 "url": "https://weteextees.com",
                 "logo": "https://weteextees.com/weteex-machines-logo.svg",
                 "legalName": "Gooba Global LTD",
                 "identifier": "13107870",
-                "description": "Weteex / Teextees is a UK-based excavator and construction machinery retailer operated by Gooba Global LTD.",
+                "description": "Weteextees is your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.",
                 "sameAs": [
                   "https://www.tiktok.com/@weteexmachines",
                   "https://www.instagram.com/weteexmachines_official/",
@@ -121,7 +121,7 @@ export default function RootLayout({
                   "contactType": "customer service",
                   "email": "contact@weteextees.com",
                   "telephone": "+447533408378",
-                  "areaServed": ["GB"]
+                  "areaServed": ["GB", "US", "EU"]
                 },
                 "address": {
                   "@type": "PostalAddress",
@@ -145,9 +145,9 @@ export default function RootLayout({
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "WebSite",
-                "name": "Weteex / Teextees",
+                "name": "Weteextees",
                 "url": "https://weteextees.com",
-                "description": "Weteex / Teextees offers excavators and construction machinery at competitive prices.",
+                "description": "Weteextees is your destination for authentic antiques, modern furniture, vintage collectibles, and decorative pieces.",
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {

@@ -32,15 +32,15 @@ const CookieConsent: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50" style={{ backgroundColor: '#01428a' }}>
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#1D2E24] border-t border-[#D1A966]/20 shadow-2xl">
       <div className="px-4 py-4">
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-6">
           {/* Text */}
           <div className="flex items-center space-x-2 text-center sm:text-left">
-            <Cookie className="h-5 w-5 text-[#f1f6fb] flex-shrink-0" />
-            <p className="text-[#f1f6fb] text-sm">
+            <Cookie className="h-5 w-5 text-[#D1A966] flex-shrink-0" />
+            <p className="text-[#F6F8F5] text-sm">
               We use cookies to enhance your experience.
-              <Link href="/cookies" className="underline ml-1">Learn more</Link>
+              <Link href="/cookies" className="underline text-[#D1A966] hover:text-[#DEBC80] ml-1">Learn more</Link>
             </p>
           </div>
 
@@ -48,19 +48,19 @@ const CookieConsent: React.FC = () => {
           <div className="flex items-center space-x-3 sm:space-x-4">
             <button
               onClick={handleDecline}
-              className="px-4 sm:px-6 py-2 text-[#f1f6fb] border border-[#f1f6fb]/20 rounded-md hover:bg-[#f1f6fb]/10 transition-colors text-sm font-medium"
+              className="px-4 sm:px-6 py-2 text-[#F6F8F5]/80 border border-white/20 rounded-md hover:bg-white/10 transition-colors text-sm font-medium"
             >
               Decline
             </button>
             <button
               onClick={handleAccept}
-              className="px-4 sm:px-6 py-2 bg-[#01428a] text-[#f1f6fb] border border-[#f1f6fb]/20 rounded-md hover:bg-[#002b59] transition-colors text-sm font-bold"
+              className="px-4 sm:px-6 py-2 bg-[#D1A966] text-[#142019] rounded-md hover:bg-[#DEBC80] transition-colors text-sm font-bold shadow-sm"
             >
               Accept All Cookies
             </button>
             <button
               onClick={handleClose}
-              className="text-[#f1f6fb]/80 hover:text-[#f1f6fb] transition-colors p-2"
+              className="text-[#F6F8F5]/80 hover:text-[#F6F8F5] transition-colors p-2"
               aria-label="Close cookie consent"
             >
               <X className="h-5 w-5" />

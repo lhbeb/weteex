@@ -15,13 +15,13 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     const { slug } = await params;
-    if (!slug) return { title: 'Machinery Not Found | Weteex / Teextees' };
+    if (!slug) return { title: 'Product Not Found | Weteextees' };
 
     let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
     if (!product) product = await getProductBySlug(slug);
-    if (!product) return { title: 'Machinery Not Found | Weteex / Teextees' };
+    if (!product) return { title: 'Product Not Found | Weteextees' };
 
-    const title = `${product.title || 'Machinery'} - ${product.brand || ''} | ${product.category || ''} | Weteex / Teextees`;
+    const title = `${product.title || 'Product'} - ${product.brand || ''} | ${product.category || ''} | Weteextees`;
     const description = (product.description || '').substring(0, 155) + '...';
     const canonicalUrl = `${BASE_URL}/products/${product.slug}`;
     const currencyCode = product.currency || 'USD';
@@ -44,7 +44,7 @@ export async function generateMetadata(
         title,
         description,
         url: canonicalUrl,
-        siteName: 'Weteex / Teextees',
+        siteName: 'Weteextees',
         type: 'website',
         images: imageUrls,
       },
@@ -67,8 +67,8 @@ export async function generateMetadata(
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
-      title: 'Machinery | Weteex / Teextees',
-      description: 'Browse excavators and construction machinery from Weteex / Teextees',
+      title: 'Antiques & Modern Furniture | Weteextees',
+      description: 'Browse authentic antiques, modern chairs, vintage collectibles, and decorative pieces from Weteextees',
     };
   }
 }
@@ -145,7 +145,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         "url": `${BASE_URL}/products/${p.slug}`,
         "seller": {
           "@type": "Organization",
-          "name": "Weteex / Teextees"
+          "name": "Weteextees"
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",

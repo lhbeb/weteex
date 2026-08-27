@@ -21,12 +21,12 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, largeImage =
   const isSoldOut = inStock === false;
 
   return (
-    <div className={`group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all duration-300 hover:shadow-md md:flex-row ${largeImage ? 'md:min-h-[480px]' : ''}`}>
+    <div className={`group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm border border-[#DCE5DE] transition-all duration-300 hover:shadow-md md:flex-row ${largeImage ? 'md:min-h-[480px]' : ''}`}>
       <div className={`relative w-full overflow-hidden ${largeImage ? 'min-h-[320px] md:min-h-[480px] md:w-[55%]' : 'md:h-full md:w-2/5'}`}>
-        <div className="absolute left-4 top-4 z-10 rounded-full bg-[#01428a] px-3 py-1 text-sm font-medium text-[#f1f6fb] shadow-sm">
+        <div className="absolute left-4 top-4 z-10 rounded-full bg-[#1D2E24] px-3 py-1 text-sm font-semibold text-[#D1A966] shadow-sm">
           <div className="flex items-center gap-1">
-            <Award className="h-4 w-4" />
-            <span>Top Deals</span>
+            <Award className="h-4 w-4 text-[#D1A966]" />
+            <span>Featured Selection</span>
           </div>
         </div>
         <div className={largeImage ? 'relative h-full min-h-[320px] w-full md:min-h-[480px]' : 'relative aspect-square w-full md:h-full md:aspect-auto'}>
@@ -43,8 +43,8 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, largeImage =
               />
               {isSoldOut && (
                 <div className="absolute inset-0 bg-[rgba(0,0,0,0.382)] flex items-center justify-center">
-                  <div className="bg-[#d8941a] rounded-lg px-7 py-2.5">
-                    <span className="sold-out-badge text-[#01428a] text-base md:text-lg uppercase tracking-wider whitespace-nowrap font-bold">
+                  <div className="bg-[#D1A966] rounded-lg px-7 py-2.5">
+                    <span className="sold-out-badge text-[#142019] text-base md:text-lg uppercase tracking-wider whitespace-nowrap font-bold">
                       Sold Out
                     </span>
                   </div>
@@ -61,19 +61,19 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, largeImage =
 
       <div className={`flex w-full flex-1 flex-col p-5 sm:p-6 md:overflow-hidden md:justify-start ${largeImage ? 'md:w-[45%] md:justify-center md:p-8' : 'md:h-full md:w-3/5'}`}>
         <div className="space-y-3 md:space-y-2.5">
-          <h3 className="line-clamp-2 text-lg font-medium leading-snug text-[#262626] md:text-xl">
+          <h3 className="line-clamp-2 text-lg font-medium leading-snug text-[#1E2621] md:text-xl">
             {title}
           </h3>
 
           <div className="flex flex-wrap items-baseline gap-2">
-            <span className="text-xl font-semibold text-[#262626] md:text-2xl">
+            <span className="text-xl font-semibold text-[#1E2621] md:text-2xl">
               ${new Intl.NumberFormat('en-US').format(price)}
             </span>
-            <span className="text-sm text-gray-500">Free shipping</span>
+            <span className="text-sm text-[#5C6B61]">Free white-glove shipping</span>
           </div>
 
           {description && (
-            <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mt-1">
+            <p className="text-sm text-[#5C6B61] line-clamp-2 leading-relaxed mt-1">
               {description}
             </p>
           )}
@@ -82,13 +82,13 @@ const FeaturedProduct: React.FC<FeaturedProductProps> = ({ product, largeImage =
         <div className={`${largeImage ? 'mt-6' : 'mt-4 md:mt-3'} flex flex-col gap-2 sm:flex-row sm:gap-2`}>
           <Link
             href={`/products/${slug}`}
-            className="flex-1 flex items-center justify-center rounded-lg bg-[#01428a] py-2 px-3 text-sm font-semibold text-[#f1f6fb] transition-colors duration-300 hover:bg-[#002b59] whitespace-nowrap"
+            className="flex-1 flex items-center justify-center rounded-lg bg-[#1D2E24] py-2 px-3 text-sm font-semibold text-[#F6F8F5] transition-colors duration-300 hover:bg-[#142019] whitespace-nowrap"
           >
             Add to Cart
           </Link>
           <Link
             href={`/products/${slug}`}
-            className="flex-1 flex items-center justify-center rounded-lg border border-[#01428a] py-2 px-3 text-sm font-semibold text-[#01428a] transition-colors duration-300 hover:bg-[#01428a]/10 whitespace-nowrap"
+            className="flex-1 flex items-center justify-center rounded-lg border border-[#1D2E24] py-2 px-3 text-sm font-semibold text-[#1D2E24] transition-colors duration-300 hover:bg-[#1D2E24]/10 whitespace-nowrap"
           >
             <span>View Details</span>
             <ArrowRight className="ml-1.5 h-3.5 w-3.5 flex-shrink-0" />

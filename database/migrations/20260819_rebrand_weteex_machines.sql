@@ -1,19 +1,19 @@
--- Rebrand legacy official-store records to Weteex / Teextees.
+-- Rebrand legacy official-store records to Weteextees.
 -- Safe to run more than once.
 
 UPDATE public.sellers
 SET
-  name = 'Weteex / Teextees',
+  name = 'Weteextees',
   username = 'weteexmachines',
   updated_at = NOW()
 WHERE lower(username) IN ('tazoota', 'official-tazoota', 'weteexmachines')
-   OR lower(name) IN ('tazoota', 'weteex machines', 'teextees / weteex machines');
+   OR lower(name) IN ('tazoota', 'weteex machines', 'weteextees machines');
 
 UPDATE public.products
 SET
-  brand = 'Weteex / Teextees',
+  brand = 'Weteextees',
   updated_at = NOW()
-WHERE lower(brand) IN ('tazoota', 'weteex machines', 'teextees / weteex machines');
+WHERE lower(brand) IN ('tazoota', 'weteex machines', 'weteextees machines');
 
 UPDATE public.products
 SET

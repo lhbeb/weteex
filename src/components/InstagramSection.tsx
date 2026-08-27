@@ -16,7 +16,7 @@ const InstagramSection: React.FC = () => {
                   <div className="w-full h-full bg-white rounded-full overflow-hidden">
                     <Image
                       src="/weteex-machines-mark.svg"
-                      alt="Weteex / Teextees Profile"
+                      alt="Weteextees Profile"
                       width={80}
                       height={80}
                       className="object-cover w-full h-full"
@@ -29,7 +29,7 @@ const InstagramSection: React.FC = () => {
                   <h3 className="font-bold text-[#262626] text-lg sm:text-xl mb-1">@weteexmachines_official</h3>
                   <p className="text-gray-700 text-sm sm:text-base">weteexmachines</p>
                   <p className="mb-2 text-xs font-medium text-gray-500 sm:text-sm">
-                    Excavators &amp; Construction Machinery
+                    Authentic Antiques &amp; Modern Furniture
                   </p>
 
                   {/* Statistics */}

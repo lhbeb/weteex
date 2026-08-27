@@ -12,7 +12,11 @@ interface SearchPageClientProps {
 }
 
 const CATALOG_CATEGORIES = [
-  "Excavators",
+  "Modern Chairs & Furniture",
+  "Authentic Antiques",
+  "Vintage Collectibles",
+  "Decorative Pieces",
+  "Tables & Accents",
 ] as const;
 
 function getExactCatalogCategory(value: string): string {
@@ -43,89 +47,35 @@ function advancedSearch(products: Product[], query: string): Product[] {
     let score = 0;
 
     // Normalize all searchable fields - handle null/undefined safely
-    const title = String(product.title || "").toLowerCase().trim();
-    const description = String(product.description || "").toLowerCase().trim();
-    const brand = String(product.brand || "").toLowerCase().trim();
-    const category = String(product.category || "").toLowerCase().trim();
-    const slug = String(product.slug || "").toLowerCase().trim();
+    const title = (product.title || "").toLowerCase();
+    const description = (product.description || "").toLowerCase();
+    const category = (product.category || "").toLowerCase();
+    const brand = (product.brand || "").toLowerCase();
 
-    // Exact matches get highest scores
-    if (title === normalizedQuery) score += 1000;
-    if (slug === normalizedQuery) score += 900;
-    if (brand === normalizedQuery) score += 800;
+    // Check for exact phrase matches (highest score)
+    if (title.includes(normalizedQuery)) score += 100;
+    if (category.includes(normalizedQuery)) score += 50;
+    if (brand.includes(normalizedQuery)) score += 40;
+    if (description.includes(normalizedQuery)) score += 20;
 
-    // Title matches (most important)
-    if (title.includes(normalizedQuery)) {
-      score += 500;
-      // Bonus if it starts with the query
-      if (title.startsWith(normalizedQuery)) score += 200;
-    }
-
-    // Slug matches (very important)
-    if (slug.includes(normalizedQuery)) {
-      score += 400;
-      if (slug.startsWith(normalizedQuery)) score += 150;
-    }
-
-    // Word-based matching in title
+    // Check for individual word matches
     queryWords.forEach((word) => {
-      if (title.includes(word)) {
-        score += 100;
-        // Bonus for word at start of title
-        if (title.startsWith(word) || title.includes(` ${word}`)) {
-          score += 50;
-        }
-      }
-    });
-
-    // Description matches
-    if (description.includes(normalizedQuery)) {
-      score += 200;
-    }
-    queryWords.forEach((word) => {
-      if (description.includes(word)) {
-        score += 30;
-      }
-    });
-
-    // Brand matches (very important for brand searches)
-    if (brand.includes(normalizedQuery)) {
-      score += 500; // Increased from 300
-    }
-    if (brand === normalizedQuery) {
-      score += 300; // Bonus for exact brand match
-    }
-    queryWords.forEach((word) => {
-      if (brand.includes(word)) {
-        score += 100; // Increased from 80
-      }
-    });
-
-    // Category matches
-    if (category.includes(normalizedQuery)) {
-      score += 150;
-    }
-    queryWords.forEach((word) => {
-      if (category.includes(word)) {
-        score += 40;
-      }
+      if (title.includes(word)) score += 20;
+      if (category.includes(word)) score += 15;
+      if (brand.includes(word)) score += 10;
+      if (description.includes(word)) score += 5;
     });
 
     return { product, score };
   });
 
-  // Filter out products with score 0, sort by score (descending), then return products
-  return scoredProducts
+  // Filter products with score > 0 or return fallback list if broad search
+  const filtered = scoredProducts
     .filter((item) => item.score > 0)
-    .sort((a, b) => {
-      // Sort by score first
-      if (b.score !== a.score) {
-        return b.score - a.score;
-      }
-      // If scores are equal, prefer newer products
-      return 0;
-    })
+    .sort((a, b) => b.score - a.score)
     .map((item) => item.product);
+
+  return filtered.length > 0 ? filtered : products;
 }
 
 export default function SearchPageClient({ initialQuery, initialCategory }: SearchPageClientProps) {
@@ -206,7 +156,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
         <div className="text-center">
           <Loader2 className="h-12 w-12 text-[#01428a] animate-spin mx-auto mb-4" />
           <p className="text-gray-600 text-lg">Loading &quot;{activeTerm}&quot;...</p>
-          <p className="text-gray-500 text-sm mt-2">Finding matching excavator configurations</p>
+          <p className="text-gray-500 text-sm mt-2">Searching our curated antique &amp; furniture catalog</p>
         </div>
       </main>
     );
@@ -214,7 +164,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
 
   if (error) {
     return (
-      <main className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <main className="min-h-screen bg-[#F6F8F5] flex items-center justify-center">
         <div className="text-center max-w-md mx-auto px-4">
           <p className="text-red-600 text-lg mb-2">Search Error</p>
           <p className="text-gray-600">{error}</p>
@@ -225,33 +175,33 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
 
   if (!activeTerm.trim()) {
     return (
-      <main className="min-h-screen bg-gray-50">
+      <main className="min-h-screen bg-[#F6F8F5]">
         <div className="container mx-auto px-4 py-16 text-center">
-          <p className="text-gray-600 text-lg">Search by excavator model, engine, cab, control system, or attachment</p>
+          <p className="text-[#5C6B61] text-lg">Search by piece name, era, designer, furniture style, or material</p>
         </div>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-[#F6F8F5]">
       {products.length === 0 ? (
         <div className="container mx-auto px-4 py-16 text-center">
-          <p className="text-gray-600 text-lg mb-2">
-            No matching machinery found for &quot;{activeTerm}&quot;
+          <p className="text-[#1E2621] text-lg mb-2 font-semibold">
+            No matching items found for &quot;{activeTerm}&quot;
           </p>
-          <p className="text-gray-500 text-sm">
+          <p className="text-[#5C6B61] text-sm">
             Try searching with different keywords or check your spelling
           </p>
         </div>
       ) : (
         <>
           <div className="container mx-auto px-4 py-8">
-            <h1 className="text-2xl font-bold text-[#262626] mb-2">
+            <h1 className="text-2xl font-bold text-[#1E2621] mb-2">
               {exactCategory ? exactCategory : <>Search Results for &quot;{queryParam}&quot;</>}
             </h1>
-            <p className="text-gray-600">
-              Found {products.length} {products.length === 1 ? "machine" : "machines"}
+            <p className="text-[#5C6B61]">
+              Found {products.length} {products.length === 1 ? "item" : "items"}
             </p>
           </div>
           
@@ -270,12 +220,12 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
                   className={`px-4 py-2 rounded-lg ${
                     currentPage === 1
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10"
+                      : "bg-white text-gray-700 border border-[#DCE5DE] hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                   }`}
                 >
                   Previous
                 </button>
-                <span className="px-4 py-2 text-gray-700">
+                <span className="px-4 py-2 text-[#1E2621] font-medium">
                   Page {currentPage} of {totalPages}
                 </span>
                 <button
@@ -284,7 +234,7 @@ export default function SearchPageClient({ initialQuery, initialCategory }: Sear
                   className={`px-4 py-2 rounded-lg ${
                     currentPage === totalPages
                       ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                      : "bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10"
+                      : "bg-white text-gray-700 border border-[#DCE5DE] hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                   }`}
                 >
                   Next

@@ -8,7 +8,7 @@ const PrivacyPolicyPage = () => (
       <div className="prose max-w-none text-gray-700 space-y-8">
         {/* Introduction */}
         <p className="text-lg leading-relaxed">
-          Weteex / Teextees is operated by Gooba Global LTD, company number 13107870. Gooba Global LTD is the controller of personal data described in this Privacy Policy. This page explains what we collect, why we use it, how we protect it, and your rights when you browse our website, request an excavator quotation, or place an order.
+          Weteextees is operated by Gooba Global LTD, company number 13107870. Gooba Global LTD is the controller of personal data described in this Privacy Policy. This page explains what we collect, why we use it, how we protect it, and your rights when you browse our website, request condition reports, or place an order.
         </p>
 
         {/* Information We Collect */}
@@ -20,13 +20,13 @@ const PrivacyPolicyPage = () => (
           <p className="mb-4">You may provide personal information when you:</p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
             <li>Create an account</li>
-            <li>Request an excavator quotation or place an order</li>
+            <li>Inquire about an antique piece, request a condition report, or place an order</li>
             <li>Sign up for our newsletter</li>
-            <li>Contact our customer service team</li>
-            <li>Participate in surveys, promotions, or giveaways</li>
+            <li>Contact our curation and customer service team</li>
+            <li>Participate in surveys or promotions</li>
           </ul>
           <p className="mb-4">
-            This information may include your name, email address, phone number, billing and delivery address, company details, delivery-site and access information, order correspondence, and payment details processed by our payment providers.
+            This information may include your name, email address, phone number, billing and delivery address, order correspondence, and payment details processed securely by our payment providers.
           </p>
 
           <h3 className="text-xl font-bold text-[#262626] mt-6 mb-3">Information Collected Automatically</h3>
@@ -49,11 +49,11 @@ const PrivacyPolicyPage = () => (
           <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">How We Use Your Information</h2>
           <p className="mb-4">We use the information we collect to:</p>
           <ul className="list-disc pl-6 space-y-2">
-            <li>Prepare quotations and process excavator orders</li>
-            <li>Coordinate heavy-equipment transport and send delivery updates</li>
+            <li>Process orders, prepare custom packaging, and provide authenticity certificates</li>
+            <li>Coordinate tracked courier deliveries and provide shipment status updates</li>
             <li>Respond to customer inquiries and support requests</li>
-            <li>Send marketing emails if you have opted in</li>
-            <li>Improve our website, products, and services</li>
+            <li>Send curated catalog updates if you have opted in</li>
+            <li>Improve our website, product selections, and services</li>
             <li>Detect and prevent fraud</li>
             <li>Comply with legal requirements</li>
           </ul>
@@ -66,8 +66,8 @@ const PrivacyPolicyPage = () => (
             We do not sell or trade your personal information to third parties. We may share your information only with trusted service providers who help us operate our website or fulfill your orders, such as:
           </p>
           <ul className="list-disc pl-6 space-y-2 mb-4">
-            <li>Payment processors</li>
-            <li>Heavy-equipment transport and logistics partners</li>
+            <li>Payment processors (Stripe, PayPal)</li>
+            <li>Tracked courier and specialty furniture logistics partners</li>
             <li>Email communication platforms</li>
             <li>Website analytics providers</li>
           </ul>

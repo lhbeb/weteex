@@ -81,9 +81,9 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ currentProduc
     <section className="mt-8 border-t pt-8">
       <div className="container mx-auto px-4">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-[#262626] mb-4">More Compact Excavators to Compare</h2>
+          <h2 className="text-3xl font-bold text-[#262626] mb-4">More Curated Pieces to Explore</h2>
           <p className="text-lg text-gray-600 max-w-2xl">
-            Compare engine, control, cab, swing, and attachment configurations
+            Discover complementary modern furniture, authentic antiques, and decorative accents
           </p>
         </div>
 
@@ -105,24 +105,24 @@ const RecommendedProducts: React.FC<RecommendedProductsProps> = ({ currentProduc
               </div>
 
               <div className="p-4 space-y-3">
-                <h3 className="font-semibold text-[#262626] group-hover:text-[#01428a] transition-colors line-clamp-2 sm:line-clamp-1">
+                <h3 className="font-semibold text-[#1E2621] group-hover:text-[#1D2E24] transition-colors line-clamp-2 sm:line-clamp-1">
                   {product.title}
                 </h3>
 
-                <p className="text-sm text-gray-500 overflow-hidden">
+                <p className="text-sm text-[#5C6B61] overflow-hidden">
                   <span className="block overflow-hidden text-ellipsis whitespace-nowrap">
                     {product.condition}
                   </span>
                 </p>
 
-                <div className="text-xl font-bold text-[#262626]">${new Intl.NumberFormat('en-US').format(product.price)}</div>
+                <div className="text-xl font-bold text-[#1E2621]">${new Intl.NumberFormat('en-US').format(product.price)}</div>
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
-                  <div className="flex items-center text-sm font-medium text-[#01428a]">
+                  <div className="flex items-center text-sm font-medium text-[#1D2E24] group-hover:text-[#D1A966] transition-colors">
                     <Eye className="h-4 w-4 mr-1" />
                     <span>View Details</span>
                   </div>
-                  <div className="h-8 w-8 bg-[#01428a] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <ShoppingCart className="h-4 w-4 text-[#f1f6fb]" />
+                  <div className="h-8 w-8 bg-[#1D2E24] rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <ShoppingCart className="h-4 w-4 text-[#D1A966]" />
                   </div>
                 </div>
               </div>

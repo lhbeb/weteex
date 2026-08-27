@@ -27,23 +27,19 @@ const SHIPPING_BY_COUNTRY: Record<FeedCountry, {
  * Full taxonomy: https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt
  */
 const GOOGLE_PRODUCT_CATEGORY_MAP: Record<string, string> = {
-  'Excavators': '1795',
-  'Mini Excavators': '1795',
-  'AGT Mini Excavators': '1795',
-  'Excavator Attachments': '1795',
-  'Attachments': '1795',
-  'Power Tools': '1167',
-  'Generators': '696',
-  'Garden Equipment': '4217',
-  'Garden Tools': '4217',
-  'Pressure Washers': '2211',
-  'Outdoor Power Equipment': '2211',
-  'Electronics': '222',
-  'Fashion': '1604',
-  'Hobbies': '8',
-  'Entertainment': '8',
-  'Construction Machinery': '1795',
-  'default': '536',
+  'Furniture': '436',
+  'Chairs': '436',
+  'Tables': '436',
+  'Modern Furniture': '436',
+  'Modern Chairs & Furniture': '436',
+  'Antiques': '6073',
+  'Authentic Antiques': '6073',
+  'Vintage Collectibles': '8',
+  'Collectibles': '8',
+  'Decorative Pieces': '696',
+  'Home Decor': '696',
+  'Decor': '696',
+  'default': '436',
 };
 
 function getGoogleProductCategory(category: string | undefined): string {
@@ -193,8 +189,8 @@ export async function GET(request: NextRequest) {
         const price = `${Number(product.price).toFixed(2)} ${productCurrency}`;
         const availability = product.inStock === false ? 'out_of_stock' : 'in_stock';
         const condition = mapConditionToGmc(product.condition);
-        const brand = escapeXml(product.brand || 'Weteex / Teextees');
-        const category = escapeXml(product.category || 'Excavators');
+        const brand = escapeXml(product.brand || 'Weteextees');
+        const category = escapeXml(product.category || 'Furniture');
         const googleProductCategory = getGoogleProductCategory(product.category);
         const feedImages = getFeedImageUrls(product);
         const imageLink = escapeXml(feedImages[0]);
@@ -244,9 +240,9 @@ export async function GET(request: NextRequest) {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>Weteex / Teextees Google Merchant Center Feed${targetLabel}${currencyLabel}</title>
+    <title>Weteextees Google Merchant Center Feed${targetLabel}${currencyLabel}</title>
     <link>${BASE_URL}</link>
-    <description>Weteex / Teextees products for the United States${currencyLabel}</description>
+    <description>Weteextees products for the United States${currencyLabel}</description>
     ${itemsXml}
   </channel>
 </rss>`;

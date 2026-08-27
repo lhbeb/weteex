@@ -28,15 +28,15 @@ class ErrorBoundary extends React.Component<{ children: React.ReactNode; pathnam
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-[#F6F8F5]">
           <div className="text-center px-4">
-            <h1 className="text-3xl font-bold text-[#262626] mb-4">Something went wrong</h1>
-            <p className="text-gray-600 mb-8">We&apos;re sorry, but something unexpected happened.</p>
+            <h1 className="text-3xl font-bold text-[#1E2621] mb-4">Something went wrong</h1>
+            <p className="text-[#5C6B61] mb-8">We&apos;re sorry, but something unexpected happened.</p>
             <div className="flex gap-4 justify-center">
               <Link 
                 href="/"
                 onClick={() => this.setState({ hasError: false, error: null })}
-                className="inline-block bg-[#01428a] hover:bg-[#00366f] text-white px-6 py-3 rounded-lg transition-colors duration-300"
+                className="inline-block bg-[#1D2E24] hover:bg-[#142019] text-[#F6F8F5] px-6 py-3 rounded-lg font-bold transition-colors duration-300 shadow-sm"
               >
                 Return to Home
               </Link>
@@ -47,7 +47,7 @@ class ErrorBoundary extends React.Component<{ children: React.ReactNode; pathnam
                     window.location.reload();
                   }
                 }}
-                className="inline-block bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors duration-300"
+                className="inline-block bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
               >
                 Reload Page
               </button>

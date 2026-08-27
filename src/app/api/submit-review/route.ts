@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
 
         <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
           <p style="color: #666; font-size: 14px;">
-            This review was submitted through the Weteex / Teextees website review form.
+            This review was submitted through the Weteextees website review form.
           </p>
         </div>
       </div>

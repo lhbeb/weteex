@@ -303,7 +303,7 @@ const ProductGrid = ({
                             setPriceRange((previous) => ({ ...previous, min: event.target.value }))
                           }
                           placeholder="0"
-                          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#01428a]"
+                          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D2E24]"
                         />
                       </div>
                       <div className="w-full">
@@ -317,7 +317,7 @@ const ProductGrid = ({
                             setPriceRange((previous) => ({ ...previous, max: event.target.value }))
                           }
                           placeholder="150"
-                          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#01428a]"
+                          className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D2E24]"
                         />
                       </div>
                     </div>
@@ -327,13 +327,13 @@ const ProductGrid = ({
                 <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between text-sm font-semibold text-[#262626]"
+                    className="flex w-full items-center justify-between text-sm font-semibold text-[#1E2621]"
                     onClick={() => handleToggleSection("brands")}
                   >
                     <span>
                       Brands
                       {selectedBrands.length > 0 ? (
-                        <span className="ml-1 text-[#01428a]">({selectedBrands.length})</span>
+                        <span className="ml-1 text-[#1D2E24]">({selectedBrands.length})</span>
                       ) : null}
                     </span>
                     {expandedSections.brands ? (
@@ -361,7 +361,7 @@ const ProductGrid = ({
                                 return previous.filter((value) => value !== brand);
                               });
                             }}
-                            className="h-4 w-4 rounded border-gray-300 text-[#01428a] focus:ring-[#01428a]"
+                            className="h-4 w-4 rounded border-gray-300 text-[#1D2E24] focus:ring-[#1D2E24]"
                           />
                           {brand}
                         </label>
@@ -370,7 +370,7 @@ const ProductGrid = ({
                       {brandOptions.length > 8 ? (
                         <button
                           type="button"
-                          className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#01428a] hover:underline"
+                          className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1D2E24] hover:underline"
                           onClick={() => setShowAllBrands((previous) => !previous)}
                         >
                           {showAllBrands ? "Show fewer brands" : `Show all ${brandOptions.length}`}
@@ -383,13 +383,13 @@ const ProductGrid = ({
                 <section className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between text-sm font-semibold text-[#262626]"
+                    className="flex w-full items-center justify-between text-sm font-semibold text-[#1E2621]"
                     onClick={() => handleToggleSection("conditions")}
                   >
                     <span>
                       Condition
                       {selectedConditions.length > 0 ? (
-                        <span className="ml-1 text-[#01428a]">({selectedConditions.length})</span>
+                        <span className="ml-1 text-[#1D2E24]">({selectedConditions.length})</span>
                       ) : null}
                     </span>
                     {expandedSections.conditions ? (
@@ -417,7 +417,7 @@ const ProductGrid = ({
                                 return previous.filter((value) => value !== condition);
                               });
                             }}
-                            className="h-4 w-4 rounded border-gray-300 text-[#01428a] focus:ring-[#01428a]"
+                            className="h-4 w-4 rounded border-gray-300 text-[#1D2E24] focus:ring-[#1D2E24]"
                           />
                           {condition}
                         </label>
@@ -426,7 +426,7 @@ const ProductGrid = ({
                       {conditionOptions.length > 8 ? (
                         <button
                           type="button"
-                          className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#01428a] hover:underline"
+                          className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1D2E24] hover:underline"
                           onClick={() => setShowAllConditions((previous) => !previous)}
                         >
                           {showAllConditions ? "Show fewer conditions" : `Show all ${conditionOptions.length}`}
@@ -440,7 +440,7 @@ const ProductGrid = ({
                   <div className="md:col-[1/-1]">
                     <button
                       type="button"
-                      className="w-full rounded-xl border border-[#01428a] bg-[#01428a]/5 px-4 py-3 text-sm font-semibold text-[#01428a] transition-colors duration-200 hover:bg-[#01428a]/10"
+                      className="w-full rounded-xl border border-[#1D2E24] bg-[#1D2E24]/5 px-4 py-3 text-sm font-semibold text-[#1D2E24] transition-colors duration-200 hover:bg-[#1D2E24]/10"
                       onClick={handleClearFilters}
                     >
                       Clear all filters
@@ -465,7 +465,7 @@ const ProductGrid = ({
                     <SlidersHorizontal className="h-4 w-4" />
                     <span>Filters</span>
                     {activeFilters > 0 ? (
-                      <span className="rounded-full bg-[#01428a] px-2 py-0.5 text-xs font-semibold text-white">
+                      <span className="rounded-full bg-[#1D2E24] px-2 py-0.5 text-xs font-semibold text-white">
                         {activeFilters}
                       </span>
                     ) : null}
@@ -475,7 +475,7 @@ const ProductGrid = ({
                     <select
                       value={sortBy}
                       onChange={(event) => setSortBy(event.target.value as SortOption)}
-                      className="appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#01428a]"
+                      className="appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D2E24]"
                     >
                       <option value="featured">Default</option>
                       <option value="price-high">Price: High to Low</option>
@@ -491,11 +491,11 @@ const ProductGrid = ({
             {activeFilters > 0 ? (
               <div className="mb-6 flex flex-wrap items-center gap-2">
                 {priceRange.min !== "" ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#01428a]/10 px-3 py-1.5 text-sm font-medium text-[#01428a]">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#1D2E24]/10 px-3 py-1.5 text-sm font-medium text-[#1D2E24]">
                     Min: ${priceRange.min}
                     <button
                       type="button"
-                      className="rounded-full p-0.5 hover:bg-[#01428a]/20"
+                      className="rounded-full p-0.5 hover:bg-[#1D2E24]/20"
                       onClick={() => setPriceRange((previous) => ({ ...previous, min: "" }))}
                     >
                       <X className="h-3 w-3" />
@@ -504,11 +504,11 @@ const ProductGrid = ({
                 ) : null}
 
                 {priceRange.max !== "" ? (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#01428a]/10 px-3 py-1.5 text-sm font-medium text-[#01428a]">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-[#1D2E24]/10 px-3 py-1.5 text-sm font-medium text-[#1D2E24]">
                     Max: ${priceRange.max}
                     <button
                       type="button"
-                      className="rounded-full p-0.5 hover:bg-[#01428a]/20"
+                      className="rounded-full p-0.5 hover:bg-[#1D2E24]/20"
                       onClick={() => setPriceRange((previous) => ({ ...previous, max: "" }))}
                     >
                       <X className="h-3 w-3" />
@@ -519,12 +519,12 @@ const ProductGrid = ({
                 {selectedBrands.map((brand) => (
                   <span
                     key={brand}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#01428a]/10 px-3 py-1.5 text-sm font-medium text-[#01428a]"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#1D2E24]/10 px-3 py-1.5 text-sm font-medium text-[#1D2E24]"
                   >
                     {brand}
                     <button
                       type="button"
-                      className="rounded-full p-0.5 hover:bg-[#01428a]/20"
+                      className="rounded-full p-0.5 hover:bg-[#1D2E24]/20"
                       onClick={() => handleRemoveBrand(brand)}
                     >
                       <X className="h-3 w-3" />
@@ -535,12 +535,12 @@ const ProductGrid = ({
                 {selectedConditions.map((condition) => (
                   <span
                     key={condition}
-                    className="inline-flex items-center gap-1.5 rounded-full bg-[#01428a]/10 px-3 py-1.5 text-sm font-medium text-[#01428a]"
+                    className="inline-flex items-center gap-1.5 rounded-full bg-[#1D2E24]/10 px-3 py-1.5 text-sm font-medium text-[#1D2E24]"
                   >
                     {condition}
                     <button
                       type="button"
-                      className="rounded-full p-0.5 hover:bg-[#01428a]/20"
+                      className="rounded-full p-0.5 hover:bg-[#1D2E24]/20"
                       onClick={() => handleRemoveCondition(condition)}
                     >
                       <X className="h-3 w-3" />
@@ -552,7 +552,7 @@ const ProductGrid = ({
 
             {paginatedProducts.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="text-gray-500">No excavators found matching your criteria.</p>
+                <p className="text-gray-500">No items found matching your criteria.</p>
               </div>
             ) : (
               <>
@@ -561,11 +561,11 @@ const ProductGrid = ({
                     <article className="col-span-2 self-start pb-8 pr-2 pt-0 text-left sm:pr-8 lg:pb-12 lg:pr-14">
                       <div className="w-full">
                         {editorialCard.title && (
-                          <h2 className="max-w-[24rem] text-3xl font-semibold leading-[1.35] text-[#262626] sm:text-4xl">
+                          <h2 className="max-w-[24rem] text-3xl font-semibold leading-[1.35] text-[#1E2621] sm:text-4xl">
                             {editorialCard.title}
                           </h2>
                         )}
-                        <p className={`${editorialCard.title ? 'mt-5' : ''} max-w-[34rem] text-base leading-8 text-gray-600 sm:text-lg sm:leading-9`}>
+                        <p className={`${editorialCard.title ? 'mt-5' : ''} max-w-[34rem] text-base leading-8 text-[#5C6B61] sm:text-lg sm:leading-9`}>
                           {editorialCard.description}
                         </p>
                       </div>
@@ -586,7 +586,7 @@ const ProductGrid = ({
                         disabled={currentPage === 1}
                         className={`px-3 py-2 rounded-lg transition-colors duration-300 flex items-center gap-1 ${currentPage === 1
                             ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                            : "bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10 hover:text-[#01428a]"
+                            : "bg-white text-gray-700 border border-gray-300 hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                           }`}
                         aria-label="Previous page"
                       >
@@ -602,7 +602,7 @@ const ProductGrid = ({
                             <button
                               type="button"
                               onClick={() => handlePageChange(1)}
-                              className="px-3 sm:px-4 py-2 rounded-lg transition-colors duration-300 bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10 hover:text-[#01428a]"
+                              className="px-3 sm:px-4 py-2 rounded-lg transition-colors duration-300 bg-white text-gray-700 border border-gray-300 hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                             >
                               1
                             </button>
@@ -628,8 +628,8 @@ const ProductGrid = ({
                                 type="button"
                                 onClick={() => handlePageChange(i)}
                                 className={`px-3 sm:px-4 py-2 rounded-lg transition-colors duration-300 ${currentPage === i
-                                    ? "bg-[#01428a] text-white font-semibold"
-                                    : "bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10 hover:text-[#01428a]"
+                                    ? "bg-[#1D2E24] text-white font-semibold"
+                                    : "bg-white text-gray-700 border border-gray-300 hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                                   }`}
                               >
                                 {i}
@@ -648,7 +648,7 @@ const ProductGrid = ({
                             <button
                               type="button"
                               onClick={() => handlePageChange(totalPages)}
-                              className="px-3 sm:px-4 py-2 rounded-lg transition-colors duration-300 bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10 hover:text-[#01428a]"
+                              className="px-3 sm:px-4 py-2 rounded-lg transition-colors duration-300 bg-white text-gray-700 border border-gray-300 hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                             >
                               {totalPages}
                             </button>
@@ -663,7 +663,7 @@ const ProductGrid = ({
                         disabled={currentPage === totalPages}
                         className={`px-3 py-2 rounded-lg transition-colors duration-300 flex items-center gap-1 ${currentPage === totalPages
                             ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                            : "bg-white text-gray-700 border border-gray-300 hover:bg-[#01428a]/10 hover:text-[#01428a]"
+                            : "bg-white text-gray-700 border border-gray-300 hover:bg-[#1D2E24]/10 hover:text-[#1D2E24]"
                           }`}
                         aria-label="Next page"
                       >

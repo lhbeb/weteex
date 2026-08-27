@@ -23,9 +23,9 @@ export default function ContactPage() {
         '@type': 'ContactPage',
         '@id': 'https://weteextees.com/contact#webpage',
         'url': 'https://weteextees.com/contact',
-        'name': 'Contact Us | Weteex / Teextees',
+        'name': 'Contact Us | Weteextees',
         'description':
-          'Contact Weteex / Teextees about compact excavator configurations, pricing, ordering, collection, and specialist delivery.',
+          'Contact Weteextees about authentic antiques, modern furniture, custom orders, condition reports, and insured delivery.',
         'mainEntity': {
           '@id': 'https://weteextees.com/#organization',
         },
@@ -33,7 +33,7 @@ export default function ContactPage() {
       {
         '@type': 'Organization',
         '@id': 'https://weteextees.com/#organization',
-        'name': 'Weteex / Teextees',
+        'name': 'Weteextees',
         'url': 'https://weteextees.com',
         'email': 'contact@weteextees.com',
         'telephone': ['+447533408378'],
@@ -104,7 +104,7 @@ export default function ContactPage() {
             <div className="p-6 sm:p-8">
               <h1 className="text-3xl font-bold text-[#262626] mb-2">Contact Us</h1>
               <p className="text-gray-600 mb-8">
-                Ask about engine options, controls, cab configurations, attachments, pricing, or delivery. Our machinery team will help you compare the available choices.
+                Inquiring about an antique piece, modern chair, condition report, custom sourcing, or delivery? Our specialist team is here to assist you.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Contact Form */}
@@ -121,7 +121,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
@@ -136,7 +136,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
@@ -150,16 +150,16 @@ export default function ContactPage() {
                         value={formData.contactReason}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent bg-white"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent bg-white"
                         disabled={isSending}
                       >
                         <option value="">Select a reason</option>
-                        <option value="selling">Compact excavator sales inquiry</option>
+                        <option value="selling">Antique or furniture sales inquiry</option>
                         <option value="order-inquiry">Inquiring about an order</option>
                         <option value="track-order">Track my order</option>
                         <option value="return-refund">Return or refund request</option>
-                        <option value="product-question">Machine or configuration question</option>
-                        <option value="partnership">Partnership or business inquiry</option>
+                        <option value="product-question">Condition or piece detail question</option>
+                        <option value="partnership">Partnership or trade inquiry</option>
                         <option value="general">General inquiry</option>
                         <option value="other">Other</option>
                       </select>
@@ -175,7 +175,7 @@ export default function ContactPage() {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
@@ -190,13 +190,13 @@ export default function ContactPage() {
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
                         disabled={isSending}
                       />
                     </div>
                     <button
                       type="submit"
-                      className={`w-full bg-[#d8941a] hover:bg-[#d8941a]/90 text-[#01428a] font-medium py-3 rounded-lg transition-colors duration-300 ${isSending ? 'opacity-60 cursor-not-allowed' : ''}`}
+                      className={`w-full bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] font-bold py-3 rounded-lg transition-colors duration-300 ${isSending ? 'opacity-60 cursor-not-allowed' : ''}`}
                       disabled={isSending}
                     >
                       {isSending ? 'Sending...' : 'Send Message'}
@@ -207,34 +207,34 @@ export default function ContactPage() {
                   </form>
                 </div>
                 {/* Contact Information */}
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h2 className="text-xl font-bold text-[#262626] mb-6">Get in Touch</h2>
+                <div className="bg-[#F6F8F5] p-6 rounded-lg border border-[#DCE5DE]">
+                  <h2 className="text-xl font-bold text-[#1E2621] mb-6">Get in Touch</h2>
                   <div className="space-y-6">
                     <div className="flex items-start">
-                      <Building2 className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
+                      <Building2 className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#262626]">UK Registered Office</h3>
+                        <h3 className="font-medium text-[#1E2621]">UK Registered Office</h3>
                         <p className="text-gray-600 mt-1">71-75 Shelton Street, London, Greater London, United Kingdom, WC2H 9JQ</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <MapPin className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
+                      <MapPin className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#262626]">Registered Company</h3>
+                        <h3 className="font-medium text-[#1E2621]">Registered Company</h3>
                         <p className="text-gray-600 mt-1">Gooba Global LTD · Company number 13107870</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <Phone className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
+                      <Phone className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#262626]">Phone Support</h3>
+                        <h3 className="font-medium text-[#1E2621]">Phone Support</h3>
                         <p className="text-gray-600 mt-1"><span className="font-semibold">Phone:</span> +44 7533 408378</p>
                       </div>
                     </div>
                     <div className="flex items-start">
-                      <Mail className="h-6 w-6 text-[#01428a] mt-1 shrink-0" />
+                      <Mail className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#262626]">Email</h3>
+                        <h3 className="font-medium text-[#1E2621]">Email</h3>
                         <p className="text-gray-600 mt-1">contact@weteextees.com</p>
                       </div>
                     </div>

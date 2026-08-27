@@ -13,7 +13,7 @@ const Hero = () => {
     const element = typingTextRef.current;
     if (!element) return;
 
-    const words = ['AGT Mini Excavators', '1-Ton Mini Excavators', 'Excavator Attachments', 'Operator Configurations'];
+    const words = ['Modern Chairs & Furniture', 'Authentic Antiques', 'Vintage Collectibles', 'One-of-a-Kind Decor'];
     let isAnimating = true;
     let currentIndex = 0;
 
@@ -72,45 +72,45 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-4 py-8 md:py-10">
         <div className="mx-auto grid w-full max-w-7xl overflow-hidden rounded-xl shadow-xl md:min-h-[420px] md:grid-cols-[0.9fr_1.1fr] md:items-stretch">
           {/* Content panel */}
-          <div className="order-2 flex w-full flex-col justify-center bg-[#01428a] p-6 sm:p-8 md:order-1 md:p-10 lg:p-12">
-            {/* Heading with typing animation - PRESERVED */}
-            <h1 className="max-w-[620px] text-2xl font-bold leading-tight text-[#f1f6fb] md:text-3xl lg:text-[38px]">
+          <div className="order-2 flex w-full flex-col justify-center bg-[#1D2E24] p-6 sm:p-8 md:order-1 md:p-10 lg:p-12">
+            {/* Heading with typing animation */}
+            <h1 className="max-w-[620px] text-2xl font-bold leading-tight text-[#F6F8F5] md:text-3xl lg:text-[36px]">
               <span
                 ref={typingTextRef}
-                className="mb-1 block h-[1.2em] text-[#f1f6fb]"
+                className="mb-2 block min-h-[2.4em] sm:min-h-[1.3em] text-[#D1A966] transition-all"
               >
                 {placeholder}
               </span>
               <span className="block leading-tight">
-                Weteex / Teextees for Your Business
+                Curated for Your Living Space
               </span>
             </h1>
 
-            {/* Description - PRESERVED content */}
-            <p className="mt-4 max-w-[580px] text-sm leading-relaxed text-[#f1f6fb]/90 md:text-base">
-              Explore AGT mini excavators, compact 1-ton machines, and excavator attachments with practical engine, control, cab, swing, and operator configurations at competitive business prices.
+            {/* Description */}
+            <p className="mt-4 max-w-[580px] text-sm leading-relaxed text-[#F6F8F5]/85 md:text-base">
+              Your destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces.
             </p>
 
-            {/* Shop Now Button - PRESERVED href */}
+            {/* Shop Now Button */}
             <a
               href="#products"
-              className="mt-6 inline-flex w-fit items-center justify-center rounded-lg bg-[#d8941a] px-7 py-3 text-sm font-medium text-[#01428a] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d8941a]/90 hover:shadow-lg"
+              className="mt-6 inline-flex w-fit items-center justify-center rounded-lg bg-[#D1A966] px-7 py-3 text-sm font-bold text-[#142019] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#DEBC80] hover:shadow-lg"
             >
-              Explore Excavators &amp; Attachments
+              Explore Collection &amp; Decor
             </a>
           </div>
 
-          {/* Image panel — equal height to the content panel on desktop */}
-          <div className="relative order-1 min-h-[280px] overflow-hidden md:order-2 md:min-h-0">
+          {/* Image panel */}
+          <div className="relative order-1 min-h-[280px] overflow-hidden md:order-2 md:min-h-0 bg-stone-900">
             <Image
-              src="/Rippa-R32-miniekskavaator6-scaled.jpg"
-              alt="Rippa R32 mini excavator"
+              src="/bg.png"
+              alt="Authentic antiques and modern furniture collection"
               fill
               priority
               sizes="(max-width: 767px) 100vw, 45vw"
               className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#01428a]/25 via-transparent to-transparent" aria-hidden="true" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1D2E24]/40 via-transparent to-transparent" aria-hidden="true" />
           </div>
         </div>
       </div>

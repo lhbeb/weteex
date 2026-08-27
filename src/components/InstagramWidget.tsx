@@ -13,7 +13,7 @@ const InstagramWidget: React.FC = () => {
             <div className="w-full h-full bg-white rounded-full overflow-hidden">
               <Image
                 src="/weteex-machines-mark.svg"
-                alt="Weteex / Teextees Profile"
+                alt="Weteextees Profile"
                 width={80}
                 height={80}
                 className="h-full w-full object-cover"
@@ -25,7 +25,7 @@ const InstagramWidget: React.FC = () => {
           <div className="flex-grow">
             <h3 className="font-bold text-[#262626] text-xl mb-1">@weteexmachines_official</h3>
             <p className="text-sm text-gray-700">weteexmachines</p>
-            <p className="mb-3 text-xs font-medium text-gray-500">Excavators &amp; Construction Machinery</p>
+            <p className="mb-3 text-xs font-medium text-gray-500">Authentic Antiques &amp; Modern Furniture</p>
 
             {/* Statistics */}
             <div className="flex items-center space-x-6 text-sm">

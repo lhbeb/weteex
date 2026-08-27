@@ -9,14 +9,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#2e6b3e', // Green - main brand color
-        secondary: '#1a4529', // Darker green
-        accent: '#2e6b3e', // Green accent
-        text: '#262626', // Dark gray text (softer than black)
-        'text-gray': '#666666', // Gray text
-        'bg-light': '#f5f5f5', // Light gray background
-        'border-gray': '#e0e0e0', // Border gray
-        'nav-gray': '#e8e8e8', // Navigation bar gray
+        primary: '#1D2E24', // Deep Heritage Forest / Olive Noir
+        'primary-dark': '#142019',
+        'primary-light': '#2A4234',
+        secondary: '#D1A966', // Brushed Champagne Gold
+        'secondary-hover': '#DEBC80',
+        'secondary-dark': '#B88F4D',
+        accent: '#D1A966', // Champagne Gold accent
+        canvas: '#F6F8F5', // Soft Natural Stone Canvas
+        'canvas-card': '#FFFFFF',
+        'canvas-border': '#DCE5DE',
+        text: '#1E2621', // Deep forest charcoal text
+        'text-muted': '#5C6B61',
+        'text-gray': '#6B7B71',
+        'bg-light': '#F6F8F5',
+        'border-gray': '#DCE5DE',
+        'nav-gray': '#ECEFEA',
       },
       fontFamily: {
         sans: ['var(--font-dm-sans)', 'Helvetica', 'Arial', 'sans-serif'],

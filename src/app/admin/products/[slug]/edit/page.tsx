@@ -855,7 +855,7 @@ export default function EditProductPage() {
                 onChange={(e) => updateField('seller_id', e.target.value)}
                 className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all bg-white"
               >
-                <option value="">Unassigned (Fallback: Weteex / Teextees)</option>
+                <option value="">Unassigned (Fallback: Weteextees)</option>
                 {sellers.map((s) => (
                   <option key={s.id} value={s.id}>{s.name} (@{s.username})</option>
                 ))}

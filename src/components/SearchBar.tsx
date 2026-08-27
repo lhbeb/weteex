@@ -65,25 +65,25 @@ const SearchBar: React.FC<SearchBarProps> = ({ open, onClose }) => {
       {/* Centered search bar (desktop) */}
       <div className="hidden md:flex fixed left-0 right-0 top-[88px] z-50 justify-center items-start pointer-events-none">
         <div
-          className="w-full max-w-xl bg-[#e3e7eb] shadow-2xl rounded-full border border-gray-200 px-6 py-3 flex items-center gap-3 pointer-events-auto animate-scale-fade-in"
-          style={{ boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15)" }}
+          className="w-full max-w-xl bg-[#F6F8F5] shadow-2xl rounded-full border border-[#DCE5DE] px-6 py-3 flex items-center gap-3 pointer-events-auto animate-scale-fade-in"
+          style={{ boxShadow: "0 8px 32px 0 rgba(29, 46, 36, 0.18)" }}
         >
-          <Search className="h-5 w-5 text-gray-400" />
+          <Search className="h-5 w-5 text-[#5C6B61]" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search excavators..."
-            className="bg-transparent outline-none border-0 flex-1 min-w-0 text-[#262626] placeholder-gray-400 text-lg"
+            placeholder="Search modern furniture, antiques, collectibles..."
+            className="bg-transparent outline-none border-0 flex-1 min-w-0 text-[#1E2621] placeholder-[#5C6B61]/70 text-lg"
             autoFocus={open}
             onKeyDown={handleKeyDown}
-            aria-label="Search excavators"
+            aria-label="Search collection"
           />
           {query.length > 0 && (
-            <ArrowRight className="h-5 w-5 text-[#01428a] animate-bounce-x ml-1" aria-label="Press Enter to search" />
+            <ArrowRight className="h-5 w-5 text-[#D1A966] animate-bounce-x ml-1" aria-label="Press Enter to search" />
           )}
-          <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600" aria-label="Close search">
+          <button type="button" onClick={onClose} className="text-[#5C6B61] hover:text-[#1E2621]" aria-label="Close search">
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -91,24 +91,24 @@ const SearchBar: React.FC<SearchBarProps> = ({ open, onClose }) => {
       {/* Mobile search bar */}
       <div className="md:hidden fixed left-4 right-4 top-4 z-50 animate-scale-fade-in">
         <div
-          className="w-full bg-[#e3e7eb] shadow-2xl rounded-2xl border border-gray-200 px-4 py-3 flex items-center gap-3"
+          className="w-full bg-[#F6F8F5] shadow-2xl rounded-2xl border border-[#DCE5DE] px-4 py-3 flex items-center gap-3"
         >
-          <Search className="h-5 w-5 text-gray-400" />
+          <Search className="h-5 w-5 text-[#5C6B61]" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search excavators..."
-            className="bg-transparent outline-none border-0 flex-1 min-w-0 text-[#262626] placeholder-gray-400 text-lg"
+            placeholder="Search modern furniture, antiques, collectibles..."
+            className="bg-transparent outline-none border-0 flex-1 min-w-0 text-[#1E2621] placeholder-[#5C6B61]/70 text-lg"
             autoFocus={open}
             onKeyDown={handleKeyDown}
-            aria-label="Search excavators"
+            aria-label="Search collection"
           />
           {query.length > 0 && (
-            <ArrowRight className="h-5 w-5 text-[#01428a] animate-bounce-x ml-1" aria-label="Press Enter to search" />
+            <ArrowRight className="h-5 w-5 text-[#D1A966] animate-bounce-x ml-1" aria-label="Press Enter to search" />
           )}
-          <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600" aria-label="Close search">
+          <button type="button" onClick={onClose} className="text-[#5C6B61] hover:text-[#1E2621]" aria-label="Close search">
             <X className="h-5 w-5" />
           </button>
         </div>

@@ -295,7 +295,7 @@ export default function PaypalInvoiceConfirmation({
                                             <div>
                                                 <h2 className="text-xl font-bold text-blue-900">Proof Received — Confirmation in Progress</h2>
                                                 <p className="mt-2 text-sm leading-7 text-blue-900/85">
-                                                    Thank you! Our Weteex / Teextees payment team is verifying your PayPal transfer screenshot. <strong>Most orders are confirmed within 2–3 minutes.</strong> You will receive a confirmation email shortly.
+                                                    Thank you! Our Weteextees payment team is verifying your PayPal transfer screenshot. <strong>Most orders are confirmed within 2–3 minutes.</strong> You will receive a confirmation email shortly.
                                                 </p>
                                                 <p className="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-blue-700">
                                                     Order reference: {orderId}

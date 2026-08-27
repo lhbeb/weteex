@@ -538,7 +538,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                       <button
                         key={idx}
                         onClick={() => setActiveImage(idx)}
-                        className={`relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden ${activeImage === idx ? 'ring-2 ring-[#01428a]' : 'ring-1 ring-gray-200'}`}
+                        className={`relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden ${activeImage === idx ? 'ring-2 ring-[#1D2E24]' : 'ring-1 ring-[#DCE5DE]'}`}
                       >
                         <Image
                           src={image}
@@ -560,10 +560,10 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
               )}
               {images.length > 1 && (
                 <>
-                  <button onClick={() => setActiveImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))} className="absolute left-4 top-1/2 -translate-y-1/2 transform bg-white/80 hover:bg-[#01428a] hover:text-[#f1f6fb] p-2 rounded-full transition-all duration-300 z-10">
+                  <button onClick={() => setActiveImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))} className="absolute left-4 top-1/2 -translate-y-1/2 transform bg-white/80 hover:bg-[#1D2E24] hover:text-[#D1A966] p-2 rounded-full transition-all duration-300 z-10">
                     <ChevronLeft className="h-6 w-6" />
                   </button>
-                  <button onClick={() => setActiveImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))} className="absolute right-4 top-1/2 -translate-y-1/2 transform bg-white/80 hover:bg-[#01428a] hover:text-[#f1f6fb] p-2 rounded-full transition-all duration-300 z-10">
+                  <button onClick={() => setActiveImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))} className="absolute right-4 top-1/2 -translate-y-1/2 transform bg-white/80 hover:bg-[#1D2E24] hover:text-[#D1A966] p-2 rounded-full transition-all duration-300 z-10">
                     <ChevronRight className="h-6 w-6" />
                   </button>
                 </>
@@ -571,11 +571,11 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
             </div>
 
             <div className="lg:pr-4">
-              <h1 className="text-3xl font-medium text-[#262626] mb-1">{title}</h1>
+              <h1 className="text-3xl font-bold text-[#1E2621] mb-1">{title}</h1>
               <SellerBadge sellerId={product?.sellerId} size="md" />
               {condition && (
                 <div className="mt-3 w-fit max-w-full">
-                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-gray-500">
+                  <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5C6B61]">
                     Condition
                   </p>
                   <div
@@ -588,31 +588,31 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                     onBlur={() => setIsConditionTooltipVisible(false)}
                     onClick={() => setIsConditionTooltipVisible((current) => !current)}
                   >
-                    <div className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-gray-200 bg-gray-100 px-3 py-1 text-sm font-medium text-gray-700 transition-colors group-hover:border-[#003087]/30 group-hover:bg-[#003087]/5 group-focus-within:border-[#003087]/30 group-focus-within:bg-[#003087]/5">
+                    <div className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-[#DCE5DE] bg-[#F6F8F5] px-3 py-1 text-sm font-medium text-gray-700 transition-colors group-hover:border-[#1D2E24]/30 group-hover:bg-[#1D2E24]/5 group-focus-within:border-[#1D2E24]/30 group-focus-within:bg-[#1D2E24]/5">
                       <span className="truncate">{getConditionDisplayLabel(condition)}</span>
-                      <Info className="h-4 w-4 flex-shrink-0 text-gray-400 transition-colors group-hover:text-[#003087] group-focus-within:text-[#003087]" />
+                      <Info className="h-4 w-4 flex-shrink-0 text-[#5C6B61] transition-colors group-hover:text-[#1D2E24] group-focus-within:text-[#1D2E24]" />
                     </div>
                     {getConditionTooltip(condition) && isConditionTooltipVisible && (
                       <div
-                        className="pointer-events-none z-[70] w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-[#01428a]/10 bg-[#01428a] px-3 py-2 text-xs leading-5 text-[#f1f6fb] shadow-xl"
+                        className="pointer-events-none z-[70] w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-[#D1A966]/20 bg-[#1D2E24] px-3 py-2 text-xs leading-5 text-[#F6F8F5] shadow-xl"
                         style={conditionTooltipStyle}
                       >
                         {getConditionTooltip(condition)}
-                        <div className="absolute bottom-full left-5 border-4 border-transparent border-b-[#01428a] md:bottom-auto md:left-[-8px] md:right-auto md:top-1/2 md:-translate-y-1/2 md:border-b-transparent md:border-r-[#01428a] md:border-l-transparent"></div>
+                        <div className="absolute bottom-full left-5 border-4 border-transparent border-b-[#1D2E24] md:bottom-auto md:left-[-8px] md:right-auto md:top-1/2 md:-translate-y-1/2 md:border-b-transparent md:border-r-[#1D2E24] md:border-l-transparent"></div>
                       </div>
                     )}
                   </div>
                 </div>
               )}
               {product && product.inStock === false && product.checkoutLink === '#' && (
-                <div className="mt-4 bg-[#fff8e8] border-2 border-[#f7d795] rounded-xl py-3 px-4">
-                  <p className="text-sm text-[#704607] font-medium">
+                <div className="mt-4 bg-[#F6F8F5] border-2 border-[#D1A966]/50 rounded-xl py-3 px-4">
+                  <p className="text-sm text-[#1D2E24] font-medium">
                     ⚠️ This offer has expired and the product is no longer available for purchase.
                   </p>
                 </div>
               )}
               <div className="mt-4 flex flex-wrap items-baseline gap-3">
-                <span className="text-4xl font-bold text-[#262626]">
+                <span className="text-4xl font-bold text-[#1E2621]">
                   {formatMarketPrice(price, getMarket(product?.meta?.targetMarket))}
                 </span>
                 {original_price && original_price > price && (
@@ -620,7 +620,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                     <span className="text-xl text-gray-400 line-through font-medium">
                       {formatMarketPrice(original_price, getMarket(product?.meta?.targetMarket))}
                     </span>
-                    <span className="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-600/20">
+                    <span className="inline-flex items-center rounded-md bg-[#1D2E24]/10 px-2 py-1 text-xs font-bold text-[#1D2E24] ring-1 ring-inset ring-[#1D2E24]/20">
                       {Math.round((1 - price / original_price) * 100)}% OFF
                     </span>
                   </>
@@ -629,19 +629,19 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
 
               <ClientOnly>
                 {viewedCount !== null && viewedCount > 0 && (
-                  <div className="mt-6 bg-[#01428a]/10 border border-[#01428a]/30 rounded-xl p-3 sm:p-4">
+                  <div className="mt-6 bg-[#1D2E24]/5 border border-[#1D2E24]/20 rounded-xl p-3 sm:p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2 sm:space-x-4">
-                        <div className="flex items-center text-[#01428a]">
-                          <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-1.5" />
+                        <div className="flex items-center text-[#1D2E24]">
+                          <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-1.5 text-[#D1A966]" />
                           <span className="text-xs sm:text-sm font-medium">
                             {viewedCount.toLocaleString()} viewed in the last 24 hours
                           </span>
                         </div>
                       </div>
                       <div className="flex items-center">
-                        <div className="w-2 h-2 bg-[#01428a] rounded-full animate-pulse mr-2"></div>
-                        <span className="text-xs text-[#01428a] font-medium hidden sm:inline">Live activity</span>
+                        <div className="w-2 h-2 bg-[#D1A966] rounded-full animate-pulse mr-2"></div>
+                        <span className="text-xs text-[#1D2E24] font-medium hidden sm:inline">Live activity</span>
                       </div>
                     </div>
                   </div>
@@ -650,16 +650,16 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
 
               {/* Size Selector Section */}
               {!!(product?.meta?.has_mens_sizes || product?.meta?.has_womens_sizes || product?.meta?.hasSizes) && (
-                <div ref={sizeSelectorRef} className="mt-6 border-t border-gray-100 pt-6">
+                <div ref={sizeSelectorRef} className="mt-6 border-t border-[#DCE5DE] pt-6">
                   <div className="flex items-center justify-between mb-3">
-                    <label className="text-sm font-bold text-[#262626] uppercase tracking-wide flex items-center gap-1.5">
-                      <Ruler className="h-4 w-4 text-gray-500" /> Select Size <span className="text-red-500 font-bold">*</span>
+                    <label className="text-sm font-bold text-[#1E2621] uppercase tracking-wide flex items-center gap-1.5">
+                      <Ruler className="h-4 w-4 text-[#5C6B61]" /> Select Size <span className="text-red-500 font-bold">*</span>
                     </label>
                   </div>
 
                   {/* Sizing Tab Selector */}
                   {!!(product?.meta?.has_mens_sizes && product?.meta?.has_womens_sizes) && (
-                    <div className="flex gap-2 mb-4 p-1 bg-gray-100 rounded-xl">
+                    <div className="flex gap-2 mb-4 p-1 bg-[#F6F8F5] rounded-xl border border-[#DCE5DE]">
                       <button
                         type="button"
                         onClick={() => {
@@ -668,7 +668,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                           setSizeError(false);
                         }}
                         className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all duration-200 ${
-                          selectedSizeRange === 'mens' ? 'bg-[#01428a] text-white shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                          selectedSizeRange === 'mens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'
                         }`}
                       >
                         Men&apos;s Sizing
@@ -681,7 +681,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                           setSizeError(false);
                         }}
                         className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all duration-200 ${
-                          selectedSizeRange === 'womens' ? 'bg-[#01428a] text-white shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                          selectedSizeRange === 'womens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'
                         }`}
                       >
                         Women&apos;s Sizing
@@ -700,10 +700,10 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         }}
                         className={`py-3 px-2 text-sm font-semibold rounded-xl border-2 transition-all duration-200 ${
                           selectedSize === size
-                            ? 'bg-[#01428a] border-[#01428a] text-white shadow-md transform scale-[1.02]'
+                            ? 'bg-[#1D2E24] border-[#1D2E24] text-[#F6F8F5] shadow-md transform scale-[1.02]'
                             : sizeError
                             ? 'bg-red-50 border-red-200 text-red-700 hover:border-red-300'
-                            : 'bg-white border-gray-200 text-gray-700 hover:border-gray-300 hover:bg-gray-50'
+                            : 'bg-white border-[#DCE5DE] text-gray-700 hover:border-[#1D2E24] hover:bg-[#F6F8F5]'
                         }`}
                       >
                         {size}
@@ -730,8 +730,8 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                       {/* Share Button - Mobile Only */}
                       <button
                         onClick={handleShare}
-                        className="lg:hidden flex-shrink-0 w-14 h-14 bg-gray-100 hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors duration-200 group"
-                        style={{ color: '#6b7280' }}
+                        className="lg:hidden flex-shrink-0 w-14 h-14 bg-[#F6F8F5] hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors duration-200 group border border-[#DCE5DE]"
+                        style={{ color: '#5C6B61' }}
                         aria-label="Share product"
                       >
                         <svg className="h-6 w-6 group-hover:opacity-80 transition-opacity" fill="currentColor" fillRule="nonzero" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
@@ -739,8 +739,8 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                           <path d="M13.3334 14.666V7.33268H11.3334C10.9652 7.33268 10.6667 7.0342 10.6667 6.66602C10.6667 6.29783 10.9652 5.99935 11.3334 5.99935H14C14.3682 5.99935 14.6667 6.29783 14.6667 6.66602V15.3327C14.6667 15.7009 14.3682 15.9993 14 15.9993H2.00004C1.63185 15.9993 1.33337 15.7009 1.33337 15.3327V6.66602C1.33337 6.29783 1.63185 5.99935 2.00004 5.99935H4.66671C5.0349 5.99935 5.33337 6.29783 5.33337 6.66602C5.33337 7.0342 5.0349 7.33268 4.66671 7.33268H2.66671V14.666H13.3334Z"></path>
                         </svg>
                       </button>
-                      <button onClick={handleAddToCart} disabled={isAddingToCart || isBuyingNow} className="flex-1 lg:w-full bg-[#01428a] hover:bg-[#002b59] text-[#f1f6fb] py-3 lg:py-4 px-6 rounded-xl font-semibold transition-colors duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base">
-                        {isAddingToCart ? <><div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#f1f6fb] mr-2"></div>Adding to Cart...</> : <><ShoppingCart className="h-5 w-5 mr-2" />Add to Cart</>}
+                      <button onClick={handleAddToCart} disabled={isAddingToCart || isBuyingNow} className="flex-1 lg:w-full bg-[#1D2E24] hover:bg-[#142019] text-[#F6F8F5] py-3 lg:py-4 px-6 rounded-xl font-bold transition-colors duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base shadow-sm">
+                        {isAddingToCart ? <><div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#D1A966] mr-2"></div>Adding to Cart...</> : <><ShoppingCart className="h-5 w-5 mr-2 text-[#D1A966]" />Add to Cart</>}
                       </button>
                     </div>
                     {(product.checkoutFlow === 'paypal-invoice' || product.checkoutFlow === 'paypal-unclaimed' || product.checkoutFlow === 'paypal-direct' || product.checkoutFlow === 'paypal-api') ? (
@@ -748,12 +748,11 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         <button
                           onClick={handleBuyNow}
                           disabled={isAddingToCart || isBuyingNow}
-                          className="w-full py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-95 active:scale-[0.98]"
-                          style={{ backgroundColor: '#e6b553' }}
+                          className="w-full py-4 px-6 rounded-xl font-semibold transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-95 active:scale-[0.98] bg-[#D1A966] text-[#142019]"
                           aria-label="Checkout with PayPal"
                         >
                           {isBuyingNow ? (
-                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#003087]" />
+                            <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-[#142019]" />
                           ) : (
                             <Image
                               src="/PayPal-checkout.png"
@@ -778,16 +777,16 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                       <button
                         onClick={handleBuyNow}
                         disabled={isAddingToCart || isBuyingNow}
-                        className="hidden lg:flex w-full bg-transparent border-2 border-[#01428a] hover:border-[#002b59] text-[#01428a] hover:text-[#002b59] py-4 px-6 rounded-xl font-semibold transition-colors duration-200 items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="hidden lg:flex w-full bg-transparent border-2 border-[#1D2E24] hover:border-[#142019] text-[#1D2E24] hover:text-[#142019] hover:bg-[#1D2E24]/5 py-4 px-6 rounded-xl font-bold transition-colors duration-200 items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         {isBuyingNow ? (
                           <>
-                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#01428a] mr-2"></div>
+                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#1D2E24] mr-2"></div>
                             Processing...
                           </>
                         ) : (
                           <>
-                            <Zap className="h-5 w-5 mr-2" />
+                            <Zap className="h-5 w-5 mr-2 text-[#D1A966]" />
                             Buy Now
                           </>
                         )}
@@ -801,16 +800,16 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                 <ClientOnly><ShippingInfo targetMarket={product?.meta?.targetMarket} /></ClientOnly>
               </div>
               <div className="mt-8 lg:hidden">
-                <h2 className="text-xl font-medium text-[#262626] mb-4">Item Description from the Seller</h2>
-                <div className="rounded-[20px] border border-[#e5eef8] bg-white px-5 py-5">
-                  <p className="whitespace-pre-line text-sm leading-7 text-[#5f6e82]">
+                <h2 className="text-xl font-bold text-[#1E2621] mb-4">Item Description from the Seller</h2>
+                <div className="rounded-[20px] border border-[#DCE5DE] bg-white px-5 py-5">
+                  <p className="whitespace-pre-line text-sm leading-7 text-[#5C6B61]">
                     {showFullDescription ? descriptionText : descriptionPreview}
                   </p>
                   {shouldCollapseDescription && (
                     <button
                       type="button"
                       onClick={() => setShowFullDescription((current) => !current)}
-                      className="mt-4 text-sm font-semibold text-[#01428a] transition hover:text-[#00366f]"
+                      className="mt-4 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
                     >
                       {showFullDescription ? "Show less" : "Show more"}
                     </button>
@@ -821,16 +820,16 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
           </div>
 
           <div className="mt-12 hidden lg:block">
-            <section className="rounded-[24px] border border-[#dbe8f5] bg-white px-8 py-8">
-              <h2 className="text-2xl font-semibold text-[#262626]">Item Description from the Seller</h2>
-              <p className="mt-4 whitespace-pre-line text-[15px] leading-8 text-[#5f6e82]">
+            <section className="rounded-[24px] border border-[#DCE5DE] bg-white px-8 py-8">
+              <h2 className="text-2xl font-bold text-[#1E2621]">Item Description from the Seller</h2>
+              <p className="mt-4 whitespace-pre-line text-[15px] leading-8 text-[#5C6B61]">
                 {showFullDescription ? descriptionText : descriptionPreview}
               </p>
               {shouldCollapseDescription && (
                 <button
                   type="button"
                   onClick={() => setShowFullDescription((current) => !current)}
-                  className="mt-5 text-sm font-semibold text-[#01428a] transition hover:text-[#00366f]"
+                  className="mt-5 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
                 >
                   {showFullDescription ? "Show less" : "Show more"}
                 </button>
@@ -840,10 +839,10 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
 
           {/* FAQ Section - Full Width */}
           <div className="mt-16 w-full">
-            <section className="rounded-[24px] border border-[#dbe8f5] bg-white">
-              <div className="border-b border-[#e5eef8] px-6 py-6 sm:px-8">
-                <h2 className="text-2xl font-semibold text-[#262626]">Frequently Asked Questions</h2>
-                <p className="mt-2 max-w-2xl text-sm leading-7 text-[#5f6e82]">
+            <section className="rounded-[24px] border border-[#DCE5DE] bg-white">
+              <div className="border-b border-[#DCE5DE] px-6 py-6 sm:px-8">
+                <h2 className="text-2xl font-bold text-[#1E2621]">Frequently Asked Questions</h2>
+                <p className="mt-2 max-w-2xl text-sm leading-7 text-[#5C6B61]">
                   Quick answers to the things shoppers usually want to know before placing an order.
                 </p>
               </div>
@@ -855,7 +854,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                   return (
                     <div
                       key={item.question}
-                      className={`border-b border-[#e5eef8] py-5 last:border-b-0 ${isOpen ? "" : ""}`}
+                      className={`border-b border-[#DCE5DE] py-5 last:border-b-0 ${isOpen ? "" : ""}`}
                     >
                       <button
                         type="button"
@@ -863,24 +862,24 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         className="flex w-full items-start justify-between gap-4 text-left"
                       >
                         <div className="pr-2">
-                          <h3 className="text-base font-medium text-[#262626] sm:text-lg">{item.question}</h3>
+                          <h3 className="text-base font-semibold text-[#1E2621] sm:text-lg">{item.question}</h3>
                           {!isOpen && (
-                            <p className="mt-2 line-clamp-1 text-sm text-[#6B7280]">
+                            <p className="mt-2 line-clamp-1 text-sm text-[#5C6B61]">
                               {item.answer}
                             </p>
                           )}
                         </div>
-                        <span className="mt-0.5 flex-shrink-0 text-[#01428a]" aria-hidden="true">
-                          {isOpen ? <ChevronUp className="h-5 w-5" /> : <ChevronDown className="h-5 w-5" />}
+                        <span className="mt-0.5 flex-shrink-0 text-[#1D2E24]" aria-hidden="true">
+                          {isOpen ? <ChevronUp className="h-5 w-5 text-[#D1A966]" /> : <ChevronDown className="h-5 w-5" />}
                         </span>
                       </button>
                       {isOpen && (
-                        <div className="pt-3 text-sm leading-7 text-[#5f6e82]">
+                        <div className="pt-3 text-sm leading-7 text-[#5C6B61]">
                           <p>{item.answer}</p>
                           {item.linkHref && item.linkLabel && (
                             <Link
                               href={item.linkHref}
-                              className="mt-2 inline-flex text-sm font-semibold text-[#01428a] transition hover:text-[#00366f]"
+                              className="mt-2 inline-flex text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition"
                             >
                               {item.linkLabel}
                             </Link>

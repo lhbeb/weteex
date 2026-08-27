@@ -1,5 +1,5 @@
 -- ============================================================
--- Weteex / Teextees — Multi-Seller System Migration
+-- Weteextees — Multi-Seller System Migration
 -- Run this in Supabase SQL Editor
 -- ============================================================
 

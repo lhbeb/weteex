@@ -7,62 +7,62 @@ export interface StoreFaq {
 
 export const STORE_FAQS: readonly StoreFaq[] = [
   {
-    question: 'What machinery does Weteex / Teextees mainly sell?',
+    question: 'What items does Weteextees specialize in?',
     answer:
-      'Weteex / Teextees mainly sells AGT mini excavators, compact and 1-ton excavators, and excavator attachments. Available machines may include RATO or Kubota engine options, pilot controls, enclosed cabs, air conditioning, side swing, hydraulic thumbs, and other configurations. Each listing states exactly what is included.',
+      'Weteextees is your premier destination for authentic antiques, modern chairs and furniture, unique vintage collectibles, and one-of-a-kind decorative pieces. Every piece is curated for exceptional craftsmanship, historical character, and design integrity.',
   },
   {
-    question: 'Are your excavators new or pre-owned?',
+    question: 'How do you verify the authenticity and condition of antiques?',
     answer:
-      'Machine condition varies by listing. The stated condition, model information, configuration, and available operating details are shown on the excavator page for review before ordering.',
+      'Each antique and vintage collectible undergoes careful examination by our specialists. Detailed condition reports, provenance notes, era estimations, and high-resolution photographs are provided on every product page.',
   },
   {
     question: 'How do I place an order?',
     answer:
-      'Choose an excavator, review its engine and operator configuration, add it to your cart, and continue to checkout. Confirm the machine, delivery address, total price, and payment instructions before completing your order.',
+      'Select your desired modern furniture piece, antique, or collectible, review dimensions and details, add it to your cart, and proceed through our secure checkout with your preferred payment method.',
   },
   {
-    question: 'Where do you ship and how long does delivery take?',
+    question: 'Where do you ship and how is delicate furniture handled?',
     answer:
-      'Current shipping destinations, handling times, carriers, and estimated delivery windows are listed in our Shipping Policy. Tracking is provided after an eligible order is dispatched.',
+      'We provide secure, insured shipping with specialized protective packaging and white-glove delivery options for large or delicate furniture and antique items. Handling times and delivery estimates are outlined in our Shipping Policy.',
     linkHref: '/shipping-policy',
     linkLabel: 'Read our Shipping Policy',
   },
   {
-    question: 'How can I track my order?',
+    question: 'How can I track my delivery?',
     answer:
-      'When your order ships, we send tracking information to the email address used during checkout. You can also use our Track Order page for updates.',
+      'As soon as your piece is prepared and dispatched, tracking details and courier milestone updates are sent to your email. You can also monitor delivery on our Track Order page.',
     linkHref: '/track',
     linkLabel: 'Track your order',
   },
   {
     question: 'What is your return policy?',
     answer:
-      'Eligible items may be returned within 30 calendar days of delivery. Return eligibility, required condition, postage responsibility, refund timing, and step-by-step instructions are explained in our Return & Exchange Policy.',
+      'Eligible items may be returned within 30 calendar days of delivery in their original condition and packaging. Full terms and instructions are available in our Return & Refund Policy.',
     linkHref: '/return-policy',
-    linkLabel: 'Read our Return & Exchange Policy',
+    linkLabel: 'Read our Return & Refund Policy',
   },
   {
-    question: 'Can I exchange an item?',
+    question: 'Can I request an exchange or custom sourcing?',
     answer:
-      'Exchanges may be available for eligible excavators when suitable replacement inventory exists. Contact our support team before operating, transporting, or returning a machine.',
+      'If you are seeking a specific era, designer chair, or antique collectible, our support team can assist with alternative available inventory or replacement options.',
   },
   {
-    question: 'Is local pickup available?',
+    question: 'Is local collection available?',
     answer:
-      'Collection is available only for eligible excavators and must be arranged with our team in advance. Never travel to a collection location until you receive written confirmation.',
+      'Local collection is available for select items by prior arrangement only. Please contact us before traveling so our team can prepare your piece.',
     linkHref: '/local-pickup',
     linkLabel: 'View the Local Pickup Guide',
   },
   {
-    question: 'Can I change or cancel an order?',
+    question: 'Can I modify or cancel an order?',
     answer:
-      'Contact us as soon as possible. We will try to help before fulfillment begins, but changes or cancellations cannot be guaranteed after an order has entered processing or shipped.',
+      'Please contact us immediately. We will do our best to accommodate adjustments before your item has been packed and scheduled for courier dispatch.',
   },
   {
-    question: 'How can I contact Weteex / Teextees?',
+    question: 'How can I contact Weteextees specialists?',
     answer:
-      'You can use our contact form, email contact@weteextees.com, or call +44 7533 408378 during published support hours.',
+      'You can reach our team via our contact form, email contact@weteextees.com, or call +44 7533 408378 during business hours.',
     linkHref: '/contact',
     linkLabel: 'Contact our team',
   },

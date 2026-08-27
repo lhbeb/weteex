@@ -61,10 +61,10 @@ function MobileCheckoutCTA({
         type={onClick ? 'button' : 'submit'}
         onClick={onClick}
         disabled={disabled}
-        className={`w-full font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#01428a] focus:ring-offset-2 text-lg sm:text-xl ${
+        className={`w-full font-bold py-4 px-6 rounded-xl transition-all duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-4 focus:ring-[#1D2E24] focus:ring-offset-2 text-lg sm:text-xl ${
           disabled
             ? 'bg-gray-400 cursor-not-allowed text-white'
-            : 'bg-[#01428a] hover:bg-[#00366f] text-white active:scale-[0.98]'
+            : 'bg-[#1D2E24] hover:bg-[#142019] text-white active:scale-[0.98]'
         }`}
       >
         {isLoading ? (
@@ -317,7 +317,7 @@ function AddressFields({
             : `w-full px-4 py-4 border-2 rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 ${
                 form.emailError
                   ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
-                  : 'border-gray-200 focus:ring-[#01428a] focus:border-[#01428a]'
+                  : 'border-gray-200 focus:ring-[#1D2E24] focus:border-[#1D2E24]'
               }`
         }
         placeholder="Enter your email address"
@@ -374,8 +374,8 @@ function ContinueButton({
       type="submit"
       onClick={() => console.log('🔘 [Checkout] Submit button clicked (desktop)')}
       disabled={isBusy}
-      className={`w-full font-bold py-5 px-8 rounded-xl transition-colors duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed text-white focus:outline-none focus:ring-4 focus:ring-[#01428a] focus:ring-offset-2 text-xl ${
-        isBusy ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#01428a] hover:bg-[#00366f]'
+      className={`w-full font-bold py-5 px-8 rounded-xl transition-colors duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed text-white focus:outline-none focus:ring-4 focus:ring-[#1D2E24] focus:ring-offset-2 text-xl ${
+        isBusy ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#1D2E24] hover:bg-[#142019]'
       }`}
     >
       {isBusy ? (
@@ -396,7 +396,7 @@ function SecureCheckoutInfo({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className={`${mobile ? 'lg:hidden mt-4 mb-4 space-y-2' : 'hidden lg:block mt-8 space-y-4'} flex flex-col items-center justify-center text-center w-full`}>
       <div className="text-sm text-gray-600">
-        <span className="font-medium text-[#01428a]">Secure Checkout</span> - SSL Encrypted
+        <span className="font-semibold text-[#1D2E24]">Secure Checkout</span> - SSL Encrypted
       </div>
       <p className="text-xs text-gray-500 max-w-sm">
         Shop with confidence - Your payment information is protected by industry-leading encryption
@@ -414,15 +414,15 @@ function SecureCheckoutInfo({ mobile = false }: { mobile?: boolean }) {
         />
       </div>
       <div className={`flex flex-wrap items-center justify-center text-xs text-gray-500 mt-2 ${mobile ? 'gap-2 px-4' : 'gap-3'}`}>
-        <Link href="/terms" className="hover:text-[#01428a] hover:underline transition-colors">
+        <Link href="/terms" className="hover:text-[#1D2E24] hover:underline transition-colors">
           Terms of Service
         </Link>
         <span className="text-gray-300">•</span>
-        <Link href="/return-policy" className="hover:text-[#01428a] hover:underline transition-colors">
+        <Link href="/return-policy" className="hover:text-[#1D2E24] hover:underline transition-colors">
           Refund and Return Policy
         </Link>
         <span className="text-gray-300">•</span>
-        <Link href="/shipping-policy" className="hover:text-[#01428a] hover:underline transition-colors">
+        <Link href="/shipping-policy" className="hover:text-[#1D2E24] hover:underline transition-colors">
           Shipping Policy
         </Link>
       </div>
@@ -470,7 +470,7 @@ export default function CheckoutShippingStep({
       <CheckoutNotifier />
       <main className="flex-grow py-4">
         <div className="container mx-auto px-4">
-          <Link href={`/products/${product.slug}`} className="inline-flex items-center text-[#01428a] hover:text-[#00366f] mb-4 text-sm">
+          <Link href={`/products/${product.slug}`} className="inline-flex items-center text-[#1D2E24] hover:text-[#D1A966] mb-4 text-sm font-medium">
             <ArrowLeft className="h-3.5 w-3.5 mr-1.5" />
             <span className="hidden sm:inline">Back To Product</span>
             <span className="sm:hidden">Back</span>
@@ -485,7 +485,7 @@ export default function CheckoutShippingStep({
               >
                 <div className="flex items-center space-x-4">
                   <div className="relative w-16 h-16 flex-shrink-0">
-                    <div className="w-full h-full bg-gray-50 rounded-2xl flex items-center justify-center overflow-hidden">
+                    <div className="w-full h-full bg-[#F6F8F5] rounded-2xl flex items-center justify-center overflow-hidden border border-[#DCE5DE]">
                       <Image
                         src={product.images[0]}
                         alt={product.title}
@@ -494,17 +494,17 @@ export default function CheckoutShippingStep({
                         className="w-14 h-14 object-cover rounded-lg transition-transform duration-200 hover:scale-105"
                       />
                     </div>
-                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-gray-600 rounded-full flex items-center justify-center shadow-sm">
-                      <span className="text-white text-xs font-bold">1</span>
+                    <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#1D2E24] rounded-full flex items-center justify-center shadow-sm">
+                      <span className="text-[#D1A966] text-xs font-bold">1</span>
                     </div>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-semibold text-[#262626] text-base line-clamp-1 mb-1">{product.title}</h3>
-                    <p className="text-[#01428a] font-bold text-xl mb-1">{price}</p>
+                    <h3 className="font-semibold text-[#1E2621] text-base line-clamp-1 mb-1">{product.title}</h3>
+                    <p className="text-[#1D2E24] font-bold text-xl mb-1">{price}</p>
                     {sellerName && (
-                      <p className="mb-1 flex min-w-0 items-center gap-1.5 text-sm text-gray-600" aria-label={`Seller: ${sellerName}`}>
-                        <Store className="h-4 w-4 shrink-0 text-[#262626]" aria-hidden="true" />
-                        <span className="truncate font-medium text-[#262626]">{sellerName}</span>
+                      <p className="mb-1 flex min-w-0 items-center gap-1.5 text-sm text-[#5C6B61]" aria-label={`Seller: ${sellerName}`}>
+                        <Store className="h-4 w-4 shrink-0 text-[#1E2621]" aria-hidden="true" />
+                        <span className="truncate font-medium text-[#1E2621]">{sellerName}</span>
                       </p>
                     )}
                     <p className="text-gray-400 text-xs leading-tight">Tap To View/Hide Summary</p>
@@ -516,20 +516,20 @@ export default function CheckoutShippingStep({
               {showMobileOrderSummary && (
                 <div className="px-4 pb-4 border-t border-gray-100 mt-4 pt-4 space-y-4">
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Quantity</span>
+                    <span className="text-[#5C6B61]">Quantity</span>
                     <span className="font-medium">{cartItem.quantity}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Subtotal</span>
+                    <span className="text-[#5C6B61]">Subtotal</span>
                     <span className="font-medium">{price}</span>
                   </div>
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-gray-600">Shipping</span>
-                    <span className="font-medium text-[#01428a]">Free</span>
+                    <span className="text-[#5C6B61]">Shipping</span>
+                    <span className="font-semibold text-[#1D2E24]">Free</span>
                   </div>
                   <div className="border-t border-gray-200 pt-3 flex justify-between items-center">
-                    <span className="text-base font-semibold text-[#262626]">Total</span>
-                    <span className="text-lg font-bold text-[#01428a]">{price}</span>
+                    <span className="text-base font-semibold text-[#1E2621]">Total</span>
+                    <span className="text-lg font-bold text-[#1D2E24]">{price}</span>
                   </div>
                 </div>
               )}
@@ -538,9 +538,9 @@ export default function CheckoutShippingStep({
 
           <div className="hidden lg:block">
             <div className="max-w-7xl mx-auto flex gap-4 lg:gap-8 items-start">
-              <div className="flex-1 bg-white rounded-2xl shadow-sm p-6 lg:p-8 border border-gray-100 flex justify-center">
+              <div className="flex-1 bg-white rounded-2xl shadow-sm p-6 lg:p-8 border border-[#DCE5DE] flex justify-center">
                 <div className="w-full max-w-[750px]">
-                  <h2 className="text-xl lg:text-2xl font-bold text-[#262626] mb-6 lg:mb-8 text-left">Delivery Address</h2>
+                  <h2 className="text-xl lg:text-2xl font-bold text-[#1E2621] mb-6 lg:mb-8 text-left">Delivery Address</h2>
                   <form onSubmit={onSubmit} className="space-y-6">
                     <AddressFields form={form} />
                     <div className="hidden lg:block mt-8">
@@ -565,7 +565,7 @@ export default function CheckoutShippingStep({
               </div>
 
               <div className="w-96 flex-shrink-0">
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="bg-white rounded-2xl shadow-sm border border-[#DCE5DE] overflow-hidden">
 
                   {/* Header */}
                   <div className="px-6 pt-6 pb-5 border-b border-gray-100">
@@ -575,7 +575,7 @@ export default function CheckoutShippingStep({
                   {/* Product row */}
                   <div className="px-6 py-5 flex items-start gap-4">
                     {/* Image */}
-                    <div className="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-gray-50 border border-gray-100">
+                    <div className="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-[#F6F8F5] border border-[#DCE5DE]">
                       <Image
                         src={product.images[0]}
                         alt={product.title}
@@ -587,7 +587,7 @@ export default function CheckoutShippingStep({
 
                     {/* Info */}
                     <div className="flex-1 min-w-0 flex flex-col gap-2">
-                      <h3 className="font-semibold text-[#262626] text-sm leading-snug line-clamp-2">{product.title}</h3>
+                      <h3 className="font-semibold text-[#1E2621] text-sm leading-snug line-clamp-2">{product.title}</h3>
 
                       {sellerName && (
                         <div className="flex items-center gap-1.5" aria-label={`Seller: ${sellerName}`}>
@@ -598,15 +598,15 @@ export default function CheckoutShippingStep({
 
                       {/* Chips row */}
                       <div className="flex flex-wrap items-center gap-1.5 mt-0.5">
-                        <span className="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full">
+                        <span className="bg-[#F6F8F5] text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full border border-[#DCE5DE]">
                           {product.condition}
                         </span>
                         {(product as ProductWithSelectedSize).selectedSize && (
-                          <span className="bg-[#01428a]/8 text-[#01428a] text-xs font-semibold px-2.5 py-1 rounded-full">
+                          <span className="bg-[#1D2E24]/10 text-[#1D2E24] text-xs font-semibold px-2.5 py-1 rounded-full">
                             Size: {(product as ProductWithSelectedSize).selectedSize}
                           </span>
                         )}
-                        <span className="bg-gray-100 text-gray-600 text-xs font-medium px-2.5 py-1 rounded-full">
+                        <span className="bg-[#F6F8F5] text-gray-700 text-xs font-medium px-2.5 py-1 rounded-full border border-[#DCE5DE]">
                           Qty {cartItem.quantity}
                         </span>
                       </div>
@@ -615,7 +615,7 @@ export default function CheckoutShippingStep({
 
                   {/* Price + remove */}
                   <div className="px-6 pb-5 flex items-center justify-between">
-                    <span className="text-xl font-bold text-[#01428a]">{price}</span>
+                    <span className="text-xl font-bold text-[#1D2E24]">{price}</span>
                     <button
                       type="button"
                       onClick={onClearCart}
@@ -630,16 +630,16 @@ export default function CheckoutShippingStep({
                   {/* Totals */}
                   <div className="border-t border-gray-100 px-6 py-5 space-y-3">
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Subtotal</span>
-                      <span className="font-medium text-[#262626]">{price}</span>
+                      <span className="text-[#5C6B61]">Subtotal</span>
+                      <span className="font-medium text-[#1E2621]">{price}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">Shipping</span>
-                      <span className="font-semibold text-blue-600">Free</span>
+                      <span className="text-[#5C6B61]">Shipping</span>
+                      <span className="font-semibold text-[#1D2E24]">Free</span>
                     </div>
                     <div className="border-t border-gray-100 pt-3 flex justify-between items-center">
-                      <span className="text-sm font-semibold text-[#262626]">Total</span>
-                      <span className="text-lg font-bold text-[#01428a]">{price}</span>
+                      <span className="text-sm font-semibold text-[#1E2621]">Total</span>
+                      <span className="text-lg font-bold text-[#1D2E24]">{price}</span>
                     </div>
                   </div>
 

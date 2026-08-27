@@ -117,17 +117,17 @@ export default function SellerReviews({
                 Reviews from all listings by {sellerName}
               </p>
               <div className="flex items-center gap-4">
-                <div className="text-4xl font-bold text-[#262626]">{averageRating.toFixed(1)}</div>
+                <div className="text-4xl font-bold text-[#1E2621]">{averageRating.toFixed(1)}</div>
                 <div>
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`h-5 w-5 ${i < Math.floor(averageRating) ? 'text-[#01428a] fill-[#01428a]' : 'text-gray-300'}`}
+                        className={`h-5 w-5 ${i < Math.floor(averageRating) ? 'text-[#D1A966] fill-[#D1A966]' : 'text-gray-300'}`}
                       />
                     ))}
                   </div>
-                  <p className="text-sm text-gray-600 mt-1">Based on {totalReviews} reviews</p>
+                  <p className="text-sm text-[#5C6B61] mt-1">Based on {totalReviews} reviews</p>
                 </div>
               </div>
             </div>
@@ -136,14 +136,14 @@ export default function SellerReviews({
             <div className="flex-grow max-w-sm">
               {Object.entries(ratingDistribution).reverse().map(([rating, percentage]) => (
                 <div key={rating} className="flex items-center gap-2 mb-2">
-                  <span className="text-sm text-gray-600 w-8">{rating}★</span>
+                  <span className="text-sm text-[#5C6B61] w-8">{rating}★</span>
                   <div className="flex-grow bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-[#01428a] rounded-full h-2 transition-all duration-500"
+                      className="bg-[#1D2E24] rounded-full h-2 transition-all duration-500"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
-                  <span className="text-sm text-gray-600 w-12">{percentage}%</span>
+                  <span className="text-sm text-[#5C6B61] w-12">{percentage}%</span>
                 </div>
               ))}
             </div>
@@ -153,14 +153,14 @@ export default function SellerReviews({
         {/* Sort bar */}
         <div className="border-b border-gray-200 p-4">
           <div className="flex items-center justify-between">
-            <span className="text-sm text-gray-600">
+            <span className="text-sm text-[#5C6B61]">
               Showing {sortedReviews.length} of {totalReviews} reviews
             </span>
             <div className="relative">
               <select
                 value={sortBy}
                 onChange={e => setSortBy(e.target.value)}
-                className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent"
+                className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 text-gray-700 focus:outline-none focus:ring-2 focus:ring-[#1D2E24] focus:border-transparent"
               >
                 <option value="recent">Most Recent</option>
                 <option value="helpful">Most Helpful</option>
@@ -199,21 +199,21 @@ export default function SellerReviews({
                   {/* Author row */}
                   <div className="flex items-start justify-between mb-1">
                     <div>
-                      <h3 className="font-medium text-[#262626] flex items-center gap-2 flex-wrap sm:flex-nowrap">
+                      <h3 className="font-medium text-[#1E2621] flex items-center gap-2 flex-wrap sm:flex-nowrap">
                         {review.author}
                         {review.verified && (
-                          <span className="flex items-center text-[#01428a] text-sm">
-                            <CheckCircle2 className="h-4 w-4 mr-1" />
+                          <span className="flex items-center text-[#1D2E24] font-semibold text-sm">
+                            <CheckCircle2 className="h-4 w-4 mr-1 text-[#1D2E24]" />
                             Verified Purchase
                           </span>
                         )}
                       </h3>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-[#5C6B61]">
                         {review.location && `${review.location} • `}
                         {review.purchaseDate && `Purchased ${review.purchaseDate}`}
                       </div>
                     </div>
-                    <span className="text-sm text-gray-500 whitespace-nowrap ml-2">
+                    <span className="text-sm text-[#5C6B61] whitespace-nowrap ml-2">
                       {formatDate(review.date)}
                     </span>
                   </div>
@@ -221,7 +221,7 @@ export default function SellerReviews({
                   {/* Product attribution */}
                   {review.productTitle && (
                     <div
-                      className="inline-block text-xs text-[#01428a]/70 hover:text-[#01428a] hover:underline mb-2 cursor-pointer group"
+                      className="inline-block text-xs text-[#1D2E24] hover:text-[#D1A966] hover:underline mb-2 cursor-pointer group font-medium"
                       onClick={(e) => e.preventDefault()}
                     >
                       {review.productTitle}
@@ -233,13 +233,13 @@ export default function SellerReviews({
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
-                        className={`h-4 w-4 ${i < review.rating ? 'text-[#01428a] fill-[#01428a]' : 'text-gray-300'}`}
+                        className={`h-4 w-4 ${i < review.rating ? 'text-[#D1A966] fill-[#D1A966]' : 'text-gray-300'}`}
                       />
                     ))}
                   </div>
 
-                  <h4 className="font-medium text-[#262626] mb-2">{review.title}</h4>
-                  <p className="text-gray-600 mb-4">{review.content}</p>
+                  <h4 className="font-semibold text-[#1E2621] mb-2">{review.title}</h4>
+                  <p className="text-[#5C6B61] mb-4">{review.content}</p>
 
                   {/* Images */}
                   {review.images && review.images.filter(img => typeof img === 'string' && img.length > 0).length > 0 && (
@@ -249,7 +249,7 @@ export default function SellerReviews({
                           <button
                             key={imgIndex}
                             onClick={() => setSelectedImage(image)}
-                            className="relative group overflow-hidden rounded-lg border border-gray-200 hover:border-[#01428a] transition-colors duration-200"
+                            className="relative group overflow-hidden rounded-lg border border-gray-200 hover:border-[#1D2E24] transition-colors duration-200"
                           >
                             <Image
                               src={image}
@@ -278,7 +278,7 @@ export default function SellerReviews({
                         onClick={() => handleHelpfulClick(review.id)}
                         className={`flex items-center text-sm px-3 py-1.5 rounded-md transition-colors duration-200 ${
                           helpfulClicks[review.id]
-                            ? 'bg-[#01428a] text-white'
+                            ? 'bg-[#1D2E24] text-[#F6F8F5]'
                             : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                         }`}
                       >
