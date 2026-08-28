@@ -87,6 +87,7 @@ export default function RootLayout({
         <meta name="google-site-verification" content="o8gC6haURQ1t7L9G8xfh_-5imCYNPmnhjnt2IrgEPco" />
         {/* Google Merchant Center Domain Claim Verification */}
         <meta name="google-site-verification" content="IIcw4xDKBiR-hwj3tnHt5Q3I5m2VzAn7LMXe-JXfi_Y" />
+        <meta name="google-site-verification" content="b9sTsKBaeI57rZlsQCFgRUX6n2euhrco-VzhjdgobjU" />
       </head>
       <body suppressHydrationWarning className="font-sans antialiased text-[#262626]">
         <GlobalErrorReporter />
