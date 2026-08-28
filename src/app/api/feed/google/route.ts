@@ -119,7 +119,7 @@ function parseEnum<T extends string>(
 
 function isFeedEligible(product: Product): boolean {
   return (
-    product.meta?.gmc_enabled !== false &&
+    product.meta?.gmc_enabled === true &&
     product.meta?.published !== false &&
     product.published !== false &&
     Boolean(product.slug && normalizeFeedText(product.title) && getFeedImageUrls(product).length > 0) &&
