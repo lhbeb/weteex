@@ -246,7 +246,11 @@ export async function GET(request: NextRequest) {
       <g:google_product_category>${googleProductCategory}</g:google_product_category>
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>
       <g:return_policy_label>default_return_policy</g:return_policy_label>
-      <g:price_valid_until>${priceValidUntilStr}</g:price_valid_until>${identifierXml}${buildShippingXml(targetCountries, targetCurrency)}
+      <g:price_valid_until>${priceValidUntilStr}</g:price_valid_until>
+      <g:included_destination>Free_listings</g:included_destination>
+      <g:included_destination>Shopping_ads</g:included_destination>
+      <g:excluded_destination>Free_local_listings</g:excluded_destination>
+      <g:excluded_destination>Local_inventory_ads</g:excluded_destination>${identifierXml}${buildShippingXml(targetCountries, targetCurrency)}
     </item>`;
       })
       .join('');
