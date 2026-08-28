@@ -19,7 +19,9 @@ const PrivacyPolicyPage = () => (
             <br />
             <strong>Weteextees</strong>
             <br />
-            Hochalmstraße 10, 81825 München, Bayern, Deutschland
+            Standort Deutschland: Hochalmstraße 10, 81825 München, Bayern
+            <br />
+            Standort USA: 900 AZ-66, Peach Springs, AZ 86434, USA
             <br />
             E-Mail: <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:underline">contact@weteextees.com</a>
           </p>
@@ -92,8 +94,8 @@ const PrivacyPolicyPage = () => (
               <div className="text-gray-600">contact@weteextees.com</div>
             </div>
             <div>
-              <div className="font-medium text-[#262626] mb-1">Geschäftsanschrift:</div>
-              <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
+              <div className="font-medium text-[#262626] mb-1">Standorte &amp; Logistik:</div>
+              <div className="text-gray-600">🇩🇪 Hochalmstraße 10, 81825 München, Deutschland<br />🇺🇸 900 AZ-66, Peach Springs, AZ 86434, USA</div>
             </div>
           </div>
         </div>

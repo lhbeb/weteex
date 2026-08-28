@@ -23,7 +23,7 @@ const TermsPage = () => {
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">1. Geltungsbereich &amp; Anbieter</h2>
             <ul className="list-disc pl-6 space-y-2">
               <li>Weteextees bietet handverlesene moderne Esszimmerstühle, Rattan- und Massivholzmöbel, Tische und Einrichtungsgegenstände über den Online-Shop an.</li>
-              <li>Vertragspartner ist Weteextees mit Geschäftsanschrift in der Hochalmstraße 10, 81825 München, Bayern, Deutschland.</li>
+              <li>Vertragspartner ist Weteextees mit Standorten in der Hochalmstraße 10, 81825 München, Bayern, Deutschland sowie 900 AZ-66, Peach Springs, AZ 86434, USA.</li>
               <li>Für alle Bestellungen über diesen Online-Shop gelten ausschließlich die hier vorliegenden AGB in ihrer zum Zeitpunkt der Bestellung gültigen Fassung.</li>
             </ul>
           </div>
@@ -101,8 +101,8 @@ const TermsPage = () => {
                 <div className="text-gray-600">contact@weteextees.com</div>
               </div>
               <div>
-                <div className="font-medium text-[#262626] mb-1">Geschäftsanschrift:</div>
-                <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
+                <div className="font-medium text-[#262626] mb-1">Standorte &amp; Logistik:</div>
+                <div className="text-gray-600">🇩🇪 Hochalmstraße 10, 81825 München, Deutschland<br />🇺🇸 900 AZ-66, Peach Springs, AZ 86434, USA</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">Website:</div>

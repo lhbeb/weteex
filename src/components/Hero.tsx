@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo } from 'react';
 import { useLocale } from '@/context/LocaleContext';
 
 const Hero = () => {
@@ -10,7 +10,9 @@ const Hero = () => {
   const typingTextRef = useRef<HTMLSpanElement>(null);
   const placeholder = '\u00a0';
 
-  const words = t('hero.words') || ['Moderne Stühle & Möbel', 'Massivholz & Rattan', 'Elegante Esstische', 'Zeitlose Wohnkultur'];
+  const words = useMemo(() => {
+    return t('hero.words') || ['Moderne Stühle & Möbel', 'Massivholz & Rattan', 'Elegante Esstische', 'Zeitlose Wohnkultur'];
+  }, [t]);
 
   // TYPING ANIMATION
   useEffect(() => {

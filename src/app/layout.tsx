@@ -123,14 +123,24 @@ export default function RootLayout({
                   "email": "contact@weteextees.com",
                   "areaServed": ["DE", "EU", "GB", "US"]
                 },
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "Hochalmstraße 10",
-                  "addressLocality": "München",
-                  "addressRegion": "Bayern",
-                  "postalCode": "81825",
-                  "addressCountry": "DE"
-                }
+                "address": [
+                  {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Hochalmstraße 10",
+                    "addressLocality": "München",
+                    "addressRegion": "Bayern",
+                    "postalCode": "81825",
+                    "addressCountry": "DE"
+                  },
+                  {
+                    "@type": "PostalAddress",
+                    "streetAddress": "900 AZ-66",
+                    "addressLocality": "Peach Springs",
+                    "addressRegion": "AZ",
+                    "postalCode": "86434",
+                    "addressCountry": "US"
+                  }
+                ]
               })
             }}
           />

@@ -99,14 +99,14 @@ export default function AboutPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#1D2E24] text-[#D1A966]">
                 <MapPin className="h-6 w-6" />
               </div>
-              <h2 className="mt-4 text-2xl font-bold text-[#1E2621]">Standort München</h2>
+              <h2 className="mt-4 text-2xl font-bold text-[#1E2621]">Standorte in Deutschland &amp; USA</h2>
             </div>
             <div className="space-y-4 text-base leading-7 text-gray-700">
               <p>
-                Weteextees ist ein spezialisierter Online-Shop für hochwertige moderne Möbelstücke, ergonomische Sitzmöbel und langlebige Design-Esstische.
+                Weteextees ist ein spezialisierter Online-Shop für hochwertige moderne Möbelstücke, ergonomische Sitzmöbel und langlebige Design-Esstische für den europäischen und US-amerikanischen Markt.
               </p>
               <p>
-                Unsere Geschäftsanschrift befindet sich in der Hochalmstraße 10, 81825 München, Bayern, Deutschland. Alle Möbelstücke werden sorgfältig geprüft und transportsicher versendet.
+                Unsere Standorte befinden sich in der <strong>Hochalmstraße 10, 81825 München, Bayern, Deutschland</strong> sowie in <strong>900 AZ-66, Peach Springs, AZ 86434, USA</strong>. Alle Möbelstücke werden sorgfältig geprüft und transportsicher versendet.
               </p>
               <Link href="/contact" className="inline-flex font-semibold text-[#1D2E24] hover:text-[#D1A966] hover:underline">
                 Kontakt zu unserem Serviceteam
@@ -335,9 +335,12 @@ export default function AboutPage() {
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">
                 <MapPin className="h-5 w-5 text-[#1D2E24]" />
-                <div className="font-medium text-[#1E2621]">Geschäftsanschrift</div>
+                <div className="font-medium text-[#1E2621]">Standorte &amp; Logistik</div>
               </div>
-              <div className="text-gray-600 ml-8">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
+              <div className="text-gray-600 ml-8 text-sm">
+                <div>🇩🇪 <strong>Deutschland:</strong> Hochalmstraße 10, 81825 München</div>
+                <div className="mt-1">🇺🇸 <strong>USA:</strong> 900 AZ-66, Peach Springs, AZ 86434</div>
+              </div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
               <div className="flex items-center gap-3 mb-3">

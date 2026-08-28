@@ -234,12 +234,16 @@ export default function ReturnPolicyPage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24]">
                   <Building2 className="w-5 h-5 text-[#1D2E24]" />
-                  <span>Geschäftsanschrift</span>
+                  <span>Standorte &amp; Rücksende-Hubs</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7 space-y-2">
                   <div>
-                    <strong className="text-gray-900 block">Weteextees</strong>
+                    <strong className="text-gray-900 block">🇩🇪 Deutschland / EU:</strong>
                     Hochalmstraße 10, 81825 München, Bayern, Deutschland
+                  </div>
+                  <div>
+                    <strong className="text-gray-900 block">🇺🇸 USA &amp; International:</strong>
+                    900 AZ-66, Peach Springs, AZ 86434, United States
                   </div>
                 </div>
               </div>

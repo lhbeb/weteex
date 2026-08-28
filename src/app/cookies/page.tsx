@@ -77,8 +77,8 @@ const CookiesPage = () => (
               <div className="text-gray-600">contact@weteextees.com</div>
             </div>
             <div>
-              <div className="font-medium text-[#262626] mb-1">Geschäftsanschrift:</div>
-              <div className="text-gray-600">Hochalmstraße 10, 81825 München, Bayern, Deutschland</div>
+              <div className="font-medium text-[#262626] mb-1">Standorte &amp; Logistik:</div>
+              <div className="text-gray-600">🇩🇪 Hochalmstraße 10, 81825 München, Deutschland<br />🇺🇸 900 AZ-66, Peach Springs, AZ 86434, USA</div>
             </div>
           </div>
         </div>

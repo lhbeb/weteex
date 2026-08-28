@@ -215,8 +215,9 @@ export default function ContactPage() {
                     <div className="flex items-start">
                       <Building2 className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
                       <div className="ml-4">
-                        <h3 className="font-medium text-[#1E2621]">Geschäftsanschrift</h3>
-                        <p className="text-gray-600 mt-1">Hochalmstraße 10, 81825 München, Bayern, Deutschland</p>
+                        <h3 className="font-medium text-[#1E2621]">Standorte &amp; Logistik</h3>
+                        <p className="text-gray-600 mt-1"><span className="font-semibold">🇩🇪 Deutschland:</span> Hochalmstraße 10, 81825 München, Bayern</p>
+                        <p className="text-gray-600 mt-1"><span className="font-semibold">🇺🇸 USA:</span> 900 AZ-66, Peach Springs, AZ 86434, United States</p>
                       </div>
                     </div>
                     <div className="flex items-start">
