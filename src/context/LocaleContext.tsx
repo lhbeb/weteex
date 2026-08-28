@@ -52,14 +52,17 @@ export const LocaleProvider: React.FC<{ children: React.ReactNode }> = ({ childr
           setCurrencyState(savedLocale === 'de' ? 'EUR' : 'USD');
         }
       } else {
-        // Auto detect from browser
-        const browserLang = navigator.language.toLowerCase();
-        if (browserLang.startsWith('en') || browserLang.includes('us')) {
-          setLocaleState('en');
-          setCurrencyState('USD');
-        } else {
+        // Auto detect from browser / system settings
+        const browserLang = (navigator.language || (navigator as any).userLanguage || '').toLowerCase();
+        
+        // If the user's language is German (de, de-DE, de-AT, de-CH)
+        if (browserLang.startsWith('de')) {
           setLocaleState('de');
           setCurrencyState('EUR');
+        } else {
+          // For all international visitors (Canada, USA, UK, Australia, Worldwide)
+          setLocaleState('en');
+          setCurrencyState('USD');
         }
       }
     } catch {
