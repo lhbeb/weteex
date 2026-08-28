@@ -1,6 +1,9 @@
+"use client";
+
 import React from 'react';
 import { MapPin, Truck, RefreshCw } from 'lucide-react';
 import { getMarket, getDeliveryRange } from '@/lib/markets';
+import { useLocale } from '@/context/LocaleContext';
 
 interface ShippingInfoProps {
   className?: string;
@@ -8,7 +11,8 @@ interface ShippingInfoProps {
 }
 
 const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarket }) => {
-  const market = getMarket(targetMarket);
+  const { isGerman } = useLocale();
+  const market = getMarket(isGerman ? 'eu' : 'us');
   const deliveryRange = getDeliveryRange(market);
 
   return (
@@ -20,9 +24,11 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
               <MapPin className="h-4 w-4" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-[#5C6B61]">Versand aus</p>
+              <p className="text-sm font-medium text-[#5C6B61]">
+                {isGerman ? 'Versand aus' : 'Ships from'}
+              </p>
               <p className="mt-1 text-sm font-semibold text-[#1E2621]">
-                {market.shipsFrom} {market.shipsFromFlag}
+                {isGerman ? 'Deutschland / EU 🇩🇪' : 'United States & Germany 🇺🇸 🇩🇪'}
               </p>
             </div>
           </div>
@@ -34,9 +40,15 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
               <Truck className="h-4 w-4" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-[#5C6B61]">Voraussichtliche Lieferung</p>
-              <p className="mt-1 text-sm font-semibold text-[#1E2621]">Zustellung bis {deliveryRange}</p>
-              <p className="mt-1 text-sm text-[#5C6B61]">{market.freeShippingText}</p>
+              <p className="text-sm font-medium text-[#5C6B61]">
+                {isGerman ? 'Voraussichtliche Lieferung' : 'Estimated Delivery'}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[#1E2621]">
+                {isGerman ? `Zustellung bis ${deliveryRange}` : `Delivery by ${deliveryRange}`}
+              </p>
+              <p className="mt-1 text-sm text-[#5C6B61]">
+                {isGerman ? 'Kostenloser Standardversand' : 'Free Insured Freight Delivery'}
+              </p>
             </div>
           </div>
         </div>
@@ -47,9 +59,15 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
               <RefreshCw className="h-4 w-4" />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-medium text-[#5C6B61]">Rückgabe &amp; Widerruf</p>
-              <p className="mt-1 text-sm font-semibold text-[#1E2621]">{market.returnsText}</p>
-              <p className="mt-1 text-sm text-[#5C6B61]">Kostenfreie Retourenabwicklung</p>
+              <p className="text-sm font-medium text-[#5C6B61]">
+                {isGerman ? 'Rückgabe & Widerruf' : 'Returns & Guarantee'}
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[#1E2621]">
+                {isGerman ? '30 Tage Rückgaberecht' : '30-Day Money-Back Guarantee'}
+              </p>
+              <p className="mt-1 text-sm text-[#5C6B61]">
+                {isGerman ? 'Kostenfreie Retourenabwicklung' : 'Free & Easy 30-Day Returns'}
+              </p>
             </div>
           </div>
         </div>

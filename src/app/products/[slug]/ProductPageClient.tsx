@@ -642,13 +642,15 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         <div className="flex items-center text-[#1D2E24]">
                           <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-1.5 text-[#D1A966]" />
                           <span className="text-xs sm:text-sm font-medium">
-                            {viewedCount.toLocaleString()} in den letzten 24 Stunden angesehen
+                            {viewedCount.toLocaleString()} {isGerman ? 'in den letzten 24 Stunden angesehen' : 'viewed in the last 24 hours'}
                           </span>
                         </div>
                       </div>
                       <div className="flex items-center">
                         <div className="w-2 h-2 bg-[#D1A966] rounded-full animate-pulse mr-2"></div>
-                        <span className="text-xs text-[#1D2E24] font-medium hidden sm:inline">Live-Aktivität</span>
+                        <span className="text-xs text-[#1D2E24] font-medium hidden sm:inline">
+                          {isGerman ? 'Live-Aktivität' : 'Live Activity'}
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -660,7 +662,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                 <div ref={sizeSelectorRef} className="mt-6 border-t border-[#DCE5DE] pt-6">
                   <div className="flex items-center justify-between mb-3">
                     <label className="text-sm font-bold text-[#1E2621] uppercase tracking-wide flex items-center gap-1.5">
-                      <Ruler className="h-4 w-4 text-[#5C6B61]" /> Größe / Variante wählen <span className="text-red-500 font-bold">*</span>
+                      <Ruler className="h-4 w-4 text-[#5C6B61]" /> {isGerman ? 'Größe / Variante wählen' : 'Select Size / Variant'} <span className="text-red-500 font-bold">*</span>
                     </label>
                   </div>
 
@@ -718,7 +720,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                   </div>
                   {sizeError && (
                     <p className="mt-2 text-xs font-semibold text-red-500">
-                      Bitte wählen Sie eine Größe / Variante aus.
+                      {isGerman ? 'Bitte wählen Sie eine Größe / Variante aus.' : 'Please select a size / variant.'}
                     </p>
                   )}
                 </div>
@@ -730,8 +732,8 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                   <div className="w-full bg-gray-100 rounded-lg py-3 px-4 text-center">
                     <p className="text-sm text-gray-600">
                       {product.checkoutLink === '#'
-                        ? 'Dieses Angebot ist leider abgelaufen'
-                        : 'Dieses Produkt ist derzeit leider ausverkauft'}
+                        ? (isGerman ? 'Dieses Angebot ist leider abgelaufen' : 'This offer has expired')
+                        : (isGerman ? 'Dieses Produkt ist derzeit leider ausverkauft' : 'This product is currently sold out')}
                     </p>
                   </div>
                 ) : (
