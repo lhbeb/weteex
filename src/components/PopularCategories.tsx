@@ -1,16 +1,21 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/types/product';
+import { useLocale } from '@/context/LocaleContext';
 
 interface CategoryDefinition {
-  name: string;
+  nameDe: string;
+  nameEn: string;
   query: string;
   matcher: (p: Product) => boolean;
 }
 
 const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
   {
-    name: 'Moderne Esszimmerstühle',
+    nameDe: 'Moderne Esszimmerstühle',
+    nameEn: 'Modern Dining Chairs',
     query: 'chair',
     matcher: (p) =>
       (p.slug.includes('ely') ||
@@ -23,7 +28,8 @@ const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
       !p.slug.includes('tafel'),
   },
   {
-    name: 'Massivholz & Rattan',
+    nameDe: 'Massivholz & Rattan',
+    nameEn: 'Solid Wood & Rattan',
     query: 'rattan',
     matcher: (p) =>
       p.slug.includes('ruben') ||
@@ -34,7 +40,8 @@ const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
       (p.slug.includes('rotan') && !p.slug.includes('bijzettafel')),
   },
   {
-    name: 'Ess- & Couchtische',
+    nameDe: 'Ess- & Couchtische',
+    nameEn: 'Dining & Coffee Tables',
     query: 'table',
     matcher: (p) =>
       p.slug.includes('beveled-edge') ||
@@ -44,7 +51,8 @@ const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
       (p.slug.includes('dining-table') && !p.slug.includes('marble') && !p.slug.includes('ceramic')),
   },
   {
-    name: 'Marmor- & Keramikplatten',
+    nameDe: 'Marmor- & Keramikplatten',
+    nameEn: 'Marble & Ceramic Surfaces',
     query: 'marble',
     matcher: (p) =>
       p.slug.includes('marble') ||
@@ -60,6 +68,7 @@ interface PopularCategoriesProps {
 }
 
 export default function PopularCategories({ products }: PopularCategoriesProps) {
+  const { isGerman, t } = useLocale();
   const usedImageUrls = new Set<string>();
 
   const categories = CATEGORY_DEFINITIONS.map((def, index) => {
@@ -79,7 +88,7 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
     }
 
     return {
-      name: def.name,
+      name: isGerman ? def.nameDe : def.nameEn,
       query: def.query,
       count: matchedProducts.length || 1,
       image: chosenProduct?.images?.[0] || '/bg.png',
@@ -104,10 +113,12 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
               id="popular-categories-title"
               className="text-2xl font-bold tracking-tight text-[#1D2E24] sm:text-3xl md:text-4xl"
             >
-              Entdecken Sie unsere Möbelkollektionen
+              {isGerman ? 'Entdecken Sie unsere Möbelkollektionen' : 'Explore Our Furniture Collections'}
             </h2>
             <p className="mt-2 text-sm sm:text-base text-[#5C6B61] max-w-3xl">
-              Entdecken Sie ergonomische Esszimmerstühle, handgeflochtenes Rattan, Tische aus massivem Eichen- und Walnussholz sowie luxuriöse Keramikplatten.
+              {isGerman
+                ? 'Entdecken Sie ergonomische Esszimmerstühle, handgeflochtenes Rattan, Tische aus massivem Eichen- und Walnussholz sowie luxuriöse Keramikplatten.'
+                : 'Discover ergonomic designer chairs, handcrafted natural rattan, solid oak and walnut tables, and luxury ceramic surfaces.'}
             </p>
           </div>
 
@@ -139,6 +150,9 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
                       {category.name}
                     </h3>
                   </div>
+                  <span className="ml-2 flex-shrink-0 text-xs font-semibold text-[#D1A966] group-hover:translate-x-1 transition-transform">
+                    →
+                  </span>
                 </div>
               </Link>
             ))}

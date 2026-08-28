@@ -11,6 +11,7 @@ import Script from "next/script";
 import { Suspense } from "react";
 import VisitNotifier from "@/components/VisitNotifier";
 import FacebookPixel from "@/components/FacebookPixel";
+import { LocaleProvider } from '@/context/LocaleContext';
 import { AdminRouteCheck, PublicRouteOnly, AdminRouteOnly, CheckoutRouteOnly } from "@/components/AdminRouteCheck";
 import GlobalErrorReporter from "@/components/GlobalErrorReporter";
 import TidioChat from "@/components/TidioChat";
@@ -160,40 +161,42 @@ export default function RootLayout({
           />
         </AdminRouteCheck>
 
-        <ErrorBoundaryWrapper>
-          {/* Public website with header, footer, etc. */}
-          <PublicRouteOnly>
-            <div className="min-h-screen flex flex-col">
-              <Suspense fallback={null}>
-                <ClientHeader />
-              </Suspense>
-              <main className="flex-grow">
-                {children}
-              </main>
-              <NewsletterSection />
-              <div className="h-4 bg-white md:h-6" aria-hidden="true" />
-              <Footer />
-            </div>
-            <CookieConsent />
-          </PublicRouteOnly>
+        <LocaleProvider>
+          <ErrorBoundaryWrapper>
+            {/* Public website with header, footer, etc. */}
+            <PublicRouteOnly>
+              <div className="min-h-screen flex flex-col">
+                <Suspense fallback={null}>
+                  <ClientHeader />
+                </Suspense>
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <NewsletterSection />
+                <div className="h-4 bg-white md:h-6" aria-hidden="true" />
+                <Footer />
+              </div>
+              <CookieConsent />
+            </PublicRouteOnly>
 
-          {/* Checkout page - navbar only, no distractions */}
-          <CheckoutRouteOnly>
-            <div className="min-h-screen flex flex-col">
-              <Suspense fallback={null}>
-                <ClientHeader />
-              </Suspense>
-              <main className="flex-grow">
-                {children}
-              </main>
-            </div>
-          </CheckoutRouteOnly>
+            {/* Checkout page - navbar only, no distractions */}
+            <CheckoutRouteOnly>
+              <div className="min-h-screen flex flex-col">
+                <Suspense fallback={null}>
+                  <ClientHeader />
+                </Suspense>
+                <main className="flex-grow">
+                  {children}
+                </main>
+              </div>
+            </CheckoutRouteOnly>
 
-          {/* Admin dashboard - clean, no public UI */}
-          <AdminRouteOnly>
-            {children}
-          </AdminRouteOnly>
-        </ErrorBoundaryWrapper>
+            {/* Admin dashboard - clean, no public UI */}
+            <AdminRouteOnly>
+              {children}
+            </AdminRouteOnly>
+          </ErrorBoundaryWrapper>
+        </LocaleProvider>
 
         <AdminRouteCheck>
           <Script

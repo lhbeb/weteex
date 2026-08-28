@@ -19,6 +19,7 @@ import Image from 'next/image';
 import { getConditionDisplayLabel, getConditionTooltip } from '@/lib/conditions';
 import { getMarket, formatMarketPrice } from '@/lib/markets';
 import { STORE_FAQS } from '@/lib/storeFaqs';
+import { useLocale } from '@/context/LocaleContext';
 
 interface ProductPageClientProps {
   product: Product | null;
@@ -28,6 +29,7 @@ const PRODUCT_IMAGE_QUALITY = 95;
 const COLLAPSED_FAQ_COUNT = 2;
 
 export default function ProductPageClient({ product: initialProduct }: ProductPageClientProps) {
+  const { formatPrice, isGerman, t } = useLocale();
   const [imgLoaded, setImgLoaded] = useState(false);
   const router = useRouter();
   const [product, setProduct] = useState<Product | null>(initialProduct);
@@ -613,12 +615,12 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
               )}
               <div className="mt-4 flex flex-wrap items-baseline gap-3">
                 <span className="text-4xl font-bold text-[#1E2621]">
-                  {formatMarketPrice(price, getMarket(product?.meta?.targetMarket))}
+                  {formatPrice(price)}
                 </span>
                 {original_price && original_price > price && (
                   <>
                     <span className="text-xl text-gray-400 line-through font-medium">
-                      {formatMarketPrice(original_price, getMarket(product?.meta?.targetMarket))}
+                      {formatPrice(original_price)}
                     </span>
                     <span className="inline-flex items-center rounded-md bg-[#1D2E24]/10 px-2 py-1 text-xs font-bold text-[#1D2E24] ring-1 ring-inset ring-[#1D2E24]/20">
                       {Math.round((1 - price / original_price) * 100)}% OFF
@@ -627,7 +629,9 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                 )}
               </div>
               <p className="mt-1 text-xs text-[#5C6B61]">
-                inkl. MwSt., kostenloser versicherter Speditionsversand nach Deutschland &amp; EU
+                {isGerman
+                  ? 'inkl. MwSt., kostenloser versicherter Speditionsversand nach Deutschland & EU'
+                  : 'Tax Included, Free Insured Freight Delivery to USA & Worldwide'}
               </p>
 
               <ClientOnly>
@@ -746,7 +750,17 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                         </svg>
                       </button>
                       <button onClick={handleAddToCart} disabled={isAddingToCart || isBuyingNow} className="flex-1 lg:w-full bg-[#1D2E24] hover:bg-[#142019] text-[#F6F8F5] py-3 lg:py-4 px-6 rounded-xl font-bold transition-colors duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base shadow-sm">
-                        {isAddingToCart ? <><div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#D1A966] mr-2"></div>Wird hinzugefügt...</> : <><ShoppingCart className="h-5 w-5 mr-2 text-[#D1A966]" />In den Warenkorb</>}
+                        {isAddingToCart ? (
+                          <>
+                            <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#D1A966] mr-2"></div>
+                            {isGerman ? 'Wird hinzugefügt...' : 'Adding to cart...'}
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingCart className="h-5 w-5 mr-2 text-[#D1A966]" />
+                            {isGerman ? 'In den Warenkorb' : 'Add to Cart'}
+                          </>
+                        )}
                       </button>
                     </div>
                     <button
@@ -757,12 +771,12 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                       {isBuyingNow ? (
                         <>
                           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#1D2E24] mr-2"></div>
-                          Wird geladen...
+                          {isGerman ? 'Wird geladen...' : 'Processing...'}
                         </>
                       ) : (
                         <>
                           <Zap className="h-5 w-5 mr-2 text-[#D1A966]" />
-                          Sofort kaufen
+                          {isGerman ? 'Sofort kaufen' : 'Buy Now with 1-Click'}
                         </>
                       )}
                     </button>
@@ -774,7 +788,9 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                 <ClientOnly><ShippingInfo targetMarket={product?.meta?.targetMarket} /></ClientOnly>
               </div>
               <div className="mt-8 lg:hidden">
-                <h2 className="text-xl font-bold text-[#1E2621] mb-4">Artikelbeschreibung</h2>
+                <h2 className="text-xl font-bold text-[#1E2621] mb-4">
+                  {isGerman ? 'Artikelbeschreibung & Details' : 'Description & Product Details'}
+                </h2>
                 <div className="rounded-[20px] border border-[#DCE5DE] bg-white px-5 py-5">
                   <p className="whitespace-pre-line text-sm leading-7 text-[#5C6B61]">
                     {showFullDescription ? descriptionText : descriptionPreview}
@@ -785,7 +801,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                       onClick={() => setShowFullDescription((current) => !current)}
                       className="mt-4 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
                     >
-                      {showFullDescription ? "Weniger anzeigen" : "Mehr anzeigen"}
+                      {showFullDescription ? (isGerman ? "Weniger anzeigen" : "Show less") : (isGerman ? "Mehr anzeigen" : "Read full description")}
                     </button>
                   )}
                 </div>
@@ -795,7 +811,9 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
 
           <div className="mt-12 hidden lg:block">
             <section className="rounded-[24px] border border-[#DCE5DE] bg-white px-8 py-8">
-              <h2 className="text-2xl font-bold text-[#1E2621]">Artikelbeschreibung</h2>
+              <h2 className="text-2xl font-bold text-[#1E2621]">
+                {isGerman ? 'Artikelbeschreibung & Details' : 'Description & Product Details'}
+              </h2>
               <p className="mt-4 whitespace-pre-line text-[15px] leading-8 text-[#5C6B61]">
                 {showFullDescription ? descriptionText : descriptionPreview}
               </p>
@@ -805,7 +823,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                   onClick={() => setShowFullDescription((current) => !current)}
                   className="mt-5 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
                 >
-                  {showFullDescription ? "Weniger anzeigen" : "Mehr anzeigen"}
+                  {showFullDescription ? (isGerman ? "Weniger anzeigen" : "Show less") : (isGerman ? "Mehr anzeigen" : "Read full description")}
                 </button>
               )}
             </section>
@@ -815,9 +833,13 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
           <div className="mt-16 w-full">
             <section className="rounded-[24px] border border-[#DCE5DE] bg-white">
               <div className="border-b border-[#DCE5DE] px-6 py-6 sm:px-8">
-                <h2 className="text-2xl font-bold text-[#1E2621]">Häufig gestellte Fragen (FAQ)</h2>
+                <h2 className="text-2xl font-bold text-[#1E2621]">
+                  {isGerman ? 'Häufig gestellte Fragen (FAQ)' : 'Frequently Asked Questions (FAQ)'}
+                </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-7 text-[#5C6B61]">
-                  Antworten auf die wichtigsten Fragen zu Versand, Qualität, Bezahlung und Rückgabe.
+                  {isGerman
+                    ? 'Antworten auf die wichtigsten Fragen zu Versand, Qualität, Bezahlung und Rückgabe.'
+                    : 'Answers to essential questions regarding insured freight shipping, product quality, payment, and returns.'}
                 </p>
               </div>
 

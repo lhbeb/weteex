@@ -1,0 +1,97 @@
+{
+  "common": {
+    "freeShipping": "Kostenloser Versand",
+    "sameDayShipping": "Versand am selben Werktag",
+    "deliveryTime": "Lieferung in 2–4 Werktagen",
+    "inStock": "Auf Lager & sofort lieferbar",
+    "vatIncluded": "inkl. MwSt., kostenloser versicherter Speditionsversand",
+    "chatSupport": "Chat support: 24/7",
+    "emailSupport": "E-Mail: contact@weteextees.com",
+    "headquarters": "Geschäftssitz",
+    "headquartersAddress": "Hochalmstraße 10, 81825 München, Bayern, Deutschland",
+    "rightsReserved": "Alle Rechte vorbehalten.",
+    "securePayment": "Sichere Zahlung & Verschlüsselung",
+    "cart": "Warenkorb",
+    "cartEmpty": "Ihr Warenkorb ist leer",
+    "checkout": "Zur Kasse",
+    "searchPlaceholder": "Moderne Stühle, Tische und Möbel durchsuchen...",
+    "shopNow": "Jetzt entdecken",
+    "viewAll": "Alle ansehen",
+    "help": "Hilfe"
+  },
+  "nav": {
+    "allCollections": "Alle Kollektionen",
+    "modernChairs": "Moderne Stühle & Möbel",
+    "diningTables": "Ess- & Couchtische",
+    "solidWoodRattan": "Massivholz & Rattan",
+    "marbleCeramic": "Marmor & Keramik",
+    "featured": "Ausgewählte Stücke",
+    "trackOrder": "Sendungsverfolgung",
+    "faqs": "FAQ",
+    "contact": "Kontakt",
+    "about": "Über uns"
+  },
+  "announcements": {
+    "chat": "Chat-Support: 24/7 erreichbar",
+    "email": "E-Mail: contact@weteextees.com",
+    "needHelp": "Hilfe benötigt? Kontaktieren Sie uns →",
+    "shippingGuarantee": "Kostenloser versicherter Versand nach DE & EU"
+  },
+  "hero": {
+    "words": ["Moderne Stühle & Möbel", "Massivholz & Rattan", "Elegante Esstische", "Zeitlose Wohnkultur"],
+    "subtitle": "Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
+    "description": "Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke, die Ihr Wohnerlebnis bereichern.",
+    "cta": "Möbelkollektion entdecken"
+  },
+  "popularCategories": {
+    "title": "Beliebte Kollektionen",
+    "subtitle": "Stilvolle Möbelkreationen und Premium-Designs für Ihr Zuhause",
+    "diningChairs": "Esszimmerstühle",
+    "diningChairsDesc": "Ergonomische Designer-Stühle mit erstklassigem Sitzkomfort",
+    "diningTables": "Esstische & Couchtische",
+    "diningTablesDesc": "Massivholz-, Rattan- und Steintische für jeden Wohnstil",
+    "armchairs": "Sessel & Loungemöbel",
+    "armchairsDesc": "Gemütliche Akzentsessel und formvollendete Sitzmöbel",
+    "rattanWood": "Naturholz & Rattan",
+    "rattanWoodDesc": "Handgefertigte Naturholz- und Flechtmöbel für zeitlose Eleganz",
+    "explore": "Kollektion ansehen"
+  },
+  "shippingSection": {
+    "title": "Versand am selben Werktag",
+    "badge": "Express-Abwicklung",
+    "description": "Bestellen Sie montags bis freitags bis 14:00 Uhr und Ihre Bestellung wird noch am selben Werktag sorgfältig verpackt und an unsere Spedition übergeben.",
+    "card1Title": "Garantierter Versand am selben Tag",
+    "card1Desc": "Bestellungen vor 14:00 Uhr verlassen noch heute unser Lager.",
+    "card2Title": "100 % Versicherter Speditionsversand",
+    "card2Desc": "Jedes Möbelstück wird professionell verpackt und lückenlos versichert geliefert.",
+    "bottomSubtitle": "Bereit für Ihr neues Lieblingsstück?",
+    "bottomTitle": "Entdecken Sie moderne Möbel & zeitlose Designs für Ihr Zuhause",
+    "bottomCta": "Alle Möbel ansehen"
+  },
+  "product": {
+    "conditionNew": "Neu & Originalverpackt",
+    "addToCart": "In den Warenkorb",
+    "buyNow": "Jetzt sicher bestellen",
+    "freeDeliveryNotice": "Kostenloser versicherter Speditionsversand (2–4 Werktage)",
+    "description": "Beschreibung & Details",
+    "specifications": "Spezifikationen",
+    "deliveryReturn": "Versand & Rückgabe",
+    "deliveryReturnText": "Kostenloser, versicherter Versand nach Deutschland & Europa. 30 Tage Rückgaberecht für ein risikofreies Einkaufserlebnis.",
+    "authenticityGuaranteed": "100 % Geprüfte Qualität",
+    "secureCheckout": "Sichere SSL-Verschlüsselung",
+    "fastSupport": "24/7 Kundenservice"
+  },
+  "footer": {
+    "aboutText": "Ihre Adresse für erstklassige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
+    "navigation": "Navigation",
+    "legal": "Rechtliches & Richtlinien",
+    "privacy": "Datenschutzerklärung",
+    "terms": "Allgemeine Geschäftsbedingungen (AGB)",
+    "about": "Über uns",
+    "faq": "Häufig gestellte Fragen (FAQ)",
+    "returns": "Widerrufsbelehrung & Rückgabe",
+    "shipping": "Versandrichtlinien",
+    "contact": "Kontakt & Kundenservice",
+    "cookies": "Cookie-Richtlinie"
+  }
+}

@@ -3,18 +3,20 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
-
+import { useLocale } from '@/context/LocaleContext';
 
 const Hero = () => {
+  const { t, locale } = useLocale();
   const typingTextRef = useRef<HTMLSpanElement>(null);
   const placeholder = '\u00a0';
 
-  // TYPING ANIMATION - PRESERVED EXACTLY
+  const words = t('hero.words') || ['Moderne Stühle & Möbel', 'Massivholz & Rattan', 'Elegante Esstische', 'Zeitlose Wohnkultur'];
+
+  // TYPING ANIMATION
   useEffect(() => {
     const element = typingTextRef.current;
     if (!element) return;
 
-    const words = ['Moderne Stühle & Möbel', 'Massivholz & Rattan', 'Elegante Esstische', 'Zeitlose Wohnkultur'];
     let isAnimating = true;
     let currentIndex = 0;
 
@@ -66,7 +68,7 @@ const Hero = () => {
     return () => {
       isAnimating = false;
     };
-  }, []);
+  }, [locale, words]);
 
   return (
     <section className="relative overflow-hidden bg-white">
@@ -83,13 +85,13 @@ const Hero = () => {
                 {placeholder}
               </span>
               <span className="block leading-tight">
-                Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln
+                {t('hero.subtitle')}
               </span>
             </h1>
 
             {/* Description */}
             <p className="mt-3 max-w-[580px] text-xs leading-relaxed text-[#F6F8F5]/85 sm:text-sm md:text-base">
-              Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke, die Ihr Wohnerlebnis bereichern.
+              {t('hero.description')}
             </p>
 
             {/* Shop Now Button */}
@@ -97,7 +99,7 @@ const Hero = () => {
               href="/#collection"
               className="mt-5 inline-flex w-fit items-center justify-center rounded-lg bg-[#D1A966] px-6 py-2.5 text-xs sm:text-sm font-bold text-[#142019] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#DEBC80] hover:shadow-lg"
             >
-              Möbelkollektion entdecken
+              {t('hero.cta')}
             </Link>
           </div>
 
@@ -105,7 +107,7 @@ const Hero = () => {
           <div className="relative order-1 min-h-[200px] overflow-hidden md:order-2 md:min-h-0 bg-stone-900">
             <Image
               src="/bg.png"
-              alt="Authentic antiques and modern furniture collection"
+              alt="Authentic furniture and dining chairs collection"
               fill
               priority
               sizes="(max-width: 767px) 100vw, 45vw"

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Eye } from 'lucide-react';
 import type { Product } from '@/types/product';
+import { useLocale } from '@/context/LocaleContext';
 
 interface ProductCardProps {
   product: Product;
@@ -17,6 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   cardBackground = 'bg-white',
   showFullImage = false,
 }) => {
+  const { formatPrice, isGerman } = useLocale();
   const { slug, title, price, images, inStock } = product;
   const isSoldOut = inStock === false;
   const [imgLoaded, setImgLoaded] = React.useState(false);
@@ -44,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <div className="absolute inset-0 bg-[rgba(0,0,0,0.65)] flex items-center justify-center rounded-t-md">
               <div className="bg-[#D1A966] rounded-lg px-5 py-2">
                 <span className="sold-out-badge text-[#142019] text-sm uppercase tracking-wider whitespace-nowrap font-bold">
-                  Ausverkauft
+                  {isGerman ? 'Ausverkauft' : 'Sold Out'}
                 </span>
               </div>
             </div>
@@ -56,13 +58,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
           {title}
         </h3>
         <div className="mt-auto pt-3 flex flex-col gap-2">
-          <span className="text-xl font-bold text-[#1E2621]">{new Intl.NumberFormat('de-DE').format(price)} €</span>
+          <span className="text-xl font-bold text-[#1E2621]">{formatPrice(price)}</span>
           <Link
             href={`/products/${slug}`}
             className="flex items-center text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition-colors"
           >
             <Eye className="h-4 w-4 mr-1" />
-            <span>Details ansehen</span>
+            <span>{isGerman ? 'Details ansehen' : 'View Details'}</span>
           </Link>
         </div>
       </div>

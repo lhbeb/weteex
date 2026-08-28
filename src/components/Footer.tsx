@@ -1,9 +1,15 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, MessageSquare, MapPin, Instagram } from 'lucide-react';
+import LocaleSwitcher from './LocaleSwitcher';
+import { useLocale } from '@/context/LocaleContext';
 
 const Footer = () => {
+  const { t, isGerman } = useLocale();
+
   return (
     <footer className="bg-[#142019] text-[#F6F8F5] border-t border-[#1D2E24]">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-12">
@@ -19,9 +25,9 @@ const Footer = () => {
               />
             </Link>
             <p className="mb-4 text-[#DCE5DE]">
-              Ihre Adresse für erstklassige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.
+              {t('footer.aboutText')}
             </p>
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <div className="flex items-center">
                 <MessageSquare className="h-5 w-5 shrink-0 text-[#D1A966] mr-2" />
                 <span className="text-[#DCE5DE]">
@@ -74,35 +80,35 @@ const Footer = () => {
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 shrink-0 text-[#D1A966] mr-2 mt-1" />
                 <div>
-                  <span className="block font-semibold text-white">Geschäftssitz</span>
-                  <span className="text-[#DCE5DE]">Hochalmstraße 10, 81825 München, Bayern, Deutschland</span>
+                  <span className="block font-semibold text-white">{t('common.headquarters')}</span>
+                  <span className="text-[#DCE5DE]">{t('common.headquartersAddress')}</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-[#D1A966] mb-4">Navigation</h3>
+            <h3 className="text-lg font-semibold text-[#D1A966] mb-4">{t('footer.navigation')}</h3>
             <ul className="space-y-2 text-[#DCE5DE]">
-              <li><Link href="/" className="hover:text-[#D1A966] transition-colors duration-300">Startseite</Link></li>
-              <li><Link href="/#collection" className="hover:text-[#D1A966] transition-colors duration-300">Alle Möbel &amp; Stühle</Link></li>
-              <li><Link href="/#furniture-antiques" className="hover:text-[#D1A966] transition-colors duration-300">Ausgewählte Stücke</Link></li>
-              <li><Link href="/track" className="hover:text-[#D1A966] transition-colors duration-300">Sendungsverfolgung</Link></li>
-              <li><Link href="/contact" className="hover:text-[#D1A966] transition-colors duration-300">Kontakt</Link></li>
+              <li><Link href="/" className="hover:text-[#D1A966] transition-colors duration-300">{isGerman ? 'Startseite' : 'Home'}</Link></li>
+              <li><Link href="/#collection" className="hover:text-[#D1A966] transition-colors duration-300">{t('nav.allCollections')}</Link></li>
+              <li><Link href="/#furniture-antiques" className="hover:text-[#D1A966] transition-colors duration-300">{t('nav.featured')}</Link></li>
+              <li><Link href="/track" className="hover:text-[#D1A966] transition-colors duration-300">{t('nav.trackOrder')}</Link></li>
+              <li><Link href="/contact" className="hover:text-[#D1A966] transition-colors duration-300">{t('nav.contact')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-lg font-semibold text-[#D1A966] mb-4">Rechtliches &amp; Richtlinien</h3>
+            <h3 className="text-lg font-semibold text-[#D1A966] mb-4">{t('footer.legal')}</h3>
             <ul className="space-y-2 text-[#DCE5DE]">
-              <li><Link href="/privacy-policy" className="hover:text-[#D1A966] transition-colors duration-300">Datenschutzerklärung</Link></li>
-              <li><Link href="/terms" className="hover:text-[#D1A966] transition-colors duration-300">Allgemeine Geschäftsbedingungen (AGB)</Link></li>
-              <li><Link href="/about" className="hover:text-[#D1A966] transition-colors duration-300">Über uns</Link></li>
-              <li><Link href="/frequently-asked-questions" className="hover:text-[#D1A966] transition-colors duration-300">Häufig gestellte Fragen (FAQ)</Link></li>
-              <li><Link href="/return-policy" className="hover:text-[#D1A966] transition-colors duration-300">Widerrufsbelehrung &amp; Rückgabe</Link></li>
-              <li><Link href="/shipping-policy" className="hover:text-[#D1A966] transition-colors duration-300">Versandrichtlinien</Link></li>
-              <li><Link href="/contact" className="hover:text-[#D1A966] transition-colors duration-300">Kontakt &amp; Kundenservice</Link></li>
-              <li><Link href="/cookies" className="hover:text-[#D1A966] transition-colors duration-300">Cookie-Richtlinie</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.privacy')}</Link></li>
+              <li><Link href="/terms" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.terms')}</Link></li>
+              <li><Link href="/about" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.about')}</Link></li>
+              <li><Link href="/frequently-asked-questions" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.faq')}</Link></li>
+              <li><Link href="/return-policy" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.returns')}</Link></li>
+              <li><Link href="/shipping-policy" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.shipping')}</Link></li>
+              <li><Link href="/contact" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.contact')}</Link></li>
+              <li><Link href="/cookies" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.cookies')}</Link></li>
             </ul>
           </div>
         </div>
@@ -118,7 +124,13 @@ const Footer = () => {
                 className="h-16 w-auto max-w-full object-contain brightness-110 contrast-110"
               />
             </div>
-            <p className="text-center text-[#DCE5DE]/80 text-sm">© {new Date().getFullYear()} Weteextees. Alle Rechte vorbehalten.</p>
+            
+            {/* Region / Currency Switcher in Footer */}
+            <div className="pt-2">
+              <LocaleSwitcher variant="footer" />
+            </div>
+
+            <p className="text-center text-[#DCE5DE]/80 text-sm">© {new Date().getFullYear()} Weteextees. {t('common.rightsReserved')}</p>
           </div>
         </div>
       </div>

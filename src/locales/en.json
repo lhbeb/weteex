@@ -1,0 +1,97 @@
+{
+  "common": {
+    "freeShipping": "Free Shipping",
+    "sameDayShipping": "Same-Day Dispatch",
+    "deliveryTime": "Delivery in 2–4 Business Days",
+    "inStock": "In Stock & Ready to Ship",
+    "vatIncluded": "Tax Included, Free Insured Freight Delivery to USA & EU",
+    "chatSupport": "Chat support: 24/7",
+    "emailSupport": "Email: contact@weteextees.com",
+    "headquarters": "Headquarters & Logistics",
+    "headquartersAddress": "Hochalmstraße 10, 81825 Munich, Germany & US Fulfillment Hubs",
+    "rightsReserved": "All rights reserved.",
+    "securePayment": "Secure SSL Encrypted Checkout",
+    "cart": "Shopping Cart",
+    "cartEmpty": "Your cart is currently empty",
+    "checkout": "Proceed to Checkout",
+    "searchPlaceholder": "Search modern chairs, tables, and furniture...",
+    "shopNow": "Shop Collection",
+    "viewAll": "View All",
+    "help": "Help"
+  },
+  "nav": {
+    "allCollections": "All Collections",
+    "modernChairs": "Modern Chairs & Furniture",
+    "diningTables": "Dining & Coffee Tables",
+    "solidWoodRattan": "Solid Wood & Rattan",
+    "marbleCeramic": "Marble & Ceramic",
+    "featured": "Featured Pieces",
+    "trackOrder": "Track Order",
+    "faqs": "FAQs",
+    "contact": "Contact",
+    "about": "About Us"
+  },
+  "announcements": {
+    "chat": "Chat support: Available 24/7",
+    "email": "Email: contact@weteextees.com",
+    "needHelp": "Need help? Contact our team →",
+    "shippingGuarantee": "Free Insured Freight Delivery to USA & Europe"
+  },
+  "hero": {
+    "words": ["Modern Chairs & Furniture", "Solid Wood & Rattan", "Elegant Dining Tables", "Timeless Living"],
+    "subtitle": "Elevate Your Home with Timeless Designer Furniture",
+    "description": "Discover curated furniture crafted for comfort, elegance, and modern living. Explore contemporary, classic, and space-saving pieces that transform every room.",
+    "cta": "Explore Furniture Collection"
+  },
+  "popularCategories": {
+    "title": "Popular Collections",
+    "subtitle": "Handpicked furniture creations and premium designs for your space",
+    "diningChairs": "Dining Chairs",
+    "diningChairsDesc": "Ergonomic designer chairs with superior sitting comfort",
+    "diningTables": "Dining & Coffee Tables",
+    "diningTablesDesc": "Solid wood, rattan, and natural stone tables for every interior",
+    "armchairs": "Armchairs & Lounge",
+    "armchairsDesc": "Cozy accent chairs and sculpted seating for modern living",
+    "rattanWood": "Natural Wood & Rattan",
+    "rattanWoodDesc": "Handcrafted woven rattan and solid hardwood for lasting elegance",
+    "explore": "Explore Collection"
+  },
+  "shippingSection": {
+    "title": "Same-Day Dispatch & Delivery",
+    "badge": "Priority Handling",
+    "description": "Orders placed Monday through Friday before 2:00 PM are carefully inspected, securely packed, and handed over to freight logistics the very same day.",
+    "card1Title": "Guaranteed Same-Day Dispatch",
+    "card1Desc": "Orders placed before 2:00 PM ship directly from our fulfillment warehouse today.",
+    "card2Title": "100% Insured Freight Logistics",
+    "card2Desc": "Every piece of furniture is custom-crated and fully insured against transit damage.",
+    "bottomSubtitle": "Ready for your next favorite piece?",
+    "bottomTitle": "Discover modern furniture & timeless designs for your home",
+    "bottomCta": "View All Furniture"
+  },
+  "product": {
+    "conditionNew": "Brand New & Factory Sealed",
+    "addToCart": "Add to Cart",
+    "buyNow": "Buy Now with Secure Checkout",
+    "freeDeliveryNotice": "Free Insured Freight Shipping (2–4 Business Days)",
+    "description": "Description & Details",
+    "specifications": "Specifications",
+    "deliveryReturn": "Shipping & 30-Day Returns",
+    "deliveryReturnText": "Free insured freight delivery to the United States and Europe. Hassle-free 30-day money-back guarantee for risk-free shopping.",
+    "authenticityGuaranteed": "100% Inspected Quality",
+    "secureCheckout": "SSL Secure Checkout",
+    "fastSupport": "24/7 Customer Care"
+  },
+  "footer": {
+    "aboutText": "Your premier destination for handpicked modern furniture, ergonomic dining chairs, solid natural wood, and timeless home living.",
+    "navigation": "Navigation",
+    "legal": "Legal & Policies",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "about": "About Us",
+    "faq": "Frequently Asked Questions (FAQ)",
+    "returns": "Return & Refund Policy",
+    "shipping": "Shipping Policy",
+    "contact": "Contact & Support",
+    "cookies": "Cookie Policy"
+  }
+}
