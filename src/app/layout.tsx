@@ -114,7 +114,7 @@ export default function RootLayout({
                 "sameAs": [
                   "https://www.tiktok.com/@weteexmachines",
                   "https://www.instagram.com/weteextees/",
-                  "https://www.pinterest.com/weteexmachines_official"
+                  "https://www.pinterest.com/weteexteesdotcom/"
                 ],
                 "contactPoint": {
                   "@type": "ContactPoint",
