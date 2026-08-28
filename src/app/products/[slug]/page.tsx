@@ -155,7 +155,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
           "merchantReturnDays": 30,
           "returnMethod": "https://schema.org/ReturnByMail",
-          "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility",
+          "returnFees": "https://schema.org/FreeReturn",
+          "returnLabelSource": "https://schema.org/ReturnLabelInTheBox",
           "restockingFee": 0,
           "refundType": "https://schema.org/FullRefund"
         },

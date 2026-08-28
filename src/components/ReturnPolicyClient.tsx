@@ -219,16 +219,16 @@ export default function ReturnPolicyClient() {
               ) : (
                 <>
                   <li>
-                    <strong>Contact Support</strong>: Email <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> or message our <span className="font-semibold">24/7 Live Chat</span> with your order number.
+                    <strong>Return Label Included in Package</strong>: A prepaid return slip / instructions are enclosed in your original shipment packaging. If misplaced, email <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> or use our 24/7 Live Chat for an instant digital copy.
                   </li>
                   <li>
-                    <strong>Receive Return Authorization &amp; Label</strong>: We will generate your prepaid return label or arrange freight pickup appointment.
+                    <strong>Secure Packaging</strong>: Repack the furniture in its original protective wrapping and attach the return shipping label.
                   </li>
                   <li>
-                    <strong>Package &amp; Handover</strong>: Hand over the parcel to the carrier or prepare the pallet for freight carrier pickup.
+                    <strong>Handover / Carrier Pickup</strong>: Drop off at your nearest carrier point or hand over during your scheduled freight pickup appointment.
                   </li>
                   <li>
-                    <strong>Inspection &amp; Refund</strong>: Upon arrival at our hub and inspection, your refund is issued immediately.
+                    <strong>Inspection &amp; Refund</strong>: Upon receipt and inspection at our warehouse, your 100% full refund is issued within 5 business days.
                   </li>
                 </>
               )}
