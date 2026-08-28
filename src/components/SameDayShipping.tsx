@@ -94,12 +94,12 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             Entdecken Sie <span className="text-[#1D2E24] underline decoration-[#D1A966] decoration-2">moderne Möbel &amp; zeitlose Designs</span> für Ihr Zuhause
           </p>
         </div>
-        <a
+        <Link
           href="/#collection"
           className="bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] font-bold py-2.5 px-6 rounded-xl text-sm transition-colors whitespace-nowrap shadow-sm"
         >
           Alle Möbel ansehen
-        </a>
+        </Link>
       </div>
     </div>
   );

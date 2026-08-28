@@ -1,6 +1,7 @@
 "use client";
 
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 
 
@@ -92,12 +93,12 @@ const Hero = () => {
             </p>
 
             {/* Shop Now Button */}
-            <a
+            <Link
               href="/#collection"
               className="mt-5 inline-flex w-fit items-center justify-center rounded-lg bg-[#D1A966] px-6 py-2.5 text-xs sm:text-sm font-bold text-[#142019] shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#DEBC80] hover:shadow-lg"
             >
               Möbelkollektion entdecken
-            </a>
+            </Link>
           </div>
 
           {/* Image panel */}

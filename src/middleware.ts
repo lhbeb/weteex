@@ -6,6 +6,11 @@ import { jwtVerify } from 'jose';
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 const getSecretKey = () => new TextEncoder().encode(JWT_SECRET);
 
+function shouldBypassAuth(): boolean {
+  return process.env.NODE_ENV !== 'production' &&
+    (process.env.DISABLE_AUTH_IN_DEV === 'true' || process.env.DISABLE_AUTH_IN_DEV === '1');
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -13,8 +18,6 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
     console.log('🔒 [MIDDLEWARE] Admin request to:', pathname);
 
-    // Only load and evaluate auth bypass settings for protected admin routes.
-    const { shouldBypassAuth } = await import('@/lib/supabase/auth');
     const bypassAuth = shouldBypassAuth();
 
     // Bypass authentication in development if enabled
