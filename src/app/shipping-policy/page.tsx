@@ -24,17 +24,44 @@ export default function ShippingPolicyPage() {
       },
       {
         '@type': 'OfferShippingDetails',
+        '@id': 'https://weteextees.com/shipping-policy#shipping-us',
+        'shippingDestination': {
+          '@type': 'DefinedRegion',
+          'addressCountry': 'US',
+        },
+        'shippingRate': {
+          '@type': 'MonetaryAmount',
+          'value': 0,
+          'currency': 'USD',
+        },
+        'deliveryTime': {
+          '@type': 'ShippingDeliveryTime',
+          'handlingTime': {
+            '@type': 'QuantitativeValue',
+            'minValue': 1,
+            'maxValue': 2,
+            'unitCode': 'DAY',
+          },
+          'transitTime': {
+            '@type': 'QuantitativeValue',
+            'minValue': 4,
+            'maxValue': 7,
+            'unitCode': 'DAY',
+          },
+        },
+      },
+      {
+        '@type': 'OfferShippingDetails',
         '@id': 'https://weteextees.com/shipping-policy#shipping-de',
-        'shippingDestination': [
-          {
-            '@type': 'DefinedRegion',
-            'addressCountry': 'DE',
-          },
-          {
-            '@type': 'DefinedRegion',
-            'addressCountry': 'US',
-          },
-        ],
+        'shippingDestination': {
+          '@type': 'DefinedRegion',
+          'addressCountry': 'DE',
+        },
+        'shippingRate': {
+          '@type': 'MonetaryAmount',
+          'value': 0,
+          'currency': 'EUR',
+        },
         'deliveryTime': {
           '@type': 'ShippingDeliveryTime',
           'handlingTime': {

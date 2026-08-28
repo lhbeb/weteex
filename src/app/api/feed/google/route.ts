@@ -128,6 +128,8 @@ function isFeedEligible(product: Product): boolean {
   );
 }
 
+const EUR_TO_USD_RATE = 1.085;
+
 function buildShippingXml(
   countries: readonly FeedCountry[],
   itemCurrency: string,
@@ -142,8 +144,8 @@ function buildShippingXml(
         <g:price>0.00 ${itemCurrency}</g:price>
         <g:min_handling_time>1</g:min_handling_time>
         <g:max_handling_time>2</g:max_handling_time>
-        <g:min_transit_time>2</g:min_transit_time>
-        <g:max_transit_time>5</g:max_transit_time>
+        <g:min_transit_time>4</g:min_transit_time>
+        <g:max_transit_time>7</g:max_transit_time>
       </g:shipping>`;
     })
     .join('');
@@ -177,13 +179,10 @@ export async function GET(request: NextRequest) {
     const targetCountries: readonly FeedCountry[] = country
       ? [country]
       : [DEFAULT_COUNTRY];
-    const targetCurrency = currency ?? DEFAULT_CURRENCY;
+    const targetCurrency = currency ?? (country === 'US' ? 'USD' : DEFAULT_CURRENCY);
 
     const itemsXml = products
       .filter(isFeedEligible)
-      .filter((product) => {
-        return (product.currency || DEFAULT_CURRENCY).toUpperCase() === targetCurrency;
-      })
       .map((product) => {
         const sku = escapeXml(formatValidSku(product));
         const normalizedTitle = normalizeFeedText(product.title || 'Product');
@@ -193,8 +192,17 @@ export async function GET(request: NextRequest) {
         const description = escapeXml(truncateFeedText(rawDesc, GMC_DESCRIPTION_MAX_LENGTH));
 
         const link = escapeXml(`${BASE_URL}/products/${encodeURIComponent(product.slug)}`);
-        const productCurrency = (product.currency || DEFAULT_CURRENCY).toUpperCase();
-        const price = `${Number(product.price).toFixed(2)} ${productCurrency}`;
+        
+        // Calculate price in target currency
+        let finalPrice = Number(product.price);
+        const sourceCurrency = (product.currency || 'EUR').toUpperCase();
+        if (targetCurrency === 'USD' && sourceCurrency === 'EUR') {
+          finalPrice = Math.round(finalPrice * EUR_TO_USD_RATE * 100) / 100;
+        } else if (targetCurrency === 'EUR' && sourceCurrency === 'USD') {
+          finalPrice = Math.round((finalPrice / EUR_TO_USD_RATE) * 100) / 100;
+        }
+
+        const price = `${finalPrice.toFixed(2)} ${targetCurrency}`;
         const availability = product.inStock === false ? 'out_of_stock' : 'in_stock';
         const condition = mapConditionToGmc(product.condition);
         const brand = escapeXml(product.brand || 'Weteextees');
@@ -238,7 +246,7 @@ export async function GET(request: NextRequest) {
       <g:google_product_category>${googleProductCategory}</g:google_product_category>
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>
       <g:return_policy_label>default_return_policy</g:return_policy_label>
-      <g:price_valid_until>${priceValidUntilStr}</g:price_valid_until>${identifierXml}${buildShippingXml(targetCountries, productCurrency)}
+      <g:price_valid_until>${priceValidUntilStr}</g:price_valid_until>${identifierXml}${buildShippingXml(targetCountries, targetCurrency)}
     </item>`;
       })
       .join('');

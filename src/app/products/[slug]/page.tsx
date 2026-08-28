@@ -149,9 +149,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
-          "name": "Weteextees Widerrufsbelehrung & Rückgaberichtlinie",
+          "name": "Weteextees 30-Day Return & Refund Policy",
           "merchantReturnLink": `${BASE_URL}/return-policy`,
-          "applicableCountry": ["DE", "AT", "FR", "NL", "BE", "IT", "ES"],
+          "applicableCountry": ["US", "DE", "AT", "FR", "NL", "BE", "IT", "ES"],
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
           "merchantReturnDays": 30,
           "returnMethod": "https://schema.org/ReturnByMail",
@@ -165,11 +165,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             "shippingRate": {
               "@type": "MonetaryAmount",
               "value": 0,
-              "currency": "EUR"
+              "currency": "USD"
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "DE"
+              "addressCountry": "US"
             },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
@@ -181,8 +181,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               },
               "transitTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 2,
-                "maxValue": 5,
+                "minValue": 4,
+                "maxValue": 7,
                 "unitCode": "DAY"
               }
             }
@@ -196,7 +196,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "AT"
+              "addressCountry": "DE"
             },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
