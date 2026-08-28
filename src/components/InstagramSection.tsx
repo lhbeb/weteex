@@ -26,24 +26,24 @@ const InstagramSection: React.FC = () => {
 
                 {/* Profile Details */}
                 <div className="flex-grow">
-                  <h3 className="font-bold text-[#262626] text-lg sm:text-xl mb-1">@weteexmachines_official</h3>
-                  <p className="text-gray-700 text-sm sm:text-base">weteexmachines</p>
+                  <h3 className="font-bold text-[#262626] text-lg sm:text-xl mb-1">@weteextees</h3>
+                  <p className="text-gray-700 text-sm sm:text-base">weteextees</p>
                   <p className="mb-2 text-xs font-medium text-gray-500 sm:text-sm">
-                    Authentic Antiques &amp; Modern Furniture
+                    Moderne Möbel &amp; Designer-Stühle
                   </p>
 
                   {/* Statistics */}
                   <div className="flex items-center space-x-4 sm:space-x-6 text-sm">
                     <div className="text-center">
-                      <div className="font-bold text-[#262626]">4</div>
+                      <div className="font-bold text-[#262626]">24</div>
                       <div className="text-gray-500 text-xs">posts</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-bold text-[#262626]">221</div>
+                      <div className="font-bold text-[#262626]">1.2k</div>
                       <div className="text-gray-500 text-xs">followers</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-bold text-[#262626]">4</div>
+                      <div className="font-bold text-[#262626]">18</div>
                       <div className="text-gray-500 text-xs">following</div>
                     </div>
                   </div>
@@ -53,7 +53,7 @@ const InstagramSection: React.FC = () => {
               {/* Follow Us Button */}
               <div className="flex-shrink-0">
                 <a
-                  href="https://www.instagram.com/weteexmachines_official/"
+                  href="https://www.instagram.com/weteextees/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium rounded-lg transition-all duration-200 shadow-sm hover:shadow-md"

@@ -112,7 +112,7 @@ export default function RootLayout({
                 "description": "Weteextees ist Ihre Adresse für hochwertige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
                 "sameAs": [
                   "https://www.tiktok.com/@weteexmachines",
-                  "https://www.instagram.com/weteexmachines_official/",
+                  "https://www.instagram.com/weteextees/",
                   "https://www.pinterest.com/weteexmachines_official"
                 ],
                 "contactPoint": {

@@ -23,22 +23,22 @@ const InstagramWidget: React.FC = () => {
 
           {/* Profile Info */}
           <div className="flex-grow">
-            <h3 className="font-bold text-[#262626] text-xl mb-1">@weteexmachines_official</h3>
-            <p className="text-sm text-gray-700">weteexmachines</p>
-            <p className="mb-3 text-xs font-medium text-gray-500">Authentic Antiques &amp; Modern Furniture</p>
+            <h3 className="font-bold text-[#262626] text-xl mb-1">@weteextees</h3>
+            <p className="text-sm text-gray-700">weteextees</p>
+            <p className="mb-3 text-xs font-medium text-gray-500">Moderne Möbel &amp; Designer-Stühle</p>
 
             {/* Statistics */}
             <div className="flex items-center space-x-6 text-sm">
               <div className="text-center">
-                <div className="font-bold text-[#262626]">4</div>
+                <div className="font-bold text-[#262626]">24</div>
                 <div className="text-gray-500">posts</div>
               </div>
               <div className="text-center">
-                <div className="font-bold text-[#262626]">221</div>
+                <div className="font-bold text-[#262626]">1.2k</div>
                 <div className="text-gray-500">followers</div>
               </div>
               <div className="text-center">
-                <div className="font-bold text-[#262626]">4</div>
+                <div className="font-bold text-[#262626]">18</div>
                 <div className="text-gray-500">following</div>
               </div>
             </div>
@@ -47,7 +47,7 @@ const InstagramWidget: React.FC = () => {
 
         {/* Follow Button */}
         <a
-          href="https://www.instagram.com/weteexmachines_official/"
+          href="https://www.instagram.com/weteextees/"
           target="_blank"
           rel="noopener noreferrer"
           className="w-full inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105"

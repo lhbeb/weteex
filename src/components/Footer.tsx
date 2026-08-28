@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MessageSquare, MapPin } from 'lucide-react';
+import { Mail, MessageSquare, MapPin, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -32,6 +32,17 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-[#D1A966] mr-2" />
                 <a href="mailto:contact@weteextees.com" className="hover:text-[#D1A966] transition-colors duration-300">
                   contact@weteextees.com
+                </a>
+              </div>
+              <div className="flex items-center">
+                <Instagram className="h-5 w-5 text-[#D1A966] mr-2" />
+                <a
+                  href="https://www.instagram.com/weteextees/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#D1A966] transition-colors duration-300"
+                >
+                  Instagram: @weteextees
                 </a>
               </div>
               <div className="flex items-start">
