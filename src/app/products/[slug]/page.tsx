@@ -175,14 +175,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               "@type": "ShippingDeliveryTime",
               "handlingTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 2,
+                "minValue": 0,
+                "maxValue": 1,
                 "unitCode": "DAY"
               },
               "transitTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 4,
-                "maxValue": 7,
+                "minValue": 5,
+                "maxValue": 8,
                 "unitCode": "DAY"
               }
             }
@@ -202,14 +202,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               "@type": "ShippingDeliveryTime",
               "handlingTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 2,
+                "minValue": 0,
+                "maxValue": 1,
                 "unitCode": "DAY"
               },
               "transitTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 4,
-                "maxValue": 7,
+                "minValue": 5,
+                "maxValue": 8,
                 "unitCode": "DAY"
               }
             }

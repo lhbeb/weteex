@@ -47,12 +47,12 @@ export const MARKETS: Record<MarketKey, MarketConfig> = {
     locale: 'de-DE',
     shipsFrom: 'Deutschland / EU',
     shipsFromFlag: '🇩🇪',
-    deliveryDaysMin: 3,
-    deliveryDaysMax: 7,
+    deliveryDaysMin: 5,
+    deliveryDaysMax: 8,
     freeShippingText: 'Kostenloser Standardversand',
     returnsText: '30 Tage Rückgaberecht',
     faqShippingAnswer:
-      'Bestellungen innerhalb Deutschlands und der EU werden innerhalb von 1 Werktag bearbeitet und treffen in der Regel in 3 bis 7 Werktagen mit zuverlässiger Spedition bei Ihnen ein.',
+      'Bestellungen innerhalb Deutschlands und der EU werden montags bis freitags innerhalb von 1 Werktag bearbeitet und treffen in der Regel in 5 bis 8 Werktagen mit zuverlässiger Spedition bei Ihnen ein.',
     faqFreeShippingAnswer:
       'Ja, der versicherte Standardversand ist für alle Möbelstücke und Stühle in Deutschland und der EU kostenlos.',
   },
