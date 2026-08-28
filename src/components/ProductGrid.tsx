@@ -7,6 +7,7 @@ import { ChevronDown, ChevronUp, ChevronLeft, ChevronRight, SlidersHorizontal, X
 import ProductCard from "./ProductCard";
 import type { Product } from "@/types/product";
 import { createVisitorRotationSeed } from "@/utils/visitorProductRotation";
+import { useLocale } from "@/context/LocaleContext";
 
 const ITEMS_PER_PAGE = 12;
 type SortOption = "featured" | "price-high" | "price-low" | "rating";
@@ -16,10 +17,13 @@ interface ProductGridProps {
   sectionId?: string;
   editorialCard?: {
     title?: string;
+    titleEn?: string;
     description: string;
+    descriptionEn?: string;
   };
   showHeader?: boolean;
   title?: string;
+  titleEn?: string;
   randomizeForVisitor?: boolean;
   visitorShuffleKey?: string;
 }
@@ -89,11 +93,25 @@ const ProductGrid = ({
   sectionId = "products",
   editorialCard,
   showHeader = true,
-  title = "Endless accessories. Epic prices.",
+  title,
+  titleEn,
   randomizeForVisitor = false,
   visitorShuffleKey = "product-grid",
 }: ProductGridProps) => {
+  const { isGerman, currency } = useLocale();
   const searchParams = useSearchParams();
+
+  const displaySectionTitle = isGerman
+    ? (title || "Alle Möbel & Stühle Kollektion")
+    : (titleEn || "All Furniture & Chairs Collection");
+
+  const displayEditorialTitle = isGerman
+    ? editorialCard?.title
+    : (editorialCard?.titleEn || editorialCard?.title);
+
+  const displayEditorialDesc = isGerman
+    ? editorialCard?.description
+    : (editorialCard?.descriptionEn || editorialCard?.description);
 
   const [sortBy, setSortBy] = useState<SortOption>("featured");
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
@@ -263,7 +281,7 @@ const ProductGrid = ({
               <div className="flex items-center justify-between border-b border-gray-100 px-6 py-4">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">Filter</p>
-                  <h3 className="text-lg font-semibold text-[#262626]">Suche verfeinern</h3>
+                  <h3 className="text-lg font-semibold text-[#262626]">{isGerman ? "Suche verfeinern" : "Refine Search"}</h3>
                 </div>
                 <button
                   type="button"
@@ -282,7 +300,7 @@ const ProductGrid = ({
                     className="flex w-full items-center justify-between text-sm font-semibold text-[#262626]"
                     onClick={() => handleToggleSection("price")}
                   >
-                    <span>Preisspanne (€)</span>
+                    <span>{isGerman ? `Preisspanne (${currency === 'USD' ? '$' : '€'})` : `Price Range (${currency === 'USD' ? '$' : '€'})`}</span>
                     {expandedSections.price ? (
                       <ChevronUp className="h-4 w-4 text-gray-500" />
                     ) : (
@@ -294,7 +312,7 @@ const ProductGrid = ({
                     <div className="mt-4 flex gap-3">
                       <div className="w-full">
                         <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-500">
-                          Min (€)
+                          Min ({currency === 'USD' ? '$' : '€'})
                         </label>
                         <input
                           type="number"
@@ -308,7 +326,7 @@ const ProductGrid = ({
                       </div>
                       <div className="w-full">
                         <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-gray-500">
-                          Max (€)
+                          Max ({currency === 'USD' ? '$' : '€'})
                         </label>
                         <input
                           type="number"
@@ -331,7 +349,7 @@ const ProductGrid = ({
                     onClick={() => handleToggleSection("brands")}
                   >
                     <span>
-                      Kollektion &amp; Marke
+                      {isGerman ? "Kollektion & Marke" : "Collection & Brand"}
                       {selectedBrands.length > 0 ? (
                         <span className="ml-1 text-[#1D2E24]">({selectedBrands.length})</span>
                       ) : null}
@@ -373,7 +391,7 @@ const ProductGrid = ({
                           className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1D2E24] hover:underline"
                           onClick={() => setShowAllBrands((previous) => !previous)}
                         >
-                          {showAllBrands ? "Weniger anzeigen" : `Alle ${brandOptions.length} anzeigen`}
+                          {showAllBrands ? (isGerman ? "Weniger anzeigen" : "Show less") : (isGerman ? `Alle ${brandOptions.length} anzeigen` : `Show all ${brandOptions.length}`)}
                         </button>
                       ) : null}
                     </div>
@@ -387,7 +405,7 @@ const ProductGrid = ({
                     onClick={() => handleToggleSection("conditions")}
                   >
                     <span>
-                      Zustand
+                      {isGerman ? "Zustand" : "Condition"}
                       {selectedConditions.length > 0 ? (
                         <span className="ml-1 text-[#1D2E24]">({selectedConditions.length})</span>
                       ) : null}
@@ -429,7 +447,7 @@ const ProductGrid = ({
                           className="mt-2 text-xs font-semibold uppercase tracking-wide text-[#1D2E24] hover:underline"
                           onClick={() => setShowAllConditions((previous) => !previous)}
                         >
-                          {showAllConditions ? "Weniger anzeigen" : `Alle ${conditionOptions.length} anzeigen`}
+                          {showAllConditions ? (isGerman ? "Weniger anzeigen" : "Show less") : (isGerman ? `Alle ${conditionOptions.length} anzeigen` : `Show all ${conditionOptions.length}`)}
                         </button>
                       ) : null}
                     </div>
@@ -443,7 +461,7 @@ const ProductGrid = ({
                       className="w-full rounded-xl border border-[#1D2E24] bg-[#1D2E24]/5 px-4 py-3 text-sm font-semibold text-[#1D2E24] transition-colors duration-200 hover:bg-[#1D2E24]/10"
                       onClick={handleClearFilters}
                     >
-                      Alle Filter zurücksetzen
+                      {isGerman ? "Alle Filter zurücksetzen" : "Clear all filters"}
                     </button>
                   </div>
                 ) : null}
@@ -454,9 +472,9 @@ const ProductGrid = ({
           <div className="flex-grow">
             {showHeader && (
               <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                {title && <h2 className="text-2xl font-medium text-[#262626]">{title}</h2>}
+                {displaySectionTitle && <h2 className="text-2xl font-medium text-[#262626]">{displaySectionTitle}</h2>}
 
-                <div className={`${title ? '' : 'ml-auto'} flex items-center gap-3`}>
+                <div className={`${displaySectionTitle ? '' : 'ml-auto'} flex items-center gap-3`}>
                   <button
                     type="button"
                     className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium transition-colors duration-200 hover:bg-gray-50"
@@ -477,10 +495,10 @@ const ProductGrid = ({
                       onChange={(event) => setSortBy(event.target.value as SortOption)}
                       className="appearance-none rounded-lg border border-gray-300 bg-white px-4 py-2 pr-8 text-sm focus:outline-none focus:ring-2 focus:ring-[#1D2E24]"
                     >
-                      <option value="featured">Empfohlen</option>
-                      <option value="price-low">Preis: Niedrig bis Hoch</option>
-                      <option value="price-high">Preis: Hoch bis Niedrig</option>
-                      <option value="rating">Beste Bewertung</option>
+                      <option value="featured">{isGerman ? "Empfohlen" : "Featured"}</option>
+                      <option value="price-low">{isGerman ? "Preis: Niedrig bis Hoch" : "Price: Low to High"}</option>
+                      <option value="price-high">{isGerman ? "Preis: Hoch bis Niedrig" : "Price: High to Low"}</option>
+                      <option value="rating">{isGerman ? "Beste Bewertung" : "Top Rated"}</option>
                     </select>
                     <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                   </div>
@@ -552,7 +570,11 @@ const ProductGrid = ({
 
             {paginatedProducts.length === 0 ? (
               <div className="py-12 text-center">
-                <p className="text-gray-500">Keine Möbelstücke für Ihre Auswahlkriterien gefunden.</p>
+                <p className="text-gray-500">
+                  {isGerman
+                    ? "Keine Möbelstücke für Ihre Auswahlkriterien gefunden."
+                    : "No furniture pieces found matching your selection criteria."}
+                </p>
               </div>
             ) : (
               <>
@@ -560,13 +582,13 @@ const ProductGrid = ({
                   {editorialCard && currentPage === 1 && (
                     <article className="col-span-2 self-start pb-8 pr-2 pt-0 text-left sm:pr-8 lg:pb-12 lg:pr-14">
                       <div className="w-full">
-                        {editorialCard.title && (
+                        {displayEditorialTitle && (
                           <h2 className="max-w-[24rem] text-3xl font-semibold leading-[1.35] text-[#1E2621] sm:text-4xl">
-                            {editorialCard.title}
+                            {displayEditorialTitle}
                           </h2>
                         )}
-                        <p className={`${editorialCard.title ? 'mt-5' : ''} max-w-[34rem] text-base leading-8 text-[#5C6B61] sm:text-lg sm:leading-9`}>
-                          {editorialCard.description}
+                        <p className={`${displayEditorialTitle ? 'mt-5' : ''} max-w-[34rem] text-base leading-8 text-[#5C6B61] sm:text-lg sm:leading-9`}>
+                          {displayEditorialDesc}
                         </p>
                       </div>
                     </article>

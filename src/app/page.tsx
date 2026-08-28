@@ -37,7 +37,9 @@ export default async function HomePage() {
         <CategorySection
           products={featuredProducts}
           title="Ausgewählte moderne Möbel &amp; Esszimmerkollektionen"
+          titleEn="Featured Modern Furniture &amp; Dining Collections"
           subtitle="Entdecken Sie handgefertigte moderne Stühle, Naturrattan-Sitzmöbel, massive Esstische aus Walnussholz und edle Marmorplatten."
+          subtitleEn="Discover handcrafted designer chairs, natural rattan seating, solid walnut dining tables, and luxury marble surfaces."
           maxDisplay={FEATURED_PRODUCT_LIMIT}
           shuffleForVisitor
           visitorShuffleKey="home-featured"
@@ -51,10 +53,14 @@ export default async function HomePage() {
               products={featuredProducts}
               sectionId="collection"
               title="Alle Möbel &amp; Stühle Kollektion"
+              titleEn="All Furniture &amp; Chairs Collection"
               editorialCard={{
                 title: 'Echte Handwerkskunst. Zeitloser Charakter.',
+                titleEn: 'True Craftsmanship. Timeless Character.',
                 description:
                   'Von modernen Esszimmerstühlen und maßgefertigten Esstischen bis hin zu zertifizierten Naturrattan-Möbeln und Steinoberflächen – finden Sie handgefertigte Stücke, die Persönlichkeit und Eleganz in jedes Zuhause bringen.',
+                descriptionEn:
+                  'From modern dining chairs and custom-crafted tables to certified natural rattan furniture and stone surfaces — discover handcrafted pieces that bring character and elegance to any space.',
               }}
               randomizeForVisitor
               visitorShuffleKey="home-furniture"

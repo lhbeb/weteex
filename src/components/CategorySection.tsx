@@ -4,11 +4,14 @@ import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import type { Product } from '@/types/product';
 import { createVisitorRotationSeed, selectRotatedProducts } from '@/utils/visitorProductRotation';
+import { useLocale } from '@/context/LocaleContext';
 
 interface CategorySectionProps {
   products: Product[];
   title?: string;
+  titleEn?: string;
   subtitle?: string;
+  subtitleEn?: string;
   maxDisplay?: number;
   shuffleForVisitor?: boolean;
   visitorShuffleKey?: string;
@@ -16,15 +19,26 @@ interface CategorySectionProps {
 
 const CategorySection: React.FC<CategorySectionProps> = ({
   products,
-  title = 'Moderne Möbel & Esszimmerkollektionen',
-  subtitle = 'Hochwertige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.',
+  title,
+  titleEn,
+  subtitle,
+  subtitleEn,
   maxDisplay = 8,
   shuffleForVisitor = false,
   visitorShuffleKey = 'home-furniture-antiques',
 }) => {
+  const { isGerman } = useLocale();
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>(() =>
     products.slice(0, maxDisplay),
   );
+
+  const displayTitle = isGerman
+    ? (title || 'Ausgewählte moderne Möbel & Esszimmerkollektionen')
+    : (titleEn || 'Featured Modern Furniture & Dining Collections');
+
+  const displaySubtitle = isGerman
+    ? (subtitle || 'Entdecken Sie handgefertigte moderne Stühle, Naturrattan-Sitzmöbel, massive Esstische aus Walnussholz und edle Marmorplatten.')
+    : (subtitleEn || 'Discover handcrafted designer chairs, natural rattan seating, solid walnut dining tables, and luxury marble surfaces.');
 
   useEffect(() => {
     if (!products || products.length === 0) {
@@ -51,10 +65,10 @@ const CategorySection: React.FC<CategorySectionProps> = ({
         <div className="w-full max-w-7xl mx-auto">
           <div className="mb-6 sm:mb-8 text-left">
             <h2 className="text-2xl md:text-3xl font-bold text-[#1E2621] mb-2">
-              {title}
+              {displayTitle}
             </h2>
             <p className="max-w-2xl text-sm sm:text-base text-[#5C6B61]">
-              {subtitle}
+              {displaySubtitle}
             </p>
           </div>
 
