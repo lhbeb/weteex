@@ -18,7 +18,7 @@ import type { Product } from '@/types/product';
 import Image from 'next/image';
 import { getConditionDisplayLabel, getConditionTooltip } from '@/lib/conditions';
 import { getMarket, formatMarketPrice } from '@/lib/markets';
-import { STORE_FAQS } from '@/lib/storeFaqs';
+import { STORE_FAQS_DE, STORE_FAQS_EN } from '@/lib/storeFaqs';
 import { useLocale } from '@/context/LocaleContext';
 
 interface ProductPageClientProps {
@@ -64,7 +64,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
     }
   }, [product]);
 
-  const faqItems = STORE_FAQS;
+  const faqItems = isGerman ? STORE_FAQS_DE : STORE_FAQS_EN;
 
   const parsedMensSizes = useMemo(() => {
     const raw = product?.meta?.sizes_mens || product?.meta?.sizes;
@@ -891,15 +891,15 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
                 <div className="border-t border-[#e5eef8] px-6 py-5 sm:px-8">
                   <button
                     type="button"
-                      onClick={() => {
-                        setShowAllFaqs((current) => !current);
-                        if (showAllFaqs && openFaqIndex >= COLLAPSED_FAQ_COUNT) {
-                          setOpenFaqIndex(-1);
-                        }
-                      }}
-                    className="text-sm font-semibold text-[#01428a] transition hover:text-[#00366f]"
+                    onClick={() => {
+                      setShowAllFaqs((current) => !current);
+                      if (showAllFaqs && openFaqIndex >= COLLAPSED_FAQ_COUNT) {
+                        setOpenFaqIndex(-1);
+                      }
+                    }}
+                    className="text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition-colors"
                   >
-                    {showAllFaqs ? "Show fewer answers" : "View more answers"}
+                    {showAllFaqs ? (isGerman ? "Weniger anzeigen" : "Show fewer answers") : (isGerman ? "Weitere Antworten anzeigen" : "View more answers")}
                   </button>
                 </div>
               )}
