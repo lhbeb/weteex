@@ -8,7 +8,6 @@ import { ShoppingCart, Menu, X, Search, ChevronLeft, ChevronRight, Info } from '
 import { getCartCount } from '@/utils/cart';
 import ClientOnly from './ClientOnly';
 import SearchBar from './SearchBar';
-import LocaleSwitcher from './LocaleSwitcher';
 import { useLocale } from '@/context/LocaleContext';
 
 const desktopNavLinkClass =
@@ -174,11 +173,6 @@ const Header = () => {
             >
               <ChevronRight className="h-3.5 w-3.5" />
             </button>
-          </div>
-
-          {/* Right: Region & Currency Switcher */}
-          <div className="flex-shrink-0 ml-2 z-20">
-            <LocaleSwitcher variant="header" />
           </div>
         </div>
       </div>
@@ -349,11 +343,6 @@ const Header = () => {
                 <Link href="/contact" className={`${mobileMenuLinkClass} py-3 border-b border-gray-100`} onClick={handleMobileMenuClose}>
                   {t('nav.contact')}
                 </Link>
-                
-                {/* Mobile Region Switcher */}
-                <div className="pt-4 flex justify-center">
-                  <LocaleSwitcher variant="footer" />
-                </div>
               </nav>
             </div>
           </div>

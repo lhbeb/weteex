@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, MessageSquare, MapPin, Instagram } from 'lucide-react';
-import LocaleSwitcher from './LocaleSwitcher';
 import { useLocale } from '@/context/LocaleContext';
 
 const Footer = () => {
@@ -128,11 +127,6 @@ const Footer = () => {
                 height={64}
                 className="h-16 w-auto max-w-full object-contain brightness-110 contrast-110"
               />
-            </div>
-            
-            {/* Region / Currency Switcher in Footer */}
-            <div className="pt-2">
-              <LocaleSwitcher variant="footer" />
             </div>
 
             <p className="text-center text-[#DCE5DE]/80 text-sm">© {new Date().getFullYear()} Weteextees. {t('common.rightsReserved')}</p>
