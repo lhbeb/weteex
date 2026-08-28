@@ -8,7 +8,7 @@ import {
   Package, Search, Plus, Edit, Trash2, ExternalLink,
   Filter, Grid3X3, List, MoreVertical, Eye, X,
   ChevronLeft, ChevronRight, RefreshCw, AlertCircle, Star, PackageX, PackageCheck,
-  Download, CheckSquare, Square
+  Download, CheckSquare, Square, ClipboardList, CheckCircle2, Zap, SlidersHorizontal
 } from 'lucide-react';
 import AdminLayout from '@/components/AdminLayout';
 import AdminLoading from '@/components/AdminLoading';
@@ -50,6 +50,7 @@ export default function AdminProductsPage() {
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all');
   const [featuredFilter, setFeaturedFilter] = useState<'all' | 'featured' | 'not_featured'>('all');
   const [stockFilter, setStockFilter] = useState<'all' | 'in_stock' | 'sold_out'>('all');
+  const [gmcFilter, setGmcFilter] = useState<'all' | 'gmc_active' | 'gmc_disabled'>('all');
   const [listedByFilter, setListedByFilter] = useState<string>('all');
   const [checkoutFilter, setCheckoutFilter] = useState<'all' | 'stripe' | 'kofi' | 'buymeacoffee' | 'external' | 'paypal-invoice' | 'paypal-unclaimed' | 'paypal-direct' | 'paypal-api'>('all');
   const [viewMode, setViewMode] = useState<ViewMode>('list');
@@ -62,6 +63,9 @@ export default function AdminProductsPage() {
   const [featuredCount, setFeaturedCount] = useState(0);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [selectedProducts, setSelectedProducts] = useState<Set<string>>(new Set());
+  const [isPasteSelectOpen, setIsPasteSelectOpen] = useState(false);
+  const [pasteText, setPasteText] = useState('');
+  const [pasteMatchCount, setPasteMatchCount] = useState<number | null>(null);
   const [exporting, setExporting] = useState(false);
   const [exportingCSV, setExportingCSV] = useState(false);
   const [exportingGoogleCSV, setExportingGoogleCSV] = useState(false);
@@ -154,6 +158,13 @@ export default function AdminProductsPage() {
       filtered = filtered.filter(p => p.inStock === false);
     }
 
+    // Apply GMC filter
+    if (gmcFilter === 'gmc_active') {
+      filtered = filtered.filter(isGmcEnabled);
+    } else if (gmcFilter === 'gmc_disabled') {
+      filtered = filtered.filter(p => !isGmcEnabled(p));
+    }
+
     // Apply listed_by filter
     if (listedByFilter !== 'all') {
       if (listedByFilter === 'none') {
@@ -172,7 +183,7 @@ export default function AdminProductsPage() {
 
     setFilteredProducts(filtered);
     setCurrentPage(1);
-  }, [searchQuery, statusFilter, featuredFilter, stockFilter, listedByFilter, checkoutFilter, products]);
+  }, [searchQuery, statusFilter, featuredFilter, stockFilter, gmcFilter, listedByFilter, checkoutFilter, products]);
 
   const handleDelete = async (slug: string) => {
     if (!confirm('Are you sure you want to delete this product?')) return;
@@ -348,8 +359,12 @@ export default function AdminProductsPage() {
     }
   };
 
-  const handleBulkGmcUpdate = async (enabled: boolean) => {
-    if (selectedProducts.size === 0) {
+  const handleBulkGmcUpdate = async (enabled: boolean, explicitSlugs?: string[]) => {
+    const targetSlugs = explicitSlugs && explicitSlugs.length > 0
+      ? explicitSlugs
+      : Array.from(selectedProducts);
+
+    if (targetSlugs.length === 0) {
       setError('Select at least one product first.');
       return;
     }
@@ -367,7 +382,7 @@ export default function AdminProductsPage() {
           ...(token && { 'Authorization': `Bearer ${token}` }),
         },
         body: JSON.stringify({
-          slugs: Array.from(selectedProducts),
+          slugs: targetSlugs,
           enabled,
         }),
       });
@@ -393,6 +408,87 @@ export default function AdminProductsPage() {
       setError(err.message || 'Failed to update selected GMC products');
     } finally {
       setBulkUpdatingGmc(null);
+    }
+  };
+
+  const handleBulkTurnOffAllGmc = async () => {
+    const activeGmcProducts = products.filter(isGmcEnabled);
+    if (activeGmcProducts.length === 0) {
+      setError('No products currently have GMC enabled.');
+      return;
+    }
+
+    if (!confirm(`Are you sure you want to turn OFF (deselect) GMC for all ${activeGmcProducts.length} active products? They will immediately stop being pushed to Google Merchant Center.`)) {
+      return;
+    }
+
+    await handleBulkGmcUpdate(false, activeGmcProducts.map(p => p.slug));
+  };
+
+  const handleSelectGmcActive = () => {
+    const gmcSlugs = filteredProducts.filter(isGmcEnabled).map(p => p.slug);
+    if (gmcSlugs.length === 0) {
+      setError('No GMC-enabled products in the current view.');
+      return;
+    }
+    setSelectedProducts(new Set(gmcSlugs));
+  };
+
+  const handleSelectGmcDisabled = () => {
+    const noGmcSlugs = filteredProducts.filter(p => !isGmcEnabled(p)).map(p => p.slug);
+    if (noGmcSlugs.length === 0) {
+      setError('No GMC-disabled products in the current view.');
+      return;
+    }
+    setSelectedProducts(new Set(noGmcSlugs));
+  };
+
+  const handleApplyPasteSelect = () => {
+    if (!pasteText.trim()) return;
+
+    const tokens = pasteText
+      .split(/[\n,\s\t]+/)
+      .map(t => t.trim().toLowerCase())
+      .filter(Boolean)
+      .map(t => {
+        if (t.includes('/products/')) {
+          const parts = t.split('/products/');
+          return parts[1]?.split(/[?#]/)[0]?.toLowerCase() || t;
+        }
+        return t;
+      });
+
+    const matchedSlugs = new Set<string>();
+    products.forEach(p => {
+      const slugLower = p.slug.toLowerCase();
+      const titleLower = p.title.toLowerCase();
+      const idLower = String(p.id).toLowerCase();
+      const gtinLower = String(p.meta?.gtin || '').toLowerCase();
+      const mpnLower = String(p.meta?.mpn || '').toLowerCase();
+
+      for (const token of tokens) {
+        if (
+          slugLower === token ||
+          idLower === token ||
+          (gtinLower && gtinLower === token) ||
+          (mpnLower && mpnLower === token) ||
+          slugLower.includes(token) ||
+          titleLower.includes(token)
+        ) {
+          matchedSlugs.add(p.slug);
+          break;
+        }
+      }
+    });
+
+    setSelectedProducts(matchedSlugs);
+    setPasteMatchCount(matchedSlugs.size);
+    if (matchedSlugs.size > 0) {
+      setTimeout(() => {
+        setIsPasteSelectOpen(false);
+        setPasteMatchCount(null);
+        setPasteText('');
+      }, 700);
     }
   };
 
@@ -913,6 +1009,20 @@ export default function AdminProductsPage() {
               </select>
             </div>
 
+            {/* GMC Filter */}
+            <div className="flex items-center gap-2">
+              <Filter className="h-5 w-5 text-gray-400 shrink-0" />
+              <select
+                value={gmcFilter}
+                onChange={(e) => setGmcFilter(e.target.value as typeof gmcFilter)}
+                className="px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#01428a] focus:border-transparent text-sm font-medium"
+              >
+                <option value="all">All GMC Status</option>
+                <option value="gmc_active">🔵 GMC Enabled ({products.filter(isGmcEnabled).length})</option>
+                <option value="gmc_disabled">⚪ GMC Disabled ({products.filter(p => !isGmcEnabled(p)).length})</option>
+              </select>
+            </div>
+
             {/* Checkout Flow Filter */}
             <div className="flex items-center gap-2">
               <Filter className="h-5 w-5 text-gray-400 shrink-0" />
@@ -956,8 +1066,30 @@ export default function AdminProductsPage() {
             <button
               onClick={fetchProducts}
               className="p-2.5 bg-gray-50 border border-gray-200 rounded-xl hover:bg-gray-100 transition-colors shrink-0"
+              title="Refresh products list"
             >
               <RefreshCw className="h-4 w-4 text-gray-600" />
+            </button>
+
+            {/* Bulk Paste Selection Tool */}
+            <button
+              onClick={() => setIsPasteSelectOpen(true)}
+              className="inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/25 whitespace-nowrap text-sm shrink-0 font-medium"
+              title="Paste a list of URLs, Slugs, or IDs to select products in bulk"
+            >
+              <ClipboardList className="h-4 w-4" />
+              <span>Bulk Select (Paste List)</span>
+            </button>
+
+            {/* Turn OFF All GMC Shortcut */}
+            <button
+              onClick={handleBulkTurnOffAllGmc}
+              disabled={products.filter(isGmcEnabled).length === 0 || bulkUpdatingGmc !== null}
+              className="inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-rose-600 text-white rounded-xl hover:bg-rose-700 transition-colors shadow-lg shadow-rose-500/25 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm shrink-0 font-medium"
+              title="Turn OFF (exclude from Google Feed) for all active GMC products"
+            >
+              <PackageX className="h-4 w-4" />
+              <span>Turn OFF All GMC ({products.filter(isGmcEnabled).length})</span>
             </button>
 
             {/* Export All CSV */}
@@ -996,7 +1128,7 @@ export default function AdminProductsPage() {
                 <button
                   onClick={() => handleBulkGmcUpdate(true)}
                   disabled={bulkUpdatingGmc !== null || togglingGmc.size > 0}
-                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm shrink-0"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors shadow-lg shadow-emerald-500/25 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm shrink-0"
                   title="Include selected products in the Google Merchant Center feed"
                 >
                   {bulkUpdatingGmc === 'include' ? (
@@ -1009,7 +1141,7 @@ export default function AdminProductsPage() {
                 <button
                   onClick={() => handleBulkGmcUpdate(false)}
                   disabled={bulkUpdatingGmc !== null || togglingGmc.size > 0}
-                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-gray-600 text-white rounded-xl hover:bg-gray-700 transition-colors shadow-lg shadow-gray-500/20 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm shrink-0"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-2.5 bg-rose-600 text-white rounded-xl hover:bg-rose-700 transition-colors shadow-lg shadow-rose-500/25 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap text-sm shrink-0"
                   title="Exclude selected products from the Google Merchant Center feed"
                 >
                   {bulkUpdatingGmc === 'exclude' ? (
@@ -1061,36 +1193,93 @@ export default function AdminProductsPage() {
       </div>
 
       {/* Selection Controls */}
-      {selectedProducts.size > 0 && (
-        <div className="mb-4 px-4 py-3 bg-[#01428a]/5 border border-[#01428a]/20 rounded-xl flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="text-sm font-medium text-[#00366f]">
+      <div className="mb-4 px-4 py-3 bg-[#01428a]/5 border border-[#01428a]/20 rounded-xl flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+          {selectedProducts.size > 0 ? (
+            <span className="text-sm font-bold text-[#00366f]">
               {selectedProducts.size} product{selectedProducts.size !== 1 ? 's' : ''} selected
             </span>
-            <button
-              onClick={handleSelectAll}
-              className="text-sm text-[#01428a] hover:text-[#00366f] font-medium"
-            >
-              {selectedProducts.size === paginatedProducts.length ? 'Deselect Page' : 'Select Page'}
-            </button>
-            <button
-              onClick={handleSelectAllFiltered}
-              className="text-sm text-[#01428a] hover:text-[#00366f] font-medium"
-            >
-              {selectedProducts.size === filteredProducts.length && filteredProducts.length > 0 ? 'Deselect All Filtered' : 'Select All Filtered'}
-            </button>
+          ) : (
+            <span className="text-sm font-medium text-gray-600">Quick Select:</span>
+          )}
+
+          <button
+            onClick={handleSelectAll}
+            className="px-2.5 py-1 text-xs bg-white border border-gray-200 rounded-lg text-[#01428a] hover:bg-gray-50 font-medium"
+          >
+            {selectedProducts.size === paginatedProducts.length && paginatedProducts.length > 0 ? 'Deselect Page' : 'Select Page'}
+          </button>
+          <button
+            onClick={handleSelectAllFiltered}
+            className="px-2.5 py-1 text-xs bg-white border border-gray-200 rounded-lg text-[#01428a] hover:bg-gray-50 font-medium"
+          >
+            {selectedProducts.size === filteredProducts.length && filteredProducts.length > 0 ? 'Deselect All Filtered' : `Select All Filtered (${filteredProducts.length})`}
+          </button>
+          <button
+            onClick={handleSelectGmcActive}
+            className="px-2.5 py-1 text-xs bg-blue-50 border border-blue-200 rounded-lg text-blue-700 hover:bg-blue-100 font-medium"
+            title="Select all products that are currently included in GMC"
+          >
+            Select All GMC Active ({filteredProducts.filter(isGmcEnabled).length})
+          </button>
+          <button
+            onClick={handleSelectGmcDisabled}
+            className="px-2.5 py-1 text-xs bg-gray-50 border border-gray-200 rounded-lg text-gray-700 hover:bg-gray-100 font-medium"
+            title="Select all products that are currently disabled for GMC"
+          >
+            Select All GMC Disabled ({filteredProducts.filter(p => !isGmcEnabled(p)).length})
+          </button>
+          <button
+            onClick={() => setIsPasteSelectOpen(true)}
+            className="px-2.5 py-1 text-xs bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-700 hover:bg-indigo-100 font-medium"
+          >
+            📋 Paste List to Select
+          </button>
+          {selectedProducts.size > 0 && (
             <button
               onClick={() => setSelectedProducts(new Set())}
-              className="text-sm text-[#01428a] hover:text-[#00366f] font-medium"
+              className="px-2.5 py-1 text-xs bg-white border border-red-200 rounded-lg text-red-600 hover:bg-red-50 font-medium"
             >
               Clear Selection
             </button>
-          </div>
+          )}
         </div>
-      )}
+
+        {/* Action buttons for selected items */}
+        {selectedProducts.size > 0 && (
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => handleBulkGmcUpdate(false)}
+              disabled={bulkUpdatingGmc !== null}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition-colors text-xs font-bold shadow-sm disabled:opacity-50"
+              title="Turn OFF GMC for all selected products"
+            >
+              {bulkUpdatingGmc === 'exclude' ? (
+                <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <PackageX className="h-3.5 w-3.5" />
+              )}
+              <span>Turn OFF GMC ({selectedProducts.size})</span>
+            </button>
+            <button
+              onClick={() => handleBulkGmcUpdate(true)}
+              disabled={bulkUpdatingGmc !== null}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-xs font-bold shadow-sm disabled:opacity-50"
+              title="Turn ON GMC for all selected products"
+            >
+              {bulkUpdatingGmc === 'include' ? (
+                <RefreshCw className="h-3.5 w-3.5 animate-spin" />
+              ) : (
+                <PackageCheck className="h-3.5 w-3.5" />
+              )}
+              <span>Turn ON GMC ({selectedProducts.size})</span>
+            </button>
+          </div>
+        )}
+      </div>
 
       {/* Filter Status */}
-      {(searchQuery || statusFilter !== 'all' || featuredFilter !== 'all' || stockFilter !== 'all' || listedByFilter !== 'all' || checkoutFilter !== 'all') && (
+      {(searchQuery || statusFilter !== 'all' || featuredFilter !== 'all' || stockFilter !== 'all' || gmcFilter !== 'all' || listedByFilter !== 'all' || checkoutFilter !== 'all') && (
         <div className="mb-4 px-4 py-2 bg-[#01428a]/5 border border-[#01428a]/20 rounded-xl">
           <div className="text-sm text-[#00366f]">
             Showing <strong>{filteredProducts.length}</strong> of <strong>{products.length}</strong> product{products.length !== 1 ? 's' : ''}
@@ -1098,6 +1287,9 @@ export default function AdminProductsPage() {
             {statusFilter === 'draft' && ` (${products.filter(p => !p.published).length} drafts)`}
             {featuredFilter === 'featured' && ` (${featuredCount} featured)`}
             {stockFilter === 'in_stock' && ` (in stock only)`}
+            {stockFilter === 'sold_out' && ` (sold out only)`}
+            {gmcFilter === 'gmc_active' && ` (GMC enabled: ${products.filter(isGmcEnabled).length})`}
+            {gmcFilter === 'gmc_disabled' && ` (GMC disabled: ${products.filter(p => !isGmcEnabled(p)).length})`}
             {stockFilter === 'sold_out' && ` (sold out only)`}
             {listedByFilter !== 'all' && listedByFilter !== 'none' && ` (listed by: ${listedByFilter})`}
             {listedByFilter === 'none' && ` (not assigned)`}
@@ -1744,6 +1936,71 @@ export default function AdminProductsPage() {
           >
             <ChevronRight className="h-5 w-5" />
           </button>
+        </div>
+      )}
+
+      {/* Bulk Paste Selection Modal */}
+      {isPasteSelectOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm animate-fade-in">
+          <div className="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl border border-gray-200">
+            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+              <div className="flex items-center gap-2">
+                <div className="p-2 bg-indigo-50 text-indigo-600 rounded-xl">
+                  <ClipboardList className="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">Bulk Select Products</h3>
+                  <p className="text-xs text-gray-500">Paste URLs, slugs, IDs, GTINs, or titles (one per line or comma-separated)</p>
+                </div>
+              </div>
+              <button
+                onClick={() => {
+                  setIsPasteSelectOpen(false);
+                  setPasteMatchCount(null);
+                }}
+                className="p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="mt-4">
+              <textarea
+                value={pasteText}
+                onChange={(e) => setPasteText(e.target.value)}
+                placeholder={"https://weteextees.com/products/freischwinger-stuhl...\nrotan-bijzettafel-maeva-zwart-naturel-rotan-45-45-43cm\n7442923070013\n..."}
+                rows={7}
+                className="w-full rounded-xl border border-gray-300 p-3 text-sm font-mono focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-gray-800"
+              />
+              {pasteMatchCount !== null && (
+                <div className="mt-2 text-xs font-semibold text-emerald-600 flex items-center gap-1.5">
+                  <CheckCircle2 className="h-4 w-4" />
+                  Matched and selected {pasteMatchCount} products!
+                </div>
+              )}
+            </div>
+
+            <div className="mt-6 flex items-center justify-end gap-3 border-t border-gray-100 pt-4">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsPasteSelectOpen(false);
+                  setPasteMatchCount(null);
+                }}
+                className="px-4 py-2 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={handleApplyPasteSelect}
+                disabled={!pasteText.trim()}
+                className="px-5 py-2 rounded-xl text-sm font-bold bg-indigo-600 text-white hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Select Matches
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </AdminLayout>
