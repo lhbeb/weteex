@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllProducts } from '@/lib/data';
 import { formatValidSku, mapConditionToGmc } from '@/lib/conditions';
+import { getProductTranslation } from '@/lib/productTranslations';
 import type { Product } from '@/types/product';
 
 const BASE_URL = 'https://weteextees.com';
@@ -27,7 +28,7 @@ const SHIPPING_BY_COUNTRY: Record<FeedCountry, {
   BE: { service: 'Gratis standaardlevering (België)', currency: 'EUR' },
   IT: { service: 'Spedizione standard gratuita (Italia)', currency: 'EUR' },
   ES: { service: 'Envío estándar gratuito (España)', currency: 'EUR' },
-  US: { service: 'Free Standard Shipping', currency: 'USD' },
+  US: { service: 'Free Standard Shipping (United States)', currency: 'USD' },
 };
 
 /**
@@ -160,6 +161,8 @@ export async function GET(request: NextRequest) {
     request.nextUrl.searchParams.get('currency'),
     SUPPORTED_CURRENCIES,
   );
+  const rawLang = request.nextUrl.searchParams.get('lang') || request.nextUrl.searchParams.get('language');
+  const requestedLang = rawLang?.toLowerCase() === 'en' ? 'en' : rawLang?.toLowerCase() === 'de' ? 'de' : null;
 
   if (country === null) {
     return new NextResponse(`Unsupported country. Supported: ${SUPPORTED_COUNTRIES.join(', ')}`, { status: 400 });
@@ -167,6 +170,9 @@ export async function GET(request: NextRequest) {
   if (currency === null) {
     return new NextResponse(`Unsupported currency. Supported: ${SUPPORTED_CURRENCIES.join(', ')}`, { status: 400 });
   }
+
+  // Determine feed language: default to 'en' if country=US, or if requestedLang is 'en'; otherwise 'de'
+  const feedLanguage: 'de' | 'en' = requestedLang ?? (country === 'US' ? 'en' : 'de');
 
   try {
     let products: Product[] = [];
@@ -178,20 +184,23 @@ export async function GET(request: NextRequest) {
 
     const targetCountries: readonly FeedCountry[] = country
       ? [country]
-      : [DEFAULT_COUNTRY];
-    const targetCurrency = currency ?? (country === 'US' ? 'USD' : DEFAULT_CURRENCY);
+      : [feedLanguage === 'en' ? 'US' : DEFAULT_COUNTRY];
+    const targetCurrency = currency ?? (feedLanguage === 'en' || country === 'US' ? 'USD' : DEFAULT_CURRENCY);
 
     const itemsXml = products
       .filter(isFeedEligible)
       .map((product) => {
         const sku = escapeXml(formatValidSku(product));
-        const normalizedTitle = normalizeFeedText(product.title || 'Product');
+        
+        // Bilingual title and description based on target feed language (reads from DB first)
+        const translated = getProductTranslation(product, feedLanguage, product.title, product.description);
+        const normalizedTitle = normalizeFeedText(translated.title);
         const title = escapeXml(truncateFeedText(normalizedTitle, GMC_TITLE_MAX_LENGTH));
 
-        const rawDesc = normalizeFeedText(product.description || product.title || '');
+        const rawDesc = normalizeFeedText(translated.description);
         const description = escapeXml(truncateFeedText(rawDesc, GMC_DESCRIPTION_MAX_LENGTH));
 
-        const link = escapeXml(`${BASE_URL}/products/${encodeURIComponent(product.slug)}`);
+        const link = escapeXml(`${BASE_URL}/products/${encodeURIComponent(product.slug)}?lang=${feedLanguage}`);
         
         // Calculate price in target currency
         let finalPrice = Number(product.price);
@@ -206,7 +215,7 @@ export async function GET(request: NextRequest) {
         const availability = product.inStock === false ? 'out_of_stock' : 'in_stock';
         const condition = mapConditionToGmc(product.condition);
         const brand = escapeXml(product.brand || 'Weteextees');
-        const category = escapeXml(product.category || 'Furniture');
+        const category = escapeXml(product.category || 'Modern Chairs & Furniture');
         const googleProductCategory = getGoogleProductCategory(product.category);
         const feedImages = getFeedImageUrls(product);
         const imageLink = escapeXml(feedImages[0]);
@@ -246,23 +255,24 @@ export async function GET(request: NextRequest) {
       <g:google_product_category>${googleProductCategory}</g:google_product_category>
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>
       <g:return_policy_label>default_return_policy</g:return_policy_label>
-      <g:price_valid_until>${priceValidUntilStr}</g:price_valid_until>
-      <g:included_destination>Free_listings</g:included_destination>
-      <g:included_destination>Shopping_ads</g:included_destination>
-      <g:excluded_destination>Free_local_listings</g:excluded_destination>
-      <g:excluded_destination>Local_inventory_ads</g:excluded_destination>${identifierXml}${buildShippingXml(targetCountries, targetCurrency)}
+      <g:price_valid_until>${priceValidUntilStr}</g:price_valid_until>${identifierXml}${buildShippingXml(targetCountries, targetCurrency)}
     </item>`;
       })
       .join('');
 
-    const targetLabel = country ? ` (${country})` : ' (DE/EU)';
+    const targetLabel = country ? ` (${country})` : feedLanguage === 'en' ? ' (US/Global)' : ' (DE/EU)';
     const currencyLabel = currency ? ` in ${currency}` : '';
+    const channelDesc = feedLanguage === 'en'
+      ? `Weteextees Products for the US and International Markets${currencyLabel}`
+      : `Weteextees Produkte für Deutschland und die EU${currencyLabel}`;
+
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
     <title>Weteextees Google Merchant Center Feed${targetLabel}${currencyLabel}</title>
     <link>${BASE_URL}</link>
-    <description>Weteextees Produkte für Deutschland und die EU${currencyLabel}</description>
+    <description>${channelDesc}</description>
+    <language>${feedLanguage}</language>
     ${itemsXml}
   </channel>
 </rss>`;

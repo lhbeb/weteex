@@ -20,6 +20,7 @@ import { getConditionDisplayLabel, getConditionTooltip } from '@/lib/conditions'
 import { getMarket, formatMarketPrice } from '@/lib/markets';
 import { STORE_FAQS_DE, STORE_FAQS_EN } from '@/lib/storeFaqs';
 import { useLocale } from '@/context/LocaleContext';
+import { getProductTranslation } from '@/lib/productTranslations';
 
 interface ProductPageClientProps {
   product: Product | null;
@@ -52,6 +53,11 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
   const [sizeError, setSizeError] = useState<boolean>(false);
   const sizeSelectorRef = useRef<HTMLDivElement | null>(null);
 
+  const activeTranslation = useMemo(() => {
+    if (!product?.slug) return { title: product?.title || '', description: product?.description || '' };
+    return getProductTranslation(product.slug, isGerman ? 'de' : 'en', product.title, product.description);
+  }, [product?.slug, product?.title, product?.description, isGerman]);
+
   useEffect(() => {
     if (product?.meta) {
       if (product.meta.has_mens_sizes) {
@@ -79,7 +85,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
   }, [product?.meta?.sizes_womens]);
 
   const visibleFaqItems = showAllFaqs ? faqItems : faqItems.slice(0, COLLAPSED_FAQ_COUNT);
-  const descriptionText = product?.description ?? "";
+  const descriptionText = activeTranslation.description || product?.description || "";
   const shouldCollapseDescription = descriptionText.length > 360;
   const descriptionPreview = useMemo(() => {
     if (!shouldCollapseDescription) {
@@ -474,7 +480,9 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
     );
   }
 
-  const { slug, title, description, price, original_price, images, condition, reviews } = product || {};
+  const { slug, price, original_price, images, condition, reviews } = product || {};
+  const title = activeTranslation.title || product?.title || '';
+  const description = activeTranslation.description || product?.description || '';
 
   // Safety checks
   if (!slug || !title || !images || images.length === 0) {

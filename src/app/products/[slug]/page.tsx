@@ -2,6 +2,7 @@ import { getProductBySlug } from '@/lib/data';
 import { getReviewProduct, isReviewProduct } from '@/lib/reviewProducts';
 import { getSellerById } from '@/lib/supabase/sellers';
 import { formatValidSku, mapConditionToSchema } from '@/lib/conditions';
+import { getProductTranslation } from '@/lib/productTranslations';
 import { notFound } from 'next/navigation';
 import ProductPageClient from './ProductPageClient';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -10,42 +11,56 @@ import type { Metadata, ResolvingMetadata } from 'next';
 const BASE_URL = 'https://weteextees.com';
 
 export async function generateMetadata(
-  { params }: { params: Promise<{ slug: string }> },
+  { params, searchParams }: { params: Promise<{ slug: string }>; searchParams?: Promise<{ lang?: string }> },
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
   try {
     const { slug } = await params;
+    const resolvedSearchParams = searchParams ? await searchParams : {};
+    const lang = (resolvedSearchParams.lang?.toLowerCase() === 'en' ? 'en' : 'de') as 'de' | 'en';
+
     if (!slug) return { title: 'Product Not Found | Weteextees' };
 
     let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
     if (!product) product = await getProductBySlug(slug);
     if (!product) return { title: 'Product Not Found | Weteextees' };
 
-    const title = `${product.title || 'Produkt'} - ${product.brand || 'Weteextees'} | ${product.category || 'Möbel'} | Weteextees`;
-    const description = (product.description || '').substring(0, 155) + '...';
+    const translation = getProductTranslation(product, lang, product.title, product.description);
+    const displayTitle = translation.title;
+    const displayDescription = translation.description;
+
+    const title = `${displayTitle} - ${product.brand || 'Weteextees'} | ${product.category || (lang === 'en' ? 'Furniture' : 'Möbel')} | Weteextees`;
+    const description = (displayDescription || '').substring(0, 155) + '...';
     const canonicalUrl = `${BASE_URL}/products/${product.slug}`;
-    const currencyCode = product.currency || 'EUR';
-    const price = (product.price || 0).toFixed(2);
+    const currencyCode = lang === 'en' ? 'USD' : (product.currency || 'EUR');
+    const price = lang === 'en'
+      ? (Math.round((product.price || 0) * 1.085 * 100) / 100).toFixed(2)
+      : (product.price || 0).toFixed(2);
     const inStock = product.inStock !== false;
 
     const imageUrls = (product.images || []).map(img => ({
       url: new URL(img, BASE_URL).toString(),
-      alt: product!.title || 'Produktbild',
+      alt: displayTitle,
     }));
 
     return {
       title,
       description,
-      keywords: product.meta?.keywords || `${product.title}, ${product.brand}, ${product.category}`,
+      keywords: product.meta?.keywords || `${displayTitle}, ${product.brand}, ${product.category}`,
       alternates: {
         canonical: canonicalUrl,
+        languages: {
+          'de': `${BASE_URL}/products/${product.slug}?lang=de`,
+          'en': `${BASE_URL}/products/${product.slug}?lang=en`,
+        },
       },
       openGraph: {
         title,
         description,
-        url: canonicalUrl,
+        url: `${canonicalUrl}?lang=${lang}`,
         siteName: 'Weteextees',
         type: 'website',
+        locale: lang === 'en' ? 'en_US' : 'de_DE',
         images: imageUrls,
       },
       twitter: {
@@ -73,9 +88,17 @@ export async function generateMetadata(
   }
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ProductPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ lang?: string }>;
+}) {
   try {
     const { slug } = await params;
+    const resolvedSearchParams = searchParams ? await searchParams : {};
+    const lang = (resolvedSearchParams.lang?.toLowerCase() === 'en' ? 'en' : 'de') as 'de' | 'en';
 
     if (!slug || typeof slug !== 'string') {
       notFound();
@@ -113,16 +136,25 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     const inStock = p.inStock !== false;
     const hasReviews = (p.reviewCount || 0) > 0 && (p.rating || 0) > 0;
 
+    const translation = getProductTranslation(p, lang, p.title, p.description);
+    const displayTitle = translation.title;
+    const displayDescription = translation.description;
+
     // priceValidUntil: 1 year from today — expected by Google Merchant Center
     const priceValidUntil = new Date();
     priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
+
+    const priceAmount = lang === 'en'
+      ? Math.round((p.price || 0) * 1.085 * 100) / 100
+      : (p.price || 0);
+    const priceCurrency = lang === 'en' ? 'USD' : 'EUR';
 
     // Generate Product Schema for Rich Snippets (EU & Google Merchant Center compliant)
     const productSchema: Record<string, any> = {
       "@context": "https://schema.org",
       "@type": "Product",
-      "name": p.title || 'Produkt',
-      "description": p.description || '',
+      "name": displayTitle,
+      "description": displayDescription,
       "image": (p.images || []).map((img: string) => {
         try { return new URL(img, BASE_URL).toString(); } catch { return img; }
       }),
@@ -130,26 +162,26 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         "@type": "Brand",
         "name": p.brand || 'Weteextees'
       },
-      "category": p.category || 'Möbel',
+      "category": p.category || (lang === 'en' ? 'Furniture' : 'Möbel'),
       "sku": formatValidSku(p, slug),
       "offers": {
         "@type": "Offer",
-        "price": p.price || 0,
-        "priceCurrency": "EUR",
+        "price": priceAmount,
+        "priceCurrency": priceCurrency,
         "validFrom": new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10),
         "priceValidUntil": priceValidUntil.toISOString().slice(0, 10),
         "availability": inStock
           ? "https://schema.org/InStock"
           : "https://schema.org/OutOfStock",
         "itemCondition": mapConditionToSchema(p.condition),
-        "url": `${BASE_URL}/products/${p.slug}`,
+        "url": `${BASE_URL}/products/${p.slug}?lang=${lang}`,
         "seller": {
           "@type": "Organization",
           "name": "Weteextees"
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
-          "name": "Weteextees 30-Day Return & Refund Policy",
+          "name": lang === 'en' ? "Weteextees 30-Day Return & Refund Policy" : "Weteextees 30-Tage Rückgaberecht",
           "merchantReturnLink": `${BASE_URL}/return-policy`,
           "applicableCountry": ["US", "DE", "AT", "FR", "NL", "BE", "IT", "ES"],
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
@@ -166,38 +198,11 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             "shippingRate": {
               "@type": "MonetaryAmount",
               "value": 0,
-              "currency": "USD"
+              "currency": priceCurrency
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": "US"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 1,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 5,
-                "maxValue": 8,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 0,
-              "currency": "EUR"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "DE"
+              "addressCountry": lang === 'en' ? "US" : "DE"
             },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
