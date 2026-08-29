@@ -84,10 +84,8 @@ export default function RootLayout({
         {/* Facebook Domain Verification */}
         <meta name="facebook-domain-verification" content="k3ytyf6hqaa462mz10uzwnmugj0d0o" />
         <meta name="msvalidate.01" content="75494FC1101908256EEEA046C47C3264" />
-        {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="o8gC6haURQ1t7L9G8xfh_-5imCYNPmnhjnt2IrgEPco" />
-        {/* Google Merchant Center Domain Claim Verification */}
-        <meta name="google-site-verification" content="b9sTsKBaeI57rZlsQCFgRUX6n2euhrco-VzhjdgobjU" />
+        {/* Google Site Verification */}
+        <meta name="google-site-verification" content="p2znVZtoLtt-5MzWymDx1vd3riF5XrQ_SdfPSh-wNVo" />
         {/* Pinterest Domain Verification */}
         <meta name="p:domain_verify" content="f0562c25efa6672e24e5fa220aed6c16" />
       </head>
