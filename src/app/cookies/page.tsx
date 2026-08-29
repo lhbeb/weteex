@@ -118,7 +118,7 @@ const CookiesPage = () => {
                   {isGerman ? 'Live-Chat:' : 'Live Chat:'}
                 </div>
                 <div className="text-gray-600">
-                  {isGerman ? '24/7 Live-Chat auf der Website' : '24/7 Instant Live Chat Support'}
+                  {isGerman ? 'Live-Chat (Mo-Fr 09:00-17:00) auf der Website' : 'Mo-Fr 09:00-17:00 Instant Live Chat Support'}
                 </div>
               </div>
               <div>

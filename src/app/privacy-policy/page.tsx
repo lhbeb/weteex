@@ -58,7 +58,7 @@ const PrivacyPolicyPage = () => {
                 <>
                   <li>Visit our website (secure server logfiles, IP address, device & browser info, pages viewed)</li>
                   <li>Place an order (full name, shipping address, billing address, email address, payment confirmation)</li>
-                  <li>Reach out to our customer care or 24/7 Live Chat support</li>
+                  <li>Reach out to our customer care or Mo-Fr 09:00-17:00 Live Chat support</li>
                 </>
               )}
             </ul>
@@ -161,7 +161,7 @@ const PrivacyPolicyPage = () => {
                   {isGerman ? 'Live-Chat:' : 'Live Chat:'}
                 </div>
                 <div className="text-gray-600">
-                  {isGerman ? '24/7 Live-Chat-Support auf der Website' : '24/7 Instant Live Chat Support on site'}
+                  {isGerman ? 'Live-Chat (Mo-Fr 09:00-17:00)-Support auf der Website' : 'Mo-Fr 09:00-17:00 Instant Live Chat Support on site'}
                 </div>
               </div>
               <div>

@@ -5,7 +5,7 @@
     "deliveryTime": "Lieferung in 2–4 Werktagen",
     "inStock": "Auf Lager & sofort lieferbar",
     "vatIncluded": "inkl. MwSt., kostenloser versicherter Speditionsversand",
-    "chatSupport": "Chat support: 24/7",
+    "chatSupport": "Chat support: Mon-Fri 9am-5pm",
     "emailSupport": "E-Mail: contact@weteextees.com",
     "headquarters": "Standorte & Logistik",
     "headquartersAddress": "Deutschland: Hochalmstraße 10, 81825 München | USA: 900 AZ-66, Peach Springs, AZ 86434",
@@ -34,7 +34,7 @@
     "about": "Über uns"
   },
   "announcements": {
-    "chat": "Chat-Support: 24/7 erreichbar",
+    "chat": "Chat support: Available Mon-Fri 9am-5pm",
     "email": "E-Mail: contact@weteextees.com",
     "needHelp": "Hilfe benötigt? Kontaktieren Sie uns →",
     "shippingGuarantee": "Kostenloser versicherter Versand nach DE & EU"
@@ -61,9 +61,9 @@
   "shippingSection": {
     "title": "Versand am selben Werktag",
     "badge": "Express-Abwicklung",
-    "description": "Bestellen Sie montags bis freitags bis 14:00 Uhr und Ihre Bestellung wird noch am selben Werktag sorgfältig verpackt und an unsere Spedition übergeben.",
+    "description": "Bestellen Sie montags bis freitags bis 23:00 Uhr und Ihre Bestellung wird noch am selben Werktag sorgfältig verpackt und an unsere Spedition übergeben.",
     "card1Title": "Garantierter Versand am selben Tag",
-    "card1Desc": "Bestellungen vor 14:00 Uhr verlassen noch heute unser Lager.",
+    "card1Desc": "Bestellungen vor 23:00 Uhr verlassen noch heute unser Lager.",
     "card2Title": "100 % Versicherter Speditionsversand",
     "card2Desc": "Jedes Möbelstück wird professionell verpackt und lückenlos versichert geliefert.",
     "bottomSubtitle": "Bereit für Ihr neues Lieblingsstück?",
@@ -81,7 +81,7 @@
     "deliveryReturnText": "Kostenloser, versicherter Versand nach Deutschland & Europa. 30 Tage Rückgaberecht für ein risikofreies Einkaufserlebnis.",
     "authenticityGuaranteed": "100 % Geprüfte Qualität",
     "secureCheckout": "Sichere SSL-Verschlüsselung",
-    "fastSupport": "24/7 Kundenservice"
+    "fastSupport": "Mon-Fri 9am-5pm Support"
   },
   "footer": {
     "aboutText": "Ihre Adresse für erstklassige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",

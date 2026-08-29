@@ -261,7 +261,7 @@ export default function ContactPage() {
                           {isGerman ? 'Live-Chat-Support' : 'Instant Live Chat'}
                         </h3>
                         <p className="text-gray-600 mt-1">
-                          <span className="font-semibold">{isGerman ? 'Erreichbarkeit:' : 'Availability:'}</span> {isGerman ? '24/7 Online-Sofort-Chat' : '24/7 Instant Live Support on site'}
+                          <span className="font-semibold">{isGerman ? 'Erreichbarkeit:' : 'Availability:'}</span> {isGerman ? 'Montag bis Freitag, 09:00 - 17:00 Uhr' : 'Monday to Friday, 9:00 AM - 5:00 PM'}
                         </p>
                       </div>
                     </div>
@@ -279,8 +279,8 @@ export default function ContactPage() {
                         {isGerman ? 'Servicezeiten' : 'Customer Support Hours'}
                       </h3>
                       <ul className="text-gray-600 space-y-1">
-                        <li>{isGerman ? 'Live-Chat: 24 Stunden, 7 Tage die Woche besetzt' : 'Live Chat: 24/7 Round-the-clock availability'}</li>
-                        <li>{isGerman ? 'E-Mail-Support: Antwort innerhalb von 24 Std.' : 'Email: Inquiries answered within 24 hours'}</li>
+                        <li>{isGerman ? 'Live-Chat & Support: Montag bis Freitag, 09:00 - 17:00 Uhr' : 'Live Chat & Support: Monday to Friday, 9:00 AM - 5:00 PM'}</li>
+                        <li>{isGerman ? 'Wochenende: Anfragen werden am nächsten Werktag beantwortet.' : 'Weekends: Inquiries answered the next business day.'}</li>
                       </ul>
                     </div>
                   </div>

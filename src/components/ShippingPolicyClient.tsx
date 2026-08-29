@@ -71,7 +71,7 @@ export default function ShippingPolicyClient() {
         'You will receive an automated dispatch email with your carrier tracking number upon pickup',
         'Real-time shipment milestones are viewable on our Track Order portal anytime',
         'Carriers provide delivery appointment notifications prior to final arrival',
-        'Transparent 24/7 status assistance from our customer care team',
+        'Transparent Mo-Fr 09:00-17:00 status assistance from our customer care team',
       ],
     },
     {
@@ -89,7 +89,7 @@ export default function ShippingPolicyClient() {
         'Our furniture pieces arrive packaged with multi-layered shock absorption and reinforced corners',
         'Please perform a visual check of outer cartons upon delivery driver handover',
         'In the rare event of visible package distress, note it on the carrier receipt',
-        'Should an item be damaged, contact our 24/7 support within 48 hours with photos for a prompt replacement',
+        'Should an item be damaged, contact our Mo-Fr 09:00-17:00 support within 48 hours with photos for a prompt replacement',
       ],
     },
   ];
@@ -138,7 +138,7 @@ export default function ShippingPolicyClient() {
           <div className="rounded-xl border border-[#DCE5DE] bg-white p-5 shadow-sm">
             <ShieldCheck className="mb-4 h-6 w-6 text-[#1D2E24]" />
             <h2 className="text-lg font-bold text-[#1E2621]">
-              {isGerman ? 'Zuverlässiger Service' : '24/7 Support & Care'}
+              {isGerman ? 'Zuverlässiger Service' : 'Mo-Fr 09:00-17:00 Support & Care'}
             </h2>
             <p className="mt-2 text-sm leading-6 text-[#5C6B61]">
               {isGerman
@@ -215,7 +215,7 @@ export default function ShippingPolicyClient() {
             <div className="flex items-center gap-3 rounded-xl bg-[#F6F8F5] p-4 border border-[#DCE5DE]">
               <Clock className="h-5 w-5 text-[#1D2E24]" />
               <span className="text-sm font-medium text-[#1E2621]">
-                {isGerman ? '24/7 Live-Chat verfügbar' : '24/7 Live Chat Support'}
+                {isGerman ? 'Live-Chat (Mo-Fr 09:00-17:00) verfügbar' : 'Mo-Fr 09:00-17:00 Live Chat Support'}
               </span>
             </div>
           </div>

@@ -204,7 +204,7 @@ export default function ReturnPolicyClient() {
               {isGerman ? (
                 <>
                   <li>
-                    <strong>Kundenservice kontaktieren</strong>: Schreiben Sie uns an <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> oder nutzen Sie unseren <span className="font-semibold">24/7 Live-Chat</span>.
+                    <strong>Kundenservice kontaktieren</strong>: Schreiben Sie uns an <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> oder nutzen Sie unseren <span className="font-semibold">Live-Chat (Mo-Fr 09:00-17:00)</span>.
                   </li>
                   <li>
                     <strong>Rücksendeanweisungen erhalten</strong>: Wir stellen Ihnen das Retourenetikett oder die Speditionsabholung zur Verfügung.
@@ -219,7 +219,7 @@ export default function ReturnPolicyClient() {
               ) : (
                 <>
                   <li>
-                    <strong>Return Label Included in Package</strong>: A prepaid return slip / instructions are enclosed in your original shipment packaging. If misplaced, email <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> or use our 24/7 Live Chat for an instant digital copy.
+                    <strong>Return Label Included in Package</strong>: A prepaid return slip / instructions are enclosed in your original shipment packaging. If misplaced, email <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:text-[#D1A966] hover:underline font-semibold">contact@weteextees.com</a> or use our Mo-Fr 09:00-17:00 Live Chat for an instant digital copy.
                   </li>
                   <li>
                     <strong>Secure Packaging</strong>: Repack the furniture in its original protective wrapping and attach the return shipping label.
@@ -278,7 +278,7 @@ export default function ReturnPolicyClient() {
             <p>
               {isGerman
                 ? 'Unser Serviceteam hilft Ihnen bei allen Fragen zur Rückabwicklung:'
-                : 'Our support team is on standby 24/7 to assist with your return:'}
+                : 'Our support team is on standby Mo-Fr 09:00-17:00 to assist with your return:'}
             </p>
 
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE] grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -288,7 +288,7 @@ export default function ReturnPolicyClient() {
                   <span>{isGerman ? 'Live-Chat' : 'Live Chat'}</span>
                 </div>
                 <div className="text-sm text-gray-600 pl-7 space-y-1">
-                  <div>{isGerman ? '24/7 Online-Sofort-Hilfe' : '24/7 Instant Live Support'}</div>
+                  <div>{isGerman ? 'Online-Sofort-Hilfe (Mo-Fr 09:00-17:00)' : 'Mo-Fr 09:00-17:00 Instant Live Support'}</div>
                 </div>
 
                 <div className="flex items-center gap-2 font-bold text-[#1D2E24] pt-2">
@@ -326,8 +326,8 @@ export default function ReturnPolicyClient() {
             </h3>
             <p className="text-sm sm:text-base text-[#F6F8F5]/85 leading-relaxed">
               {isGerman
-                ? 'Ihre Zufriedenheit steht für uns an erster Stelle. Sollten Sie Fragen zu Ihrer Lieferung oder Rückgabe haben, steht Ihnen unser Kundenservice 24/7 über den Live-Chat zur Verfügung.'
-                : 'Your happiness with your home space is our ultimate mission. If you ever have any questions about delivery, assembly, or returns, our team is at your disposal 24/7.'}
+                ? 'Ihre Zufriedenheit steht für uns an erster Stelle. Sollten Sie Fragen zu Ihrer Lieferung oder Rückgabe haben, steht Ihnen unser Kundenservice Mo-Fr 09:00-17:00 über den Live-Chat zur Verfügung.'
+                : 'Your happiness with your home space is our ultimate mission. If you ever have any questions about delivery, assembly, or returns, our team is at your disposal Mo-Fr 09:00-17:00.'}
             </p>
             <div className="mt-4 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
               <span className="text-xs text-[#F6F8F5]/70">

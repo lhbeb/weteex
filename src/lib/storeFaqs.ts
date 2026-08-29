@@ -45,12 +45,12 @@ export const STORE_FAQS_DE: readonly StoreFaq[] = [
   {
     question: 'Kann ich eine Bestellung nach dem Absenden ändern oder stornieren?',
     answer:
-      'Bitte kontaktieren Sie uns schnellstmöglich per 24/7 Live-Chat oder E-Mail. Solange die Ware noch nicht verpackt und an den Transporteur übergeben wurde, passen wir Ihre Bestellung gerne an.',
+      'Bitte kontaktieren Sie uns schnellstmöglich per Live-Chat (Mo-Fr 09:00-17:00) oder E-Mail. Solange die Ware noch nicht verpackt und an den Transporteur übergeben wurde, passen wir Ihre Bestellung gerne an.',
   },
   {
     question: 'Wie erreiche ich den Kundenservice von Weteextees?',
     answer:
-      'Sie erreichen unser Support-Team rund um die Uhr (24/7) über den Live-Chat auf unserer Website oder per E-Mail an contact@weteextees.com.',
+      'Sie erreichen unser Support-Team rund um die Uhr (Mo-Fr 09:00-17:00) über den Live-Chat auf unserer Website oder per E-Mail an contact@weteextees.com.',
     linkHref: '/contact',
     linkLabel: 'Kundenservice kontaktieren',
   },
@@ -96,12 +96,12 @@ export const STORE_FAQS_EN: readonly StoreFaq[] = [
   {
     question: 'Can I modify or cancel my order after placing it?',
     answer:
-      'Please reach out immediately via our 24/7 Live Chat or email. As long as your order has not been picked and handed over to the freight carrier, we will gladly adjust it for you.',
+      'Please reach out immediately via our Mo-Fr 09:00-17:00 Live Chat or email. As long as your order has not been picked and handed over to the freight carrier, we will gladly adjust it for you.',
   },
   {
     question: 'How do I reach Weteextees customer support?',
     answer:
-      'Our dedicated customer care team is available 24/7 via the instant Live Chat on our website or by email at contact@weteextees.com.',
+      'Our dedicated customer care team is available Mo-Fr 09:00-17:00 via the instant Live Chat on our website or by email at contact@weteextees.com.',
     linkHref: '/contact',
     linkLabel: 'Contact Customer Support',
   },

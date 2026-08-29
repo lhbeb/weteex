@@ -414,7 +414,7 @@ export default function AboutPageClient() {
                 </div>
               </div>
               <div className="ml-8 text-gray-600">
-                {isGerman ? '24/7 Online-Sofort-Chat verfügbar' : '24/7 Instant Live Chat Available'}
+                {isGerman ? 'Live-Chat verfügbar (Mo-Fr 09:00-17:00)' : 'Mo-Fr 09:00-17:00 Instant Live Chat Available'}
               </div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
@@ -434,7 +434,7 @@ export default function AboutPageClient() {
                 </div>
               </div>
               <div className="text-gray-600 ml-8 space-y-1">
-                <div>{isGerman ? 'Live-Chat: 24/7 besetzt' : 'Live Chat: 24/7 Availability'}</div>
+                <div>{isGerman ? 'Live-Chat: Mo-Fr 09:00-17:00' : 'Live Chat: Mo-Fr 09:00-17:00 Availability'}</div>
                 <div>{isGerman ? 'E-Mail-Support: Antwort innerhalb von 24 Std.' : 'Email Support: Replies within 24h'}</div>
               </div>
             </div>

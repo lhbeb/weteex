@@ -183,7 +183,7 @@ const TermsPage = () => {
                   {isGerman ? 'Live-Chat:' : 'Live Chat:'}
                 </div>
                 <div className="text-gray-600">
-                  {isGerman ? '24/7 Live-Chat-Support auf der Website' : '24/7 Instant Live Chat Support on site'}
+                  {isGerman ? 'Live-Chat (Mo-Fr 09:00-17:00)-Support auf der Website' : 'Mo-Fr 09:00-17:00 Instant Live Chat Support on site'}
                 </div>
               </div>
               <div>

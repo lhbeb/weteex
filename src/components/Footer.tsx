@@ -30,7 +30,7 @@ const Footer = () => {
               <div className="flex items-center">
                 <MessageSquare className="h-5 w-5 shrink-0 text-[#D1A966] mr-2" />
                 <span className="text-[#DCE5DE]">
-                  <span className="font-semibold text-white">Chat support:</span> 24/7
+                  {t('common.chatSupport')}
                 </span>
               </div>
               <div className="flex items-center">

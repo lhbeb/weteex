@@ -172,7 +172,7 @@ function ThankYouContent() {
                 </a>
               </p>
               <p className="text-gray-700">
-                💬 <span className="text-[#1D2E24] font-medium">24/7 Live-Chat-Support verfügbar</span>
+                💬 <span className="text-[#1D2E24] font-medium">Live-Chat (Mo-Fr 09:00-17:00)-Support verfügbar</span>
               </p>
             </div>
           </div>
