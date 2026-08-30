@@ -14,7 +14,7 @@ import FacebookPixel from "@/components/FacebookPixel";
 import { LocaleProvider } from '@/context/LocaleContext';
 import { AdminRouteCheck, PublicRouteOnly, AdminRouteOnly, CheckoutRouteOnly } from "@/components/AdminRouteCheck";
 import GlobalErrorReporter from "@/components/GlobalErrorReporter";
-import TidioChat from "@/components/TidioChat";
+import LiveChatWidget from "@/components/LiveChatWidget";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -213,7 +213,7 @@ export default function RootLayout({
             async
           />
         </AdminRouteCheck>
-        <TidioChat />
+        <LiveChatWidget />
         <SpeedInsights />
       </body>
     </html>

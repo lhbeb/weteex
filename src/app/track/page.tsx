@@ -111,12 +111,12 @@ const TrackPage = () => {
     const trimmedTrackingNumber = trackingNumber.trim();
 
     if (!trimmedTrackingNumber) {
-      setError("Bitte geben Sie eine Sendungsnummer ein.");
+      setError("Please enter a tracking number.");
       return;
     }
 
     if (!window.YQV5) {
-      setError("Die Sendungsverfolgung wird noch geladen. Bitte versuchen Sie es gleich erneut.");
+      setError("The tracking system is still loading. Please try again in a moment.");
       return;
     }
 
@@ -128,12 +128,12 @@ const TrackPage = () => {
         YQ_ContainerId: "YQContainer",
         YQ_Height: 560,
         YQ_Fc: "0",
-        YQ_Lang: "de",
+        YQ_Lang: "en",
         YQ_Num: trimmedTrackingNumber,
       });
       setTrackingNumber(trimmedTrackingNumber);
     } catch {
-      setError("Die Sendungsverfolgung konnte nicht gestartet werden. Bitte versuchen Sie es erneut.");
+      setError("Could not start tracking. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -146,18 +146,18 @@ const TrackPage = () => {
           <div className="grid lg:grid-cols-[minmax(0,1.1fr)_360px]">
             <section className="px-6 py-8 sm:px-8 sm:py-10 lg:px-10">
               <div className="mb-3 text-sm font-semibold text-[#1D2E24]">
-                Weteextees Sendungsverfolgung
+                Weteextees Order Tracking
               </div>
               <h1 className="max-w-2xl text-3xl font-semibold text-[#1E2621] sm:text-4xl">
-                Bestellung verfolgen
+                Track your order
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-[#5C6B61] sm:text-base">
-                Geben Sie Ihre Sendungsnummer ein, um den aktuellen Status und Lieferfortschritt Ihrer Bestellung einzusehen.
+                Enter your tracking number to view the current status and delivery progress of your order.
               </p>
 
               <form onSubmit={handleTrack} className="mt-8 rounded-[24px] border border-[#DCE5DE] bg-[#F6F8F5] p-4 sm:p-5">
                 <label htmlFor="trackingNumber" className="mb-3 block text-sm font-medium text-[#1E2621]">
-                  Sendungsnummer / Tracking-Nummer
+                  Tracking Number
                 </label>
                 <div className="flex flex-col gap-3 sm:flex-row">
                   <input
@@ -170,7 +170,7 @@ const TrackPage = () => {
                         setError("");
                       }
                     }}
-                    placeholder="z.B. DE123456789"
+                    placeholder="e.g. DE123456789"
                     maxLength={50}
                     autoComplete="off"
                     className="h-14 flex-1 rounded-2xl border border-[#DCE5DE] bg-white px-4 text-sm font-medium text-[#1E2621] outline-none transition focus:border-[#1D2E24] focus:ring-2 focus:ring-[#1D2E24]/10"
@@ -180,7 +180,7 @@ const TrackPage = () => {
                     disabled={!isScriptReady || isSubmitting}
                     className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#D1A966] px-6 text-sm font-bold text-[#142019] transition hover:bg-[#DEBC80] disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
                   >
-                    {isSubmitting ? "Wird geladen..." : "Sendung suchen"}
+                    {isSubmitting ? "Loading..." : "Track Order"}
                   </button>
                 </div>
 
@@ -206,31 +206,31 @@ const TrackPage = () => {
             <aside className="border-t border-[#DCE5DE] bg-[#F6F8F5] px-6 py-8 lg:border-l lg:border-t-0">
               <div className="rounded-[24px] border border-[#DCE5DE] bg-white p-6">
                 <h2 className="text-xl font-semibold text-[#1E2621]">
-                  Hinweise zur Verfolgung
+                  Tracking Information
                 </h2>
                 <div className="mt-4 space-y-4 text-sm leading-7 text-[#5C6B61]">
                   <p>
-                    Verwenden Sie bitte die Sendungsnummer aus Ihrer Weteextees Versandbestätigungs-E-Mail.
+                    Please use the tracking number from your Weteextees shipping confirmation email.
                   </p>
                   <p>
-                    Einige Logistikpartner benötigen einige Stunden, bis der erste Scan nach der Übergabe im System sichtbar ist.
+                    Some logistics partners may require a few hours before the first scan is visible in the system after handover.
                   </p>
                   <p>
-                    Sollte sich der Status nach mehreren Werktagen nicht aktualisieren, hilft Ihnen unser Support-Team gerne weiter.
+                    If the status does not update after several business days, our support team will be happy to help you.
                   </p>
                 </div>
               </div>
 
               <div className="mt-6 rounded-[24px] border border-[#DCE5DE] bg-white p-6">
-                <h3 className="text-lg font-semibold text-[#1E2621]">Fragen zu Ihrer Lieferung?</h3>
+                <h3 className="text-lg font-semibold text-[#1E2621]">Questions about your delivery?</h3>
                 <p className="mt-3 text-sm leading-7 text-[#5C6B61]">
-                  Unser Serviceteam hilft Ihnen rund um die Uhr bei allen Anliegen zu Ihrer Bestellung.
+                  Our service team is here to help you 24/7 with any questions regarding your order.
                 </p>
                 <a
                   href="mailto:contact@weteextees.com"
                   className="mt-5 inline-flex items-center justify-center rounded-2xl border border-[#1D2E24]/15 bg-[#D1A966] px-5 py-3 text-sm font-bold text-[#142019] transition hover:bg-[#DEBC80]"
                 >
-                  Kundenservice kontaktieren
+                  Contact Customer Service
                 </a>
               </div>
             </aside>
