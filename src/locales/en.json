@@ -2,7 +2,7 @@
   "common": {
     "freeShipping": "Free Shipping",
     "sameDayShipping": "Same-Day Dispatch",
-    "deliveryTime": "Delivery in 2–4 Business Days",
+    "deliveryTime": "Delivery in 5–10 Business Days",
     "inStock": "In Stock & Ready to Ship",
     "vatIncluded": "Tax Included, Free Insured Freight Delivery to USA & EU",
     "chatSupport": "Chat support: Mon-Fri 9am-5pm",
@@ -74,7 +74,7 @@
     "conditionNew": "Brand New & Factory Sealed",
     "addToCart": "Add to Cart",
     "buyNow": "Buy Now with Secure Checkout",
-    "freeDeliveryNotice": "Free Insured Freight Shipping (2–4 Business Days)",
+    "freeDeliveryNotice": "Free Insured Freight Shipping (5–10 Business Days)",
     "description": "Description & Details",
     "specifications": "Specifications",
     "deliveryReturn": "Shipping & 30-Day Returns",

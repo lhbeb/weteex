@@ -215,7 +215,7 @@ export default async function ProductPage({
               "transitTime": {
                 "@type": "QuantitativeValue",
                 "minValue": 5,
-                "maxValue": 8,
+                "maxValue": 9,
                 "unitCode": "DAY"
               }
             }

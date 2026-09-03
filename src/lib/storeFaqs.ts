@@ -50,7 +50,7 @@ export const STORE_FAQS_DE: readonly StoreFaq[] = [
   {
     question: 'Wie erreiche ich den Kundenservice von Weteextees?',
     answer:
-      'Sie erreichen unser Support-Team rund um die Uhr (Mo-Fr 09:00-17:00) über den Live-Chat auf unserer Website oder per E-Mail an contact@weteextees.com.',
+      'Sie erreichen unser Support-Team montags bis freitags von 09:00 bis 17:00 Uhr über den Live-Chat auf unserer Website oder per E-Mail an contact@weteextees.com.',
     linkHref: '/contact',
     linkLabel: 'Kundenservice kontaktieren',
   },

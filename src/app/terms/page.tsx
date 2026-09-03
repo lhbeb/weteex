@@ -129,14 +129,14 @@ const TermsPage = () => {
                 <>
                   <li>Der Standardversand für Möbelstücke und Stühle ist kostenlos in ganz Deutschland, der EU und den USA.</li>
                   <li>Die Lieferung erfolgt per Paketdienst oder spezialisierter Möbelspedition mit lückenloser Sendungsverfolgung.</li>
-                  <li>Die Regellieferzeit beträgt 2 bis 5 Werktage nach Auftragsbestätigung.</li>
+                  <li>Die Regellieferzeit beträgt 5 bis 10 Werktage nach Auftragsbestätigung.</li>
                   <li>Jede Sendung ist während des Transports zu 100 % versichert.</li>
                 </>
               ) : (
                 <>
                   <li>Standard freight delivery is free of charge to the United States, Germany, the EU, and international destinations.</li>
                   <li>Shipments are dispatched via professional freight logistics with real-time end-to-end tracking.</li>
-                  <li>Standard transit time is 2–5 business days following order processing.</li>
+                  <li>Standard transit time is 5–10 business days following order processing.</li>
                   <li>All shipments are 100% insured against loss or transit damage.</li>
                 </>
               )}

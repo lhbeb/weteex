@@ -63,7 +63,7 @@ export default function FaqPageClient() {
               </h2>
               <p className="mt-2 text-sm text-[#F6F8F5]/80 sm:text-base">
                 {isGerman
-                  ? 'Unser Team steht Ihnen rund um die Uhr per Live-Chat oder Kontaktformular zur Verfügung.'
+                  ? 'Unser Kundenservice steht Ihnen montags bis freitags von 09:00 bis 17:00 Uhr per Live-Chat oder Kontaktformular zur Verfügung.'
                   : 'Our customer support team is available Mo-Fr 09:00-17:00 via instant Live Chat or our contact form.'}
               </p>
             </div>

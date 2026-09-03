@@ -224,7 +224,7 @@ const TrackPage = () => {
               <div className="mt-6 rounded-[24px] border border-[#DCE5DE] bg-white p-6">
                 <h3 className="text-lg font-semibold text-[#1E2621]">Questions about your delivery?</h3>
                 <p className="mt-3 text-sm leading-7 text-[#5C6B61]">
-                  Our service team is here to help you 24/7 with any questions regarding your order.
+                  Our customer service team is available Monday to Friday from 09:00 to 17:00 to assist you with any questions regarding your shipment.
                 </p>
                 <a
                   href="mailto:contact@weteextees.com"

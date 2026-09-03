@@ -2,7 +2,7 @@
   "common": {
     "freeShipping": "Kostenloser Versand",
     "sameDayShipping": "Versand am selben Werktag",
-    "deliveryTime": "Lieferung in 2–4 Werktagen",
+    "deliveryTime": "Lieferung in 5–10 Werktagen",
     "inStock": "Auf Lager & sofort lieferbar",
     "vatIncluded": "inkl. MwSt., kostenloser versicherter Speditionsversand",
     "chatSupport": "Chat support: Mon-Fri 9am-5pm",
@@ -74,7 +74,7 @@
     "conditionNew": "Neu & Originalverpackt",
     "addToCart": "In den Warenkorb",
     "buyNow": "Jetzt sicher bestellen",
-    "freeDeliveryNotice": "Kostenloser versicherter Speditionsversand (2–4 Werktage)",
+    "freeDeliveryNotice": "Kostenloser versicherter Speditionsversand (5–10 Werktage)",
     "description": "Beschreibung & Details",
     "specifications": "Spezifikationen",
     "deliveryReturn": "Versand & Rückgabe",

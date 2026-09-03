@@ -23,7 +23,7 @@ export default function ReturnPolicyPage() {
           '@type': 'MerchantReturnPolicy',
           'name': 'Weteextees Return & Refund Policy',
           'merchantReturnLink': 'https://weteextees.com/return-policy',
-          'applicableCountry': ['DE', 'EU', 'US'],
+          'applicableCountry': ['US', 'DE', 'AT', 'FR', 'NL', 'BE', 'IT', 'ES'],
           'returnPolicyCategory': 'https://schema.org/MerchantReturnFiniteReturnWindow',
           'merchantReturnDays': 30,
           'returnMethod': 'https://schema.org/ReturnByMail',

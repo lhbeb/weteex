@@ -153,7 +153,7 @@ function ThankYouContent() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-medium text-[#1E2621]">Versicherte Zustellung</h3>
-                  <p className="text-sm text-[#5C6B61]">Die Lieferung erfolgt in der Regel innerhalb von 3–7 Werktagen</p>
+                  <p className="text-sm text-[#5C6B61]">Die Lieferung erfolgt in der Regel innerhalb von 5–10 Werktagen</p>
                 </div>
               </div>
             </div>

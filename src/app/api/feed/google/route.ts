@@ -146,7 +146,7 @@ function buildShippingXml(
         <g:min_handling_time>0</g:min_handling_time>
         <g:max_handling_time>1</g:max_handling_time>
         <g:min_transit_time>5</g:min_transit_time>
-        <g:max_transit_time>8</g:max_transit_time>
+        <g:max_transit_time>9</g:max_transit_time>
       </g:shipping>`;
     })
     .join('');
