@@ -11,13 +11,7 @@ interface SearchPageClientProps {
   initialCategory?: string;
 }
 
-const CATALOG_CATEGORIES = [
-  "Modern Chairs & Furniture",
-  "Authentic Antiques",
-  "Vintage Collectibles",
-  "Decorative Pieces",
-  "Tables & Accents",
-] as const;
+const CATALOG_CATEGORIES: string[] = [];
 
 function getExactCatalogCategory(value: string): string {
   const normalizedValue = value.trim().toLowerCase();
