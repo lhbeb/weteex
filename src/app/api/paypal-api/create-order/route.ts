@@ -78,8 +78,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'PayPal API checkout is no longer enabled for this product.' }, { status: 409 });
     }
 
-    const amount = formatAmount(product.price);
-    const currency = String(product.currency || 'USD').trim().toUpperCase();
+    const sourceCurrency = String(product.currency || 'EUR').trim().toUpperCase();
+    const normalizedPrice = sourceCurrency === 'EUR'
+      ? Math.round(Number(product.price) * 1.085 * 100) / 100
+      : Number(product.price);
+    const amount = formatAmount(normalizedPrice);
+    const currency = 'USD';
     if (!amount || !/^[A-Z]{3}$/.test(currency)) {
       return NextResponse.json({ error: 'The product price or currency is invalid.' }, { status: 409 });
     }

@@ -1,9 +1,5 @@
-/**
- * Market / Region configuration for per-product targeting.
- * Stored as meta.targetMarket on the product.
- */
-
-export type MarketKey = 'us' | 'eu' | 'ca' | 'au';
+/** United States storefront market configuration. */
+export type MarketKey = 'us';
 
 export interface MarketConfig {
   label: string;
@@ -32,92 +28,30 @@ export const MARKETS: Record<MarketKey, MarketConfig> = {
     shipsFromFlag: '🇺🇸',
     deliveryDaysMin: 5,
     deliveryDaysMax: 8,
-    freeShippingText: 'Free standard shipping',
+    freeShippingText: 'Free standard shipping across the United States',
     returnsText: '30-day returns',
     faqShippingAnswer:
-      'Orders placed before 2:00 PM CST often ship the same day. Standard processing is 1 business day, then most US deliveries arrive in 5 to 8 business days and Canada in 7 to 10 business days.',
+      'Orders are processed within 1 business day. Most deliveries within the United States arrive in 5 to 8 business days after processing.',
     faqFreeShippingAnswer:
-      'Yes, standard shipping is currently free across the United States and Canada. If faster delivery is available, you\'ll see those options at checkout.',
-  },
-  eu: {
-    label: 'Deutschland & EU',
-    flag: '🇩🇪',
-    currencyCode: 'EUR',
-    currencySymbol: '€',
-    locale: 'de-DE',
-    shipsFrom: 'Deutschland / EU',
-    shipsFromFlag: '🇩🇪',
-    deliveryDaysMin: 5,
-    deliveryDaysMax: 8,
-    freeShippingText: 'Kostenloser Standardversand',
-    returnsText: '30 Tage Rückgaberecht',
-    faqShippingAnswer:
-      'Bestellungen innerhalb Deutschlands und der EU werden montags bis freitags innerhalb von 1 Werktag bearbeitet und treffen in der Regel in 5 bis 8 Werktagen mit zuverlässiger Spedition bei Ihnen ein.',
-    faqFreeShippingAnswer:
-      'Ja, der versicherte Standardversand ist für alle Möbelstücke und Stühle in Deutschland und der EU kostenlos.',
-  },
-  ca: {
-    label: 'Canada',
-    flag: '🇨🇦',
-    currencyCode: 'CAD',
-    currencySymbol: 'CA$',
-    locale: 'en-CA',
-    shipsFrom: 'Canada',
-    shipsFromFlag: '🇨🇦',
-    deliveryDaysMin: 5,
-    deliveryDaysMax: 10,
-    freeShippingText: 'Free standard shipping across Canada',
-    returnsText: '30-day returns',
-    faqShippingAnswer:
-      'Orders within Canada are processed within 1 business day and typically arrive in 5 to 10 business days.',
-    faqFreeShippingAnswer:
-      'Yes, standard shipping is free across Canada. Faster delivery options may be available at checkout.',
-  },
-  au: {
-    label: 'Australia',
-    flag: '🇦🇺',
-    currencyCode: 'AUD',
-    currencySymbol: 'A$',
-    locale: 'en-AU',
-    shipsFrom: 'Australia',
-    shipsFromFlag: '🇦🇺',
-    deliveryDaysMin: 5,
-    deliveryDaysMax: 10,
-    freeShippingText: 'Free standard shipping across Australia',
-    returnsText: '30-day returns',
-    faqShippingAnswer:
-      'Orders within Australia are processed within 1 business day and typically arrive in 5 to 10 business days.',
-    faqFreeShippingAnswer:
-      'Yes, standard shipping is free across Australia. Express options may be available at checkout.',
+      'Yes, standard shipping is free across the United States. Faster delivery options may be available at checkout.',
   },
 };
 
-/** Default fallback market */
-export const DEFAULT_MARKET: MarketConfig = MARKETS.eu;
+export const DEFAULT_MARKET: MarketConfig = MARKETS.us;
 
-/**
- * Get market config for a given key, falling back to EU default.
- */
-export function getMarket(key?: string | null): MarketConfig {
-  if (!key) return DEFAULT_MARKET;
-  return MARKETS[key as MarketKey] ?? DEFAULT_MARKET;
+export function getMarket(_key?: string | null): MarketConfig {
+  return DEFAULT_MARKET;
 }
 
-/**
- * Format a price using the market's locale and currency symbol.
- * Uses same-number approach: price entered IS the target-currency price.
- */
 export function formatMarketPrice(price: number, market: MarketConfig = DEFAULT_MARKET): string {
-  const formatted = new Intl.NumberFormat(market.locale || 'de-DE', {
+  return new Intl.NumberFormat(market.locale, {
+    style: 'currency',
+    currency: market.currencyCode,
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   }).format(price);
-  return `${formatted} €`;
 }
 
-/**
- * Get estimated delivery date range string for a market.
- */
 export function getDeliveryRange(market: MarketConfig = DEFAULT_MARKET): string {
   const today = new Date();
   const start = new Date(today);
@@ -125,25 +59,16 @@ export function getDeliveryRange(market: MarketConfig = DEFAULT_MARKET): string 
   start.setDate(today.getDate() + market.deliveryDaysMin);
   end.setDate(today.getDate() + market.deliveryDaysMax);
 
-  const locale = market.locale;
   if (start.getMonth() === end.getMonth()) {
-    return `${start.getDate()}–${end.getDate()} ${start.toLocaleString(locale, { month: 'long' })}`;
+    return `${start.getDate()}–${end.getDate()} ${start.toLocaleString(market.locale, { month: 'long' })}`;
   }
-  return `${start.getDate()} ${start.toLocaleString(locale, { month: 'long' })} – ${end.getDate()} ${end.toLocaleString(locale, { month: 'long' })}`;
+  return `${start.getDate()} ${start.toLocaleString(market.locale, { month: 'long' })} – ${end.getDate()} ${end.toLocaleString(market.locale, { month: 'long' })}`;
 }
 
 export const MARKET_OPTIONS = [
-  { value: '', label: '🇪🇺 Deutschland / EU (Default — EUR €)' },
-  { value: 'eu', label: '🇪🇺 Europäische Union (EUR €)' },
   { value: 'us', label: '🇺🇸 United States (USD $)' },
-  { value: 'ca', label: '🇨🇦 Canada (CAD)' },
-  { value: 'au', label: '🇦🇺 Australia (AUD)' },
 ] as const;
 
-/** Auto-currency mapping for each market */
 export const MARKET_CURRENCY_MAP: Record<string, string> = {
   us: 'USD',
-  eu: 'EUR',
-  ca: 'USD', // CAD not in currency selector, fall back to USD display
-  au: 'USD', // AUD not in currency selector, fall back to USD display
 };

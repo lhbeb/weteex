@@ -1,56 +1,34 @@
 "use client";
-
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Eye } from 'lucide-react';
 import type { Product } from '@/types/product';
 import { useLocale } from '@/context/LocaleContext';
-
 interface ProductCardProps {
-  product: Product;
-  cardBackground?: string;
-  showFullImage?: boolean;
+    product: Product;
+    cardBackground?: string;
+    showFullImage?: boolean;
 }
-
-const ProductCard: React.FC<ProductCardProps> = ({
-  product,
-  cardBackground = 'bg-white',
-  showFullImage = false,
-}) => {
-  const { formatPrice, isGerman } = useLocale();
-  const { slug, title, price, images, inStock } = product;
-  const isSoldOut = inStock === false;
-  const [imgLoaded, setImgLoaded] = React.useState(false);
-
-  return (
-    <div className={`${cardBackground} rounded-md shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col`}>
+const ProductCard: React.FC<ProductCardProps> = ({ product, cardBackground = 'bg-white', showFullImage = false, }) => {
+    const { formatPrice } = useLocale();
+    const { slug, title, price, images, inStock } = product;
+    const isSoldOut = inStock === false;
+    const [imgLoaded, setImgLoaded] = React.useState(false);
+    return (<div className={`${cardBackground} rounded-md shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col`}>
       <Link href={`/products/${slug}`} className="block">
         <div className={`relative w-full bg-white ${showFullImage ? 'aspect-square' : 'h-48'}`}>
-          {!imgLoaded && (
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse rounded-t-md z-10">
-              <div className="h-12 w-12 bg-gray-300 rounded-full" />
-            </div>
-          )}
-          <Image
-            src={images[0]}
-            alt={title}
-            fill
-            className={`${showFullImage ? 'object-contain p-3 sm:p-5' : 'object-cover'} rounded-t-md transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'} ${isSoldOut ? 'opacity-50' : ''}`}
-            sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            loading="lazy"
-            unoptimized
-            onLoad={() => setImgLoaded(true)}
-          />
-          {isSoldOut && (
-            <div className="absolute inset-0 bg-[rgba(0,0,0,0.65)] flex items-center justify-center rounded-t-md">
+          {!imgLoaded && (<div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse rounded-t-md z-10">
+              <div className="h-12 w-12 bg-gray-300 rounded-full"/>
+            </div>)}
+          <Image src={images[0]} alt={title} fill className={`${showFullImage ? 'object-contain p-3 sm:p-5' : 'object-cover'} rounded-t-md transition-opacity duration-300 ${imgLoaded ? 'opacity-100' : 'opacity-0'} ${isSoldOut ? 'opacity-50' : ''}`} sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw" loading="lazy" unoptimized onLoad={() => setImgLoaded(true)}/>
+          {isSoldOut && (<div className="absolute inset-0 bg-[rgba(0,0,0,0.65)] flex items-center justify-center rounded-t-md">
               <div className="bg-[#D1A966] rounded-lg px-5 py-2">
                 <span className="sold-out-badge text-[#142019] text-sm uppercase tracking-wider whitespace-nowrap font-bold">
-                  {isGerman ? 'Ausverkauft' : 'Sold Out'}
+                  {'Sold Out'}
                 </span>
               </div>
-            </div>
-          )}
+            </div>)}
         </div>
       </Link>
       <div className="p-4 flex-grow flex flex-col">
@@ -59,17 +37,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
         </h3>
         <div className="mt-auto pt-3 flex flex-col gap-2">
           <span className="text-xl font-bold text-[#1E2621]">{formatPrice(price)}</span>
-          <Link
-            href={`/products/${slug}`}
-            className="flex items-center text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition-colors"
-          >
-            <Eye className="h-4 w-4 mr-1" />
-            <span>{isGerman ? 'Details ansehen' : 'View Details'}</span>
+          <Link href={`/products/${slug}`} className="flex items-center text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition-colors">
+            <Eye className="h-4 w-4 mr-1"/>
+            <span>{'View Details'}</span>
           </Link>
         </div>
       </div>
-    </div>
-  );
+    </div>);
 };
-
 export default ProductCard;

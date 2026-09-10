@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import { STORE_FAQS_DE } from '@/lib/storeFaqs';
+import { STORE_FAQS_EN } from '@/lib/storeFaqs';
 import FaqPageClient from '@/components/FaqPageClient';
 
 export const metadata: Metadata = {
-  title: 'Häufig gestellte Fragen (FAQ) | Frequently Asked Questions | Weteextees',
+  title: 'Frequently Asked Questions | Weteextees',
   description:
     'Answers to essential questions regarding insured freight shipping, product quality, payment, and returns at Weteextees.',
   alternates: {
@@ -15,7 +15,7 @@ export default function FrequentlyAskedQuestionsPage() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: STORE_FAQS_DE.map((faq) => ({
+    mainEntity: STORE_FAQS_EN.map((faq) => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {

@@ -72,7 +72,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
 
   const formatDate = (dateString: string) => {
     try {
-      return new Date(dateString).toLocaleDateString('de-DE', {
+      return new Date(dateString).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

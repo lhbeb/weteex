@@ -143,7 +143,7 @@ export default function NewProductPage() {
     listed_by: '',
     seller_id: '',
     collections: [] as string[],
-    targetMarket: '',
+    targetMarket: 'us',
     hasSizes: false,
     sizes: '',
     has_mens_sizes: false,
@@ -292,7 +292,7 @@ export default function NewProductPage() {
       // Build meta object
       const meta: any = {
         published: saveAsDraft ? false : formData.published, // Store published status in meta (override if saving as draft)
-        targetMarket: formData.targetMarket || null,
+        targetMarket: 'us',
         hasSizes: formData.has_mens_sizes,
         sizes: formData.sizes_mens || null,
         has_mens_sizes: formData.has_mens_sizes,
@@ -352,7 +352,7 @@ export default function NewProductPage() {
         payee_email: formData.payee_email,
         checkout_link: primaryCheckoutLink,
         checkout_flow: formData.checkout_flow,
-        currency: formData.currency,
+        currency: 'USD',
         images: uniqueImages,
         rating: parseFloat(formData.rating),
         review_count: parseInt(formData.review_count),
@@ -569,8 +569,6 @@ export default function NewProductPage() {
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all bg-white"
                 >
                   <option value="USD">USD ($)</option>
-                  <option value="EUR">EUR (€)</option>
-                  <option value="GBP">GBP (£)</option>
                 </select>
               </Field>
             </div>

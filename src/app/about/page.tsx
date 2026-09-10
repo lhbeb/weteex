@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import AboutPageClient from '@/components/AboutPageClient';
 
 export const metadata: Metadata = {
-  title: 'About Us | Über uns | Weteextees',
+  title: 'About Us | Weteextees',
   description:
-    'Learn about Weteextees, your premier destination for modern chairs, solid wood tables, and artisanal home furniture with locations in Germany and the USA.',
+    'Learn about Weteextees, a United States furniture store for modern chairs, solid wood tables, and artisanal home furniture.',
   alternates: {
     canonical: 'https://weteextees.com/about',
   },
@@ -34,14 +34,6 @@ export default function AboutPage() {
         'description':
           'Specialist in modern chairs, dining tables, solid wood furniture, and luxury home interiors.',
         'address': [
-          {
-            '@type': 'PostalAddress',
-            'streetAddress': 'Hochalmstraße 10',
-            'addressLocality': 'München',
-            'addressRegion': 'Bayern',
-            'postalCode': '81825',
-            'addressCountry': 'DE',
-          },
           {
             '@type': 'PostalAddress',
             'streetAddress': '900 AZ-66',

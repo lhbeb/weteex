@@ -43,7 +43,7 @@ export interface Product {
     twitterDescription?: string;
     twitterImage?: string;
     published?: boolean;
-    targetMarket?: string; // e.g. 'uk' | 'us' | 'eu' | 'ca' | 'au'
+    targetMarket?: 'us';
     hasSizes?: boolean;
     sizes?: string;
     has_mens_sizes?: boolean;

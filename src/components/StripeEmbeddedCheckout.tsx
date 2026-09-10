@@ -56,9 +56,9 @@ export default function StripeEmbeddedCheckout({
     loadStripeConfig();
   }, []);
 
-  const formattedPrice = new Intl.NumberFormat('de-DE', {
+  const formattedPrice = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: product.currency || 'EUR',
+    currency: 'USD',
   }).format(product.price);
 
   return (
