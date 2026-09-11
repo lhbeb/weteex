@@ -394,7 +394,7 @@ Technical Details:
  * 4. Falls back to product.title / product.description
  */
 export function getProductTranslation(
-  slugOrProduct: string | { slug: string; title?: string; description?: string; meta?: any },
+  slugOrProduct: string | { slug: string; title?: string; description?: string; brand?: string; meta?: any },
   _lang: 'en' = 'en',
   fallbackTitle?: string,
   fallbackDesc?: string
@@ -411,7 +411,10 @@ export function getProductTranslation(
     if (dbTrans && dbTrans.title) {
       return {
         title: dbTrans.title,
-        description: dbTrans.description || baseDesc || dbTrans.title,
+        description: normalizeDescriptionBrand(
+          dbTrans.description || baseDesc || dbTrans.title,
+          isObject ? slugOrProduct.brand : undefined,
+        ),
       };
     }
   }
@@ -420,7 +423,10 @@ export function getProductTranslation(
   if (meta?.title_en || meta?.titleEn) {
     return {
       title: meta.title_en || meta.titleEn,
-      description: meta.description_en || meta.descriptionEn || baseDesc || '',
+      description: normalizeDescriptionBrand(
+        meta.description_en || meta.descriptionEn || baseDesc || '',
+        isObject ? slugOrProduct.brand : undefined,
+      ),
     };
   }
 
@@ -435,4 +441,14 @@ export function getProductTranslation(
     title: baseTitle || 'Product',
     description: baseDesc || baseTitle || '',
   };
+}
+
+function normalizeDescriptionBrand(description: string, brand?: string): string {
+  const actualBrand = brand?.trim();
+  if (!actualBrand || actualBrand.toLowerCase() === 'unbranded') return description;
+
+  return description.replace(
+    /((?:Brand|Marke)\s*:\s*)(?:Weteextees(?:\s*\/\s*Kollektion)?|Unbranded)/gi,
+    `$1${actualBrand}`,
+  );
 }
