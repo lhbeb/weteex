@@ -83,9 +83,6 @@ const Footer = () => {
                   <div className="text-[#DCE5DE]">
                     <span className="text-white font-medium">🇩🇪 {isGerman ? 'Deutschland (Zentrale):' : 'Germany (HQ):'}</span> Hochalmstraße 10, 81825 München, Bayern
                   </div>
-                  <div className="text-[#DCE5DE]">
-                    <span className="text-white font-medium">🇺🇸 {isGerman ? 'USA (Standort & Logistik):' : 'USA (Location & Logistics):'}</span> 900 AZ-66, Peach Springs, AZ 86434
-                  </div>
                 </div>
               </div>
             </div>

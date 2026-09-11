@@ -27,7 +27,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Moderne Möbel & Sessel
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -46,7 +46,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Modern Chairs & Lounge Seating
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -68,7 +68,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -87,7 +87,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Seating
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -109,7 +109,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -128,7 +128,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Modern Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -151,7 +151,7 @@ Besondere Merkmale:
 Technische Daten & Garantie:
 • Maße: 45 x 45 x 43 cm
 • Kategorie: Beistelltische & Wohnzimmermöbel
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -171,7 +171,7 @@ Key Highlights:
 Technical Details:
 • Dimensions: 45 × 45 × 43 cm
 • Category: Accent & Side Tables
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -193,7 +193,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -212,7 +212,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Modern Seating
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -234,7 +234,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Designerstühle & Sessel
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -253,7 +253,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Armchairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -275,7 +275,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -294,7 +294,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -316,7 +316,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -335,7 +335,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -358,7 +358,7 @@ Besondere Merkmale:
 Technische Daten & Garantie:
 • Durchmesser: 125 cm | Höhe: ca. 75 cm
 • Kategorie: Esstische & Marmormöbel
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -378,7 +378,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 125 cm (49 in) | Height: 75 cm (29.5 in)
 • Category: Dining Tables & Marble Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -400,7 +400,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Freischwinger & Stühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -419,7 +419,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Cantilever & Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -441,7 +441,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -460,7 +460,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -482,7 +482,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -501,7 +501,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Modern Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -524,7 +524,7 @@ Besondere Merkmale:
 Technische Daten & Garantie:
 • Durchmesser: 140 cm | Höhe: ca. 75 cm
 • Kategorie: Esstische
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -544,7 +544,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 140 cm (55 in) | Height: 75 cm (29.5 in)
 • Category: Dining Tables & Luxury Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -566,7 +566,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -585,7 +585,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -608,7 +608,7 @@ Besondere Merkmale:
 Technische Daten & Garantie:
 • Maße: Durchmesser 140 cm
 • Kategorie: Couchtische & Wohnzimmermöbel
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -628,7 +628,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 140 cm (55 in) | Height: 45 cm (17.7 in)
 • Category: Coffee & Accent Tables
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -650,7 +650,7 @@ Besondere Merkmale:
 
 Technische Daten & Garantie:
 • Kategorie: Esszimmerstühle
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -669,7 +669,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -692,7 +692,7 @@ Besondere Merkmale:
 Technische Daten & Garantie:
 • Durchmesser: 125 cm | Höhe: ca. 75 cm
 • Kategorie: Esstische
-• Marke: Weteextees
+• Marke: Furnified
 • Garantie: 2 Jahre Herstellergarantie & 30 Tage Rückgaberecht`,
     },
     en: {
@@ -712,7 +712,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 125 cm (49 in) | Height: 75 cm (29.5 in)
 • Category: Dining Tables & Hardwood Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -726,7 +726,7 @@ Technical Details:
  * 4. Falls back to product.title / product.description
  */
 export function getProductTranslation(
-  slugOrProduct: string | { slug: string; title?: string; description?: string; meta?: any },
+  slugOrProduct: string | { slug: string; title?: string; description?: string; brand?: string; meta?: any },
   lang: 'de' | 'en' = 'de',
   fallbackTitle?: string,
   fallbackDesc?: string
@@ -743,7 +743,10 @@ export function getProductTranslation(
     if (dbTrans && dbTrans.title) {
       return {
         title: dbTrans.title,
-        description: dbTrans.description || baseDesc || dbTrans.title,
+        description: normalizeDescriptionBrand(
+          dbTrans.description || baseDesc || dbTrans.title,
+          isObject ? slugOrProduct.brand : undefined,
+        ),
       };
     }
   }
@@ -753,14 +756,20 @@ export function getProductTranslation(
     if (meta?.title_en || meta?.titleEn) {
       return {
         title: meta.title_en || meta.titleEn,
-        description: meta.description_en || meta.descriptionEn || baseDesc || '',
+        description: normalizeDescriptionBrand(
+          meta.description_en || meta.descriptionEn || baseDesc || '',
+          isObject ? slugOrProduct.brand : undefined,
+        ),
       };
     }
   } else if (lang === 'de') {
     if (meta?.title_de || meta?.titleDe) {
       return {
         title: meta.title_de || meta.titleDe,
-        description: meta.description_de || meta.descriptionDe || baseDesc || '',
+        description: normalizeDescriptionBrand(
+          meta.description_de || meta.descriptionDe || baseDesc || '',
+          isObject ? slugOrProduct.brand : undefined,
+        ),
       };
     }
   }
@@ -776,4 +785,14 @@ export function getProductTranslation(
     title: baseTitle || 'Produkt',
     description: baseDesc || baseTitle || '',
   };
+}
+
+function normalizeDescriptionBrand(description: string, brand?: string): string {
+  const actualBrand = brand?.trim();
+  if (!actualBrand || actualBrand.toLowerCase() === 'unbranded') return description;
+
+  return description.replace(
+    /((?:Brand|Marke)\s*:\s*)(?:Weteextees(?:\s*\/\s*Kollektion)?|Unbranded)/gi,
+    `$1${actualBrand}`,
+  );
 }

@@ -12,12 +12,12 @@ const NewsletterSection = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email.trim()) {
-      setError('Please enter your email address');
+      setError('Bitte geben Sie Ihre E-Mail-Adresse ein');
       return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setError('Please enter a valid email address');
+      setError('Bitte geben Sie eine gültige E-Mail-Adresse ein');
       return;
     }
 
@@ -62,11 +62,11 @@ const NewsletterSection = () => {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-bold text-[#F6F8F5] mb-4">
-            Get Exclusive Decor &amp; Antique Updates
+            Exklusive Möbel-Neuheiten &amp; Sonderangebote
           </h2>
 
           <p className="text-lg md:text-xl text-[#F6F8F5]/80 mb-8 max-w-2xl mx-auto leading-relaxed">
-            Be first to discover rare antique arrivals, handcrafted modern furniture collections, unique vintage collectibles, and curated seasonal offers.
+            Entdecken Sie als Erste neue Kollektionen moderner Esszimmerstühle, Massivholz- und Rattanmöbel, zeitlose Wohnaccessoires und exklusive saisonale Angebote.
           </p>
 
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
@@ -79,7 +79,7 @@ const NewsletterSection = () => {
                     setEmail(e.target.value);
                     if (error) setError('');
                   }}
-                  placeholder="Your email address"
+                  placeholder="Ihre E-Mail-Adresse"
                   className="w-full px-4 py-3 rounded-lg border border-[#DCE5DE] bg-[#F6F8F5] text-[#1E2621] placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#D1A966] focus:ring-offset-2 focus:ring-offset-[#1D2E24] transition-all duration-200"
                   disabled={isSubmitting || isSuccess}
                 />
@@ -93,16 +93,16 @@ const NewsletterSection = () => {
                 {isSubmitting ? (
                   <>
                     <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#142019]"></div>
-                    Signing Up...
+                    Anmelden...
                   </>
                 ) : isSuccess ? (
                   <>
                     <Check className="h-5 w-5 text-[#142019]" />
-                    You&apos;re In!
+                    Angemeldet!
                   </>
                 ) : (
                   <>
-                    Get Early Access
+                    Frühzugang sichern
                     <ArrowRight className="h-5 w-5" />
                   </>
                 )}
@@ -120,14 +120,14 @@ const NewsletterSection = () => {
             {isSuccess && (
               <div className="flex justify-center mt-3">
                 <p className="text-[#DEBC80] font-semibold bg-white/10 px-4 py-1.5 rounded-md text-sm shadow-sm backdrop-blur-sm border border-[#D1A966]/30">
-                  Thanks for subscribing! Check your email for confirmation.
+                  Vielen Dank! Bitte prüfen Sie Ihr E-Mail-Postfach zur Bestätigung.
                 </p>
               </div>
             )}
           </form>
 
           <p className="text-[#F6F8F5]/60 text-sm mt-6">
-            Curated inspiration for collectors and interior enthusiasts. Unsubscribe anytime.
+            Kuratierte Inspiration für Möbelliebhaber und Wohndesign-Enthusiasten. Jederzeit abbestellbar.
           </p>
         </div>
       </div>

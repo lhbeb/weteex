@@ -329,8 +329,8 @@ export default function ReturnPolicyClient() {
                     Hochalmstraße 10, 81825 München, Bayern, Deutschland
                   </div>
                   <div>
-                    <strong className="text-gray-900 block">🇺🇸 USA &amp; International:</strong>
-                    900 AZ-66, Peach Springs, AZ 86434, United States
+                    <strong className="text-gray-900 block">🇩🇪 Deutschland:</strong>
+                    Hochalmstraße 10, 81825 München
                   </div>
                 </div>
               </div>

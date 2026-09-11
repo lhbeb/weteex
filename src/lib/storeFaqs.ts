@@ -24,7 +24,7 @@ export const STORE_FAQS_DE: readonly StoreFaq[] = [
   {
     question: 'Wohin liefern Sie und wie werden empfindliche Möbel transportiert?',
     answer:
-      'Wir liefern versandkostenfrei nach ganz Deutschland, in die EU sowie in die USA. Große oder empfindliche Möbelstücke werden in verstärkten Spezialverpackungen durch erfahrene Speditionen zugestellt.',
+      'Wir liefern versandkostenfrei innerhalb Deutschlands. Große oder empfindliche Möbelstücke werden in verstärkten Spezialverpackungen durch erfahrene Speditionen zugestellt. Bearbeitungszeit: 1 Werktag, Laufzeit: 3-4 Werktage (4-5 Werktage Gesamt).',
     linkHref: '/shipping-policy',
     linkLabel: 'Zu unseren Versandrichtlinien',
   },

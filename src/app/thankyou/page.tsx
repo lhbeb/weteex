@@ -27,7 +27,7 @@ function ThankYouContent() {
           if (product) {
             trackPixelEvent('Purchase', {
               value: product.price || 0,
-              currency: product.currency || 'USD',
+              currency: product.currency || 'EUR',
               content_ids: [product.slug || product.id || ''],
               content_name: product.title || '',
               content_type: 'product',
@@ -64,7 +64,7 @@ function ThankYouContent() {
           if (data.status === 'paid' && !alreadyTracked) {
             trackPixelEvent('Purchase', {
               value: data.amount ? data.amount / 100 : 0,
-              currency: data.currency ? data.currency.toUpperCase() : 'USD',
+              currency: data.currency ? data.currency.toUpperCase() : 'EUR',
               content_ids: data.orderId ? [data.orderId] : [],
               content_type: 'product'
             });
@@ -153,7 +153,7 @@ function ThankYouContent() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-medium text-[#1E2621]">Versicherte Zustellung</h3>
-                  <p className="text-sm text-[#5C6B61]">Die Lieferung erfolgt in der Regel innerhalb von 5–10 Werktagen</p>
+                  <p className="text-sm text-[#5C6B61]">Die Lieferung erfolgt in der Regel innerhalb von 3–4 Werktagen</p>
                 </div>
               </div>
             </div>

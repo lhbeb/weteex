@@ -154,14 +154,14 @@ const TermsPage = () => {
                 <>
                   <li>Der versicherte Standardversand für Möbelstücke und Stühle ist innerhalb Deutschlands kostenlos.</li>
                   <li>Die Lieferung erfolgt per Paketdienst oder spezialisierter Möbelspedition mit lückenloser Sendungsverfolgung.</li>
-                  <li>Die Bearbeitungszeit beträgt einen Werktag; anschließend erfolgt die Lieferung in 5 bis 8 Werktagen.</li>
+                  <li>Die Bearbeitungszeit beträgt einen Werktag; anschließend erfolgt die Lieferung in 3 bis 4 Werktagen.</li>
                   <li>Jede Sendung ist während des Transports zu 100 % versichert.</li>
                 </>
               ) : (
                 <>
                   <li>Standard freight delivery is free of charge to the United States, Germany, the EU, and international destinations.</li>
                   <li>Shipments are dispatched via professional freight logistics with real-time end-to-end tracking.</li>
-                  <li>Standard transit time is 5–10 business days following order processing.</li>
+                  <li>Standard transit time is 3–4 business days following order processing (1 business day).</li>
                   <li>All shipments are 100% insured against loss or transit damage.</li>
                 </>
               )}

@@ -1,15 +1,14 @@
 {
   "common": {
     "freeShipping": "Kostenloser Versand",
-    "sameDayShipping": "Versand am selben Werktag",
-    "deliveryTime": "Lieferung in 5–10 Werktagen",
+    "sameDayShipping": "Bearbeitung innerhalb eines Werktags",
+    "deliveryTime": "Lieferung in 3–4 Werktagen",
     "inStock": "Auf Lager & sofort lieferbar",
     "vatIncluded": "inkl. MwSt., kostenloser versicherter Speditionsversand",
-    "chatSupport": "Chat support: Mon-Fri 9am-5pm",
+    "chatSupport": "Live-Chat: Montag bis Sonntag",
     "emailSupport": "E-Mail: contact@weteextees.com",
     "headquarters": "Standorte & Logistik",
-    "headquartersAddress": "Deutschland: Hochalmstraße 10, 81825 München | USA: 900 AZ-66, Peach Springs, AZ 86434",
-    "usaAddress": "900 AZ-66, Peach Springs, AZ 86434, Vereinigte Staaten",
+    "headquartersAddress": "Hochalmstraße 10, 81825 München, Deutschland",
     "germanyAddress": "Hochalmstraße 10, 81825 München, Bayern, Deutschland",
     "rightsReserved": "Alle Rechte vorbehalten.",
     "securePayment": "Sichere Zahlung & Verschlüsselung",
@@ -34,10 +33,10 @@
     "about": "Über uns"
   },
   "announcements": {
-    "chat": "Chat support: Available Mon-Fri 9am-5pm",
+    "chat": "Live-Chat: Montag bis Sonntag verfügbar",
     "email": "E-Mail: contact@weteextees.com",
     "needHelp": "Hilfe benötigt? Kontaktieren Sie uns →",
-    "shippingGuarantee": "Kostenloser versicherter Versand nach DE & EU"
+    "shippingGuarantee": "Kostenloser versicherter Versand innerhalb Deutschlands"
   },
   "hero": {
     "words": ["Moderne Stühle & Möbel", "Massivholz & Rattan", "Elegante Esstische", "Zeitlose Wohnkultur"],
@@ -59,11 +58,11 @@
     "explore": "Kollektion ansehen"
   },
   "shippingSection": {
-    "title": "Versand am selben Werktag",
-    "badge": "Express-Abwicklung",
-    "description": "Bestellen Sie montags bis freitags bis 23:00 Uhr und Ihre Bestellung wird noch am selben Werktag sorgfältig verpackt und an unsere Spedition übergeben.",
-    "card1Title": "Garantierter Versand am selben Tag",
-    "card1Desc": "Bestellungen vor 23:00 Uhr verlassen noch heute unser Lager.",
+    "title": "Lieferung in 3–4 Werktagen",
+    "badge": "1 Tag Bearbeitung",
+    "description": "Ihre Bestellung wird innerhalb eines Werktags sorgfältig bearbeitet und anschließend innerhalb Deutschlands in 3–4 Werktagen zugestellt.",
+    "card1Title": "1 Werktag Bearbeitungszeit",
+    "card1Desc": "Bestellungen werden innerhalb von 1 Werktag geprüft, verpackt und an die Spedition übergeben.",
     "card2Title": "100 % Versicherter Speditionsversand",
     "card2Desc": "Jedes Möbelstück wird professionell verpackt und lückenlos versichert geliefert.",
     "bottomSubtitle": "Bereit für Ihr neues Lieblingsstück?",
@@ -74,14 +73,14 @@
     "conditionNew": "Neu & Originalverpackt",
     "addToCart": "In den Warenkorb",
     "buyNow": "Jetzt sicher bestellen",
-    "freeDeliveryNotice": "Kostenloser versicherter Speditionsversand (5–10 Werktage)",
+    "freeDeliveryNotice": "Kostenloser versicherter Versand innerhalb Deutschlands (3–4 Werktage)",
     "description": "Beschreibung & Details",
     "specifications": "Spezifikationen",
     "deliveryReturn": "Versand & Rückgabe",
-    "deliveryReturnText": "Kostenloser, versicherter Versand nach Deutschland & Europa. 30 Tage Rückgaberecht für ein risikofreies Einkaufserlebnis.",
+    "deliveryReturnText": "Kostenloser, versicherter Versand innerhalb Deutschlands in 3–4 Werktagen nach einem Werktag Bearbeitung. 30 Tage Rückgaberecht.",
     "authenticityGuaranteed": "100 % Geprüfte Qualität",
     "secureCheckout": "Sichere SSL-Verschlüsselung",
-    "fastSupport": "Mon-Fri 9am-5pm Support"
+    "fastSupport": "Kundenservice Montag bis Sonntag"
   },
   "footer": {
     "aboutText": "Ihre Adresse für erstklassige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
@@ -97,3 +96,4 @@
     "cookies": "Cookie-Richtlinie"
   }
 }
+

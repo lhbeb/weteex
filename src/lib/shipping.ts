@@ -39,9 +39,7 @@ export interface AddressConfig {
   postalBeforeCity?: boolean;
 }
 
-const PAYPAL_ELIGIBLE_COUNTRY_CODES = [
-  'US', 'CA', 'FR', 'DE', 'AU', 'NZ', 'IT', 'NL', 'PT', 'ES', 'PL', 'AT',
-];
+const PAYPAL_ELIGIBLE_COUNTRY_CODES = ['DE'];
 const FEATURED_COUNTRY_CODES = PAYPAL_ELIGIBLE_COUNTRY_CODES;
 
 const ISO_COUNTRY_CODES = `
@@ -55,7 +53,7 @@ TT TV TW TZ UA UG UM UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW
 `.trim().split(/\s+/);
 
 const countryDisplayNames = typeof Intl !== 'undefined' && 'DisplayNames' in Intl
-  ? new Intl.DisplayNames(['en'], { type: 'region' })
+  ? new Intl.DisplayNames(['de'], { type: 'region' })
   : null;
 
 function countryName(code: string): string {

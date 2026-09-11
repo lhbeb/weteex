@@ -91,7 +91,7 @@ async function importProducts(csvPath: string) {
     const price = parseFloat(row.price);
     const imageUrl = row.image_url || '';
     const categories = row.categories || '';
-    const currency = row.currency || 'USD';
+    const currency = row.currency || 'EUR';
 
     if (!slug || !title || isNaN(price) || price <= 0) {
       console.warn(`  [SKIP] Row ${i}: Invalid data (slug="${slug}", title="${title?.substring(0, 40)}", price=${row.price})`);

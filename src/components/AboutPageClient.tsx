@@ -53,7 +53,7 @@ export default function AboutPageClient() {
                 <MapPin className="h-6 w-6" />
               </div>
               <h2 className="mt-4 text-2xl font-bold text-[#1E2621]">
-                {isGerman ? 'Standorte in Deutschland & USA' : 'Locations in Germany & USA'}
+                {isGerman ? 'Standort in Deutschland' : 'Standort in Deutschland'}
               </h2>
             </div>
             <div className="space-y-4 text-base leading-7 text-gray-700">
@@ -65,7 +65,7 @@ export default function AboutPageClient() {
               <p>
                 {isGerman ? (
                   <>
-                    Unsere Standorte befinden sich in der <strong>Hochalmstraße 10, 81825 München, Bayern, Deutschland</strong> sowie in <strong>900 AZ-66, Peach Springs, AZ 86434, USA</strong>. Alle Möbelstücke werden sorgfältig geprüft und transportsicher versendet.
+                    Unser Standort befindet sich in der <strong>Hochalmstraße 10, 81825 München, Bayern, Deutschland</strong>. Alle Möbelstücke werden sorgfältig geprüft und transportsicher innerhalb Deutschlands versendet.
                   </>
                 ) : (
                   <>
@@ -394,7 +394,6 @@ export default function AboutPageClient() {
               </div>
               <div className="text-gray-600 ml-8 text-sm">
                 <div>🇩🇪 <strong>Deutschland:</strong> Hochalmstraße 10, 81825 München</div>
-                <div className="mt-1">🇺🇸 <strong>USA:</strong> 900 AZ-66, Peach Springs, AZ 86434</div>
               </div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">

@@ -240,9 +240,6 @@ export default function ContactPage() {
                         <p className="text-gray-600 mt-1">
                           <span className="font-semibold">🇩🇪 {isGerman ? 'Deutschland:' : 'Germany:'}</span> Hochalmstraße 10, 81825 München, Bavaria
                         </p>
-                        <p className="text-gray-600 mt-1">
-                          <span className="font-semibold">🇺🇸 {isGerman ? 'USA:' : 'USA:'}</span> 900 AZ-66, Peach Springs, AZ 86434, United States
-                        </p>
                       </div>
                     </div>
                     <div className="flex items-start">
@@ -261,7 +258,7 @@ export default function ContactPage() {
                           {isGerman ? 'Live-Chat-Support' : 'Instant Live Chat'}
                         </h3>
                         <p className="text-gray-600 mt-1">
-                          <span className="font-semibold">{isGerman ? 'Erreichbarkeit:' : 'Availability:'}</span> {isGerman ? 'Montag bis Freitag, 09:00 - 17:00 Uhr' : 'Monday to Friday, 9:00 AM - 5:00 PM'}
+                          <span className="font-semibold">Erreichbarkeit:</span> Montag bis Sonntag
                         </p>
                       </div>
                     </div>

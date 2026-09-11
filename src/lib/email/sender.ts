@@ -336,7 +336,7 @@ export async function sendPaypalUnclaimedProofEmail(
           <li><strong>Payee Email:</strong> ${proof.payeeEmail}</li>
           <li><strong>Payer Email:</strong> ${proof.payerEmail || order.customer_email || 'Not provided'}</li>
           <li><strong>Amount:</strong> ${proof.amount || order.product_price}</li>
-          <li><strong>Currency:</strong> ${proof.currency || 'USD'}</li>
+          <li><strong>Currency:</strong> ${proof.currency || 'EUR'}</li>
           <li><strong>Proof URL:</strong> <a href="${proof.proofUrl}" target="_blank" rel="noopener noreferrer">${proof.proofUrl}</a></li>
         </ul>
 

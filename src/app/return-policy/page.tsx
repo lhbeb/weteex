@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import ReturnPolicyClient from '@/components/ReturnPolicyClient';
 
 export const metadata: Metadata = {
-  title: 'Widerrufsbelehrung & Rückgaberichtlinie | Return Policy | Weteextees',
+  title: 'Widerrufsbelehrung & Rückgaberichtlinie | Weteextees Deutschland',
   description:
-    'Information regarding our 30-day return policy, statutory cancellations, and refund process for modern furniture and chairs.',
+    '30 Tage Rückgaberecht für alle Möbel. Kostenlose Rücksendung, keine Wiedereinlagerungsgebühr, volle Rückerstattung. Widerrufsrecht gemäß § 355 BGB für Bestellungen in Deutschland und der EU.',
   alternates: {
     canonical: 'https://weteextees.com/return-policy',
   },

@@ -79,7 +79,7 @@ async function migrateProducts() {
           brand: productData.brand,
           payee_email: productData.payeeEmail || productData.payee_email || '',
           checkout_link: productData.checkoutLink || productData.checkout_link || '',
-          currency: productData.currency || 'USD',
+          currency: productData.currency || 'EUR',
           reviews: productData.reviews || [],
           meta: productData.meta || {},
           in_stock: productData.inStock !== undefined ? productData.inStock : true,

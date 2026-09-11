@@ -28,7 +28,7 @@ const ShippingInfo: React.FC<ShippingInfoProps> = ({ className = '', targetMarke
                 {isGerman ? 'Versand aus' : 'Ships from'}
               </p>
               <p className="mt-1 text-sm font-semibold text-[#1E2621]">
-                {isGerman ? 'Deutschland / EU 🇩🇪' : 'United States & Germany 🇺🇸 🇩🇪'}
+                Deutschland 🇩🇪
               </p>
             </div>
           </div>

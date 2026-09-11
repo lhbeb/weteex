@@ -55,7 +55,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
 
   const activeTranslation = useMemo(() => {
     if (!product?.slug) return { title: product?.title || '', description: product?.description || '' };
-    return getProductTranslation(product.slug, isGerman ? 'de' : 'en', product.title, product.description);
+    return getProductTranslation(product, 'de', product.title, product.description);
   }, [product?.slug, product?.title, product?.description, isGerman]);
 
   useEffect(() => {
@@ -188,7 +188,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
         content_ids: [product.slug],
         content_type: 'product',
         value: product.price,
-        currency: product.currency || 'USD'
+        currency: product.currency || 'EUR'
       });
     }
   }, [product]);
@@ -253,7 +253,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
         content_ids: [product.slug],
         content_type: 'product',
         value: product.price,
-        currency: product.currency || 'USD'
+        currency: product.currency || 'EUR'
       });
 
       // Send Telegram notification for "Add to Cart" action
@@ -374,7 +374,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
         content_ids: [product.slug],
         content_type: 'product',
         value: product.price,
-        currency: product.currency || 'USD'
+        currency: product.currency || 'EUR'
       });
 
       // Redirect to checkout after adding to cart
@@ -639,7 +639,7 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
               <p className="mt-1 text-xs text-[#5C6B61]">
                 {isGerman
                   ? 'inkl. MwSt., kostenloser versicherter Speditionsversand nach Deutschland & EU'
-                  : 'Tax Included, Free Insured Freight Delivery to USA & Worldwide'}
+                  : 'Inklusive Steuern, kostenloser versicherter Versand innerhalb Deutschlands'}
               </p>
 
               <ClientOnly>

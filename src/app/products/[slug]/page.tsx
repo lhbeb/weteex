@@ -27,7 +27,7 @@ export async function generateMetadata(
     const displayTitle = translation.title;
     const displayDescription = translation.description;
 
-    const title = `${displayTitle} - ${product.brand || 'Weteextees'} | ${product.category || (lang === 'en' ? 'Furniture' : 'Möbel')} | Weteextees`;
+    const title = `${displayTitle} - ${product.brand || 'Weteextees'} | ${product.category || 'Möbel'} | Weteextees`;
     const description = (displayDescription || '').substring(0, 155) + '...';
     const canonicalUrl = `${BASE_URL}/products/${product.slug}`;
     const currencyCode = 'EUR';
@@ -152,7 +152,7 @@ export default async function ProductPage({
         "@type": "Brand",
         "name": p.brand || 'Weteextees'
       },
-      "category": p.category || (lang === 'en' ? 'Furniture' : 'Möbel'),
+      "category": p.category || 'Möbel',
       "sku": formatValidSku(p, slug),
       "offers": {
         "@type": "Offer",

@@ -72,6 +72,7 @@ export async function POST(request: NextRequest) {
             city: shippingData.city,
             state: shippingData.state,
             postal_code: shippingData.zipCode,
+            country: 'DE',
         };
 
         // Create an embedded Stripe Checkout Session with expiration.
@@ -84,7 +85,7 @@ export async function POST(request: NextRequest) {
             line_items: [
                 {
                     price_data: {
-                        currency: product.currency?.toLowerCase() || 'eur',
+                        currency: 'eur',
                         product_data: {
                             name: product.title,
                             description: `Product ID: ${product.slug}`,

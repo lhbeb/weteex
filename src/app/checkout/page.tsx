@@ -85,7 +85,7 @@ const CheckoutPage: React.FC = () => {
           content_ids: [item.product.slug],
           content_name: item.product.title,
           value: item.product.price,
-          currency: item.product.currency || 'USD',
+          currency: item.product.currency || 'EUR',
         });
       }
 
@@ -243,7 +243,7 @@ const CheckoutPage: React.FC = () => {
       ok: false,
       payeeEmail: '',
       amount: 0,
-      currency: 'USD',
+      currency: 'EUR',
       description: '',
       orderId: undefined,
     };
@@ -283,12 +283,12 @@ const CheckoutPage: React.FC = () => {
       }
       setAssignedCheckoutLink(orderResult.checkoutLink || null);
 
-      console.log('💳 [PayPal] Buyer pays:', paymentTarget, '| Amount:', amount, product.currency || 'USD');
+      console.log('💳 [PayPal] Buyer pays:', paymentTarget, '| Amount:', amount, product.currency || 'EUR');
       return {
         ok: true,
         payeeEmail: paymentTarget,
         amount,
-        currency: product.currency || 'USD',
+        currency: product.currency || 'EUR',
         description: product.title,
         orderId: orderResult.orderId,
       };

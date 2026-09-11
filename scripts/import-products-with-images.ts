@@ -161,7 +161,7 @@ async function processProductDirectory(dirPath: string) {
     brand: productData.brand,
     payee_email: (productData.payeeEmail || productData.payee_email || '').trim(),
     checkout_link: checkoutLink,
-    currency: productData.currency || 'USD',
+    currency: productData.currency || 'EUR',
     rating: productData.rating || 0,
     review_count: productData.review_count || productData.reviewCount || 0,
     reviews: productData.reviews || [],

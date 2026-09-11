@@ -126,7 +126,7 @@ export async function GET(request: NextRequest) {
       <g:tax><g:country>DE</g:country><g:rate>19</g:rate><g:tax_ship>yes</g:tax_ship></g:tax>
       <g:shipping><g:country>DE</g:country><g:service>Kostenloser Standardversand (Deutschland)</g:service>
         <g:price>0.00 EUR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>1</g:max_handling_time>
-        <g:min_transit_time>3</g:min_transit_time><g:max_transit_time>4</g:max_transit_time></g:shipping>
+        <g:min_transit_time>5</g:min_transit_time><g:max_transit_time>8</g:max_transit_time></g:shipping>
     </item>`;
     }).join('');
 
