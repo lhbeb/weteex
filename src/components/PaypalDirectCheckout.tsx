@@ -50,7 +50,7 @@ const PaypalDirectCheckout: React.FC<PaypalDirectCheckoutProps> = ({
   }, [preloadedEmail]);
 
   const resolvedPayeeEmail = globalPayeeEmail || product.payeeEmail;
-  const currencySymbol = '$';
+  const currencySymbol = product.currency === 'EUR' ? '€' : product.currency === 'GBP' ? '£' : '$';
 
   const handlePayWithPayPal = () => {
     if (!resolvedPayeeEmail) {

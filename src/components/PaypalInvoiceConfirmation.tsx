@@ -137,7 +137,7 @@ export default function PaypalInvoiceConfirmation({
     const [proofSubmitted, setProofSubmitted] = useState(false);
     const [proofError, setProofError] = useState('');
     const [copiedEmail, setCopiedEmail] = useState(false);
-    const currencySymbol = '$';
+    const currencySymbol = product.currency === 'EUR' ? '€' : product.currency === 'GBP' ? '£' : '$';
     const orderTotal = `${currencySymbol}${product.price.toFixed(2)}`;
     const isUnclaimed = variant === 'unclaimed';
 

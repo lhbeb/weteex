@@ -1,22 +1,34 @@
 "use client";
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Clock, Truck, MapPin, Package } from 'lucide-react';
 import { useLocale } from '@/context/LocaleContext';
+
 interface SameDayShippingProps {
-    fullWidth?: boolean;
-    contained?: boolean;
+  fullWidth?: boolean;
+  contained?: boolean;
 }
+
 const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, contained = false }) => {
-    const { t } = useLocale();
-    const content = (<div className={`w-full ${fullWidth ? '' : 'max-w-7xl'} mx-auto`}>
+  const { t, isGerman } = useLocale();
+
+  const content = (
+    <div className={`w-full ${fullWidth ? '' : 'max-w-7xl'} mx-auto`}>
       {/* Main Banner */}
       <div className="rounded-2xl overflow-hidden shadow-sm mb-6">
         <div className="flex flex-col md:flex-row">
           {/* Left Section - Image */}
           <div className="relative min-h-[200px] w-full md:min-h-[240px] md:w-[40%] bg-slate-800">
-            <Image src="/versand.png" alt={"Weteextees insured freight logistics"} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover object-center" priority/>
+            <Image
+              src="/versand.png"
+              alt={isGerman ? "Weteextees versicherter Speditionsversand" : "Weteextees insured freight logistics"}
+              fill
+              sizes="(max-width: 768px) 100vw, 40vw"
+              className="object-cover object-center"
+              priority
+            />
           </div>
 
           {/* Right Section - Content */}
@@ -28,8 +40,11 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             <p className="text-sm sm:text-base leading-relaxed font-normal mb-4 text-[#F6F8F5]/90">
               {t('shippingSection.description')}
             </p>
-            <Link href="/shipping-policy" className="text-[#D1A966] hover:text-[#DEBC80] text-sm sm:text-base underline underline-offset-2 transition-colors font-medium">
-              {'View Shipping Policy →'}
+            <Link
+              href="/shipping-policy"
+              className="text-[#D1A966] hover:text-[#DEBC80] text-sm sm:text-base underline underline-offset-2 transition-colors font-medium"
+            >
+              {isGerman ? 'Versandrichtlinien ansehen →' : 'View Shipping Policy →'}
             </Link>
           </div>
         </div>
@@ -41,7 +56,7 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
         <div className="bg-white rounded-xl p-4 sm:p-5 shadow-sm border border-[#DCE5DE]">
           <div className="flex items-start gap-3.5">
             <div className="bg-[#1D2E24] rounded-xl p-2.5 flex-shrink-0">
-              <Clock className="w-5 h-5 text-[#D1A966]"/>
+              <Clock className="w-5 h-5 text-[#D1A966]" />
             </div>
             <div>
               <h3 className="font-bold text-[#1E2621] text-base mb-1">
@@ -58,7 +73,7 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
         <div className="bg-white rounded-xl p-4 sm:p-5 shadow-sm border border-[#DCE5DE]">
           <div className="flex items-start gap-3.5">
             <div className="bg-[#1D2E24] rounded-xl p-2.5 flex-shrink-0">
-              <Package className="w-5 h-5 text-[#D1A966]"/>
+              <Package className="w-5 h-5 text-[#D1A966]" />
             </div>
             <div>
               <h3 className="font-bold text-[#1E2621] text-base mb-1">
@@ -79,25 +94,42 @@ const SameDayShipping: React.FC<SameDayShippingProps> = ({ fullWidth = false, co
             {t('shippingSection.bottomSubtitle')}
           </p>
           <p className="text-lg md:text-xl font-bold text-[#1E2621]">
-            {(<>
+            {isGerman ? (
+              <>
+                Entdecken Sie <span className="text-[#1D2E24] underline decoration-[#D1A966] decoration-2">moderne Möbel &amp; zeitlose Designs</span> für Ihr Zuhause
+              </>
+            ) : (
+              <>
                 Discover <span className="text-[#1D2E24] underline decoration-[#D1A966] decoration-2">modern furniture &amp; timeless designs</span> for your space
-              </>)}
+              </>
+            )}
           </p>
         </div>
-        <Link href="/#collection" className="bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] font-bold py-2.5 px-6 rounded-xl text-sm transition-colors whitespace-nowrap shadow-sm">
+        <Link
+          href="/#collection"
+          className="bg-[#D1A966] hover:bg-[#DEBC80] text-[#142019] font-bold py-2.5 px-6 rounded-xl text-sm transition-colors whitespace-nowrap shadow-sm"
+        >
           {t('shippingSection.bottomCta')}
         </Link>
       </div>
-    </div>);
-    if (contained) {
-        return (<div className="py-6 bg-[#F6F8F5] rounded-xl">
+    </div>
+  );
+
+  if (contained) {
+    return (
+      <div className="py-6 bg-[#F6F8F5] rounded-xl">
         {content}
-      </div>);
-    }
-    return (<section className="py-8 sm:py-10 bg-[#F6F8F5]">
+      </div>
+    );
+  }
+
+  return (
+    <section className="py-8 sm:py-10 bg-[#F6F8F5]">
       <div className="container mx-auto px-4">
         {content}
       </div>
-    </section>);
+    </section>
+  );
 };
+
 export default SameDayShipping;

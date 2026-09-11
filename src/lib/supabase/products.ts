@@ -4,27 +4,9 @@ import type { Product } from '@/types/product';
 import { FEATURED_PRODUCT_LIMIT } from '@/config/products';
 import type { Review } from '@/types/product';
 
-const LEGACY_EUR_TO_USD_RATE = 1.085;
-
-function normalizeUsdAmount(value: unknown, sourceCurrency: string): number | undefined {
-  const amount = Number(value);
-  if (!Number.isFinite(amount)) return undefined;
-  return sourceCurrency === 'EUR'
-    ? Math.round(amount * LEGACY_EUR_TO_USD_RATE * 100) / 100
-    : amount;
-}
-
 // Transform Supabase row to Product type
 export function transformProduct(row: any): Product {
   const meta = row.meta || {};
-  const sourceCurrency = String(row.currency || 'EUR').toUpperCase();
-  const normalizedPrice = normalizeUsdAmount(row.price, sourceCurrency) ?? 0;
-  const rawOriginalPrice = row.original_price !== undefined
-    ? row.original_price
-    : (meta.original_price || meta.originalPrice || null);
-  const normalizedOriginalPrice = rawOriginalPrice == null
-    ? undefined
-    : normalizeUsdAmount(rawOriginalPrice, sourceCurrency);
   // Default to published=true for backward compatibility (existing products without meta.published should be considered published)
   // Only explicitly set to false if meta.published === false
   const published = meta.published === false ? false : true;
@@ -33,7 +15,7 @@ export function transformProduct(row: any): Product {
     slug: row.slug,
     title: row.title,
     description: row.description,
-    price: normalizedPrice,
+    price: row.price,
     rating: row.rating || 0,
     reviewCount: row.review_count || 0,
     images: row.images || [],
@@ -41,19 +23,19 @@ export function transformProduct(row: any): Product {
     category: row.category,
     brand: row.brand,
     payeeEmail: row.payee_email || '',
-    currency: 'USD',
+    currency: row.currency || 'EUR',
     checkoutLink: row.checkout_link,
     checkoutFlow: row.checkout_flow || 'buymeacoffee', // Default to buymeacoffee for backward compatibility
     reviews: row.reviews || [],
-    meta: { ...meta, targetMarket: 'us' },
+    meta: meta,
     published: published, // Default to true unless explicitly set to false
     isFeatured: Boolean(row.is_featured),
     inStock: row.in_stock !== undefined ? Boolean(row.in_stock) : true,
     listedBy: row.listed_by || null,
     sellerId: row.seller_id || null,
     collections: row.collections || [], // Array of collection tags
-    original_price: normalizedOriginalPrice,
-    originalPrice: normalizedOriginalPrice,
+    original_price: row.original_price !== undefined ? row.original_price : (meta.original_price || meta.originalPrice || null),
+    originalPrice: row.original_price !== undefined ? row.original_price : (meta.original_price || meta.originalPrice || null),
   };
 }
 
@@ -395,7 +377,7 @@ export async function createProduct(productData: {
       payee_email: productData.payee_email || '',
       checkout_link: productData.checkout_link,
       checkout_flow: productData.checkout_flow || 'buymeacoffee',
-      currency: 'USD',
+      currency: productData.currency || 'EUR',
       rating: productData.rating || 0,
       review_count: reviewCount,
       reviews: productData.reviews || [],
@@ -403,7 +385,6 @@ export async function createProduct(productData: {
         gmc_enabled: true,
         published: true,
         ...(productData.meta || {}),
-        targetMarket: 'us',
         original_price: productData.original_price || productData.originalPrice || null
       },
       in_stock: inStock,
@@ -522,7 +503,7 @@ export async function updateProduct(
     if (updates.payee_email !== undefined && hasValue(updates.payee_email)) updateData.payee_email = updates.payee_email;
     if (updates.checkout_link !== undefined && hasValue(updates.checkout_link)) updateData.checkout_link = updates.checkout_link;
     if (updates.checkout_flow !== undefined && hasValue(updates.checkout_flow)) updateData.checkout_flow = updates.checkout_flow;
-    updateData.currency = 'USD';
+    if (updates.currency !== undefined && hasValue(updates.currency)) updateData.currency = updates.currency;
     if (updates.rating !== undefined && updates.rating !== null && !isNaN(updates.rating)) updateData.rating = updates.rating;
 
     // Handle both review_count and reviewCount
@@ -541,7 +522,6 @@ export async function updateProduct(
         ...(updateData.meta || {}) // preserve the original_price we just mapped if it exists
       };
     }
-    updateData.meta = { ...(updateData.meta || {}), targetMarket: 'us' };
 
     // Handle both in_stock and inStock (booleans can be false, so check for undefined)
     if (updates.in_stock !== undefined) updateData.in_stock = updates.in_stock;

@@ -125,7 +125,7 @@ export default function EditProductPage() {
     currency: 'USD', images: '', rating: '0', review_count: '0',
     in_stock: true, is_featured: false, published: false, listed_by: '', seller_id: '',
     collections: [] as string[],
-    targetMarket: 'us',
+    targetMarket: '',
     hasSizes: false,
     sizes: '',
     has_mens_sizes: false,
@@ -174,7 +174,7 @@ export default function EditProductPage() {
         payee_email: data.payeeEmail || data.payee_email || '',
         checkout_link: data.checkoutLink || data.checkout_link || '',
         checkout_flow: data.checkoutFlow || data.checkout_flow || 'buymeacoffee',
-        currency: 'USD',
+        currency: data.currency || 'USD',
         images: Array.isArray(data.images) ? data.images.join(', ') : data.images || '',
         rating: data.rating?.toString() || '0',
         review_count: data.reviewCount?.toString() || data.review_count?.toString() || '0',
@@ -184,7 +184,7 @@ export default function EditProductPage() {
         listed_by: data.listedBy || data.listed_by || '',
         seller_id: data.sellerId || data.seller_id || '',
         collections: data.collections || [],
-        targetMarket: 'us',
+        targetMarket: data.meta?.targetMarket || '',
         hasSizes: data.meta?.hasSizes ?? false,
         sizes: data.meta?.sizes || '',
         has_mens_sizes: data.meta?.has_mens_sizes ?? data.meta?.hasSizes ?? false,
@@ -318,7 +318,7 @@ export default function EditProductPage() {
       // Always include published status
       meta.published = formData.published;
       // Include targetMarket
-      meta.targetMarket = 'us';
+      meta.targetMarket = formData.targetMarket || null;
       // Include Sizing Options
       meta.hasSizes = formData.has_mens_sizes;
       meta.sizes = formData.sizes_mens || null;
@@ -368,7 +368,7 @@ export default function EditProductPage() {
           payee_email: formData.payee_email?.trim() || '',
           checkout_link: primaryCheckoutLink,
           checkout_flow: formData.checkout_flow,
-          currency: 'USD',
+          currency: formData.currency || 'USD',
           images: [...new Set(finalImages)],
           rating: parseFloat(formData.rating) || 0,
           review_count: parseInt(formData.review_count) || 0,
@@ -571,6 +571,8 @@ export default function EditProductPage() {
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#01428a] focus:border-[#01428a] outline-none transition-all bg-white"
                 >
                   <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
                 </select>
               </Field>
             </div>

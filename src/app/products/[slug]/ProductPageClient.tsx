@@ -1,4 +1,5 @@
 "use client";
+
 import { notFound, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import ProductReviews from '@/components/ProductReviews';
@@ -17,640 +18,802 @@ import type { Product } from '@/types/product';
 import Image from 'next/image';
 import { getConditionDisplayLabel, getConditionTooltip } from '@/lib/conditions';
 import { getMarket, formatMarketPrice } from '@/lib/markets';
-import { STORE_FAQS_EN } from '@/lib/storeFaqs';
+import { STORE_FAQS_DE, STORE_FAQS_EN } from '@/lib/storeFaqs';
 import { useLocale } from '@/context/LocaleContext';
 import { getProductTranslation } from '@/lib/productTranslations';
+
 interface ProductPageClientProps {
-    product: Product | null;
+  product: Product | null;
 }
+
 const PRODUCT_IMAGE_QUALITY = 95;
 const COLLAPSED_FAQ_COUNT = 2;
+
 export default function ProductPageClient({ product: initialProduct }: ProductPageClientProps) {
-    const { formatPrice, t } = useLocale();
-    const [imgLoaded, setImgLoaded] = useState(false);
-    const router = useRouter();
-    const [product, setProduct] = useState<Product | null>(initialProduct);
-    const conditionTriggerRef = useRef<HTMLDivElement | null>(null);
-    const [activeImage, setActiveImage] = useState(0);
-    const [showAllFaqs, setShowAllFaqs] = useState(false);
-    const [openFaqIndex, setOpenFaqIndex] = useState(-1);
-    const [showFullDescription, setShowFullDescription] = useState(false);
-    const [showZoom, setShowZoom] = useState(false);
-    const [isAddingToCart, setIsAddingToCart] = useState(false);
-    const [isBuyingNow, setIsBuyingNow] = useState(false);
-    const [viewedCount, setViewedCount] = useState<number | null>(null);
-    const [zoomLevel, setZoomLevel] = useState(1);
-    const [touchStart, setTouchStart] = useState<{
-        x: number;
-        y: number;
-    } | null>(null);
-    const [touchEnd, setTouchEnd] = useState<{
-        x: number;
-        y: number;
-    } | null>(null);
-    const [isConditionTooltipVisible, setIsConditionTooltipVisible] = useState(false);
-    const [conditionTooltipStyle, setConditionTooltipStyle] = useState<CSSProperties>({});
-    const [selectedSize, setSelectedSize] = useState<string>('');
-    const [selectedSizeRange, setSelectedSizeRange] = useState<'mens' | 'womens' | null>(null);
-    const [sizeError, setSizeError] = useState<boolean>(false);
-    const sizeSelectorRef = useRef<HTMLDivElement | null>(null);
-    const activeTranslation = useMemo(() => {
-        if (!product?.slug)
-            return { title: product?.title || '', description: product?.description || '' };
-        return getProductTranslation(product.slug, 'en', product.title, product.description);
-    }, [product?.slug, product?.title, product?.description]);
-    useEffect(() => {
-        if (product?.meta) {
-            if (product.meta.has_mens_sizes) {
-                setSelectedSizeRange('mens');
-            }
-            else if (product.meta.has_womens_sizes) {
-                setSelectedSizeRange('womens');
-            }
-            else if (product.meta.hasSizes) {
-                setSelectedSizeRange('mens');
-            }
-        }
-    }, [product]);
-    const faqItems = STORE_FAQS_EN;
-    const parsedMensSizes = useMemo(() => {
-        const raw = product?.meta?.sizes_mens || product?.meta?.sizes;
-        if (!raw)
-            return [];
-        return raw.split(',').map((s: string) => s.trim()).filter(Boolean);
-    }, [product?.meta?.sizes_mens, product?.meta?.sizes]);
-    const parsedWomensSizes = useMemo(() => {
-        const raw = product?.meta?.sizes_womens;
-        if (!raw)
-            return [];
-        return raw.split(',').map((s: string) => s.trim()).filter(Boolean);
-    }, [product?.meta?.sizes_womens]);
-    const visibleFaqItems = showAllFaqs ? faqItems : faqItems.slice(0, COLLAPSED_FAQ_COUNT);
-    const descriptionText = activeTranslation.description || product?.description || "";
-    const shouldCollapseDescription = descriptionText.length > 360;
-    const descriptionPreview = useMemo(() => {
-        if (!shouldCollapseDescription) {
-            return descriptionText;
-        }
-        const preview = descriptionText.slice(0, 360).trimEnd();
-        return `${preview}${preview.endsWith(".") ? "" : "…"}`;
-    }, [descriptionText, shouldCollapseDescription]);
-    // Generate viewed count that persists during session
-    useEffect(() => {
-        if (!product || typeof window === 'undefined')
-            return;
-        const sessionKey = `product_viewed_${product.slug}`;
-        // Check if we already have a count for this product in this session
-        const storedCount = sessionStorage.getItem(sessionKey);
-        if (storedCount) {
-            // Use the stored count
-            setViewedCount(parseInt(storedCount, 10));
-        }
-        else {
-            // Generate a new random number based on product slug for consistency
-            let hash = 0;
-            for (let i = 0; i < product.slug.length; i++) {
-                const char = product.slug.charCodeAt(i);
-                hash = ((hash << 5) - hash) + char;
-                hash = hash & hash;
-            }
-            // Generate a random number between 27 and 123 based on hash
-            const seed = Math.abs(hash);
-            const count = 27 + (seed % 97); // 27 to 123 range (123 - 27 + 1 = 97)
-            // Store it in sessionStorage for this session
-            sessionStorage.setItem(sessionKey, count.toString());
-            setViewedCount(count);
-        }
-    }, [product]);
-    useEffect(() => {
-        if (typeof window === 'undefined')
-            return;
-        // Import scroll utils dynamically to avoid SSR issues
-        const { lockScroll, unlockScroll } = require('@/utils/scrollUtils');
-        if (showZoom) {
-            lockScroll();
-        }
-        else {
-            unlockScroll();
-        }
-        return () => {
-            unlockScroll();
-        };
-    }, [showZoom]);
-    useEffect(() => {
-        setShowFullDescription(false);
-    }, [product?.slug]);
-    useEffect(() => {
-        if (!isConditionTooltipVisible || !conditionTriggerRef.current || typeof window === 'undefined')
-            return;
-        const tooltipWidth = 288;
-        const gap = 12;
-        const rect = conditionTriggerRef.current.getBoundingClientRect();
-        const isDesktop = window.innerWidth >= 768;
-        if (isDesktop) {
-            setConditionTooltipStyle({
-                position: 'fixed',
-                top: rect.top + rect.height / 2,
-                left: Math.min(rect.right + gap, window.innerWidth - tooltipWidth - 16),
-                transform: 'translateY(-50%)',
-            });
-            return;
-        }
-        setConditionTooltipStyle({
-            position: 'fixed',
-            top: rect.bottom + gap,
-            left: Math.max(16, rect.left),
-            width: `min(${tooltipWidth}px, calc(100vw - 32px))`,
-        });
-    }, [isConditionTooltipVisible]);
-    // Must live before any early returns — React Hooks rules
-    const productImages = product?.images;
-    useEffect(() => {
-        setImgLoaded(false);
-    }, [activeImage, productImages]);
-    // Meta Pixel ViewContent Event
-    useEffect(() => {
-        if (product) {
-            trackPixelEvent('ViewContent', {
-                content_name: product.title,
-                content_ids: [product.slug],
-                content_type: 'product',
-                value: product.price,
-                currency: product.currency || 'USD'
-            });
-        }
-    }, [product]);
-    const handleAddToCart = async () => {
-        debugLog('handleAddToCart', 'Function called', 'log');
-        if (!product) {
-            debugError('handleAddToCart: product is null', new Error('Cannot add to cart: product is null'));
-            setIsAddingToCart(false);
-            return;
-        }
-        // Check if product is sold out
-        if (product.inStock === false) {
-            alert('This product is currently sold out.');
-            return;
-        }
-        const hasSizesEnabled = !!(product.meta?.has_mens_sizes || product.meta?.has_womens_sizes || product.meta?.hasSizes);
-        // Validate size selection if enabled
-        if (hasSizesEnabled && !selectedSize) {
-            setSizeError(true);
-            if (sizeSelectorRef.current) {
-                sizeSelectorRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            setIsAddingToCart(false);
-            return;
-        }
-        debugLog('handleAddToCart', { productId: product.id, productSlug: product.slug, selectedSize, selectedSizeRange }, 'log');
-        setIsAddingToCart(true);
-        try {
-            if (typeof window === 'undefined') {
-                throw new Error('Window is not available');
-            }
-            debugLog('handleAddToCart', 'Calling addToCart...', 'log');
-            let sizeValue = selectedSize;
-            if (selectedSize) {
-                if (product.meta?.has_mens_sizes && product.meta?.has_womens_sizes) {
-                    sizeValue = `${selectedSize} (${selectedSizeRange === 'mens' ? "Men's" : "Women's"})`;
-                }
-                else if (product.meta?.has_mens_sizes || product.meta?.hasSizes) {
-                    sizeValue = `${selectedSize} (Men's)`;
-                }
-                else if (product.meta?.has_womens_sizes) {
-                    sizeValue = `${selectedSize} (Women's)`;
-                }
-            }
-            // Add to cart - this is client-side only (localStorage)
-            addToCart({
-                ...product,
-                selectedSize: sizeValue || undefined
-            } as any);
-            // Meta Pixel AddToCart Event
-            trackPixelEvent('AddToCart', {
-                content_name: product.title,
-                content_ids: [product.slug],
-                content_type: 'product',
-                value: product.price,
-                currency: product.currency || 'USD'
-            });
-            // Send Telegram notification for "Add to Cart" action
-            try {
-                const { sendTelegramNotification } = await import('@/utils/telegram-notify');
-                await sendTelegramNotification({
-                    url: window.location.href,
-                    productTitle: product.title,
-                    productSlug: product.slug,
-                    productPrice: product.price,
-                    action: 'add_to_cart',
-                });
-            }
-            catch (notifyError) {
-                // Don't break the flow if notification fails
-                console.warn('Failed to send add to cart notification:', notifyError);
-            }
-            debugLog('handleAddToCart', 'addToCart completed, waiting 100ms...', 'log');
-            // Small delay to ensure localStorage is updated
-            await new Promise(resolve => setTimeout(resolve, 100));
-            debugNavigation('handleAddToCart', 'Attempting navigation to /checkout');
-            // Redirect to checkout - client-side navigation only
-            if (typeof window !== 'undefined') {
-                try {
-                    // Use Next.js router for client-side navigation
-                    debugLog('handleAddToCart', 'Using router.push', 'log');
-                    router.push('/checkout');
-                    debugLog('handleAddToCart', 'router.push called successfully', 'log');
-                    // Small delay before scroll
-                    setTimeout(() => {
-                        try {
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                        }
-                        catch (scrollError) {
-                            debugError('handleAddToCart: scroll failed', scrollError);
-                        }
-                    }, 50);
-                }
-                catch (navError) {
-                    debugError('handleAddToCart: router.push failed', navError);
-                    // Fallback: direct navigation
-                    try {
-                        debugLog('handleAddToCart', 'Using window.location.href as fallback', 'warn');
-                        window.location.href = '/checkout';
-                    }
-                    catch (fallbackError) {
-                        debugError('handleAddToCart: fallback navigation failed', fallbackError);
-                        setIsAddingToCart(false);
-                        alert('Failed to navigate to checkout. Please try again.');
-                        return;
-                    }
-                }
-            }
-            debugLog('handleAddToCart', 'SUCCESS - Navigation completed', 'log');
-        }
-        catch (error) {
-            debugError('handleAddToCart: CRITICAL ERROR', error);
-            setIsAddingToCart(false);
-            alert('Failed to add product to cart. Please check the console for details.');
-            throw error; // Re-throw for better error tracking
-        }
+  const { formatPrice, isGerman, t } = useLocale();
+  const [imgLoaded, setImgLoaded] = useState(false);
+  const router = useRouter();
+  const [product, setProduct] = useState<Product | null>(initialProduct);
+  const conditionTriggerRef = useRef<HTMLDivElement | null>(null);
+  const [activeImage, setActiveImage] = useState(0);
+  const [showAllFaqs, setShowAllFaqs] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState(-1);
+  const [showFullDescription, setShowFullDescription] = useState(false);
+  const [showZoom, setShowZoom] = useState(false);
+  const [isAddingToCart, setIsAddingToCart] = useState(false);
+  const [isBuyingNow, setIsBuyingNow] = useState(false);
+  const [viewedCount, setViewedCount] = useState<number | null>(null);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null);
+  const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(null);
+  const [isConditionTooltipVisible, setIsConditionTooltipVisible] = useState(false);
+  const [conditionTooltipStyle, setConditionTooltipStyle] = useState<CSSProperties>({});
+  const [selectedSize, setSelectedSize] = useState<string>('');
+  const [selectedSizeRange, setSelectedSizeRange] = useState<'mens' | 'womens' | null>(null);
+  const [sizeError, setSizeError] = useState<boolean>(false);
+  const sizeSelectorRef = useRef<HTMLDivElement | null>(null);
+
+  const activeTranslation = useMemo(() => {
+    if (!product?.slug) return { title: product?.title || '', description: product?.description || '' };
+    return getProductTranslation(product.slug, isGerman ? 'de' : 'en', product.title, product.description);
+  }, [product?.slug, product?.title, product?.description, isGerman]);
+
+  useEffect(() => {
+    if (product?.meta) {
+      if (product.meta.has_mens_sizes) {
+        setSelectedSizeRange('mens');
+      } else if (product.meta.has_womens_sizes) {
+        setSelectedSizeRange('womens');
+      } else if (product.meta.hasSizes) {
+        setSelectedSizeRange('mens');
+      }
+    }
+  }, [product]);
+
+  const faqItems = isGerman ? STORE_FAQS_DE : STORE_FAQS_EN;
+
+  const parsedMensSizes = useMemo(() => {
+    const raw = product?.meta?.sizes_mens || product?.meta?.sizes;
+    if (!raw) return [];
+    return raw.split(',').map((s: string) => s.trim()).filter(Boolean);
+  }, [product?.meta?.sizes_mens, product?.meta?.sizes]);
+
+  const parsedWomensSizes = useMemo(() => {
+    const raw = product?.meta?.sizes_womens;
+    if (!raw) return [];
+    return raw.split(',').map((s: string) => s.trim()).filter(Boolean);
+  }, [product?.meta?.sizes_womens]);
+
+  const visibleFaqItems = showAllFaqs ? faqItems : faqItems.slice(0, COLLAPSED_FAQ_COUNT);
+  const descriptionText = activeTranslation.description || product?.description || "";
+  const shouldCollapseDescription = descriptionText.length > 360;
+  const descriptionPreview = useMemo(() => {
+    if (!shouldCollapseDescription) {
+      return descriptionText;
+    }
+
+    const preview = descriptionText.slice(0, 360).trimEnd();
+    return `${preview}${preview.endsWith(".") ? "" : "…"}`;
+  }, [descriptionText, shouldCollapseDescription]);
+
+  // Generate viewed count that persists during session
+  useEffect(() => {
+    if (!product || typeof window === 'undefined') return;
+
+    const sessionKey = `product_viewed_${product.slug}`;
+
+    // Check if we already have a count for this product in this session
+    const storedCount = sessionStorage.getItem(sessionKey);
+
+    if (storedCount) {
+      // Use the stored count
+      setViewedCount(parseInt(storedCount, 10));
+    } else {
+      // Generate a new random number based on product slug for consistency
+      let hash = 0;
+      for (let i = 0; i < product.slug.length; i++) {
+        const char = product.slug.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash;
+      }
+
+      // Generate a random number between 27 and 123 based on hash
+      const seed = Math.abs(hash);
+      const count = 27 + (seed % 97); // 27 to 123 range (123 - 27 + 1 = 97)
+
+      // Store it in sessionStorage for this session
+      sessionStorage.setItem(sessionKey, count.toString());
+      setViewedCount(count);
+    }
+  }, [product]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Import scroll utils dynamically to avoid SSR issues
+    const { lockScroll, unlockScroll } = require('@/utils/scrollUtils');
+
+    if (showZoom) {
+      lockScroll();
+    } else {
+      unlockScroll();
+    }
+
+    return () => {
+      unlockScroll();
     };
-    const handleBuyNow = async () => {
-        if (!product) {
-            console.error('Cannot proceed to checkout: product is null');
-            return;
-        }
-        // Check if product is sold out
-        if (product.inStock === false) {
-            alert('This product is currently sold out.');
-            return;
-        }
-        const hasSizesEnabled = !!(product.meta?.has_mens_sizes || product.meta?.has_womens_sizes || product.meta?.hasSizes);
-        // Validate size selection if enabled
-        if (hasSizesEnabled && !selectedSize) {
-            setSizeError(true);
-            if (sizeSelectorRef.current) {
-                sizeSelectorRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-            setIsBuyingNow(false);
-            return;
-        }
-        setIsBuyingNow(true);
-        // Use a small delay to ensure the UI updates
-        await new Promise(resolve => setTimeout(resolve, 100));
-        try {
-            if (typeof window === 'undefined') {
-                throw new Error('Window is not available');
-            }
-            let sizeValue = selectedSize;
-            if (selectedSize) {
-                if (product.meta?.has_mens_sizes && product.meta?.has_womens_sizes) {
-                    sizeValue = `${selectedSize} (${selectedSizeRange === 'mens' ? "Men's" : "Women's"})`;
-                }
-                else if (product.meta?.has_mens_sizes || product.meta?.hasSizes) {
-                    sizeValue = `${selectedSize} (Men's)`;
-                }
-                else if (product.meta?.has_womens_sizes) {
-                    sizeValue = `${selectedSize} (Women's)`;
-                }
-            }
-            addToCart({
-                ...product,
-                selectedSize: sizeValue || undefined
-            } as any);
-            // Meta Pixel AddToCart Event
-            trackPixelEvent('AddToCart', {
-                content_name: product.title,
-                content_ids: [product.slug],
-                content_type: 'product',
-                value: product.price,
-                currency: product.currency || 'USD'
-            });
-            // Redirect to checkout after adding to cart
-            setTimeout(() => {
-                preventScrollOnClick(() => {
-                    goToCheckout();
-                }, true);
-            }, 200);
-        }
-        catch (error) {
-            console.error('Error in buy now:', error);
-            setIsBuyingNow(false);
-            alert('Failed to proceed to checkout. Please try again.');
-        }
-    };
-    const handleZoomIn = () => setZoomLevel(prev => Math.min(prev * 1.5, 3));
-    const handleZoomOut = () => setZoomLevel(prev => Math.max(prev / 1.5, 0.5));
-    const resetZoom = () => setZoomLevel(1);
-    const handleTouchStart = (e: React.TouchEvent) => setTouchStart({ x: e.targetTouches[0].clientX, y: e.targetTouches[0].clientY });
-    const handleTouchMove = (e: React.TouchEvent) => setTouchEnd({ x: e.targetTouches[0].clientX, y: e.targetTouches[0].clientY });
-    const handleTouchEnd = () => {
-        if (!touchStart || !touchEnd)
-            return;
-        const distanceX = touchStart.x - touchEnd.x;
-        const isHorizontalSwipe = Math.abs(distanceX) > Math.abs(touchStart.y - touchEnd.y) && Math.abs(distanceX) > 50;
-        if (isHorizontalSwipe) {
-            setActiveImage(prev => (distanceX > 0 ? (prev < product!.images.length - 1 ? prev + 1 : 0) : (prev > 0 ? prev - 1 : product!.images.length - 1)));
-        }
-        setTouchStart(null);
-        setTouchEnd(null);
-    };
-    const handleImageClick = (index: number) => {
-        setActiveImage(index);
-        setShowZoom(true);
-        setZoomLevel(1);
-    };
-    const goToCheckout = () => {
-        try {
-            router.push('/checkout');
-            if (typeof window !== 'undefined') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        }
-        catch (error) {
-            console.error('Error navigating to checkout:', error);
-            // Fallback navigation
-            if (typeof window !== 'undefined') {
-                window.location.href = '/checkout';
-            }
-        }
-    };
-    const handleShare = async () => {
-        if (!product)
-            return;
-        const url = typeof window !== 'undefined' ? window.location.href : '';
-        const shareData = {
-            title: product.title,
-            text: product.description.substring(0, 200),
-            url: url,
-        };
-        try {
-            // Try native share API if available (mobile)
-            if (navigator.share && typeof navigator.share === 'function') {
-                await navigator.share(shareData);
-            }
-            else {
-                // Fallback: Copy to clipboard
-                await navigator.clipboard.writeText(url);
-                alert('Product link copied to clipboard!');
-            }
-        }
-        catch (error: any) {
-            // User cancelled or error occurred
-            if (error.name !== 'AbortError') {
-                // Fallback: Copy to clipboard
-                try {
-                    await navigator.clipboard.writeText(url);
-                    alert('Product link copied to clipboard!');
-                }
-                catch (clipboardError) {
-                    console.error('Error sharing:', clipboardError);
-                    alert('Failed to share. Please copy the URL manually.');
-                }
-            }
-        }
-    };
+  }, [showZoom]);
+
+  useEffect(() => {
+    setShowFullDescription(false);
+  }, [product?.slug]);
+
+  useEffect(() => {
+    if (!isConditionTooltipVisible || !conditionTriggerRef.current || typeof window === 'undefined') return;
+
+    const tooltipWidth = 288;
+    const gap = 12;
+    const rect = conditionTriggerRef.current.getBoundingClientRect();
+    const isDesktop = window.innerWidth >= 768;
+
+    if (isDesktop) {
+      setConditionTooltipStyle({
+        position: 'fixed',
+        top: rect.top + rect.height / 2,
+        left: Math.min(rect.right + gap, window.innerWidth - tooltipWidth - 16),
+        transform: 'translateY(-50%)',
+      });
+      return;
+    }
+
+    setConditionTooltipStyle({
+      position: 'fixed',
+      top: rect.bottom + gap,
+      left: Math.max(16, rect.left),
+      width: `min(${tooltipWidth}px, calc(100vw - 32px))`,
+    });
+  }, [isConditionTooltipVisible]);
+
+  // Must live before any early returns — React Hooks rules
+  const productImages = product?.images;
+  useEffect(() => {
+    setImgLoaded(false);
+  }, [activeImage, productImages]);
+
+  // Meta Pixel ViewContent Event
+  useEffect(() => {
+    if (product) {
+      trackPixelEvent('ViewContent', {
+        content_name: product.title,
+        content_ids: [product.slug],
+        content_type: 'product',
+        value: product.price,
+        currency: product.currency || 'USD'
+      });
+    }
+  }, [product]);
+
+  const handleAddToCart = async () => {
+    debugLog('handleAddToCart', 'Function called', 'log');
+
     if (!product) {
-        return (<div className="min-h-screen flex items-center justify-center bg-gray-50">
+      debugError('handleAddToCart: product is null', new Error('Cannot add to cart: product is null'));
+      setIsAddingToCart(false);
+      return;
+    }
+
+    // Check if product is sold out
+    if (product.inStock === false) {
+      alert('This product is currently sold out.');
+      return;
+    }
+
+    const hasSizesEnabled = !!(product.meta?.has_mens_sizes || product.meta?.has_womens_sizes || product.meta?.hasSizes);
+
+    // Validate size selection if enabled
+    if (hasSizesEnabled && !selectedSize) {
+      setSizeError(true);
+      if (sizeSelectorRef.current) {
+        sizeSelectorRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      setIsAddingToCart(false);
+      return;
+    }
+
+    debugLog('handleAddToCart', { productId: product.id, productSlug: product.slug, selectedSize, selectedSizeRange }, 'log');
+    setIsAddingToCart(true);
+
+    try {
+      if (typeof window === 'undefined') {
+        throw new Error('Window is not available');
+      }
+
+      debugLog('handleAddToCart', 'Calling addToCart...', 'log');
+
+      let sizeValue = selectedSize;
+      if (selectedSize) {
+        if (product.meta?.has_mens_sizes && product.meta?.has_womens_sizes) {
+          sizeValue = `${selectedSize} (${selectedSizeRange === 'mens' ? "Men's" : "Women's"})`;
+        } else if (product.meta?.has_mens_sizes || product.meta?.hasSizes) {
+          sizeValue = `${selectedSize} (Men's)`;
+        } else if (product.meta?.has_womens_sizes) {
+          sizeValue = `${selectedSize} (Women's)`;
+        }
+      }
+
+      // Add to cart - this is client-side only (localStorage)
+      addToCart({
+        ...product,
+        selectedSize: sizeValue || undefined
+      } as any);
+
+      // Meta Pixel AddToCart Event
+      trackPixelEvent('AddToCart', {
+        content_name: product.title,
+        content_ids: [product.slug],
+        content_type: 'product',
+        value: product.price,
+        currency: product.currency || 'USD'
+      });
+
+      // Send Telegram notification for "Add to Cart" action
+      try {
+        const { sendTelegramNotification } = await import('@/utils/telegram-notify');
+        await sendTelegramNotification({
+          url: window.location.href,
+          productTitle: product.title,
+          productSlug: product.slug,
+          productPrice: product.price,
+          action: 'add_to_cart',
+        });
+      } catch (notifyError) {
+        // Don't break the flow if notification fails
+        console.warn('Failed to send add to cart notification:', notifyError);
+      }
+
+      debugLog('handleAddToCart', 'addToCart completed, waiting 100ms...', 'log');
+
+      // Small delay to ensure localStorage is updated
+      await new Promise(resolve => setTimeout(resolve, 100));
+
+      debugNavigation('handleAddToCart', 'Attempting navigation to /checkout');
+
+      // Redirect to checkout - client-side navigation only
+      if (typeof window !== 'undefined') {
+        try {
+          // Use Next.js router for client-side navigation
+          debugLog('handleAddToCart', 'Using router.push', 'log');
+          router.push('/checkout');
+          debugLog('handleAddToCart', 'router.push called successfully', 'log');
+
+          // Small delay before scroll
+          setTimeout(() => {
+            try {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (scrollError) {
+              debugError('handleAddToCart: scroll failed', scrollError);
+            }
+          }, 50);
+        } catch (navError) {
+          debugError('handleAddToCart: router.push failed', navError);
+          // Fallback: direct navigation
+          try {
+            debugLog('handleAddToCart', 'Using window.location.href as fallback', 'warn');
+            window.location.href = '/checkout';
+          } catch (fallbackError) {
+            debugError('handleAddToCart: fallback navigation failed', fallbackError);
+            setIsAddingToCart(false);
+            alert('Failed to navigate to checkout. Please try again.');
+            return;
+          }
+        }
+      }
+
+      debugLog('handleAddToCart', 'SUCCESS - Navigation completed', 'log');
+    } catch (error) {
+      debugError('handleAddToCart: CRITICAL ERROR', error);
+      setIsAddingToCart(false);
+      alert('Failed to add product to cart. Please check the console for details.');
+      throw error; // Re-throw for better error tracking
+    }
+  };
+
+  const handleBuyNow = async () => {
+    if (!product) {
+      console.error('Cannot proceed to checkout: product is null');
+      return;
+    }
+
+    // Check if product is sold out
+    if (product.inStock === false) {
+      alert('This product is currently sold out.');
+      return;
+    }
+
+    const hasSizesEnabled = !!(product.meta?.has_mens_sizes || product.meta?.has_womens_sizes || product.meta?.hasSizes);
+
+    // Validate size selection if enabled
+    if (hasSizesEnabled && !selectedSize) {
+      setSizeError(true);
+      if (sizeSelectorRef.current) {
+        sizeSelectorRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      setIsBuyingNow(false);
+      return;
+    }
+
+    setIsBuyingNow(true);
+
+    // Use a small delay to ensure the UI updates
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    try {
+      if (typeof window === 'undefined') {
+        throw new Error('Window is not available');
+      }
+
+      let sizeValue = selectedSize;
+      if (selectedSize) {
+        if (product.meta?.has_mens_sizes && product.meta?.has_womens_sizes) {
+          sizeValue = `${selectedSize} (${selectedSizeRange === 'mens' ? "Men's" : "Women's"})`;
+        } else if (product.meta?.has_mens_sizes || product.meta?.hasSizes) {
+          sizeValue = `${selectedSize} (Men's)`;
+        } else if (product.meta?.has_womens_sizes) {
+          sizeValue = `${selectedSize} (Women's)`;
+        }
+      }
+
+      addToCart({
+        ...product,
+        selectedSize: sizeValue || undefined
+      } as any);
+
+      // Meta Pixel AddToCart Event
+      trackPixelEvent('AddToCart', {
+        content_name: product.title,
+        content_ids: [product.slug],
+        content_type: 'product',
+        value: product.price,
+        currency: product.currency || 'USD'
+      });
+
+      // Redirect to checkout after adding to cart
+      setTimeout(() => {
+        preventScrollOnClick(() => {
+          goToCheckout();
+        }, true);
+      }, 200);
+    } catch (error) {
+      console.error('Error in buy now:', error);
+      setIsBuyingNow(false);
+      alert('Failed to proceed to checkout. Please try again.');
+    }
+  };
+
+  const handleZoomIn = () => setZoomLevel(prev => Math.min(prev * 1.5, 3));
+  const handleZoomOut = () => setZoomLevel(prev => Math.max(prev / 1.5, 0.5));
+  const resetZoom = () => setZoomLevel(1);
+
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart({ x: e.targetTouches[0].clientX, y: e.targetTouches[0].clientY });
+  const handleTouchMove = (e: React.TouchEvent) => setTouchEnd({ x: e.targetTouches[0].clientX, y: e.targetTouches[0].clientY });
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distanceX = touchStart.x - touchEnd.x;
+    const isHorizontalSwipe = Math.abs(distanceX) > Math.abs(touchStart.y - touchEnd.y) && Math.abs(distanceX) > 50;
+    if (isHorizontalSwipe) {
+      setActiveImage(prev => (distanceX > 0 ? (prev < product!.images.length - 1 ? prev + 1 : 0) : (prev > 0 ? prev - 1 : product!.images.length - 1)));
+    }
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  const handleImageClick = (index: number) => {
+    setActiveImage(index);
+    setShowZoom(true);
+    setZoomLevel(1);
+  };
+
+  const goToCheckout = () => {
+    try {
+      router.push('/checkout');
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } catch (error) {
+      console.error('Error navigating to checkout:', error);
+      // Fallback navigation
+      if (typeof window !== 'undefined') {
+        window.location.href = '/checkout';
+      }
+    }
+  };
+
+  const handleShare = async () => {
+    if (!product) return;
+
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    const shareData = {
+      title: product.title,
+      text: product.description.substring(0, 200),
+      url: url,
+    };
+
+    try {
+      // Try native share API if available (mobile)
+      if (navigator.share && typeof navigator.share === 'function') {
+        await navigator.share(shareData);
+      } else {
+        // Fallback: Copy to clipboard
+        await navigator.clipboard.writeText(url);
+        alert('Product link copied to clipboard!');
+      }
+    } catch (error: any) {
+      // User cancelled or error occurred
+      if (error.name !== 'AbortError') {
+        // Fallback: Copy to clipboard
+        try {
+          await navigator.clipboard.writeText(url);
+          alert('Product link copied to clipboard!');
+        } catch (clipboardError) {
+          console.error('Error sharing:', clipboardError);
+          alert('Failed to share. Please copy the URL manually.');
+        }
+      }
+    }
+  };
+
+  if (!product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center px-4">
           <h1 className="text-3xl font-bold text-[#262626] mb-4">Product Not Found</h1>
           <p className="text-gray-600 mb-8">The product you&apos;re looking for doesn&apos;t exist.</p>
-          <Link href="/" className="inline-block bg-[#01428a] hover:bg-[#002b59] text-[#f1f6fb] px-6 py-3 rounded-lg transition-colors duration-300">
+          <Link
+            href="/"
+            className="inline-block bg-[#01428a] hover:bg-[#002b59] text-[#f1f6fb] px-6 py-3 rounded-lg transition-colors duration-300"
+          >
             Return to Home
           </Link>
         </div>
-      </div>);
-    }
-    const { slug, price, original_price, images, condition, reviews } = product || {};
-    const title = activeTranslation.title || product?.title || '';
-    const description = activeTranslation.description || product?.description || '';
-    // Safety checks
-    if (!slug || !title || !images || images.length === 0) {
-        return (<div className="min-h-screen flex items-center justify-center bg-gray-50">
+      </div>
+    );
+  }
+
+  const { slug, price, original_price, images, condition, reviews } = product || {};
+  const title = activeTranslation.title || product?.title || '';
+  const description = activeTranslation.description || product?.description || '';
+
+  // Safety checks
+  if (!slug || !title || !images || images.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center px-4">
           <h1 className="text-3xl font-bold text-[#262626] mb-4">Invalid Product Data</h1>
           <p className="text-gray-600 mb-8">The product information is incomplete.</p>
-          <Link href="/" className="inline-block bg-[#01428a] hover:bg-[#002b59] text-[#f1f6fb] px-6 py-3 rounded-lg transition-colors duration-300">
+          <Link
+            href="/"
+            className="inline-block bg-[#01428a] hover:bg-[#002b59] text-[#f1f6fb] px-6 py-3 rounded-lg transition-colors duration-300"
+          >
             Return to Home
           </Link>
         </div>
-      </div>);
-    }
-    return (<div className="min-h-screen flex flex-col font-sans bg-gray-100">
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col font-sans bg-gray-100">
       <main className="flex-grow bg-gray-100 pt-4 pb-24 lg:py-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:items-start">
             <div className="relative lg:sticky lg:top-0 lg:self-start">
               <div onClick={() => handleImageClick(activeImage)} className="cursor-zoom-in relative group aspect-[4/3] w-full rounded-md lg:bg-white">
-                {images && images.length > 0 && images[activeImage] ? (<>
-                    {!imgLoaded && (<div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse rounded-md z-10">
-                        <div className="h-16 w-16 bg-gray-300 rounded-full"/>
-                      </div>)}
-                    <Image key={images[activeImage]} src={images[activeImage]} alt={`${title || 'Product'} - Image ${activeImage + 1}`} fill priority quality={PRODUCT_IMAGE_QUALITY} sizes="(max-width: 1024px) 100vw, 50vw" className={`object-cover rounded-md transition-opacity duration-300 lg:object-contain ${imgLoaded ? 'opacity-100' : 'opacity-0'}`} onError={(e) => {
-                console.error('Image failed to load:', images[activeImage]);
-                (e.target as HTMLImageElement).src = '/placeholder.png';
-            }} onLoadingComplete={() => setImgLoaded(true)}/>
-                  </>) : (<div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-md">
+                {images && images.length > 0 && images[activeImage] ? (
+                  <>
+                    {!imgLoaded && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse rounded-md z-10">
+                        <div className="h-16 w-16 bg-gray-300 rounded-full" />
+                      </div>
+                    )}
+                    <Image
+                      key={images[activeImage]}
+                      src={images[activeImage]}
+                      alt={`${title || 'Product'} - Image ${activeImage + 1}`}
+                      fill
+                      priority
+                      quality={PRODUCT_IMAGE_QUALITY}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className={`object-cover rounded-md transition-opacity duration-300 lg:object-contain ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+                      onError={(e) => {
+                        console.error('Image failed to load:', images[activeImage]);
+                        (e.target as HTMLImageElement).src = '/placeholder.png';
+                      }}
+                      onLoadingComplete={() => setImgLoaded(true)}
+                    />
+                  </>
+                ) : (
+                  <div className="w-full h-full bg-gray-200 flex items-center justify-center rounded-md">
                     <span className="text-gray-400">No image available</span>
-                  </div>)}
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-200 rounded-md flex items-center justify-center">
-                  <ZoomIn className="h-12 w-12 text-white opacity-0 group-hover:opacity-75 transition-opacity"/>
+                  <ZoomIn className="h-12 w-12 text-white opacity-0 group-hover:opacity-75 transition-opacity" />
                 </div>
               </div>
-              {images && images.length > 1 && (<div className="mt-4 flex justify-center space-x-2 overflow-x-auto py-2">
-                  {images.map((image, idx) => (image ? (<button key={idx} onClick={() => setActiveImage(idx)} className={`relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden ${activeImage === idx ? 'ring-2 ring-[#1D2E24]' : 'ring-1 ring-[#DCE5DE]'}`}>
-                        <Image src={image} alt={`${title || 'Product'} thumbnail ${idx + 1}`} fill quality={90} sizes="80px" className="object-cover lg:object-contain" onError={(e) => {
-                    console.error('Thumbnail failed to load:', image);
-                    (e.target as HTMLImageElement).src = '/placeholder.png';
-                }}/>
+              {images && images.length > 1 && (
+                <div className="mt-4 flex justify-center space-x-2 overflow-x-auto py-2">
+                  {images.map((image, idx) => (
+                    image ? (
+                      <button
+                        key={idx}
+                        onClick={() => setActiveImage(idx)}
+                        className={`relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden ${activeImage === idx ? 'ring-2 ring-[#1D2E24]' : 'ring-1 ring-[#DCE5DE]'}`}
+                      >
+                        <Image
+                          src={image}
+                          alt={`${title || 'Product'} thumbnail ${idx + 1}`}
+                          fill
+                          quality={90}
+                          sizes="80px"
+                          className="object-cover lg:object-contain"
+                          onError={(e) => {
+                            console.error('Thumbnail failed to load:', image);
+                            (e.target as HTMLImageElement).src = '/placeholder.png';
+                          }}
+                        />
                         {activeImage === idx && <div className="absolute inset-0 bg-white/10"></div>}
-                      </button>) : null))}
-                </div>)}
-              {images.length > 1 && (<>
+                      </button>
+                    ) : null
+                  ))}
+                </div>
+              )}
+              {images.length > 1 && (
+                <>
                   <button onClick={() => setActiveImage((prev) => (prev > 0 ? prev - 1 : images.length - 1))} className="absolute left-4 top-1/2 -translate-y-1/2 transform bg-white/80 hover:bg-[#1D2E24] hover:text-[#D1A966] p-2 rounded-full transition-all duration-300 z-10">
-                    <ChevronLeft className="h-6 w-6"/>
+                    <ChevronLeft className="h-6 w-6" />
                   </button>
                   <button onClick={() => setActiveImage((prev) => (prev < images.length - 1 ? prev + 1 : 0))} className="absolute right-4 top-1/2 -translate-y-1/2 transform bg-white/80 hover:bg-[#1D2E24] hover:text-[#D1A966] p-2 rounded-full transition-all duration-300 z-10">
-                    <ChevronRight className="h-6 w-6"/>
+                    <ChevronRight className="h-6 w-6" />
                   </button>
-                </>)}
+                </>
+              )}
             </div>
 
             <div className="lg:pr-4">
               <h1 className="text-3xl font-bold text-[#1E2621] mb-1">{title}</h1>
-              <SellerBadge sellerId={product?.sellerId} size="md"/>
-              {condition && (<div className="mt-3 w-fit max-w-full">
+              <SellerBadge sellerId={product?.sellerId} size="md" />
+              {condition && (
+                <div className="mt-3 w-fit max-w-full">
                   <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5C6B61]">
                     Condition
                   </p>
-                  <div ref={conditionTriggerRef} className="group relative inline-flex max-w-full flex-col" tabIndex={0} onMouseEnter={() => setIsConditionTooltipVisible(true)} onMouseLeave={() => setIsConditionTooltipVisible(false)} onFocus={() => setIsConditionTooltipVisible(true)} onBlur={() => setIsConditionTooltipVisible(false)} onClick={() => setIsConditionTooltipVisible((current) => !current)}>
+                  <div
+                    ref={conditionTriggerRef}
+                    className="group relative inline-flex max-w-full flex-col"
+                    tabIndex={0}
+                    onMouseEnter={() => setIsConditionTooltipVisible(true)}
+                    onMouseLeave={() => setIsConditionTooltipVisible(false)}
+                    onFocus={() => setIsConditionTooltipVisible(true)}
+                    onBlur={() => setIsConditionTooltipVisible(false)}
+                    onClick={() => setIsConditionTooltipVisible((current) => !current)}
+                  >
                     <div className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-[#DCE5DE] bg-[#F6F8F5] px-3 py-1 text-sm font-medium text-gray-700 transition-colors group-hover:border-[#1D2E24]/30 group-hover:bg-[#1D2E24]/5 group-focus-within:border-[#1D2E24]/30 group-focus-within:bg-[#1D2E24]/5">
                       <span className="truncate">{getConditionDisplayLabel(condition)}</span>
-                      <Info className="h-4 w-4 flex-shrink-0 text-[#5C6B61] transition-colors group-hover:text-[#1D2E24] group-focus-within:text-[#1D2E24]"/>
+                      <Info className="h-4 w-4 flex-shrink-0 text-[#5C6B61] transition-colors group-hover:text-[#1D2E24] group-focus-within:text-[#1D2E24]" />
                     </div>
-                    {getConditionTooltip(condition) && isConditionTooltipVisible && (<div className="pointer-events-none z-[70] w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-[#D1A966]/20 bg-[#1D2E24] px-3 py-2 text-xs leading-5 text-[#F6F8F5] shadow-xl" style={conditionTooltipStyle}>
+                    {getConditionTooltip(condition) && isConditionTooltipVisible && (
+                      <div
+                        className="pointer-events-none z-[70] w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-[#D1A966]/20 bg-[#1D2E24] px-3 py-2 text-xs leading-5 text-[#F6F8F5] shadow-xl"
+                        style={conditionTooltipStyle}
+                      >
                         {getConditionTooltip(condition)}
                         <div className="absolute bottom-full left-5 border-4 border-transparent border-b-[#1D2E24] md:bottom-auto md:left-[-8px] md:right-auto md:top-1/2 md:-translate-y-1/2 md:border-b-transparent md:border-r-[#1D2E24] md:border-l-transparent"></div>
-                      </div>)}
+                      </div>
+                    )}
                   </div>
-                </div>)}
-              {product && product.inStock === false && product.checkoutLink === '#' && (<div className="mt-4 bg-[#F6F8F5] border-2 border-[#D1A966]/50 rounded-xl py-3 px-4">
+                </div>
+              )}
+              {product && product.inStock === false && product.checkoutLink === '#' && (
+                <div className="mt-4 bg-[#F6F8F5] border-2 border-[#D1A966]/50 rounded-xl py-3 px-4">
                   <p className="text-sm text-[#1D2E24] font-medium">
                     ⚠️ This offer has expired and the product is no longer available for purchase.
                   </p>
-                </div>)}
+                </div>
+              )}
               <div className="mt-4 flex flex-wrap items-baseline gap-3">
                 <span className="text-4xl font-bold text-[#1E2621]">
                   {formatPrice(price)}
                 </span>
-                {original_price && original_price > price && (<>
+                {original_price && original_price > price && (
+                  <>
                     <span className="text-xl text-gray-400 line-through font-medium">
                       {formatPrice(original_price)}
                     </span>
                     <span className="inline-flex items-center rounded-md bg-[#1D2E24]/10 px-2 py-1 text-xs font-bold text-[#1D2E24] ring-1 ring-inset ring-[#1D2E24]/20">
                       {Math.round((1 - price / original_price) * 100)}% OFF
                     </span>
-                  </>)}
+                  </>
+                )}
               </div>
               <p className="mt-1 text-xs text-[#5C6B61]">
-                {'Tax Included, Free Insured Freight Delivery to USA & Worldwide'}
+                {isGerman
+                  ? 'inkl. MwSt., kostenloser versicherter Speditionsversand nach Deutschland & EU'
+                  : 'Tax Included, Free Insured Freight Delivery to USA & Worldwide'}
               </p>
 
               <ClientOnly>
-                {viewedCount !== null && viewedCount > 0 && (<div className="mt-6 bg-[#1D2E24]/5 border border-[#1D2E24]/20 rounded-xl p-3 sm:p-4">
+                {viewedCount !== null && viewedCount > 0 && (
+                  <div className="mt-6 bg-[#1D2E24]/5 border border-[#1D2E24]/20 rounded-xl p-3 sm:p-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-2 sm:space-x-4">
                         <div className="flex items-center text-[#1D2E24]">
-                          <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-1.5 text-[#D1A966]"/>
+                          <Eye className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-1.5 text-[#D1A966]" />
                           <span className="text-xs sm:text-sm font-medium">
-                            {viewedCount.toLocaleString()} {'viewed in the last 24 hours'}
+                            {viewedCount.toLocaleString()} {isGerman ? 'in den letzten 24 Stunden angesehen' : 'viewed in the last 24 hours'}
                           </span>
                         </div>
                       </div>
                       <div className="flex items-center">
                         <div className="w-2 h-2 bg-[#D1A966] rounded-full animate-pulse mr-2"></div>
                         <span className="text-xs text-[#1D2E24] font-medium hidden sm:inline">
-                          {'Live Activity'}
+                          {isGerman ? 'Live-Aktivität' : 'Live Activity'}
                         </span>
                       </div>
                     </div>
-                  </div>)}
+                  </div>
+                )}
               </ClientOnly>
 
               {/* Size Selector Section */}
-              {!!(product?.meta?.has_mens_sizes || product?.meta?.has_womens_sizes || product?.meta?.hasSizes) && (<div ref={sizeSelectorRef} className="mt-6 border-t border-[#DCE5DE] pt-6">
+              {!!(product?.meta?.has_mens_sizes || product?.meta?.has_womens_sizes || product?.meta?.hasSizes) && (
+                <div ref={sizeSelectorRef} className="mt-6 border-t border-[#DCE5DE] pt-6">
                   <div className="flex items-center justify-between mb-3">
                     <label className="text-sm font-bold text-[#1E2621] uppercase tracking-wide flex items-center gap-1.5">
-                      <Ruler className="h-4 w-4 text-[#5C6B61]"/> {'Select Size / Variant'} <span className="text-red-500 font-bold">*</span>
+                      <Ruler className="h-4 w-4 text-[#5C6B61]" /> {isGerman ? 'Größe / Variante wählen' : 'Select Size / Variant'} <span className="text-red-500 font-bold">*</span>
                     </label>
                   </div>
 
                   {/* Sizing Tab Selector */}
-                  {!!(product?.meta?.has_mens_sizes && product?.meta?.has_womens_sizes) && (<div className="flex gap-2 mb-4 p-1 bg-[#F6F8F5] rounded-xl border border-[#DCE5DE]">
-                      <button type="button" onClick={() => {
-                    setSelectedSizeRange('mens');
-                    setSelectedSize('');
-                    setSizeError(false);
-                }} className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all duration-200 ${selectedSizeRange === 'mens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'}`}>
+                  {!!(product?.meta?.has_mens_sizes && product?.meta?.has_womens_sizes) && (
+                    <div className="flex gap-2 mb-4 p-1 bg-[#F6F8F5] rounded-xl border border-[#DCE5DE]">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedSizeRange('mens');
+                          setSelectedSize('');
+                          setSizeError(false);
+                        }}
+                        className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all duration-200 ${
+                          selectedSizeRange === 'mens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'
+                        }`}
+                      >
                         Standard
                       </button>
-                      <button type="button" onClick={() => {
-                    setSelectedSizeRange('womens');
-                    setSelectedSize('');
-                    setSizeError(false);
-                }} className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all duration-200 ${selectedSizeRange === 'womens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'}`}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSelectedSizeRange('womens');
+                          setSelectedSize('');
+                          setSizeError(false);
+                        }}
+                        className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-bold transition-all duration-200 ${
+                          selectedSizeRange === 'womens' ? 'bg-[#1D2E24] text-[#F6F8F5] shadow-sm' : 'text-[#5C6B61] hover:text-[#1E2621]'
+                        }`}
+                      >
                         Kompakt
                       </button>
-                    </div>)}
+                    </div>
+                  )}
 
                   {/* Sizing Grid */}
                   <div className="grid grid-cols-4 sm:grid-cols-5 gap-2">
-                    {(selectedSizeRange === 'womens' ? parsedWomensSizes : parsedMensSizes).map((size) => (<button key={size} onClick={() => {
-                    setSelectedSize(size);
-                    setSizeError(false);
-                }} type="button" className={`py-3 px-2 rounded-xl text-sm font-bold border transition-all duration-200 ${selectedSize === size
-                    ? 'border-[#1D2E24] bg-[#1D2E24] text-[#F6F8F5] shadow-sm'
-                    : 'border-[#DCE5DE] bg-white text-[#1E2621] hover:border-[#1D2E24] hover:bg-[#F6F8F5]'}`}>
+                    {(selectedSizeRange === 'womens' ? parsedWomensSizes : parsedMensSizes).map((size) => (
+                      <button
+                        key={size}
+                        onClick={() => {
+                          setSelectedSize(size);
+                          setSizeError(false);
+                        }}
+                        type="button"
+                        className={`py-3 px-2 rounded-xl text-sm font-bold border transition-all duration-200 ${
+                          selectedSize === size
+                            ? 'border-[#1D2E24] bg-[#1D2E24] text-[#F6F8F5] shadow-sm'
+                            : 'border-[#DCE5DE] bg-white text-[#1E2621] hover:border-[#1D2E24] hover:bg-[#F6F8F5]'
+                        }`}
+                      >
                         {size}
-                      </button>))}
+                      </button>
+                    ))}
                   </div>
-                  {sizeError && (<p className="mt-2 text-xs font-semibold text-red-500">
-                      {'Please select a size / variant.'}
-                    </p>)}
-                </div>)}
+                  {sizeError && (
+                    <p className="mt-2 text-xs font-semibold text-red-500">
+                      {isGerman ? 'Bitte wählen Sie eine Größe / Variante aus.' : 'Please select a size / variant.'}
+                    </p>
+                  )}
+                </div>
+              )}
 
               {/* Action Buttons Section */}
               <div className="mt-8 space-y-3">
-                {product && (product.inStock === false || product.checkoutLink === '#') ? (<div className="w-full bg-gray-100 rounded-lg py-3 px-4 text-center">
+                {product && (product.inStock === false || product.checkoutLink === '#') ? (
+                  <div className="w-full bg-gray-100 rounded-lg py-3 px-4 text-center">
                     <p className="text-sm text-gray-600">
                       {product.checkoutLink === '#'
-                ? ('This offer has expired')
-                : ('This product is currently sold out')}
+                        ? (isGerman ? 'Dieses Angebot ist leider abgelaufen' : 'This offer has expired')
+                        : (isGerman ? 'Dieses Produkt ist derzeit leider ausverkauft' : 'This product is currently sold out')}
                     </p>
-                  </div>) : (<>
+                  </div>
+                ) : (
+                  <>
                     <div className="flex gap-3 lg:flex-col lg:gap-3">
                       {/* Share Button - Mobile Only */}
-                      <button onClick={handleShare} className="lg:hidden flex-shrink-0 w-14 h-14 bg-[#F6F8F5] hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors duration-200 group border border-[#DCE5DE]" style={{ color: '#5C6B61' }} aria-label="Produkt teilen">
+                      <button
+                        onClick={handleShare}
+                        className="lg:hidden flex-shrink-0 w-14 h-14 bg-[#F6F8F5] hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors duration-200 group border border-[#DCE5DE]"
+                        style={{ color: '#5C6B61' }}
+                        aria-label="Produkt teilen"
+                      >
                         <svg className="h-6 w-6 group-hover:opacity-80 transition-opacity" fill="currentColor" fillRule="nonzero" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                           <path d="M4.86197 3.52794L7.52828 0.861631L7.53151 0.858423C7.59476 0.795922 7.6674 0.748648 7.74485 0.716601C7.82346 0.684006 7.90965 0.666016 8.00004 0.666016C8.18414 0.666016 8.3508 0.740635 8.47145 0.861278L11.1381 3.52794C11.3985 3.78829 11.3985 4.2104 11.1381 4.47075C10.8778 4.7311 10.4557 4.7311 10.1953 4.47075L8.66671 2.94216V10.666C8.66671 11.0342 8.36823 11.3327 8.00004 11.3327C7.63185 11.3327 7.33337 11.0342 7.33337 10.666V2.94216L5.80478 4.47075C5.54443 4.7311 5.12232 4.7311 4.86197 4.47075C4.60162 4.2104 4.60162 3.78829 4.86197 3.52794Z"></path>
                           <path d="M13.3334 14.666V7.33268H11.3334C10.9652 7.33268 10.6667 7.0342 10.6667 6.66602C10.6667 6.29783 10.9652 5.99935 11.3334 5.99935H14C14.3682 5.99935 14.6667 6.29783 14.6667 6.66602V15.3327C14.6667 15.7009 14.3682 15.9993 14 15.9993H2.00004C1.63185 15.9993 1.33337 15.7009 1.33337 15.3327V6.66602C1.33337 6.29783 1.63185 5.99935 2.00004 5.99935H4.66671C5.0349 5.99935 5.33337 6.29783 5.33337 6.66602C5.33337 7.0342 5.0349 7.33268 4.66671 7.33268H2.66671V14.666H13.3334Z"></path>
                         </svg>
                       </button>
                       <button onClick={handleAddToCart} disabled={isAddingToCart || isBuyingNow} className="flex-1 lg:w-full bg-[#1D2E24] hover:bg-[#142019] text-[#F6F8F5] py-3 lg:py-4 px-6 rounded-xl font-bold transition-colors duration-200 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed text-sm lg:text-base shadow-sm">
-                        {isAddingToCart ? (<>
+                        {isAddingToCart ? (
+                          <>
                             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#D1A966] mr-2"></div>
-                            {'Adding to cart...'}
-                          </>) : (<>
-                            <ShoppingCart className="h-5 w-5 mr-2 text-[#D1A966]"/>
-                            {'Add to Cart'}
-                          </>)}
+                            {isGerman ? 'Wird hinzugefügt...' : 'Adding to cart...'}
+                          </>
+                        ) : (
+                          <>
+                            <ShoppingCart className="h-5 w-5 mr-2 text-[#D1A966]" />
+                            {isGerman ? 'In den Warenkorb' : 'Add to Cart'}
+                          </>
+                        )}
                       </button>
                     </div>
-                    <button onClick={handleBuyNow} disabled={isAddingToCart || isBuyingNow} className="hidden lg:flex w-full bg-transparent border-2 border-[#1D2E24] hover:border-[#142019] text-[#1D2E24] hover:text-[#142019] hover:bg-[#1D2E24]/5 py-4 px-6 rounded-xl font-bold transition-colors duration-200 items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed">
-                      {isBuyingNow ? (<>
+                    <button
+                      onClick={handleBuyNow}
+                      disabled={isAddingToCart || isBuyingNow}
+                      className="hidden lg:flex w-full bg-transparent border-2 border-[#1D2E24] hover:border-[#142019] text-[#1D2E24] hover:text-[#142019] hover:bg-[#1D2E24]/5 py-4 px-6 rounded-xl font-bold transition-colors duration-200 items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isBuyingNow ? (
+                        <>
                           <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#1D2E24] mr-2"></div>
-                          {'Processing...'}
-                        </>) : (<>
-                          <Zap className="h-5 w-5 mr-2 text-[#D1A966]"/>
-                          {'Buy Now with 1-Click'}
-                        </>)}
+                          {isGerman ? 'Wird geladen...' : 'Processing...'}
+                        </>
+                      ) : (
+                        <>
+                          <Zap className="h-5 w-5 mr-2 text-[#D1A966]" />
+                          {isGerman ? 'Sofort kaufen' : 'Buy Now with 1-Click'}
+                        </>
+                      )}
                     </button>
-                  </>)}
+                  </>
+                )}
               </div>
 
               <div className="mt-8">
-                <ClientOnly><ShippingInfo targetMarket={product?.meta?.targetMarket}/></ClientOnly>
+                <ClientOnly><ShippingInfo targetMarket={product?.meta?.targetMarket} /></ClientOnly>
               </div>
               <div className="mt-8 lg:hidden">
                 <h2 className="text-xl font-bold text-[#1E2621] mb-4">
-                  {'Description & Product Details'}
+                  {isGerman ? 'Artikelbeschreibung & Details' : 'Description & Product Details'}
                 </h2>
                 <div className="rounded-[20px] border border-[#DCE5DE] bg-white px-5 py-5">
                   <p className="whitespace-pre-line text-sm leading-7 text-[#5C6B61]">
                     {showFullDescription ? descriptionText : descriptionPreview}
                   </p>
-                  {shouldCollapseDescription && (<button type="button" onClick={() => setShowFullDescription((current) => !current)} className="mt-4 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]">
-                      {showFullDescription ? ("Show less") : ("Read full description")}
-                    </button>)}
+                  {shouldCollapseDescription && (
+                    <button
+                      type="button"
+                      onClick={() => setShowFullDescription((current) => !current)}
+                      className="mt-4 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
+                    >
+                      {showFullDescription ? (isGerman ? "Weniger anzeigen" : "Show less") : (isGerman ? "Mehr anzeigen" : "Read full description")}
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -659,14 +822,20 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
           <div className="mt-12 hidden lg:block">
             <section className="rounded-[24px] border border-[#DCE5DE] bg-white px-8 py-8">
               <h2 className="text-2xl font-bold text-[#1E2621]">
-                {'Description & Product Details'}
+                {isGerman ? 'Artikelbeschreibung & Details' : 'Description & Product Details'}
               </h2>
               <p className="mt-4 whitespace-pre-line text-[15px] leading-8 text-[#5C6B61]">
                 {showFullDescription ? descriptionText : descriptionPreview}
               </p>
-              {shouldCollapseDescription && (<button type="button" onClick={() => setShowFullDescription((current) => !current)} className="mt-5 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]">
-                  {showFullDescription ? ("Show less") : ("Read full description")}
-                </button>)}
+              {shouldCollapseDescription && (
+                <button
+                  type="button"
+                  onClick={() => setShowFullDescription((current) => !current)}
+                  className="mt-5 text-sm font-semibold text-[#1D2E24] transition hover:text-[#D1A966]"
+                >
+                  {showFullDescription ? (isGerman ? "Weniger anzeigen" : "Show less") : (isGerman ? "Mehr anzeigen" : "Read full description")}
+                </button>
+              )}
             </section>
           </div>
 
@@ -675,77 +844,129 @@ export default function ProductPageClient({ product: initialProduct }: ProductPa
             <section className="rounded-[24px] border border-[#DCE5DE] bg-white">
               <div className="border-b border-[#DCE5DE] px-6 py-6 sm:px-8">
                 <h2 className="text-2xl font-bold text-[#1E2621]">
-                  {'Frequently Asked Questions (FAQ)'}
+                  {isGerman ? 'Häufig gestellte Fragen (FAQ)' : 'Frequently Asked Questions (FAQ)'}
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-7 text-[#5C6B61]">
-                  {'Answers to essential questions regarding insured freight shipping, product quality, payment, and returns.'}
+                  {isGerman
+                    ? 'Antworten auf die wichtigsten Fragen zu Versand, Qualität, Bezahlung und Rückgabe.'
+                    : 'Answers to essential questions regarding insured freight shipping, product quality, payment, and returns.'}
                 </p>
               </div>
 
               <div className="px-6 py-2 sm:px-8">
                 {visibleFaqItems.map((item, index) => {
-            const isOpen = openFaqIndex === index;
-            return (<div key={item.question} className={`border-b border-[#DCE5DE] py-5 last:border-b-0 ${isOpen ? "" : ""}`}>
-                      <button type="button" onClick={() => setOpenFaqIndex(isOpen ? -1 : index)} className="flex w-full items-start justify-between gap-4 text-left">
+                  const isOpen = openFaqIndex === index;
+
+                  return (
+                    <div
+                      key={item.question}
+                      className={`border-b border-[#DCE5DE] py-5 last:border-b-0 ${isOpen ? "" : ""}`}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setOpenFaqIndex(isOpen ? -1 : index)}
+                        className="flex w-full items-start justify-between gap-4 text-left"
+                      >
                         <div className="pr-2">
                           <h3 className="text-base font-semibold text-[#1E2621] sm:text-lg">{item.question}</h3>
-                          {!isOpen && (<p className="mt-2 line-clamp-1 text-sm text-[#5C6B61]">
+                          {!isOpen && (
+                            <p className="mt-2 line-clamp-1 text-sm text-[#5C6B61]">
                               {item.answer}
-                            </p>)}
+                            </p>
+                          )}
                         </div>
                         <span className="mt-0.5 flex-shrink-0 text-[#1D2E24]" aria-hidden="true">
-                          {isOpen ? <ChevronUp className="h-5 w-5 text-[#D1A966]"/> : <ChevronDown className="h-5 w-5"/>}
+                          {isOpen ? <ChevronUp className="h-5 w-5 text-[#D1A966]" /> : <ChevronDown className="h-5 w-5" />}
                         </span>
                       </button>
-                      {isOpen && (<div className="pt-3 text-sm leading-7 text-[#5C6B61]">
+                      {isOpen && (
+                        <div className="pt-3 text-sm leading-7 text-[#5C6B61]">
                           <p>{item.answer}</p>
-                          {item.linkHref && item.linkLabel && (<Link href={item.linkHref} className="mt-2 inline-flex text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition">
+                          {item.linkHref && item.linkLabel && (
+                            <Link
+                              href={item.linkHref}
+                              className="mt-2 inline-flex text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition"
+                            >
                               {item.linkLabel}
-                            </Link>)}
-                        </div>)}
-                    </div>);
-        })}
+                            </Link>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
-              {faqItems.length > 4 && (<div className="border-t border-[#e5eef8] px-6 py-5 sm:px-8">
-                  <button type="button" onClick={() => {
-                setShowAllFaqs((current) => !current);
-                if (showAllFaqs && openFaqIndex >= COLLAPSED_FAQ_COUNT) {
-                    setOpenFaqIndex(-1);
-                }
-            }} className="text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition-colors">
-                    {showAllFaqs ? ("Show fewer answers") : ("View more answers")}
+              {faqItems.length > 4 && (
+                <div className="border-t border-[#e5eef8] px-6 py-5 sm:px-8">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowAllFaqs((current) => !current);
+                      if (showAllFaqs && openFaqIndex >= COLLAPSED_FAQ_COUNT) {
+                        setOpenFaqIndex(-1);
+                      }
+                    }}
+                    className="text-sm font-semibold text-[#1D2E24] hover:text-[#D1A966] transition-colors"
+                  >
+                    {showAllFaqs ? (isGerman ? "Weniger anzeigen" : "Show fewer answers") : (isGerman ? "Weitere Antworten anzeigen" : "View more answers")}
                   </button>
-                </div>)}
+                </div>
+              )}
             </section>
           </div>
 
           <div className="mt-8">
-            <SameDayShipping fullWidth={true} contained={true}/>
+            <SameDayShipping fullWidth={true} contained={true} />
           </div>
-          {reviews && reviews.length > 0 && (<div className="mt-16">
-              <ProductReviews reviews={reviews} averageRating={product.rating} totalReviews={product.reviewCount} sellerName={(product.meta as any)?._sellerName} sellerUsername={(product.meta as any)?._sellerUsername}/>
-            </div>)}
-          <RecommendedProducts currentProductSlug={slug}/>
+          {reviews && reviews.length > 0 && (
+            <div className="mt-16">
+              <ProductReviews
+                reviews={reviews}
+                averageRating={product.rating}
+                totalReviews={product.reviewCount}
+                sellerName={(product.meta as any)?._sellerName}
+                sellerUsername={(product.meta as any)?._sellerUsername}
+              />
+            </div>
+          )}
+          <RecommendedProducts currentProductSlug={slug} />
         </div>
       </main>
 
-      {showZoom && (<div className="fixed inset-0 bg-black bg-opacity-90 z-50" onClick={() => setShowZoom(false)}>
+      {showZoom && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 z-50" onClick={() => setShowZoom(false)}>
           <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
             <button onClick={(e) => { e.stopPropagation(); handleZoomOut(); }} className="p-2 text-white hover:text-[#f1f6fb] transition-colors duration-200" aria-label="Zoom out"><span className="text-2xl">−</span></button>
             <button onClick={(e) => { e.stopPropagation(); handleZoomIn(); }} className="p-2 text-white hover:text-[#f1f6fb] transition-colors duration-200" aria-label="Zoom in"><span className="text-2xl">+</span></button>
             <button onClick={(e) => { e.stopPropagation(); resetZoom(); }} className="p-2 text-white hover:text-[#f1f6fb] transition-colors duration-200" aria-label="Reset zoom"><span className="text-lg">⟲</span></button>
-            <button onClick={(e) => { e.stopPropagation(); setShowZoom(false); }} className="p-2 text-white hover:text-[#f1f6fb] transition-colors duration-200" aria-label="Close zoom view"><X className="h-8 w-8"/></button>
+            <button onClick={(e) => { e.stopPropagation(); setShowZoom(false); }} className="p-2 text-white hover:text-[#f1f6fb] transition-colors duration-200" aria-label="Close zoom view"><X className="h-8 w-8" /></button>
           </div>
           <div className="absolute inset-0 flex items-center justify-center p-4" onClick={(e) => e.stopPropagation()} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
             <div className="relative w-full h-full">
-              <Image key={`zoom-${images[activeImage]}`} src={images[activeImage]} alt={`${title} - Image ${activeImage + 1}`} fill priority quality={100} unoptimized={true} sizes="100vw" className="object-contain transition-transform duration-200" style={{ transform: `scale(${zoomLevel})` }} onClick={(e) => e.stopPropagation()}/>
-              {images.length > 1 && (<>
-                  <button onClick={(e) => { e.stopPropagation(); setActiveImage((prev) => (prev > 0 ? prev - 1 : images.length - 1)); setZoomLevel(1); }} className="absolute left-4 top-1/2 -translate-y-1/2 transform bg-white/10 hover:bg-[#01428a] p-3 rounded-full text-white transition-colors duration-200" aria-label="Previous image"><ChevronLeft className="h-8 w-8"/></button>
-                  <button onClick={(e) => { e.stopPropagation(); setActiveImage((prev) => (prev < images.length - 1 ? prev + 1 : 0)); setZoomLevel(1); }} className="absolute right-4 top-1/2 -translate-y-1/2 transform bg-white/10 hover:bg-[#01428a] p-3 rounded-full text-white transition-colors duration-200" aria-label="Next image"><ChevronRight className="h-8 w-8"/></button>
-                </>)}
+              <Image
+                key={`zoom-${images[activeImage]}`}
+                src={images[activeImage]}
+                alt={`${title} - Image ${activeImage + 1}`}
+                fill
+                priority
+                quality={100}
+                unoptimized={true}
+                sizes="100vw"
+                className="object-contain transition-transform duration-200"
+                style={{ transform: `scale(${zoomLevel})` }}
+                onClick={(e) => e.stopPropagation()}
+              />
+              {images.length > 1 && (
+                <>
+                  <button onClick={(e) => { e.stopPropagation(); setActiveImage((prev) => (prev > 0 ? prev - 1 : images.length - 1)); setZoomLevel(1); }} className="absolute left-4 top-1/2 -translate-y-1/2 transform bg-white/10 hover:bg-[#01428a] p-3 rounded-full text-white transition-colors duration-200" aria-label="Previous image"><ChevronLeft className="h-8 w-8" /></button>
+                  <button onClick={(e) => { e.stopPropagation(); setActiveImage((prev) => (prev < images.length - 1 ? prev + 1 : 0)); setZoomLevel(1); }} className="absolute right-4 top-1/2 -translate-y-1/2 transform bg-white/10 hover:bg-[#01428a] p-3 rounded-full text-white transition-colors duration-200" aria-label="Next image"><ChevronRight className="h-8 w-8" /></button>
+                </>
+              )}
             </div>
           </div>
-        </div>)}
-    </div>);
-}
+        </div>
+      )}
+    </div>
+  );
+} 

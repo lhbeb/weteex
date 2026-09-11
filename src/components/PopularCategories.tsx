@@ -1,108 +1,146 @@
 "use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { Product } from '@/types/product';
 import { useLocale } from '@/context/LocaleContext';
+
 interface CategoryDefinition {
-    nameDe: string;
-    nameEn: string;
-    query: string;
-    matcher: (p: Product) => boolean;
+  nameDe: string;
+  nameEn: string;
+  query: string;
+  matcher: (p: Product) => boolean;
 }
+
 const CATEGORY_DEFINITIONS: CategoryDefinition[] = [
-    {
-        nameDe: 'Moderne Esszimmerstühle',
-        nameEn: 'Modern Dining Chairs',
-        query: 'chair',
-        matcher: (p) => (p.slug.includes('ely') ||
-            p.slug.includes('chantelle') ||
-            p.slug.includes('challans') ||
-            p.slug.includes('gien') ||
-            p.slug.includes('muret') ||
-            (p.slug.includes('chair') && !p.slug.includes('rattan') && !p.slug.includes('wicker') && !p.slug.includes('swing'))) &&
-            !p.slug.includes('table') &&
-            !p.slug.includes('tafel'),
-    },
-    {
-        nameDe: 'Massivholz & Rattan',
-        nameEn: 'Solid Wood & Rattan',
-        query: 'rattan',
-        matcher: (p) => p.slug.includes('ruben') ||
-            p.slug.includes('charles') ||
-            p.slug.includes('swing') ||
-            p.slug.includes('relaxstoel') ||
-            p.slug.includes('wicker') ||
-            (p.slug.includes('rotan') && !p.slug.includes('bijzettafel')),
-    },
-    {
-        nameDe: 'Ess- & Couchtische',
-        nameEn: 'Dining & Coffee Tables',
-        query: 'table',
-        matcher: (p) => p.slug.includes('beveled-edge') ||
-            p.slug.includes('savis') ||
-            p.slug.includes('bijzettafel') ||
-            p.slug.includes('coffee-table') ||
-            (p.slug.includes('dining-table') && !p.slug.includes('marble') && !p.slug.includes('ceramic')),
-    },
-    {
-        nameDe: 'Marmor- & Keramikplatten',
-        nameEn: 'Marble & Ceramic Surfaces',
-        query: 'marble',
-        matcher: (p) => p.slug.includes('marble') ||
-            p.slug.includes('marmer') ||
-            p.slug.includes('ceramic') ||
-            p.slug.includes('keramisch') ||
-            p.slug.includes('calacatta'),
-    },
+  {
+    nameDe: 'Moderne Esszimmerstühle',
+    nameEn: 'Modern Dining Chairs',
+    query: 'chair',
+    matcher: (p) =>
+      (p.slug.includes('ely') ||
+        p.slug.includes('chantelle') ||
+        p.slug.includes('challans') ||
+        p.slug.includes('gien') ||
+        p.slug.includes('muret') ||
+        (p.slug.includes('chair') && !p.slug.includes('rattan') && !p.slug.includes('wicker') && !p.slug.includes('swing'))) &&
+      !p.slug.includes('table') &&
+      !p.slug.includes('tafel'),
+  },
+  {
+    nameDe: 'Massivholz & Rattan',
+    nameEn: 'Solid Wood & Rattan',
+    query: 'rattan',
+    matcher: (p) =>
+      p.slug.includes('ruben') ||
+      p.slug.includes('charles') ||
+      p.slug.includes('swing') ||
+      p.slug.includes('relaxstoel') ||
+      p.slug.includes('wicker') ||
+      (p.slug.includes('rotan') && !p.slug.includes('bijzettafel')),
+  },
+  {
+    nameDe: 'Ess- & Couchtische',
+    nameEn: 'Dining & Coffee Tables',
+    query: 'table',
+    matcher: (p) =>
+      p.slug.includes('beveled-edge') ||
+      p.slug.includes('savis') ||
+      p.slug.includes('bijzettafel') ||
+      p.slug.includes('coffee-table') ||
+      (p.slug.includes('dining-table') && !p.slug.includes('marble') && !p.slug.includes('ceramic')),
+  },
+  {
+    nameDe: 'Marmor- & Keramikplatten',
+    nameEn: 'Marble & Ceramic Surfaces',
+    query: 'marble',
+    matcher: (p) =>
+      p.slug.includes('marble') ||
+      p.slug.includes('marmer') ||
+      p.slug.includes('ceramic') ||
+      p.slug.includes('keramisch') ||
+      p.slug.includes('calacatta'),
+  },
 ];
+
 interface PopularCategoriesProps {
-    products: Product[];
+  products: Product[];
 }
+
 export default function PopularCategories({ products }: PopularCategoriesProps) {
-    const { t } = useLocale();
-    const usedImageUrls = new Set<string>();
-    const categories = CATEGORY_DEFINITIONS.map((def, index) => {
-        const matchedProducts = products.filter(def.matcher);
-        // Pick an unused image first, otherwise fallback to first matched or distributed product
-        let chosenProduct = matchedProducts.find((p) => p.images?.[0] && !usedImageUrls.has(p.images[0]));
-        if (!chosenProduct) {
-            chosenProduct = matchedProducts[0] || products[index % products.length];
-        }
-        if (chosenProduct?.images?.[0]) {
-            usedImageUrls.add(chosenProduct.images[0]);
-        }
-        return {
-            name: def.nameEn,
-            query: def.query,
-            count: matchedProducts.length || 1,
-            image: chosenProduct?.images?.[0] || '/bg.png',
-        };
-    }).filter((category) => category.image);
-    if (categories.length === 0)
-        return null;
-    const gridColsClass = categories.length === 4
-        ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
-        : categories.length === 3
-            ? 'grid-cols-1 sm:grid-cols-3'
-            : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5';
-    return (<section className="w-full bg-[#F6F8F5] py-8 sm:py-10 md:py-12" aria-labelledby="popular-categories-title">
+  const { isGerman, t } = useLocale();
+  const usedImageUrls = new Set<string>();
+
+  const categories = CATEGORY_DEFINITIONS.map((def, index) => {
+    const matchedProducts = products.filter(def.matcher);
+
+    // Pick an unused image first, otherwise fallback to first matched or distributed product
+    let chosenProduct = matchedProducts.find(
+      (p) => p.images?.[0] && !usedImageUrls.has(p.images[0]),
+    );
+
+    if (!chosenProduct) {
+      chosenProduct = matchedProducts[0] || products[index % products.length];
+    }
+
+    if (chosenProduct?.images?.[0]) {
+      usedImageUrls.add(chosenProduct.images[0]);
+    }
+
+    return {
+      name: isGerman ? def.nameDe : def.nameEn,
+      query: def.query,
+      count: matchedProducts.length || 1,
+      image: chosenProduct?.images?.[0] || '/bg.png',
+    };
+  }).filter((category) => category.image);
+
+  if (categories.length === 0) return null;
+
+  const gridColsClass =
+    categories.length === 4
+      ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+      : categories.length === 3
+      ? 'grid-cols-1 sm:grid-cols-3'
+      : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5';
+
+  return (
+    <section className="w-full bg-[#F6F8F5] py-8 sm:py-10 md:py-12" aria-labelledby="popular-categories-title">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-7xl">
           <div className="mb-5 md:mb-7 text-left">
-            <h2 id="popular-categories-title" className="text-2xl font-bold tracking-tight text-[#1D2E24] sm:text-3xl md:text-4xl">
-              {'Explore Our Furniture Collections'}
+            <h2
+              id="popular-categories-title"
+              className="text-2xl font-bold tracking-tight text-[#1D2E24] sm:text-3xl md:text-4xl"
+            >
+              {isGerman ? 'Entdecken Sie unsere Möbelkollektionen' : 'Explore Our Furniture Collections'}
             </h2>
             <p className="mt-2 text-sm sm:text-base text-[#5C6B61] max-w-3xl">
-              {'Discover ergonomic designer chairs, handcrafted natural rattan, solid oak and walnut tables, and luxury ceramic surfaces.'}
+              {isGerman
+                ? 'Entdecken Sie ergonomische Esszimmerstühle, handgeflochtenes Rattan, Tische aus massivem Eichen- und Walnussholz sowie luxuriöse Keramikplatten.'
+                : 'Discover ergonomic designer chairs, handcrafted natural rattan, solid oak and walnut tables, and luxury ceramic surfaces.'}
             </p>
           </div>
 
           {/* Centered grid dynamically fitting category count */}
           <div className={`grid ${gridColsClass} gap-5 sm:gap-6 w-full`}>
-            {categories.map((category) => (<Link key={category.name} href={`/search?query=${encodeURIComponent(category.query || category.name)}`} className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#DCE5DE] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#D1A966]/60" aria-label={`Shop ${category.name}`}>
+            {categories.map((category) => (
+              <Link
+                key={category.name}
+                href={`/search?query=${encodeURIComponent(category.query || category.name)}`}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-[#DCE5DE] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#D1A966]/60"
+                aria-label={`Shop ${category.name}`}
+              >
                 {/* Image Container */}
                 <div className="relative aspect-[4/3] sm:aspect-square w-full overflow-hidden bg-white p-4 sm:p-6">
-                  <Image src={category.image} alt={`${category.name} collection`} fill unoptimized sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-contain p-4 sm:p-6 transition-transform duration-500 group-hover:scale-105"/>
+                  <Image
+                    src={category.image}
+                    alt={`${category.name} collection`}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-contain p-4 sm:p-6 transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
 
                 {/* Category Banner */}
@@ -116,9 +154,11 @@ export default function PopularCategories({ products }: PopularCategoriesProps) 
                     →
                   </span>
                 </div>
-              </Link>))}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 }

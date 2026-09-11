@@ -1,39 +1,66 @@
 "use client";
+
 import React, { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 import type { Product } from '@/types/product';
 import { createVisitorRotationSeed, selectRotatedProducts } from '@/utils/visitorProductRotation';
 import { useLocale } from '@/context/LocaleContext';
+
 interface CategorySectionProps {
-    products: Product[];
-    title?: string;
-    titleEn?: string;
-    subtitle?: string;
-    subtitleEn?: string;
-    maxDisplay?: number;
-    shuffleForVisitor?: boolean;
-    visitorShuffleKey?: string;
+  products: Product[];
+  title?: string;
+  titleEn?: string;
+  subtitle?: string;
+  subtitleEn?: string;
+  maxDisplay?: number;
+  shuffleForVisitor?: boolean;
+  visitorShuffleKey?: string;
 }
-const CategorySection: React.FC<CategorySectionProps> = ({ products, title, titleEn, subtitle, subtitleEn, maxDisplay = 8, shuffleForVisitor = false, visitorShuffleKey = 'home-furniture-antiques', }) => {
-        const [displayedProducts, setDisplayedProducts] = useState<Product[]>(() => products.slice(0, maxDisplay));
-    const displayTitle = (titleEn || 'Featured Modern Furniture & Dining Collections');
-    const displaySubtitle = (subtitleEn || 'Discover handcrafted designer chairs, natural rattan seating, solid walnut dining tables, and luxury marble surfaces.');
-    useEffect(() => {
-        if (!products || products.length === 0) {
-            setDisplayedProducts([]);
-            return;
-        }
-        if (!shuffleForVisitor) {
-            setDisplayedProducts(products.slice(0, maxDisplay));
-            return;
-        }
-        const seed = createVisitorRotationSeed(visitorShuffleKey);
-        setDisplayedProducts(selectRotatedProducts(products, seed, maxDisplay));
-    }, [products, shuffleForVisitor, visitorShuffleKey, maxDisplay]);
-    if (!displayedProducts || displayedProducts.length === 0) {
-        return null;
+
+const CategorySection: React.FC<CategorySectionProps> = ({
+  products,
+  title,
+  titleEn,
+  subtitle,
+  subtitleEn,
+  maxDisplay = 8,
+  shuffleForVisitor = false,
+  visitorShuffleKey = 'home-furniture-antiques',
+}) => {
+  const { isGerman } = useLocale();
+  const [displayedProducts, setDisplayedProducts] = useState<Product[]>(() =>
+    products.slice(0, maxDisplay),
+  );
+
+  const displayTitle = isGerman
+    ? (title || 'Ausgewählte moderne Möbel & Esszimmerkollektionen')
+    : (titleEn || 'Featured Modern Furniture & Dining Collections');
+
+  const displaySubtitle = isGerman
+    ? (subtitle || 'Entdecken Sie handgefertigte moderne Stühle, Naturrattan-Sitzmöbel, massive Esstische aus Walnussholz und edle Marmorplatten.')
+    : (subtitleEn || 'Discover handcrafted designer chairs, natural rattan seating, solid walnut dining tables, and luxury marble surfaces.');
+
+  useEffect(() => {
+    if (!products || products.length === 0) {
+      setDisplayedProducts([]);
+      return;
     }
-    return (<section id="furniture-antiques" className="py-10 sm:py-12 bg-white">
+
+    if (!shuffleForVisitor) {
+      setDisplayedProducts(products.slice(0, maxDisplay));
+      return;
+    }
+
+    const seed = createVisitorRotationSeed(visitorShuffleKey);
+    setDisplayedProducts(selectRotatedProducts(products, seed, maxDisplay));
+  }, [products, shuffleForVisitor, visitorShuffleKey, maxDisplay]);
+
+  if (!displayedProducts || displayedProducts.length === 0) {
+    return null;
+  }
+
+  return (
+    <section id="furniture-antiques" className="py-10 sm:py-12 bg-white">
       <div className="container mx-auto px-4">
         <div className="w-full max-w-7xl mx-auto">
           <div className="mb-6 sm:mb-8 text-left">
@@ -46,10 +73,19 @@ const CategorySection: React.FC<CategorySectionProps> = ({ products, title, titl
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {displayedProducts.map((product) => (<ProductCard key={product.id} product={product} cardBackground="bg-gray-100" showFullImage/>))}
+            {displayedProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                cardBackground="bg-gray-100"
+                showFullImage
+              />
+            ))}
           </div>
         </div>
       </div>
-    </section>);
+    </section>
+  );
 };
+
 export default CategorySection;

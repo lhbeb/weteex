@@ -7,7 +7,7 @@ import { Mail, MessageSquare, MapPin, Instagram } from 'lucide-react';
 import { useLocale } from '@/context/LocaleContext';
 
 const Footer = () => {
-  const { t } = useLocale();
+  const { t, isGerman } = useLocale();
 
   return (
     <footer className="bg-[#142019] text-[#F6F8F5] border-t border-[#1D2E24]">
@@ -79,9 +79,12 @@ const Footer = () => {
               <div className="flex items-start">
                 <MapPin className="h-5 w-5 shrink-0 text-[#D1A966] mr-2 mt-1" />
                 <div className="space-y-1.5 text-xs sm:text-sm">
-                  <span className="block font-semibold text-white">Location & Logistics</span>
+                  <span className="block font-semibold text-white">{isGerman ? 'Standorte & Logistik' : 'Locations & Logistics'}</span>
                   <div className="text-[#DCE5DE]">
-                    <span className="text-white font-medium">🇺🇸 United States:</span> 900 AZ-66, Peach Springs, AZ 86434
+                    <span className="text-white font-medium">🇩🇪 {isGerman ? 'Deutschland (Zentrale):' : 'Germany (HQ):'}</span> Hochalmstraße 10, 81825 München, Bayern
+                  </div>
+                  <div className="text-[#DCE5DE]">
+                    <span className="text-white font-medium">🇺🇸 {isGerman ? 'USA (Standort & Logistik):' : 'USA (Location & Logistics):'}</span> 900 AZ-66, Peach Springs, AZ 86434
                   </div>
                 </div>
               </div>
@@ -91,7 +94,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-[#D1A966] mb-4">{t('footer.navigation')}</h3>
             <ul className="space-y-2 text-[#DCE5DE]">
-              <li><Link href="/" className="hover:text-[#D1A966] transition-colors duration-300">Home</Link></li>
+              <li><Link href="/" className="hover:text-[#D1A966] transition-colors duration-300">{isGerman ? 'Startseite' : 'Home'}</Link></li>
               <li><Link href="/#collection" className="hover:text-[#D1A966] transition-colors duration-300">{t('nav.allCollections')}</Link></li>
               <li><Link href="/#furniture-antiques" className="hover:text-[#D1A966] transition-colors duration-300">{t('nav.featured')}</Link></li>
               <li><Link href="/track" className="hover:text-[#D1A966] transition-colors duration-300">{t('nav.trackOrder')}</Link></li>
@@ -119,7 +122,7 @@ const Footer = () => {
             <div className="flex items-center justify-center">
               <Image
                 src="/secure-checkout.png"
-                alt="Secure payment"
+                alt="Sichere Zahlung"
                 width={400}
                 height={64}
                 className="h-16 w-auto max-w-full object-contain brightness-110 contrast-110"

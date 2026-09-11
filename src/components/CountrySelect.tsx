@@ -10,6 +10,17 @@ export interface CountryOption {
 
 const COUNTRY_FLAGS: Record<string, string> = {
   US: '🇺🇸',
+  CA: '🇨🇦',
+  FR: '🇫🇷',
+  DE: '🇩🇪',
+  AU: '🇦🇺',
+  NZ: '🇳🇿',
+  IT: '🇮🇹',
+  NL: '🇳🇱',
+  PT: '🇵🇹',
+  ES: '🇪🇸',
+  PL: '🇵🇱',
+  AT: '🇦🇹',
 };
 
 export function getCountryFlag(code: string): string {

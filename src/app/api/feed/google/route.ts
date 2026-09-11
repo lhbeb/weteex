@@ -74,7 +74,7 @@ function retiredRegionalFeed() {
   return xmlResponse(`<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel>
 <title>Weteextees Retired Regional Feed</title><link>${BASE_URL}</link>
-<description>This regional product feed is no longer active.</description><language>en</language>
+<description>Dieser regionale Produktfeed ist nicht mehr aktiv.</description><language>de</language>
 </channel></rss>`);
 }
 
@@ -83,15 +83,15 @@ export async function GET(request: NextRequest) {
   const currency = request.nextUrl.searchParams.get('currency')?.toUpperCase();
   const language = (request.nextUrl.searchParams.get('lang') || request.nextUrl.searchParams.get('language'))?.toLowerCase();
 
-  // Old Germany/EU feed URLs stay valid but empty so Merchant Center removes those offers cleanly.
-  if ((country && country !== 'US') || (currency && currency !== 'USD') || (language && language !== 'en')) {
+  // Weteextees operates exclusively in Germany with German-language EUR offers.
+  if ((country && country !== 'DE') || (currency && currency !== 'EUR') || (language && language !== 'de')) {
     return retiredRegionalFeed();
   }
 
   try {
     const products = await getAllProducts();
     const itemsXml = products.filter(isFeedEligible).map((product) => {
-      const translated = getProductTranslation(product, 'en', product.title, product.description);
+      const translated = getProductTranslation(product, 'de', product.title, product.description);
       const title = escapeXml(truncateFeedText(normalizeFeedText(translated.title), GMC_TITLE_MAX_LENGTH));
       const description = escapeXml(truncateFeedText(normalizeFeedText(translated.description), GMC_DESCRIPTION_MAX_LENGTH));
       const feedImages = getFeedImageUrls(product);
@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
       <description>${description}</description>
       <link>${escapeXml(`${BASE_URL}/products/${encodeURIComponent(product.slug)}`)}</link>
       <g:image_link>${escapeXml(feedImages[0])}</g:image_link>${additionalImages}
-      <g:price>${Number(product.price).toFixed(2)} USD</g:price>
+      <g:price>${Number(product.price).toFixed(2)} EUR</g:price>
       <g:availability>${product.inStock === false ? 'out_of_stock' : 'in_stock'}</g:availability>
       <g:condition>${mapConditionToGmc(product.condition)}</g:condition>
       <g:brand>${escapeXml(product.brand)}</g:brand>
@@ -123,16 +123,17 @@ export async function GET(request: NextRequest) {
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>
       <g:return_policy_label>default_return_policy</g:return_policy_label>
       <g:price_valid_until>${priceValidUntil.toISOString().slice(0, 10)}</g:price_valid_until>${identifierXml}
-      <g:shipping><g:country>US</g:country><g:service>Free Standard Shipping (United States)</g:service>
-        <g:price>0.00 USD</g:price><g:min_handling_time>0</g:min_handling_time><g:max_handling_time>1</g:max_handling_time>
-        <g:min_transit_time>5</g:min_transit_time><g:max_transit_time>9</g:max_transit_time></g:shipping>
+      <g:tax><g:country>DE</g:country><g:rate>19</g:rate><g:tax_ship>yes</g:tax_ship></g:tax>
+      <g:shipping><g:country>DE</g:country><g:service>Kostenloser Standardversand (Deutschland)</g:service>
+        <g:price>0.00 EUR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>1</g:max_handling_time>
+        <g:min_transit_time>3</g:min_transit_time><g:max_transit_time>4</g:max_transit_time></g:shipping>
     </item>`;
     }).join('');
 
     return xmlResponse(`<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0"><channel>
-<title>Weteextees Google Merchant Center Feed (US)</title><link>${BASE_URL}</link>
-<description>Weteextees products for the United States in USD.</description><language>en</language>${itemsXml}
+<title>Weteextees Google Merchant Center Feed (Deutschland)</title><link>${BASE_URL}</link>
+<description>Weteextees Möbelprodukte für Deutschland in EUR.</description><language>de</language>${itemsXml}
 </channel></rss>`);
   } catch (error) {
     console.error('Error generating GMC feed:', error);

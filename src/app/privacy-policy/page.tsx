@@ -1,139 +1,212 @@
 "use client";
+
 import React from 'react';
 import { useLocale } from '@/context/LocaleContext';
+
 const PrivacyPolicyPage = () => {
-        return (<div className="min-h-screen flex flex-col bg-gray-50 py-12">
+  const { isGerman } = useLocale();
+
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "PrivacyPolicy",
+    "name": isGerman ? "Datenschutzerklärung (DSGVO)" : "Privacy Policy (GDPR & CCPA Compliant)",
+    "privacyPolicy": "https://weteextees.com/privacy-policy",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Weteextees",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Togostraße 1",
+        "addressLocality": "München",
+        "postalCode": "81827",
+        "addressCountry": "DE"
+      },
+      "email": "contact@weteextees.com"
+    },
+    "dateModified": new Date().toISOString().split('T')[0],
+    "inLanguage": isGerman ? "de" : "en"
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gray-50 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      />
       <div className="container mx-auto px-4 max-w-4xl">
         <h1 className="text-4xl font-bold text-[#262626] mb-8">
-          {'Privacy Policy (GDPR & CCPA Compliant)'}
+          {isGerman ? 'Datenschutzerklärung (DSGVO)' : 'Privacy Policy (GDPR & CCPA Compliant)'}
         </h1>
 
         <div className="prose max-w-none text-gray-700 space-y-8">
           {/* Introduction */}
           <p className="text-lg leading-relaxed">
-            {'Welcome to Weteextees (Weteextees.com). Protecting your privacy and personal data is a top priority for us. This Privacy Policy details the types of information we collect, how it is used and protected, and your rights under GDPR, CCPA, and international data protection standards.'}
+            {isGerman
+              ? 'Willkommen bei Weteextees (Weteextees.com). Der Schutz Ihrer persönlichen Daten ist uns ein wichtiges Anliegen. Nachfolgend informieren wir Sie darüber, welche Daten wir erheben, wie wir sie verarbeiten und welche Rechte Ihnen gemäß der Datenschutz-Grundverordnung (DSGVO) zustehen.'
+              : 'Welcome to Weteextees (Weteextees.com). Protecting your privacy and personal data is a top priority for us. This Privacy Policy details the types of information we collect, how it is used and protected, and your rights under GDPR, CCPA, and international data protection standards.'}
           </p>
 
           {/* Section 1 */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">
-              {'1. Data Controller & Entity'}
+              {isGerman ? '1. Verantwortliche Stelle' : '1. Data Controller & Entity'}
             </h2>
             <p className="mb-4">
-              {'The data controller responsible for operations is:'}
+              {isGerman ? 'Verantwortlicher im Sinne der DSGVO ist:' : 'The data controller responsible for operations is:'}
               <br />
               <strong>Weteextees</strong>
               <br />
-              {'USA Location:'} 900 AZ-66, Peach Springs, AZ 86434, USA
+              {isGerman ? 'Standort Deutschland:' : 'Germany Location:'} Togostraße 1, 81827 München-Trudering-Riem, Bayern
               <br />
-              {'Email:'} <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:underline">contact@weteextees.com</a>
+              {isGerman ? 'E-Mail:' : 'Email:'} <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:underline">contact@weteextees.com</a>
             </p>
           </div>
 
           {/* Section 2 */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">
-              {'2. Collection & Storage of Personal Data'}
+              {isGerman ? '2. Erhebung und Speicherung personenbezogener Daten' : '2. Collection & Storage of Personal Data'}
             </h2>
             <p className="mb-4">
-              {'We collect and process personal data when you:'}
+              {isGerman ? 'Wir verarbeiten personenbezogene Daten, wenn Sie:' : 'We collect and process personal data when you:'}
             </p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              {(<>
+              {isGerman ? (
+                <>
+                  <li>Unsere Website besuchen (Server-Logfiles, IP-Adresse, Browsertyp, aufgerufene Seiten)</li>
+                  <li>Eine Bestellung aufgeben (Name, Lieferadresse, Rechnungsadresse, E-Mail-Adresse, Zahlungsdaten)</li>
+                  <li>Unseren Kundenservice oder Live-Chat kontaktieren</li>
+                </>
+              ) : (
+                <>
                   <li>Visit our website (secure server logfiles, IP address, device & browser info, pages viewed)</li>
                   <li>Place an order (full name, shipping address, billing address, email address, payment confirmation)</li>
                   <li>Reach out to our customer care or Mo-Fr 09:00-17:00 Live Chat support</li>
-                </>)}
+                </>
+              )}
             </ul>
             <p className="mb-4">
-              {'Data is processed lawfully pursuant to contract fulfillment (order execution), customer support, and legitimate interests in website security and fraud prevention.'}
+              {isGerman
+                ? 'Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO zur Vertragserfüllung oder vorvertraglicher Maßnahmen sowie Art. 6 Abs. 1 lit. f DSGVO zur Wahrung berechtigter Interessen (Betrieb und Sicherheit der Website).'
+                : 'Data is processed lawfully pursuant to contract fulfillment (order execution), customer support, and legitimate interests in website security and fraud prevention.'}
             </p>
           </div>
 
           {/* Section 3 */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">
-              {'3. Sharing Information with Third Parties'}
+              {isGerman ? '3. Weitergabe von Daten an Dritte' : '3. Sharing Information with Third Parties'}
             </h2>
             <p className="mb-4">
-              {'Your data is only shared with verified service providers strictly necessary to process and deliver your order:'}
+              {isGerman
+                ? 'Eine Weitergabe Ihrer persönlichen Daten erfolgt ausschließlich an Partner, die zur Bestellabwicklung erforderlich sind:'
+                : 'Your data is only shared with verified service providers strictly necessary to process and deliver your order:'}
             </p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              {(<>
+              {isGerman ? (
+                <>
+                  <li><strong>Logistik- und Transportunternehmen</strong> (zur Auslieferung der bestellten Möbel)</li>
+                  <li><strong>Zahlungsdienstleister</strong> (z.B. Stripe, PayPal zur sicheren Zahlungsabwicklung)</li>
+                  <li><strong>IT- und Hosting-Dienstleister</strong> zur sicheren Bereitstellung unserer Plattform</li>
+                </>
+              ) : (
+                <>
                   <li><strong>Freight & Logistics Partners</strong> (to securely deliver your furniture orders to your door)</li>
                   <li><strong>Certified Payment Gateways</strong> (e.g. Stripe, PayPal with full PCI-DSS encryption)</li>
                   <li><strong>Hosting & Security Infrastructure</strong> to maintain platform integrity and SSL safety</li>
-                </>)}
+                </>
+              )}
             </ul>
             <p>
-              {'We strictly NEVER sell, rent, or trade your personal data to third-party advertisers.'}
+              {isGerman
+                ? 'Eine Übermittlung zu Werbezwecken an sonstige Dritte findet ausdrücklich nicht statt.'
+                : 'We strictly NEVER sell, rent, or trade your personal data to third-party advertisers.'}
             </p>
           </div>
 
           {/* Section 4 */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">
-              {'4. Data Security & 256-Bit SSL Encryption'}
+              {isGerman ? '4. Datensicherheit & SSL-Verschlüsselung' : '4. Data Security & 256-Bit SSL Encryption'}
             </h2>
             <p className="mb-4">
-              {'We employ state-of-the-art 256-bit SSL/TLS encryption across our entire platform to ensure that your checkout credentials and personal information remain completely confidential and tamper-proof.'}
+              {isGerman
+                ? 'Wir nutzen auf unserer Website moderne SSL-/TLS-Verschlüsselungstechnologien, um die Übertragung Ihrer persönlichen Daten und Bestellungen bestmöglich gegen unbefugte Zugriffe zu schützen.'
+                : 'We employ state-of-the-art 256-bit SSL/TLS encryption across our entire platform to ensure that your checkout credentials and personal information remain completely confidential and tamper-proof.'}
             </p>
           </div>
 
           {/* Section 5 */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">
-              {'5. Your Privacy Rights'}
+              {isGerman ? '5. Ihre Betroffenenrechte' : '5. Your Privacy Rights'}
             </h2>
             <p className="mb-4">
-              {'Under applicable privacy laws (GDPR, CCPA), you are entitled to:'}
+              {isGerman
+                ? 'Nach den Bestimmungen der DSGVO stehen Ihnen folgende Rechte zu:'
+                : 'Under applicable privacy laws (GDPR, CCPA), you are entitled to:'}
             </p>
             <ul className="list-disc pl-6 space-y-2 mb-4">
-              {(<>
+              {isGerman ? (
+                <>
+                  <li><strong>Auskunftsrecht (Art. 15 DSGVO)</strong> über die von uns verarbeiteten Daten</li>
+                  <li><strong>Recht auf Berichtigung (Art. 16 DSGVO)</strong> unrichtiger Daten</li>
+                  <li><strong>Recht auf Löschung (Art. 17 DSGVO)</strong> vorbehaltlich gesetzlicher Aufbewahrungspflichten</li>
+                  <li><strong>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</strong></li>
+                  <li><strong>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</strong></li>
+                  <li><strong>Widerspruchsrecht (Art. 21 DSGVO)</strong> gegen bestimmte Verarbeitungen</li>
+                </>
+              ) : (
+                <>
                   <li><strong>Right to Access:</strong> Request a copy of the personal information we hold about you.</li>
                   <li><strong>Right to Rectification:</strong> Request correction of inaccurate or incomplete information.</li>
                   <li><strong>Right to Erasure (&quot;Right to be Forgotten&quot;):</strong> Request deletion of your personal data.</li>
                   <li><strong>Right to Restrict or Object:</strong> Restrict or object to specific processing activities.</li>
                   <li><strong>Right to Data Portability:</strong> Obtain and reuse your personal data in a standard format.</li>
-                </>)}
+                </>
+              )}
             </ul>
           </div>
 
           {/* Section 6 */}
           <div>
             <h2 className="text-3xl font-bold text-[#262626] mt-10 mb-4">
-              {'6. Privacy Contact & Inquiries'}
+              {isGerman ? '6. Kontakt bei Datenschutzfragen' : '6. Privacy Contact & Inquiries'}
             </h2>
             <p className="mb-4">
-              {'For any privacy-related requests or to exercise your rights, please reach out to:'}
+              {isGerman
+                ? 'Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten oder zur Ausübung Ihrer Betroffenenrechte wenden Sie sich bitte an:'
+                : 'For any privacy-related requests or to exercise your rights, please reach out to:'}
             </p>
             <div className="bg-gray-50 rounded-lg p-6 space-y-3">
               <div>
                 <div className="font-medium text-[#262626] mb-1">
-                  {'Live Chat:'}
+                  {isGerman ? 'Live-Chat:' : 'Live Chat:'}
                 </div>
                 <div className="text-gray-600">
-                  {'Mo-Fr 09:00-17:00 Instant Live Chat Support on site'}
+                  Live-Chat-Support von Montag bis Sonntag auf der Website
                 </div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">
-                  {'Email:'}
+                  {isGerman ? 'E-Mail:' : 'Email:'}
                 </div>
                 <div className="text-gray-600">contact@weteextees.com</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">
-                  {'Locations & Logistics:'}
+                  {isGerman ? 'Standorte & Logistik:' : 'Locations & Logistics:'}
                 </div>
                 <div className="text-gray-600">
-                  🇺🇸 900 AZ-66, Peach Springs, AZ 86434, USA
+                  🇩🇪 Togostraße 1, 81827 München-Trudering-Riem, Deutschland
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>);
+    </div>
+  );
 };
+
 export default PrivacyPolicyPage;

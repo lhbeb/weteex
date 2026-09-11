@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { updateOrderStripeStatus } from '@/lib/supabase/orders';
 import { getStripeConfig } from '@/lib/supabase/payment-settings';
-import { getProductBySlug } from '@/lib/data';
-import { isPostalCodeValid, normalizeShippingData } from '@/lib/shipping';
 
 // Stripe initialization deferred to POST request handling to avoid build-time crashes
 
@@ -57,26 +55,14 @@ export async function POST(request: NextRequest) {
         });
         
         const body = await request.json();
-        const { orderId, product, shippingData: rawShippingData } = body;
+        const { orderId, product, shippingData } = body;
 
         // Validate required data
-        if (!orderId || !product || !rawShippingData) {
+        if (!orderId || !product || !shippingData) {
             return NextResponse.json(
                 { error: 'Missing required data: orderId, product or shippingData' },
                 { status: 400 }
             );
-        }
-
-        if (rawShippingData.countryCode && String(rawShippingData.countryCode).toUpperCase() !== 'US') {
-            return NextResponse.json({ error: 'Delivery is currently available only within the United States.' }, { status: 400 });
-        }
-        const shippingData = normalizeShippingData(rawShippingData);
-        if (!isPostalCodeValid(shippingData.zipCode, 'US')) {
-            return NextResponse.json({ error: 'Enter a valid United States ZIP code.' }, { status: 400 });
-        }
-        const storedProduct = await getProductBySlug(String(product.slug || ''));
-        if (!storedProduct) {
-            return NextResponse.json({ error: 'This product is no longer available.' }, { status: 404 });
         }
 
         // Get the base URL for the embedded Checkout return page.
@@ -86,7 +72,6 @@ export async function POST(request: NextRequest) {
             city: shippingData.city,
             state: shippingData.state,
             postal_code: shippingData.zipCode,
-            country: 'US',
         };
 
         // Create an embedded Stripe Checkout Session with expiration.
@@ -99,13 +84,13 @@ export async function POST(request: NextRequest) {
             line_items: [
                 {
                     price_data: {
-                        currency: 'usd',
+                        currency: product.currency?.toLowerCase() || 'eur',
                         product_data: {
-                            name: storedProduct.title,
-                            description: `Product ID: ${storedProduct.slug}`,
-                            images: storedProduct.images?.length ? [storedProduct.images[0]] : undefined,
+                            name: product.title,
+                            description: `Product ID: ${product.slug}`,
+                            images: product.images && product.images.length > 0 ? [product.images[0]] : undefined,
                         },
-                        unit_amount: Math.round(storedProduct.price * 100),
+                        unit_amount: Math.round(product.price * 100), // Stripe expects amount in cents
                     },
                     quantity: 1,
                 },
@@ -123,8 +108,8 @@ export async function POST(request: NextRequest) {
             expires_at: Math.floor(Date.now() / 1000) + (30 * 60), // 30 minutes from now
             metadata: {
                 order_id: orderId,
-                product_slug: storedProduct.slug,
-                product_id: storedProduct.id,
+                product_slug: product.slug,
+                product_id: product.id,
                 customer_email: shippingData.email,
                 shipping_address: shippingData.streetAddress,
                 shipping_city: shippingData.city,

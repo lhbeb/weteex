@@ -4,12 +4,13 @@
     "sameDayShipping": "Same-Day Dispatch",
     "deliveryTime": "Delivery in 5–10 Business Days",
     "inStock": "In Stock & Ready to Ship",
-    "vatIncluded": "Tax Included, Free Insured Delivery Across the United States",
+    "vatIncluded": "Tax Included, Free Insured Freight Delivery to USA & EU",
     "chatSupport": "Chat support: Mon-Fri 9am-5pm",
     "emailSupport": "Email: contact@weteextees.com",
     "headquarters": "Locations & Logistics",
-    "headquartersAddress": "United States: 900 AZ-66, Peach Springs, AZ 86434",
+    "headquartersAddress": "USA: 900 AZ-66, Peach Springs, AZ 86434 | Germany: Hochalmstraße 10, 81825 Munich",
     "usaAddress": "900 AZ-66, Peach Springs, AZ 86434, United States",
+    "germanyAddress": "Hochalmstraße 10, 81825 Munich, Bavaria, Germany",
     "rightsReserved": "All rights reserved.",
     "securePayment": "Secure SSL Encrypted Checkout",
     "cart": "Shopping Cart",
@@ -36,15 +37,10 @@
     "chat": "Chat support: Available Mon-Fri 9am-5pm",
     "email": "Email: contact@weteextees.com",
     "needHelp": "Need help? Contact our team →",
-    "shippingGuarantee": "Free Insured Delivery Across the United States"
+    "shippingGuarantee": "Free Insured Freight Delivery to USA & Europe"
   },
   "hero": {
-    "words": [
-      "Modern Chairs & Furniture",
-      "Solid Wood & Rattan",
-      "Elegant Dining Tables",
-      "Timeless Living"
-    ],
+    "words": ["Modern Chairs & Furniture", "Solid Wood & Rattan", "Elegant Dining Tables", "Timeless Living"],
     "subtitle": "Elevate Your Home with Timeless Designer Furniture",
     "description": "Discover curated furniture crafted for comfort, elegance, and modern living. Explore contemporary, classic, and space-saving pieces that transform every room.",
     "cta": "Explore Furniture Collection"
@@ -82,7 +78,7 @@
     "description": "Description & Details",
     "specifications": "Specifications",
     "deliveryReturn": "Shipping & 30-Day Returns",
-    "deliveryReturnText": "Free insured delivery across the United States. Hassle-free 30-day money-back guarantee.",
+    "deliveryReturnText": "Free insured freight delivery to the United States and Europe. Hassle-free 30-day money-back guarantee for risk-free shopping.",
     "authenticityGuaranteed": "100% Inspected Quality",
     "secureCheckout": "SSL Secure Checkout",
     "fastSupport": "Mon-Fri 9am-5pm Customer Care"

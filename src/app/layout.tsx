@@ -24,9 +24,9 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Weteextees - Timeless Furniture for Your Home",
-  description: "Shop thoughtfully selected modern furniture, dining chairs, tables, and space-saving pieces for homes across the United States.",
-  keywords: "Weteextees, modern furniture, dining chairs, tables, home furniture, United States furniture store",
+  title: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
+  description: "Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke für Ihr Zuhause.",
+  keywords: "Weteextees, Weteextees.com, zeitlose Möbel, moderne Möbel, Esszimmerstühle, Rattanmöbel, platzsparende Möbel, Wohnzimmermöbel, Premium-Möbel Deutschland",
   authors: [{ name: "Weteextees" }],
   creator: "Weteextees",
   publisher: "Weteextees",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL("https://weteextees.com"),
   openGraph: {
-    title: "Weteextees - Timeless Furniture for Your Home",
-    description: "Shop thoughtfully selected modern furniture, dining chairs, tables, and space-saving pieces for homes across the United States.",
+    title: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
+    description: "Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke für Ihr Zuhause.",
     url: "https://weteextees.com",
     siteName: "Weteextees",
     images: [
@@ -46,16 +46,16 @@ export const metadata: Metadata = {
         url: "/bg.png",
         width: 1608,
         height: 969,
-        alt: "Weteextees modern furniture",
+        alt: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
       },
     ],
-    locale: "en_US",
+    locale: "de_DE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Weteextees - Timeless Furniture for Your Home",
-    description: "Shop thoughtfully selected modern furniture, dining chairs, tables, and space-saving pieces for homes across the United States.",
+    title: "Weteextees - Verwandeln Sie Ihr Zuhause mit zeitlosen Möbeln",
+    description: "Entdecken Sie erstklassige Möbel für Komfort, Eleganz und Stil in jedem Raum. Entdecken Sie moderne, klassische und platzsparende Stücke für Ihr Zuhause.",
     images: ["/bg.png"],
   },
   robots: {
@@ -77,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={dmSans.variable}>
+    <html lang="de" className={dmSans.variable}>
       <head>
         <link rel="icon" href="/favicon.png" type="image/png" sizes="200x200" />
         <link rel="preload" href="/weteex-machines-logo.svg" as="image" type="image/svg+xml" />
@@ -109,7 +109,7 @@ export default function RootLayout({
                 "name": "Weteextees",
                 "url": "https://weteextees.com",
                 "logo": "https://weteextees.com/weteex-machines-logo.svg",
-                "description": "Weteextees offers modern furniture, dining chairs, natural wood pieces, and timeless home decor in the United States.",
+                "description": "Weteextees ist Ihre Adresse für hochwertige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
                 "sameAs": [
                   "https://www.tiktok.com/@weteexteesdotcom",
                   "https://www.instagram.com/weteextees/",
@@ -119,9 +119,17 @@ export default function RootLayout({
                   "@type": "ContactPoint",
                   "contactType": "customer service",
                   "email": "contact@weteextees.com",
-                  "areaServed": ["US"]
+                  "areaServed": ["DE", "EU", "GB", "US"]
                 },
                 "address": [
+                  {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Togostraße 1",
+                    "addressLocality": "München",
+                    "addressRegion": "Bayern",
+                    "postalCode": "81827",
+                    "addressCountry": "DE"
+                  },
                   {
                     "@type": "PostalAddress",
                     "streetAddress": "900 AZ-66",
@@ -147,7 +155,7 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "name": "Weteextees",
                 "url": "https://weteextees.com",
-                "description": "Weteextees offers selected modern furniture, ergonomic dining chairs, natural wood pieces, and timeless home decor in the United States.",
+                "description": "Weteextees ist Ihre Adresse für handverlesene moderne Möbel, ergonomische Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
                 "potentialAction": {
                   "@type": "SearchAction",
                   "target": {

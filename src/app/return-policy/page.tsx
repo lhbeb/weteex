@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ReturnPolicyClient from '@/components/ReturnPolicyClient';
 
 export const metadata: Metadata = {
-  title: 'Return & Refund Policy | Weteextees',
+  title: 'Widerrufsbelehrung & Rückgaberichtlinie | Return Policy | Weteextees',
   description:
     'Information regarding our 30-day return policy, statutory cancellations, and refund process for modern furniture and chairs.',
   alternates: {
@@ -23,7 +23,7 @@ export default function ReturnPolicyPage() {
           '@type': 'MerchantReturnPolicy',
           'name': 'Weteextees Return & Refund Policy',
           'merchantReturnLink': 'https://weteextees.com/return-policy',
-          'applicableCountry': ['US'],
+          'applicableCountry': ['US', 'DE', 'AT', 'FR', 'NL', 'BE', 'IT', 'ES'],
           'returnPolicyCategory': 'https://schema.org/MerchantReturnFiniteReturnWindow',
           'merchantReturnDays': 30,
           'returnMethod': 'https://schema.org/ReturnByMail',

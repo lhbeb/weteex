@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import type { ChangeEvent, KeyboardEvent } from 'react';
 import {
   FEATURED_COUNTRIES,
+  OTHER_COUNTRIES,
   getAddressConfig,
   getCountryName,
   getLegacyAddressConfig,
@@ -16,8 +17,36 @@ import {
 import type { Product } from '@/types/product';
 import type { ShippingData } from './types';
 
-function inferDefaultCountry(_product?: Product | null): { code: string; name: string } {
-  return { code: 'US', name: 'United States' };
+/**
+ * Infer the default shipping country from the product's admin-configured
+ * target market and currency. Falls back to 'US' if nothing matches.
+ */
+function inferDefaultCountry(product?: Product | null): { code: string; name: string } {
+  const market = product?.meta?.targetMarket as string | undefined;
+  const currency = product?.currency as string | undefined;
+
+  // Direct market → country code mapping
+  const marketToCountry: Record<string, string> = {
+    us: 'US',
+    ca: 'CA',
+    au: 'AU',
+    eu: 'DE', // EU products default to Germany
+  };
+
+  // Currency fallback → country code mapping
+  const currencyToCountry: Record<string, string> = {
+    USD: 'US',
+    CAD: 'CA',
+    AUD: 'AU',
+    EUR: 'DE',
+    NZD: 'NZ',
+  };
+
+  const code = (market && marketToCountry[market])
+    || (currency && currencyToCountry[currency])
+    || 'US';
+
+  return { code, name: getCountryName(code) };
 }
 
 const FALLBACK_SHIPPING_DATA: ShippingData = {
@@ -46,6 +75,8 @@ export function useCheckoutForm(product?: Product | null) {
   const requiresCountry = usesCountryFirstAddress(product?.checkoutFlow);
   // Ko-fi collects buyer name in Phase 2 (payment processor), so skip it in Phase 1
   const requiresFullName = requiresCountry && !isKofi;
+  // Only show the featured countries across all checkout flows (no "All countries" group)
+  const availableOtherCountries: typeof OTHER_COUNTRIES = [];
 
   // When the product loads, set the default country based on its market/currency
   useEffect(() => {
@@ -59,8 +90,8 @@ export function useCheckoutForm(product?: Product | null) {
     setHasInitialized(true);
   }, [product, hasInitialized]);
 
-  const inferredIsUK = false;
-  const isUK = false;
+  const inferredIsUK = product?.currency === 'GBP' || product?.meta?.targetMarket === 'uk';
+  const isUK = requiresCountry ? shippingData.countryCode === 'GB' : inferredIsUK;
   const addressConfig = requiresCountry
     ? getAddressConfig(shippingData.countryCode)
     : getLegacyAddressConfig(inferredIsUK);
@@ -190,7 +221,7 @@ export function useCheckoutForm(product?: Product | null) {
     requiresCountry,
     requiresFullName,
     featuredCountries: FEATURED_COUNTRIES,
-    otherCountries: [],
+    otherCountries: availableOtherCountries,
     addressConfig,
     isPostalCodeValid: postalCodeIsValid,
     isUK,
