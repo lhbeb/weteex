@@ -1,5 +1,4 @@
 import { getProductBySlug } from '@/lib/data';
-import { getReviewProduct, isReviewProduct } from '@/lib/reviewProducts';
 import { getSellerById } from '@/lib/supabase/sellers';
 import { formatValidSku, mapConditionToSchema } from '@/lib/conditions';
 import { getProductTranslation } from '@/lib/productTranslations';
@@ -16,13 +15,12 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   try {
     const { slug } = await params;
-    const resolvedSearchParams = searchParams ? await searchParams : {};
-    const lang = (resolvedSearchParams.lang?.toLowerCase() === 'en' ? 'en' : 'de') as 'de' | 'en';
+    if (searchParams) await searchParams;
+    const lang = 'de' as const;
 
     if (!slug) return { title: 'Product Not Found | Weteextees' };
 
-    let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
-    if (!product) product = await getProductBySlug(slug);
+    const product = await getProductBySlug(slug);
     if (!product) return { title: 'Product Not Found | Weteextees' };
 
     const translation = getProductTranslation(product, lang, product.title, product.description);
@@ -32,10 +30,8 @@ export async function generateMetadata(
     const title = `${displayTitle} - ${product.brand || 'Weteextees'} | ${product.category || (lang === 'en' ? 'Furniture' : 'Möbel')} | Weteextees`;
     const description = (displayDescription || '').substring(0, 155) + '...';
     const canonicalUrl = `${BASE_URL}/products/${product.slug}`;
-    const currencyCode = lang === 'en' ? 'USD' : (product.currency || 'EUR');
-    const price = lang === 'en'
-      ? (Math.round((product.price || 0) * 1.085 * 100) / 100).toFixed(2)
-      : (product.price || 0).toFixed(2);
+    const currencyCode = 'EUR';
+    const price = (product.price || 0).toFixed(2);
     const inStock = product.inStock !== false;
 
     const imageUrls = (product.images || []).map(img => ({
@@ -49,18 +45,15 @@ export async function generateMetadata(
       keywords: product.meta?.keywords || `${displayTitle}, ${product.brand}, ${product.category}`,
       alternates: {
         canonical: canonicalUrl,
-        languages: {
-          'de': `${BASE_URL}/products/${product.slug}?lang=de`,
-          'en': `${BASE_URL}/products/${product.slug}?lang=en`,
-        },
+        languages: { 'de-DE': canonicalUrl },
       },
       openGraph: {
         title,
         description,
-        url: `${canonicalUrl}?lang=${lang}`,
+        url: canonicalUrl,
         siteName: 'Weteextees',
         type: 'website',
-        locale: lang === 'en' ? 'en_US' : 'de_DE',
+        locale: 'de_DE',
         images: imageUrls,
       },
       twitter: {
@@ -97,15 +90,14 @@ export default async function ProductPage({
 }) {
   try {
     const { slug } = await params;
-    const resolvedSearchParams = searchParams ? await searchParams : {};
-    const lang = (resolvedSearchParams.lang?.toLowerCase() === 'en' ? 'en' : 'de') as 'de' | 'en';
+    if (searchParams) await searchParams;
+    const lang = 'de' as const;
 
     if (!slug || typeof slug !== 'string') {
       notFound();
     }
 
-    let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
-    if (!product) product = await getProductBySlug(slug);
+    let product = await getProductBySlug(slug);
     if (!product) notFound();
 
     // ── Review inheritance ─────────────────────────────────────────────────
@@ -144,10 +136,8 @@ export default async function ProductPage({
     const priceValidUntil = new Date();
     priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
 
-    const priceAmount = lang === 'en'
-      ? Math.round((p.price || 0) * 1.085 * 100) / 100
-      : (p.price || 0);
-    const priceCurrency = lang === 'en' ? 'USD' : 'EUR';
+    const priceAmount = p.price || 0;
+    const priceCurrency = 'EUR';
 
     // Generate Product Schema for Rich Snippets (EU & Google Merchant Center compliant)
     const productSchema: Record<string, any> = {
@@ -174,16 +164,16 @@ export default async function ProductPage({
           ? "https://schema.org/InStock"
           : "https://schema.org/OutOfStock",
         "itemCondition": mapConditionToSchema(p.condition),
-        "url": `${BASE_URL}/products/${p.slug}?lang=${lang}`,
+        "url": `${BASE_URL}/products/${p.slug}`,
         "seller": {
           "@type": "Organization",
           "name": "Weteextees"
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",
-          "name": lang === 'en' ? "Weteextees 30-Day Return & Refund Policy" : "Weteextees 30-Tage Rückgaberecht",
+          "name": "Weteextees 30-Tage Rückgaberecht",
           "merchantReturnLink": `${BASE_URL}/return-policy`,
-          "applicableCountry": ["US", "DE", "AT", "FR", "NL", "BE", "IT", "ES"],
+          "applicableCountry": "DE",
           "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
           "merchantReturnDays": 30,
           "returnMethod": "https://schema.org/ReturnByMail",
@@ -202,7 +192,7 @@ export default async function ProductPage({
             },
             "shippingDestination": {
               "@type": "DefinedRegion",
-              "addressCountry": lang === 'en' ? "US" : "DE"
+              "addressCountry": "DE"
             },
             "deliveryTime": {
               "@type": "ShippingDeliveryTime",
@@ -215,7 +205,7 @@ export default async function ProductPage({
               "transitTime": {
                 "@type": "QuantitativeValue",
                 "minValue": 5,
-                "maxValue": 9,
+                "maxValue": 8,
                 "unitCode": "DAY"
               }
             }
