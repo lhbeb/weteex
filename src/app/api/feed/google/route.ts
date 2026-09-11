@@ -118,7 +118,7 @@ export async function GET(request: NextRequest) {
       <g:availability>${product.inStock === false ? 'out_of_stock' : 'in_stock'}</g:availability>
       <g:condition>${mapConditionToGmc(product.condition)}</g:condition>
       <g:brand>${escapeXml(product.brand)}</g:brand>
-      <g:product_type>${FURNITURE_CATEGORY}</g:product_type>
+      <g:product_type>${escapeXml(FURNITURE_CATEGORY)}</g:product_type>
       <g:google_product_category>${GOOGLE_FURNITURE_CATEGORY}</g:google_product_category>
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>
       <g:return_policy_label>default_return_policy</g:return_policy_label>
