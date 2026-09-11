@@ -23,7 +23,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Modern Chairs & Lounge Seating
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -45,7 +45,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Seating
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -67,7 +67,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Modern Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -90,7 +90,7 @@ Key Highlights:
 Technical Details:
 • Dimensions: 45 × 45 × 43 cm
 • Category: Accent & Side Tables
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -112,7 +112,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Modern Seating
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -134,7 +134,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Armchairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -156,7 +156,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -178,7 +178,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -201,7 +201,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 125 cm (49 in) | Height: 75 cm (29.5 in)
 • Category: Dining Tables & Marble Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -223,7 +223,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Cantilever & Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -245,7 +245,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -267,7 +267,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs & Modern Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -290,7 +290,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 140 cm (55 in) | Height: 75 cm (29.5 in)
 • Category: Dining Tables & Luxury Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -312,7 +312,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -335,7 +335,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 140 cm (55 in) | Height: 45 cm (17.7 in)
 • Category: Coffee & Accent Tables
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -357,7 +357,7 @@ Key Highlights:
 
 Technical Details:
 • Category: Dining Chairs
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },
@@ -380,7 +380,7 @@ Key Highlights:
 Technical Details:
 • Diameter: 125 cm (49 in) | Height: 75 cm (29.5 in)
 • Category: Dining Tables & Hardwood Furniture
-• Brand: Weteextees
+• Brand: Furnified
 • Warranty: 2-Year Manufacturer Warranty & 30-Day Satisfaction Guarantee`,
     },
   },

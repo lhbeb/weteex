@@ -1,5 +1,4 @@
 import { getProductBySlug } from '@/lib/data';
-import { getReviewProduct, isReviewProduct } from '@/lib/reviewProducts';
 import { getSellerById } from '@/lib/supabase/sellers';
 import { formatValidSku, mapConditionToSchema } from '@/lib/conditions';
 import { getProductTranslation } from '@/lib/productTranslations';
@@ -10,9 +9,7 @@ import type { Metadata, ResolvingMetadata } from 'next';
 const BASE_URL = 'https://weteextees.com';
 
 async function loadProduct(slug: string) {
-  let product = isReviewProduct(slug) ? getReviewProduct(slug) : null;
-  if (!product) product = await getProductBySlug(slug);
-  return product;
+  return getProductBySlug(slug);
 }
 
 export async function generateMetadata(

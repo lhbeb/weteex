@@ -14,9 +14,7 @@
     "import-products": "tsx scripts/import-products-with-images.ts",
     "products:pull-content": "tsx scripts/sync-product-content.ts pull",
     "products:push-content": "tsx scripts/sync-product-content.ts push",
-    "test-order": "tsx scripts/test-order-flow.ts",
-    "scrape:minikubota": "tsx scripts/scrape-minikubota-products.ts",
-    "upload:minikubota": "tsx scripts/upload-minikubota-catalog-to-supabase.ts"
+    "test-order": "tsx scripts/test-order-flow.ts"
   },
   "dependencies": {
     "@fingerprintjs/fingerprintjs": "^4.6.2",

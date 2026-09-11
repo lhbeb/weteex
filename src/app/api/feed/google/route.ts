@@ -9,20 +9,8 @@ const GMC_TITLE_MAX_LENGTH = 150;
 const GMC_DESCRIPTION_MAX_LENGTH = 5000;
 const SUPPORTED_IMAGE_EXTENSIONS = /\.(?:jpe?g|png|webp|gif|bmp|tiff?)(?:$|\?)/i;
 
-const GOOGLE_PRODUCT_CATEGORY_MAP: Record<string, string> = {
-  Furniture: '436', Chairs: '436', Tables: '436', 'Modern Furniture': '436',
-  'Modern Chairs & Furniture': '436', Antiques: '6073', 'Authentic Antiques': '6073',
-  'Vintage Collectibles': '8', Collectibles: '8', 'Decorative Pieces': '696',
-  'Home Decor': '696', Decor: '696', default: '436',
-};
-
-function getGoogleProductCategory(category?: string): string {
-  if (!category) return GOOGLE_PRODUCT_CATEGORY_MAP.default;
-  if (GOOGLE_PRODUCT_CATEGORY_MAP[category]) return GOOGLE_PRODUCT_CATEGORY_MAP[category];
-  const match = Object.entries(GOOGLE_PRODUCT_CATEGORY_MAP)
-    .find(([key]) => key !== 'default' && category.toLowerCase().includes(key.toLowerCase()));
-  return match?.[1] || GOOGLE_PRODUCT_CATEGORY_MAP.default;
-}
+const FURNITURE_CATEGORY = 'Modern Chairs & Furniture';
+const GOOGLE_FURNITURE_CATEGORY = '436';
 
 function escapeXml(value: unknown): string {
   return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -54,9 +42,23 @@ function getFeedImageUrls(product: Product): string[] {
     .filter((url): url is string => Boolean(url)))];
 }
 
+function usesInternalCheckout(product: Product): boolean {
+  if (product.checkoutFlow !== 'stripe') return false;
+
+  try {
+    const checkoutUrl = new URL(String(product.checkoutLink || '').trim(), BASE_URL);
+    return checkoutUrl.origin === new URL(BASE_URL).origin && checkoutUrl.pathname === '/checkout';
+  } catch {
+    return false;
+  }
+}
+
 function isFeedEligible(product: Product): boolean {
   return product.meta?.gmc_enabled === true && product.meta?.published !== false &&
-    product.published !== false && Boolean(product.slug && normalizeFeedText(product.title) && getFeedImageUrls(product).length) &&
+    product.published !== false && product.category === FURNITURE_CATEGORY &&
+    Boolean(product.brand && product.brand.trim() && product.brand.toLowerCase() !== 'unbranded') &&
+    usesInternalCheckout(product) &&
+    Boolean(product.slug && normalizeFeedText(product.title) && getFeedImageUrls(product).length) &&
     Number.isFinite(Number(product.price)) && Number(product.price) > 0;
 }
 
@@ -115,9 +117,9 @@ export async function GET(request: NextRequest) {
       <g:price>${Number(product.price).toFixed(2)} USD</g:price>
       <g:availability>${product.inStock === false ? 'out_of_stock' : 'in_stock'}</g:availability>
       <g:condition>${mapConditionToGmc(product.condition)}</g:condition>
-      <g:brand>${escapeXml(product.brand || 'Weteextees')}</g:brand>
-      <g:product_type>${escapeXml(product.category || 'Modern Chairs & Furniture')}</g:product_type>
-      <g:google_product_category>${getGoogleProductCategory(product.category)}</g:google_product_category>
+      <g:brand>${escapeXml(product.brand)}</g:brand>
+      <g:product_type>${FURNITURE_CATEGORY}</g:product_type>
+      <g:google_product_category>${GOOGLE_FURNITURE_CATEGORY}</g:google_product_category>
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>
       <g:return_policy_label>default_return_policy</g:return_policy_label>
       <g:price_valid_until>${priceValidUntil.toISOString().slice(0, 10)}</g:price_valid_until>${identifierXml}
