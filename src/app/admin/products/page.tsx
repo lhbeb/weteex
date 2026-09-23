@@ -13,6 +13,7 @@ import {
 import AdminLayout from '@/components/AdminLayout';
 import AdminLoading from '@/components/AdminLoading';
 import { FEATURED_PRODUCT_LIMIT } from '@/config/products';
+import { formatWeteexteesProductId, mapConditionToGmc } from '@/lib/conditions';
 
 interface Product {
   id: string;
@@ -764,12 +765,16 @@ export default function AdminProductsPage() {
           salePriceStr = priceStr;
         }
 
-        const condition = (p.condition || 'new').toLowerCase().includes('refurbished') ? 'refurbished'
-          : (p.condition || 'new').toLowerCase().includes('used') ? 'used' : 'new';
-        const brand = p.brand || 'Weteextees';
+        const condition = mapConditionToGmc(p.condition);
+        const brand = 'Weteextees';
+        const gmcProductId = formatWeteexteesProductId({
+          id: p.id,
+          slug: p.slug,
+          sku: p.meta?.sku,
+        });
 
         return [
-          escapeCSV(pSlug),                                // id
+          escapeCSV(gmcProductId),                         // id
           escapeCSV(p.title || ''),                       // title
           escapeCSV(p.description || p.title || ''),       // description
           escapeCSV(isAvailable),                          // availability (in_stock / out_of_stock)
@@ -781,9 +786,9 @@ export default function AdminProductsPage() {
           escapeCSV(finalPriceStr),                       // price
           escapeCSV(salePriceStr),                        // sale_price
           '',                                             // sale_price_effective_date
-          escapeCSV('no'),                                // identifier_exists
+          escapeCSV('yes'),                               // identifier_exists
           '',                                             // gtin
-          '',                                             // mpn
+          escapeCSV(gmcProductId),                        // mpn
           escapeCSV(brand),                               // brand
           '',                                             // product_highlight
           '',                                             // product_detail

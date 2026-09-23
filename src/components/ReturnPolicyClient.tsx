@@ -326,11 +326,11 @@ export default function ReturnPolicyClient() {
                 <div className="text-sm text-gray-600 pl-7 space-y-2">
                   <div>
                     <strong className="text-gray-900 block">🇩🇪 Deutschland / EU:</strong>
-                    Hochalmstraße 10, 81825 München, Bayern, Deutschland
+                    Hohenstaufenring 78, 50674 Köln/Cologne, Deutschland
                   </div>
                   <div>
                     <strong className="text-gray-900 block">🇩🇪 Deutschland:</strong>
-                    Hochalmstraße 10, 81825 München
+                    Hohenstaufenring 78, 50674 Köln/Cologne
                   </div>
                 </div>
               </div>

@@ -20,11 +20,12 @@ const TermsPage = () => {
     "publisher": {
       "@type": "Organization",
       "name": "Weteextees",
+      "legalName": "Furniture Network GmbH",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Togostraße 1",
-        "addressLocality": "München",
-        "postalCode": "81827",
+        "streetAddress": "Hohenstaufenring 78",
+        "addressLocality": "Köln",
+        "postalCode": "50674",
         "addressCountry": "DE"
       },
       "email": "contact@weteextees.com"
@@ -63,13 +64,13 @@ const TermsPage = () => {
               {isGerman ? (
                 <>
                   <li>Weteextees bietet handverlesene moderne Esszimmerstühle, Rattan- und Massivholzmöbel, Tische und Einrichtungsgegenstände über den Online-Shop an.</li>
-                  <li>Vertragspartner ist Weteextees, Togostraße 1, 81827 München-Trudering-Riem, Bayern, Deutschland.</li>
+                  <li>Vertragspartner ist Weteextees, Hohenstaufenring 78, 50674 Köln, Deutschland.</li>
                   <li>Für alle Bestellungen über diesen Online-Shop gelten ausschließlich die hier vorliegenden AGB in ihrer zum Zeitpunkt der Bestellung gültigen Fassung.</li>
                 </>
               ) : (
                 <>
                   <li>Weteextees operates an online storefront offering curated designer dining chairs, natural rattan, solid wood furniture, and tables.</li>
-                  <li>The contracting entity is Weteextees, with location at Togostraße 1, 81827 München-Trudering-Riem, Germany.</li>
+                  <li>The contracting entity is Weteextees, with location at Hohenstaufenring 78, 50674 Köln/Cologne, Germany.</li>
                   <li>These Terms apply to all orders, inquiries, and contracts made through Weteextees.com.</li>
                 </>
               )}
@@ -213,6 +214,16 @@ const TermsPage = () => {
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">
+                  {isGerman ? 'Telefon:' : 'Phone:'}
+                </div>
+                <div className="text-gray-600">
+                  <a href="tel:+4917782488879" className="text-[#1D2E24] hover:underline">
+                    +49 (0) 177 82 48 879
+                  </a>
+                </div>
+              </div>
+              <div>
+                <div className="font-medium text-[#262626] mb-1">
                   {isGerman ? 'E-Mail:' : 'Email:'}
                 </div>
                 <div className="text-gray-600">contact@weteextees.com</div>
@@ -222,7 +233,7 @@ const TermsPage = () => {
                   {isGerman ? 'Standorte & Logistik:' : 'Locations & Logistics:'}
                 </div>
                 <div className="text-gray-600">
-                  🇩🇪 Togostraße 1, 81827 München-Trudering-Riem, Deutschland
+                  🇩🇪 Hohenstaufenring 78, 50674 Köln/Cologne, Deutschland
                 </div>
               </div>
             </div>

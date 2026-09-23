@@ -14,11 +14,12 @@ const WiderrufsrechtPage = () => {
     "publisher": {
       "@type": "Organization",
       "name": "Weteextees",
+      "legalName": "Furniture Network GmbH",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Togostraße 1",
-        "addressLocality": "München",
-        "postalCode": "81827",
+        "streetAddress": "Hohenstaufenring 78",
+        "addressLocality": "Köln",
+        "postalCode": "50674",
         "addressCountry": "DE"
       },
       "email": "contact@weteextees.com"
@@ -83,8 +84,8 @@ const WiderrufsrechtPage = () => {
                 </div>
                 <div className="text-gray-600">
                   Weteextees<br />
-                  Togostraße 1<br />
-                  81827 München-Trudering-Riem, Deutschland<br />
+                  Hohenstaufenring 78<br />
+                  50674 Köln/Cologne, Deutschland<br />
                   E-Mail: <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:underline">contact@weteextees.com</a>
                 </div>
               </div>
@@ -112,7 +113,7 @@ const WiderrufsrechtPage = () => {
               </p>
               <div className="space-y-2 text-sm">
                 <p>
-                  {isGerman ? 'An:' : 'To:'} Weteextees, Togostraße 1, 81827 München-Trudering-Riem, Deutschland
+                  {isGerman ? 'An:' : 'To:'} Weteextees, Hohenstaufenring 78, 50674 Köln/Cologne, Deutschland
                 </p>
                 <p>
                   {isGerman ? 'Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über den Kauf der folgenden Waren (*) / die Erbringung der folgenden Dienstleistung (*)' : 'I/We (*) hereby withdraw from the contract concluded by me/us (*) for the purchase of the following goods (*) / provision of the following service (*)'}
@@ -209,8 +210,8 @@ const WiderrufsrechtPage = () => {
                 </div>
                 <div className="text-gray-600">
                   Weteextees<br />
-                  Togostraße 1<br />
-                  81827 München-Trudering-Riem<br />
+                  Hohenstaufenring 78<br />
+                  50674 Köln/Cologne<br />
                   Deutschland
                 </div>
               </div>

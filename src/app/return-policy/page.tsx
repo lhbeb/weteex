@@ -18,6 +18,7 @@ export default function ReturnPolicyPage() {
         '@type': 'OnlineStore',
         '@id': 'https://weteextees.com/#organization',
         'name': 'Weteextees',
+        'legalName': 'Furniture Network GmbH',
         'url': 'https://weteextees.com',
         'hasMerchantReturnPolicy': {
           '@type': 'MerchantReturnPolicy',

@@ -40,6 +40,14 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center">
+                <svg className="h-5 w-5 text-[#D1A966] mr-2 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <a href="tel:+4917782488879" className="hover:text-[#D1A966] transition-colors duration-300">
+                  +49 (0) 177 82 48 879
+                </a>
+              </div>
+              <div className="flex items-center">
                 <Instagram className="h-5 w-5 text-[#D1A966] mr-2" />
                 <a
                   href="https://www.instagram.com/weteextees/"
@@ -81,7 +89,7 @@ const Footer = () => {
                 <div className="space-y-1.5 text-xs sm:text-sm">
                   <span className="block font-semibold text-white">{isGerman ? 'Standorte & Logistik' : 'Locations & Logistics'}</span>
                   <div className="text-[#DCE5DE]">
-                    <span className="text-white font-medium">🇩🇪 {isGerman ? 'Deutschland (Zentrale):' : 'Germany (HQ):'}</span> Hochalmstraße 10, 81825 München, Bayern
+                    <span className="text-white font-medium">🇩🇪 {isGerman ? 'Deutschland (Zentrale):' : 'Germany (HQ):'}</span> Hohenstaufenring 78, 50674 Köln/Cologne
                   </div>
                 </div>
               </div>
@@ -126,7 +134,14 @@ const Footer = () => {
               />
             </div>
 
-            <p className="text-center text-[#DCE5DE]/80 text-sm">© {new Date().getFullYear()} Weteextees. {t('common.rightsReserved')}</p>
+            <p className="text-center text-[#DCE5DE]/80 text-sm">
+              © {new Date().getFullYear()} Weteextees. {t('common.rightsReserved')}
+            </p>
+            <p className="text-center text-[#DCE5DE]/60 text-xs">
+              {isGerman
+                ? 'Ein Handelsname der Furniture Network GmbH | HRB 50696 | USt-IdNr. DE227434148'
+                : 'A trading name of Furniture Network GmbH | HRB 50696 | VAT ID DE227434148'}
+            </p>
           </div>
         </div>
       </div>

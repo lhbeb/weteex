@@ -167,7 +167,8 @@ export default async function ProductPage({
         "url": `${BASE_URL}/products/${p.slug}`,
         "seller": {
           "@type": "Organization",
-          "name": "Weteextees"
+          "name": "Weteextees",
+          "legalName": "Furniture Network GmbH"
         },
         "hasMerchantReturnPolicy": {
           "@type": "MerchantReturnPolicy",

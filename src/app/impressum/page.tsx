@@ -9,21 +9,23 @@ const ImpressumPage = () => {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Weteextees",
-    "legalName": "Weteextees",
+    "name": "Furniture Network GmbH",
+    "alternateName": "Weteextees",
+    "legalName": "Furniture Network GmbH",
     "url": "https://weteextees.com",
     "logo": "https://weteextees.com/logo.png",
+    "vatID": "DE227434148",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Togostraße 1",
-      "addressLocality": "München",
-      "addressRegion": "Bayern",
-      "postalCode": "81827",
+      "streetAddress": "Hohenstaufenring 78",
+      "addressLocality": "Köln",
+      "postalCode": "50674",
       "addressCountry": "DE"
     },
     "contactPoint": {
       "@type": "ContactPoint",
       "email": "contact@weteextees.com",
+      "telephone": "+49-177-82488879",
       "contactType": "customer service",
       "availableLanguage": ["German", "English"]
     }
@@ -56,7 +58,13 @@ const ImpressumPage = () => {
             <div className="bg-gray-50 rounded-lg p-6 space-y-3">
               <div>
                 <div className="font-medium text-[#262626] mb-1">
-                  {isGerman ? 'Name:' : 'Name:'}
+                  {isGerman ? 'Firma:' : 'Company:'}
+                </div>
+                <div className="text-gray-600">Furniture Network GmbH</div>
+              </div>
+              <div>
+                <div className="font-medium text-[#262626] mb-1">
+                  {isGerman ? 'Handelsname:' : 'Trading Name:'}
                 </div>
                 <div className="text-gray-600">Weteextees</div>
               </div>
@@ -65,9 +73,9 @@ const ImpressumPage = () => {
                   {isGerman ? 'Anschrift:' : 'Address:'}
                 </div>
                 <div className="text-gray-600">
-                  Togostraße 1<br />
-                  81827 München-Trudering-Riem<br />
-                  Bayern, Deutschland
+                  Hohenstaufenring 78<br />
+                  50674 Köln/Cologne<br />
+                  Deutschland / Germany
                 </div>
               </div>
               <div>
@@ -91,19 +99,9 @@ const ImpressumPage = () => {
             <div className="bg-gray-50 rounded-lg p-6 space-y-3">
               <div>
                 <div className="font-medium text-[#262626] mb-1">
-                  {isGerman ? 'Geschäftsführung / Vertretungsberechtigte:' : 'Management / Authorized Representatives:'}
-                </div>
-                <div className="text-gray-600">
-                  {isGerman ? '[Name des Geschäftsführers einzufügen]' : '[Insert Managing Director Name]'}
-                </div>
-              </div>
-              <div>
-                <div className="font-medium text-[#262626] mb-1">
                   {isGerman ? 'Handelsregister:' : 'Commercial Register:'}
                 </div>
-                <div className="text-gray-600">
-                  {isGerman ? '[Handelsregisternummer einzufügen]' : '[Insert Commercial Register Number]'}
-                </div>
+                <div className="text-gray-600">HRB 50696</div>
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">
@@ -126,9 +124,7 @@ const ImpressumPage = () => {
                 <div className="font-medium text-[#262626] mb-1">
                   {isGerman ? 'Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:' : 'VAT Identification Number pursuant to § 27 a VAT Act:'}
                 </div>
-                <div className="text-gray-600">
-                  {isGerman ? '[USt-IdNr. einzufügen]' : '[Insert VAT ID Number]'}
-                </div>
+                <div className="text-gray-600">DE227434148</div>
               </div>
             </div>
           </div>
@@ -166,7 +162,9 @@ const ImpressumPage = () => {
                   {isGerman ? 'Telefon:' : 'Phone:'}
                 </div>
                 <div className="text-gray-600">
-                  {isGerman ? '[Telefonnummer einzufügen]' : '[Insert Phone Number]'}
+                  <a href="tel:+4917782488879" className="text-[#1D2E24] hover:underline">
+                    +49 (0) 177 82 48 879
+                  </a>
                 </div>
               </div>
               <div>

@@ -35,12 +35,14 @@ export default function ContactPage() {
         '@type': 'Organization',
         '@id': 'https://weteextees.com/#organization',
         'name': 'Weteextees',
+        'legalName': 'Furniture Network GmbH',
         'url': 'https://weteextees.com',
         'contactPoint': [
           {
             '@type': 'ContactPoint',
             'contactType': 'customer service',
             'email': 'contact@weteextees.com',
+            'telephone': '+49-177-82488879',
             'areaServed': ['DE', 'EU', 'US', 'CA', 'GB'],
             'availableLanguage': ['en', 'de'],
           },
@@ -48,10 +50,9 @@ export default function ContactPage() {
         'address': [
           {
             '@type': 'PostalAddress',
-            'streetAddress': 'Hochalmstraße 10',
-            'addressLocality': 'München',
-            'addressRegion': 'Bayern',
-            'postalCode': '81825',
+            'streetAddress': 'Hohenstaufenring 78',
+            'addressLocality': 'Köln',
+            'postalCode': '50674',
             'addressCountry': 'DE',
           },
           {
@@ -238,7 +239,7 @@ export default function ContactPage() {
                           {isGerman ? 'Standorte & Logistik' : 'Locations & Logistics'}
                         </h3>
                         <p className="text-gray-600 mt-1">
-                          <span className="font-semibold">🇩🇪 {isGerman ? 'Deutschland:' : 'Germany:'}</span> Hochalmstraße 10, 81825 München, Bavaria
+                          <span className="font-semibold">🇩🇪 {isGerman ? 'Deutschland:' : 'Germany:'}</span> Hohenstaufenring 78, 50674 Köln/Cologne
                         </p>
                       </div>
                     </div>
@@ -269,6 +270,19 @@ export default function ContactPage() {
                           {isGerman ? 'E-Mail' : 'Email'}
                         </h3>
                         <p className="text-gray-600 mt-1">contact@weteextees.com</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <Mail className="h-6 w-6 text-[#1D2E24] mt-1 shrink-0" />
+                      <div className="ml-4">
+                        <h3 className="font-medium text-[#1E2621]">
+                          {isGerman ? 'Telefon' : 'Phone'}
+                        </h3>
+                        <p className="text-gray-600 mt-1">
+                          <a href="tel:+4917782488879" className="text-[#1D2E24] hover:underline">
+                            +49 (0) 177 82 48 879
+                          </a>
+                        </p>
                       </div>
                     </div>
                     <div className="border-t border-gray-200 pt-6">

@@ -107,6 +107,7 @@ export default function RootLayout({
                 "@context": "https://schema.org",
                 "@type": "Organization",
                 "name": "Weteextees",
+                "legalName": "Furniture Network GmbH",
                 "url": "https://weteextees.com",
                 "logo": "https://weteextees.com/weteex-machines-logo.svg",
                 "description": "Weteextees ist Ihre Adresse für hochwertige moderne Möbel, Esszimmerstühle, Naturholz- und Rattanmöbel sowie zeitlose Wohnkultur.",
@@ -119,15 +120,15 @@ export default function RootLayout({
                   "@type": "ContactPoint",
                   "contactType": "customer service",
                   "email": "contact@weteextees.com",
+                  "telephone": "+49-177-82488879",
                   "areaServed": ["DE", "EU", "GB", "US"]
                 },
                 "address": [
                   {
                     "@type": "PostalAddress",
-                    "streetAddress": "Togostraße 1",
-                    "addressLocality": "München",
-                    "addressRegion": "Bayern",
-                    "postalCode": "81827",
+                    "streetAddress": "Hohenstaufenring 78",
+                    "addressLocality": "Köln",
+                    "postalCode": "50674",
                     "addressCountry": "DE"
                   },
                   {

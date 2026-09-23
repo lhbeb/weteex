@@ -14,11 +14,12 @@ const PrivacyPolicyPage = () => {
     "publisher": {
       "@type": "Organization",
       "name": "Weteextees",
+      "legalName": "Furniture Network GmbH",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Togostraße 1",
-        "addressLocality": "München",
-        "postalCode": "81827",
+        "streetAddress": "Hohenstaufenring 78",
+        "addressLocality": "Köln",
+        "postalCode": "50674",
         "addressCountry": "DE"
       },
       "email": "contact@weteextees.com"
@@ -56,7 +57,7 @@ const PrivacyPolicyPage = () => {
               <br />
               <strong>Weteextees</strong>
               <br />
-              {isGerman ? 'Standort Deutschland:' : 'Germany Location:'} Togostraße 1, 81827 München-Trudering-Riem, Bayern
+              {isGerman ? 'Standort Deutschland:' : 'Germany Location:'} Hohenstaufenring 78, 50674 Köln/Cologne
               <br />
               {isGerman ? 'E-Mail:' : 'Email:'} <a href="mailto:contact@weteextees.com" className="text-[#1D2E24] hover:underline">contact@weteextees.com</a>
             </p>
@@ -189,6 +190,16 @@ const PrivacyPolicyPage = () => {
               </div>
               <div>
                 <div className="font-medium text-[#262626] mb-1">
+                  {isGerman ? 'Telefon:' : 'Phone:'}
+                </div>
+                <div className="text-gray-600">
+                  <a href="tel:+4917782488879" className="text-[#1D2E24] hover:underline">
+                    +49 (0) 177 82 48 879
+                  </a>
+                </div>
+              </div>
+              <div>
+                <div className="font-medium text-[#262626] mb-1">
                   {isGerman ? 'E-Mail:' : 'Email:'}
                 </div>
                 <div className="text-gray-600">contact@weteextees.com</div>
@@ -198,7 +209,7 @@ const PrivacyPolicyPage = () => {
                   {isGerman ? 'Standorte & Logistik:' : 'Locations & Logistics:'}
                 </div>
                 <div className="text-gray-600">
-                  🇩🇪 Togostraße 1, 81827 München-Trudering-Riem, Deutschland
+                  🇩🇪 Hohenstaufenring 78, 50674 Köln/Cologne, Deutschland
                 </div>
               </div>
             </div>

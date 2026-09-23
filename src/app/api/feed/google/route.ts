@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAllProducts } from '@/lib/data';
-import { formatValidSku, mapConditionToGmc } from '@/lib/conditions';
+import { formatWeteexteesProductId, mapConditionToGmc } from '@/lib/conditions';
 import { getProductTranslation } from '@/lib/productTranslations';
 import type { Product } from '@/types/product';
 
@@ -11,6 +11,7 @@ const SUPPORTED_IMAGE_EXTENSIONS = /\.(?:jpe?g|png|webp|gif|bmp|tiff?)(?:$|\?)/i
 
 const FURNITURE_CATEGORY = 'Modern Chairs & Furniture';
 const GOOGLE_FURNITURE_CATEGORY = '436';
+const GMC_BRAND = 'Weteextees';
 
 function escapeXml(value: unknown): string {
   return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -97,19 +98,14 @@ export async function GET(request: NextRequest) {
       const feedImages = getFeedImageUrls(product);
       const additionalImages = feedImages.slice(1, 11)
         .map((image) => `\n      <g:additional_image_link>${escapeXml(image)}</g:additional_image_link>`).join('');
-      const hasGtin = product.meta?.gtin && String(product.meta.gtin).length >= 8;
-      const hasMpn = product.meta?.mpn && String(product.meta.mpn).length >= 1;
-      const identifierXml = hasGtin
-        ? `\n      <g:gtin>${escapeXml(String(product.meta!.gtin))}</g:gtin>\n      <g:identifier_exists>yes</g:identifier_exists>`
-        : hasMpn
-          ? `\n      <g:mpn>${escapeXml(String(product.meta!.mpn))}</g:mpn>\n      <g:identifier_exists>yes</g:identifier_exists>`
-          : '\n      <g:identifier_exists>no</g:identifier_exists>';
+      const gmcProductId = formatWeteexteesProductId(product);
+      const identifierXml = `\n      <g:mpn>${escapeXml(gmcProductId)}</g:mpn>\n      <g:identifier_exists>yes</g:identifier_exists>`;
       const priceValidUntil = new Date();
       priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
 
       return `
     <item>
-      <g:id>${escapeXml(formatValidSku(product))}</g:id>
+      <g:id>${escapeXml(gmcProductId)}</g:id>
       <title>${title}</title>
       <description>${description}</description>
       <link>${escapeXml(`${BASE_URL}/products/${encodeURIComponent(product.slug)}`)}</link>
@@ -117,7 +113,7 @@ export async function GET(request: NextRequest) {
       <g:price>${Number(product.price).toFixed(2)} EUR</g:price>
       <g:availability>${product.inStock === false ? 'out_of_stock' : 'in_stock'}</g:availability>
       <g:condition>${mapConditionToGmc(product.condition)}</g:condition>
-      <g:brand>${escapeXml(product.brand)}</g:brand>
+      <g:brand>${escapeXml(GMC_BRAND)}</g:brand>
       <g:product_type>${escapeXml(FURNITURE_CATEGORY)}</g:product_type>
       <g:google_product_category>${GOOGLE_FURNITURE_CATEGORY}</g:google_product_category>
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>

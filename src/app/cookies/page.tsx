@@ -132,7 +132,7 @@ const CookiesPage = () => {
                   {isGerman ? 'Standorte & Logistik:' : 'Locations & Logistics:'}
                 </div>
                 <div className="text-gray-600">
-                  🇩🇪 Hochalmstraße 10, 81825 München, Germany<br />
+                  🇩🇪 Hohenstaufenring 78, 50674 Köln/Cologne, Germany<br />
                   🇺🇸 900 AZ-66, Peach Springs, AZ 86434, USA
                 </div>
               </div>

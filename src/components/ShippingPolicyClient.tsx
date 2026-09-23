@@ -36,7 +36,7 @@ export default function ShippingPolicyClient() {
           </article>
           <article className="rounded-2xl border border-[#DCE5DE] bg-white p-7">
             <h2 className="text-2xl font-semibold">Standort</h2>
-            <div className="mt-5 flex gap-3 text-[#4E5D53]"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#9A7438]"/><p><strong className="block text-[#1D2E24]">Deutschland</strong>Hochalmstraße 10<br/>81825 München</p></div>
+            <div className="mt-5 flex gap-3 text-[#4E5D53]"><MapPin className="mt-0.5 h-5 w-5 shrink-0 text-[#9A7438]"/><p><strong className="block text-[#1D2E24]">Deutschland</strong>Hohenstaufenring 78<br/>50674 Köln/Cologne</p></div>
             <p className="mt-6 text-sm leading-6 text-[#6C796F]">Bestellungen können nur an gültige Lieferadressen innerhalb Deutschlands zugestellt werden.</p>
           </article>
         </div>

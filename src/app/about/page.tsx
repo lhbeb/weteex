@@ -30,16 +30,16 @@ export default function AboutPage() {
         '@type': 'OnlineStore',
         '@id': 'https://weteextees.com/#organization',
         'name': 'Weteextees',
+        'legalName': 'Furniture Network GmbH',
         'url': 'https://weteextees.com',
         'description':
           'Specialist in modern chairs, dining tables, solid wood furniture, and luxury home interiors.',
         'address': [
           {
             '@type': 'PostalAddress',
-            'streetAddress': 'Hochalmstraße 10',
-            'addressLocality': 'München',
-            'addressRegion': 'Bayern',
-            'postalCode': '81825',
+            'streetAddress': 'Hohenstaufenring 78',
+            'addressLocality': 'Köln',
+            'postalCode': '50674',
             'addressCountry': 'DE',
           },
           {

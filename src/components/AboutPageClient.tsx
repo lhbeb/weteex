@@ -41,6 +41,11 @@ export default function AboutPageClient() {
               ? 'Weteextees ist Ihre Adresse für handverlesene moderne Stühle, edle Massivholz- und Rattanmöbel, Designtische und zeitlose Wohnkultur. Wir verbinden Designliebhaber mit meisterhafter Handwerkskunst.'
               : 'Weteextees is your premier destination for handcrafted modern chairs, luxury solid wood & natural rattan furniture, designer tables, and timeless home aesthetics. We connect design enthusiasts with masterful craftsmanship.'}
           </p>
+          <p className="text-sm text-[#F6F8F5]/70 mt-4">
+            {isGerman
+              ? 'Ein Handelsname der Furniture Network GmbH'
+              : 'A trading name of Furniture Network GmbH'}
+          </p>
         </div>
       </div>
 
@@ -65,11 +70,11 @@ export default function AboutPageClient() {
               <p>
                 {isGerman ? (
                   <>
-                    Unser Standort befindet sich in der <strong>Hochalmstraße 10, 81825 München, Bayern, Deutschland</strong>. Alle Möbelstücke werden sorgfältig geprüft und transportsicher innerhalb Deutschlands versendet.
+                    Unser Standort befindet sich in der <strong>Hohenstaufenring 78, 50674 Köln/Cologne, Deutschland</strong>. Alle Möbelstücke werden sorgfältig geprüft und transportsicher innerhalb Deutschlands versendet.
                   </>
                 ) : (
                   <>
-                    Our operations are located at <strong>Hochalmstraße 10, 81825 Munich, Bavaria, Germany</strong> and <strong>900 AZ-66, Peach Springs, AZ 86434, USA</strong>. Every piece undergoes meticulous inspection before insured freight dispatch.
+                    Our operations are located at <strong>Hohenstaufenring 78, 50674 Köln/Cologne, Germany</strong>. Every piece undergoes meticulous inspection before insured freight dispatch.
                   </>
                 )}
               </p>
@@ -352,7 +357,7 @@ export default function AboutPageClient() {
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
               <div className="text-4xl font-bold mb-2 text-[#D1A966]">DE &amp; US</div>
               <div className="text-[#F6F8F5]/80 text-sm">
-                {isGerman ? 'München & Arizona' : 'Munich & Arizona'}
+                {isGerman ? 'Köln & Arizona' : 'Cologne & Arizona'}
               </div>
             </div>
             <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20">
@@ -393,7 +398,7 @@ export default function AboutPageClient() {
                 </div>
               </div>
               <div className="text-gray-600 ml-8 text-sm">
-                <div>🇩🇪 <strong>Deutschland:</strong> Hochalmstraße 10, 81825 München</div>
+                <div>🇩🇪 <strong>Deutschland:</strong> Hohenstaufenring 78, 50674 Köln/Cologne</div>
               </div>
             </div>
             <div className="bg-[#F6F8F5] rounded-xl p-6 border border-[#DCE5DE]">
