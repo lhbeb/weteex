@@ -75,7 +75,7 @@ export const STORE_FAQS_EN: readonly StoreFaq[] = [
   {
     question: 'Where do you ship, and how is delicate furniture handled?',
     answer:
-      'We provide insured freight shipping to the United States, Germany, the EU, and worldwide. Heavy or fragile items are securely packed with reinforced edge protection and transported via specialized logistics partners.',
+      'We provide free insured freight shipping within Germany. Heavy or fragile items are securely packed with reinforced edge protection and transported via specialized logistics partners. Orders are processed within 1 business day and delivered within 3–4 business days.',
     linkHref: '/shipping-policy',
     linkLabel: 'View Shipping Policy',
   },

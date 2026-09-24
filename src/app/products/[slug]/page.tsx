@@ -199,16 +199,24 @@ export default async function ProductPage({
               "@type": "ShippingDeliveryTime",
               "handlingTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 0,
+                "minValue": 1,
                 "maxValue": 1,
                 "unitCode": "DAY"
               },
               "transitTime": {
                 "@type": "QuantitativeValue",
-                "minValue": 5,
-                "maxValue": 8,
+                "minValue": 3,
+                "maxValue": 4,
                 "unitCode": "DAY"
-              }
+              },
+              "cutoffTime": "14:00:00+01:00",
+              "businessDays": [
+                "https://schema.org/Monday",
+                "https://schema.org/Tuesday",
+                "https://schema.org/Wednesday",
+                "https://schema.org/Thursday",
+                "https://schema.org/Friday"
+              ]
             }
           }
         ]
