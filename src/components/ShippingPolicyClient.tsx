@@ -29,7 +29,7 @@ export default function ShippingPolicyClient() {
           <article className="rounded-2xl border border-[#DCE5DE] bg-white p-7">
             <h2 className="text-2xl font-semibold">Lieferablauf</h2>
             <ul className="mt-5 space-y-4 text-[#4E5D53]">
-              <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#9A7438]"/><span>Bestellungen werden innerhalb eines Werktags bearbeitet.</span></li>
+              <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#9A7438]"/><span>Unsere Geschäftszeiten sind Montag bis Freitag (Mo–Fr); Bestellungen werden innerhalb eines Werktags bearbeitet.</span></li>
               <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#9A7438]"/><span>Die Beförderung dauert in der Regel 3–4 Werktage. (4-5 Werktage Gesamt).</span></li>
               <li className="flex gap-3"><CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-[#9A7438]"/><span>Sobald die Bestellung versendet wurde, erhalten Sie die Sendungsverfolgung per E-Mail.</span></li>
             </ul>
