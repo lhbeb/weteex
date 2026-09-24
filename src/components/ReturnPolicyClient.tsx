@@ -72,6 +72,18 @@ export default function ReturnPolicyClient() {
             </div>
 
             <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
+              <Mail className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
+              <div>
+                <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">
+                  {isGerman ? 'Rücksendemethode' : 'Return Method'}
+                </span>
+                <span className="text-sm font-bold text-gray-900">
+                  {isGerman ? 'Per Post (kostenlos)' : 'By Mail (Free)'}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F6F8F5] border border-[#DCE5DE]">
               <Banknote className="w-5 h-5 text-[#1D2E24] flex-shrink-0 mt-0.5" />
               <div>
                 <span className="block text-xs font-semibold uppercase tracking-wider text-gray-500">
@@ -114,7 +126,7 @@ export default function ReturnPolicyClient() {
                   {isGerman ? 'Umtausch' : 'Exchanges'}
                 </span>
                 <span className="text-sm font-bold text-[#1D2E24]">
-                  {isGerman ? 'Kostenlos möglich' : 'Accepted (Free)'}
+                  {isGerman ? 'Ja – kostenlos möglich' : 'Yes — Accepted'}
                 </span>
               </div>
             </div>
