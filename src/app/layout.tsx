@@ -90,6 +90,11 @@ export default function RootLayout({
         <meta name="p:domain_verify" content="f0562c25efa6672e24e5fa220aed6c16" />
       </head>
       <body suppressHydrationWarning className="font-sans antialiased text-[#262626]">
+        <Script
+          id="stripe-js"
+          src="https://js.stripe.com/v3"
+          strategy="beforeInteractive"
+        />
         <GlobalErrorReporter />
         <Suspense fallback={null}>
           <FacebookPixel />

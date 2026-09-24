@@ -20,20 +20,31 @@ interface StripeElementsCheckoutProps {
   compact?: boolean;
 }
 
+const FALLBACK_STRIPE_PUBLISHABLE_KEY = 'pk_test_51UHaDLRo2TKeAOq8qGAsGGvgoics9p36je20qoTk2Yj0SY7RAFitIGd6fDUcMfF8pIUCeVZcyj2fJnQznrJGSnO700uglueIkS';
+
 let cachedStripePromise: Promise<Stripe | null> | null = null;
+
+async function getStripePublishableKey(): Promise<string> {
+  const envKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '';
+  if (envKey) return envKey;
+
+  try {
+    const response = await fetch(`/api/config/stripe?t=${Date.now()}`, { cache: 'no-store' });
+    const data = await response.json().catch(() => ({}));
+    if (response.ok && data.publishableKey) return data.publishableKey;
+  } catch (error) {
+    console.error('Failed to fetch Stripe publishable key:', error);
+  }
+
+  return FALLBACK_STRIPE_PUBLISHABLE_KEY;
+}
 
 async function getStripeClient(): Promise<Stripe | null> {
   if (cachedStripePromise) return cachedStripePromise;
 
   cachedStripePromise = (async () => {
-    const response = await fetch(`/api/config/stripe?t=${Date.now()}`, { cache: 'no-store' });
-    const data = await response.json();
-
-    if (!response.ok || !data.publishableKey) {
-      throw new Error(data.error || 'Stripe is not configured');
-    }
-
-    const stripe = await loadStripe(data.publishableKey);
+    const publishableKey = await getStripePublishableKey();
+    const stripe = await loadStripe(publishableKey);
     if (!stripe) throw new Error('Stripe.js returned no client instance');
     return stripe;
   })();
