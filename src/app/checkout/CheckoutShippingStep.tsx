@@ -4,11 +4,12 @@ import { useState } from 'react';
 import type { FormEventHandler, MouseEvent, ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, ChevronDown, Globe2, Mail, Store, Trash, User } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, ChevronDown, Mail, Store, Trash, User } from 'lucide-react';
 import CheckoutNotifier from '@/components/CheckoutNotifier';
 import CountrySelect from '@/components/CountrySelect';
 import PaypalApiRedirectButton from '@/components/PaypalApiRedirectButton';
 import PaypalRedirectButton from '@/components/PaypalRedirectButton';
+import StripeElementsCheckout from '@/components/StripeElementsCheckout';
 import type { CartItem } from '@/utils/cart';
 import type { CheckoutFormController } from './useCheckoutForm';
 import type { PaypalApiInitializationResult, PaypalPaymentInitializationResult } from './types';
@@ -25,7 +26,20 @@ interface CheckoutShippingStepProps {
   onPaypalApiBeforePayment: () => Promise<PaypalApiInitializationResult>;
   onClearCart: () => void;
   onDismissCheckoutError: () => void;
+  stripeClientSecret?: string | null;
+  isStripeAddressVerified?: boolean;
+  onLockedStripePaymentAttempt?: () => void;
+  onStripePaymentError?: (message: string) => void;
 }
+
+const PAYMENT_LOGOS = [
+  { src: '/payment-logos/visa.svg', alt: 'Visa', width: 46, height: 30 },
+  { src: '/payment-logos/mastercard.svg', alt: 'Mastercard', width: 46, height: 30 },
+  { src: '/payment-logos/american-express.svg', alt: 'American Express', width: 46, height: 30 },
+  { src: '/payment-logos/discover.svg', alt: 'Discover', width: 46, height: 30 },
+  { src: '/payment-logos/apple-pay.svg', alt: 'Apple Pay', width: 54, height: 30 },
+  { src: '/payment-logos/google-pay.svg', alt: 'Google Pay', width: 58, height: 30 },
+];
 
 interface MobileCheckoutCTAProps {
   onClick?: (event: MouseEvent) => void;
@@ -363,9 +377,13 @@ function AddressFields({
 function ContinueButton({
   isSendingEmail,
   isRedirecting,
+  label = 'Weiter zur Zahlung',
+  loadingLabel,
 }: {
   isSendingEmail: boolean;
   isRedirecting: boolean;
+  label?: string;
+  loadingLabel?: string;
 }) {
   const isBusy = isSendingEmail || isRedirecting;
 
@@ -382,13 +400,33 @@ function ContinueButton({
         <>
           <div className="animate-spin rounded-full h-6 w-6 border-b-3 border-white mr-3" />
           <span className="text-xl font-bold">
-            {isSendingEmail ? 'Adresse wird geprüft...' : 'Weiterleitung...'}
+            {isSendingEmail ? (loadingLabel || 'Adresse wird geprüft...') : 'Weiterleitung...'}
           </span>
         </>
       ) : (
-        <span className="text-xl font-bold">Weiter zur Zahlung</span>
+        <span className="text-xl font-bold">{label}</span>
       )}
     </button>
+  );
+}
+
+function AddressVerifiedNotice({ mobile = false }: { mobile?: boolean }) {
+  return (
+    <div
+      role="status"
+      aria-live="polite"
+      className={`flex items-start gap-3 rounded-xl border border-[#1D2E24]/15 bg-[#F6F8F5] ${mobile ? 'p-4' : 'p-4'} text-[#1D2E24] shadow-[0_1px_0_rgba(29,46,36,0.04)]`}
+    >
+      <span className="mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#1D2E24] text-white">
+        <CheckCircle2 className="h-4 w-4" strokeWidth={2.5} />
+      </span>
+      <div>
+        <p className="text-sm font-bold tracking-[-0.01em]">Delivery address confirmed</p>
+        <p className="mt-0.5 text-sm font-medium leading-5 text-[#1D2E24]/75">
+          Your shipping details are saved. Complete secure payment now to reserve your order.
+        </p>
+      </div>
+    </div>
   );
 }
 
@@ -396,22 +434,26 @@ function SecureCheckoutInfo({ mobile = false }: { mobile?: boolean }) {
   return (
     <div className={`${mobile ? 'lg:hidden mt-4 mb-4 space-y-2' : 'hidden lg:block mt-8 space-y-4'} flex flex-col items-center justify-center text-center w-full`}>
       <div className="text-sm text-gray-600">
-        <span className="font-semibold text-[#1D2E24]">Sichere Kasse</span> - SSL-verschlüsselt
+        <span className="font-semibold text-[#1D2E24]">Secure payment</span>
       </div>
-      <p className="text-xs text-gray-500 max-w-sm">
-        Sicher einkaufen - Ihre Daten werden nach modernsten Sicherheitsstandards geschützt
+      <p className="text-xs text-gray-500 max-w-sm mx-auto text-center">
+        Your payment details stay encrypted and private.
       </p>
-      <div className="flex items-center justify-center">
-        <Image
-          src="/secure-checkout.png"
-          alt="Sichere Zahlung"
-          width={192}
-          height={192}
-          className="h-12 w-auto"
-          quality={100}
-          priority
-          style={{ imageRendering: 'crisp-edges' }}
-        />
+      <div className="mx-auto flex w-full max-w-[30rem] flex-wrap items-center justify-center gap-2 px-2">
+        {PAYMENT_LOGOS.map((logo) => (
+          <span
+            key={logo.src}
+            className="flex h-8 min-w-[3.25rem] items-center justify-center rounded-lg border border-[#1D2E24]/10 bg-white px-2 shadow-[0_1px_2px_rgba(29,46,36,0.06)]"
+          >
+            <Image
+              src={logo.src}
+              alt={logo.alt}
+              width={logo.width}
+              height={logo.height}
+              className="max-h-5 w-auto object-contain"
+            />
+          </span>
+        ))}
       </div>
       <div className={`flex flex-wrap items-center justify-center text-xs text-gray-500 mt-2 ${mobile ? 'gap-2 px-4' : 'gap-3'}`}>
         <Link href="/terms" className="hover:text-[#1D2E24] hover:underline transition-colors">
@@ -446,10 +488,15 @@ export default function CheckoutShippingStep({
   onPaypalApiBeforePayment,
   onClearCart,
   onDismissCheckoutError,
+  stripeClientSecret,
+  isStripeAddressVerified = false,
+  onLockedStripePaymentAttempt = () => {},
+  onStripePaymentError,
 }: CheckoutShippingStepProps) {
   const [showMobileOrderSummary, setShowMobileOrderSummary] = useState(false);
   const { product } = cartItem;
   const price = formatPrice(cartItem, product.price);
+  const isStripeFlow = product.checkoutFlow === 'stripe';
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 pb-40 lg:pb-4">
@@ -529,6 +576,15 @@ export default function CheckoutShippingStep({
                   <h2 className="text-xl lg:text-2xl font-bold text-[#1E2621] mb-6 lg:mb-8 text-left">Lieferadresse &amp; Bestelldaten</h2>
                   <form onSubmit={onSubmit} className="space-y-6">
                     <AddressFields form={form} />
+                    {checkoutError && (
+                      <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+                        <p>{checkoutError}</p>
+                        <button type="button" onClick={onDismissCheckoutError} className="mt-1 text-xs underline">
+                          Schließen
+                        </button>
+                      </div>
+                    )}
+                    {isStripeFlow && isStripeAddressVerified && <AddressVerifiedNotice />}
                     <div className="hidden lg:block mt-8">
                       {product.checkoutFlow === 'paypal-direct' ? (
                         <PaypalRedirectButton
@@ -542,7 +598,12 @@ export default function CheckoutShippingStep({
                           disabled={isSendingEmail || !form.isFormValid}
                         />
                       ) : (
-                        <ContinueButton isSendingEmail={isSendingEmail} isRedirecting={isRedirecting} />
+                        <ContinueButton
+                          isSendingEmail={isSendingEmail}
+                          isRedirecting={isRedirecting}
+                          label={isStripeFlow ? 'Save delivery address' : 'Weiter zur Zahlung'}
+                          loadingLabel={isStripeFlow ? 'Saving delivery address...' : undefined}
+                        />
                       )}
                     </div>
                   </form>
@@ -629,6 +690,18 @@ export default function CheckoutShippingStep({
                     </div>
                   </div>
 
+                  {isStripeFlow && stripeClientSecret && (
+                    <div className="border-t border-gray-100 px-6 py-5">
+                      <StripeElementsCheckout
+                        clientSecret={stripeClientSecret}
+                        isAddressVerified={isStripeAddressVerified}
+                        shippingData={form.shippingData}
+                        onLockedPaymentAttempt={onLockedStripePaymentAttempt}
+                        onPaymentError={onStripePaymentError}
+                      />
+                    </div>
+                  )}
+
                 </div>
               </div>
             </div>
@@ -654,7 +727,32 @@ export default function CheckoutShippingStep({
                   </div>
                 )}
 
-                {product.checkoutFlow !== 'paypal-direct' && product.checkoutFlow !== 'paypal-api' && (
+                {isStripeFlow && isStripeAddressVerified && <AddressVerifiedNotice mobile />}
+
+                {isStripeFlow && (
+                  <div className="space-y-4">
+                    <ContinueButton
+                      isSendingEmail={isSendingEmail}
+                      isRedirecting={isRedirecting}
+                      label="Save delivery address"
+                      loadingLabel="Saving delivery address..."
+                    />
+                    {stripeClientSecret && (
+                      <div className="-mx-4 sm:mx-0">
+                        <StripeElementsCheckout
+                          clientSecret={stripeClientSecret}
+                          isAddressVerified={isStripeAddressVerified}
+                          shippingData={form.shippingData}
+                          onLockedPaymentAttempt={onLockedStripePaymentAttempt}
+                          onPaymentError={onStripePaymentError}
+                          compact
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {!isStripeFlow && product.checkoutFlow !== 'paypal-direct' && product.checkoutFlow !== 'paypal-api' && (
                   <MobileCheckoutCTA
                     disabled={isSendingEmail || isRedirecting}
                     isLoading={isSendingEmail || isRedirecting}

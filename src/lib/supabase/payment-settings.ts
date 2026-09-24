@@ -3,6 +3,7 @@ import { supabaseAdmin } from './server';
 export interface StripeConfig {
     publishableKey: string;
     secretKey: string;
+    webhookSecret?: string;
     mode: 'live' | 'test';
     isActive: boolean;
 }
@@ -25,6 +26,20 @@ const CACHE_TTL = 0; // Temporarily 0 to flush cache
 
 export async function getStripeConfig(): Promise<StripeConfig> {
     const now = Date.now();
+
+    const envPublishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '';
+    const envSecretKey = process.env.STRIPE_SECRET_KEY || '';
+    if (envPublishableKey && envSecretKey) {
+        cachedConfig = {
+            publishableKey: envPublishableKey,
+            secretKey: envSecretKey,
+            webhookSecret: process.env.STRIPE_WEBHOOK_SECRET || '',
+            mode: envSecretKey.startsWith('sk_live_') ? 'live' : 'test',
+            isActive: true
+        };
+        lastFetchTime = now;
+        return cachedConfig;
+    }
     
     // Return cached config if it's still valid
     if (cachedConfig && (now - lastFetchTime) < CACHE_TTL) {
@@ -32,17 +47,30 @@ export async function getStripeConfig(): Promise<StripeConfig> {
     }
 
     try {
-        const { data, error } = await supabaseAdmin
+        let { data, error } = await supabaseAdmin
             .from('payment_settings')
-            .select('publishable_key, secret_key, mode, is_active')
+            .select('publishable_key, secret_key, webhook_secret, mode, is_active')
             .eq('provider', 'stripe')
             .eq('is_active', true)
             .single();
+
+        if (error && error.code === '42703') {
+            const fallbackResult = await supabaseAdmin
+                .from('payment_settings')
+                .select('publishable_key, secret_key, mode, is_active')
+                .eq('provider', 'stripe')
+                .eq('is_active', true)
+                .single();
+
+            data = fallbackResult.data ? { ...fallbackResult.data, webhook_secret: null } : null;
+            error = fallbackResult.error;
+        }
 
         if (!error && data) {
             cachedConfig = {
                 publishableKey: data.publishable_key,
                 secretKey: data.secret_key,
+                webhookSecret: data.webhook_secret || process.env.STRIPE_WEBHOOK_SECRET || '',
                 mode: data.mode as 'live' | 'test',
                 isActive: data.is_active
             };
@@ -62,10 +90,11 @@ export async function getStripeConfig(): Promise<StripeConfig> {
 
     // Fallback to environment variables
     const fallbackConfig: StripeConfig = {
-        publishableKey: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '',
-        secretKey: process.env.STRIPE_SECRET_KEY || '',
+        publishableKey: envPublishableKey,
+        secretKey: envSecretKey,
+        webhookSecret: process.env.STRIPE_WEBHOOK_SECRET || '',
         mode: process.env.NODE_ENV === 'production' ? 'live' : 'test',
-        isActive: !!process.env.STRIPE_SECRET_KEY
+        isActive: !!envSecretKey
     };
 
     if (!fallbackConfig.secretKey) {
