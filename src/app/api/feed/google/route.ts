@@ -100,9 +100,6 @@ export async function GET(request: NextRequest) {
         .map((image) => `\n      <g:additional_image_link>${escapeXml(image)}</g:additional_image_link>`).join('');
       const gmcProductId = formatWeteexteesProductId(product);
       const identifierXml = `\n      <g:mpn>${escapeXml(gmcProductId)}</g:mpn>\n      <g:identifier_exists>yes</g:identifier_exists>`;
-      const priceValidUntil = new Date();
-      priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
-
       return `
     <item>
       <g:id>${escapeXml(gmcProductId)}</g:id>
@@ -117,9 +114,7 @@ export async function GET(request: NextRequest) {
       <g:product_type>${escapeXml(FURNITURE_CATEGORY)}</g:product_type>
       <g:google_product_category>${GOOGLE_FURNITURE_CATEGORY}</g:google_product_category>
       <g:custom_label_0>${escapeXml(product.condition || 'New')}</g:custom_label_0>
-      <g:return_policy_label>default_return_policy</g:return_policy_label>
-      <g:price_valid_until>${priceValidUntil.toISOString().slice(0, 10)}</g:price_valid_until>${identifierXml}
-      <g:tax><g:country>DE</g:country><g:rate>19</g:rate><g:tax_ship>yes</g:tax_ship></g:tax>
+      <g:return_policy_label>default_return_policy</g:return_policy_label>${identifierXml}
       <g:shipping><g:country>DE</g:country><g:service>Kostenloser Standardversand (Deutschland)</g:service>
         <g:price>0.00 EUR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>1</g:max_handling_time>
         <g:min_transit_time>5</g:min_transit_time><g:max_transit_time>8</g:max_transit_time></g:shipping>
