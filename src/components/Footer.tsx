@@ -110,6 +110,8 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-[#D1A966] mb-4">{t('footer.legal')}</h3>
             <ul className="space-y-2 text-[#DCE5DE]">
+              <li><Link href="/impressum" className="hover:text-[#D1A966] transition-colors duration-300">{isGerman ? 'Impressum' : 'Legal Notice'}</Link></li>
+              <li><Link href="/widerrufsrecht" className="hover:text-[#D1A966] transition-colors duration-300">{isGerman ? 'Widerrufsrecht' : 'Right of Withdrawal'}</Link></li>
               <li><Link href="/privacy-policy" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.privacy')}</Link></li>
               <li><Link href="/terms" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.terms')}</Link></li>
               <li><Link href="/about" className="hover:text-[#D1A966] transition-colors duration-300">{t('footer.about')}</Link></li>

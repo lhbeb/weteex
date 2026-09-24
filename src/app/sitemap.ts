@@ -28,6 +28,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { path: '/privacy-policy', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: '/terms', changeFrequency: 'yearly' as const, priority: 0.3 },
     { path: '/cookies', changeFrequency: 'yearly' as const, priority: 0.3 },
+    { path: '/impressum', changeFrequency: 'yearly' as const, priority: 0.4 },
+    { path: '/widerrufsrecht', changeFrequency: 'yearly' as const, priority: 0.4 },
   ];
 
   const staticPages = staticRoutes.map((route) => ({

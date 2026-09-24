@@ -20,7 +20,7 @@ export default async function HomePage() {
       (product) =>
         product.category === 'Modern Chairs & Furniture' ||
         product.collections?.includes('modern-furniture') ||
-        /\b(?:chair|table|desk|sofa|dining|rattan|wood|boucle|ceramic|marble|stoel|tafel|sessel)\b/i.test(
+        /\b(?:chair|table|desk|sofa|dining|rattan|wood|boucle|ceramic|marble|sessel)\b/i.test(
           `${product.title || ''} ${product.category || ''}`,
         ),
     );

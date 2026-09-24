@@ -13,7 +13,7 @@ const ImpressumPage = () => {
     "alternateName": "Weteextees",
     "legalName": "Furniture Network GmbH",
     "url": "https://weteextees.com",
-    "logo": "https://weteextees.com/logo.png",
+    "logo": "https://weteextees.com/weteex-machines-logo.svg",
     "vatID": "DE227434148",
     "address": {
       "@type": "PostalAddress",
@@ -46,8 +46,8 @@ const ImpressumPage = () => {
           {/* Introduction */}
           <p className="text-lg leading-relaxed">
             {isGerman
-              ? 'Angaben gemäß § 5 TMG (Telemediengesetz) und § 55 RStV (Rundfunkstaatsvertrag)'
-              : 'Information pursuant to § 5 TMG (German Telemedia Act) and § 55 RStV (Interstate Broadcasting Agreement)'}
+              ? 'Angaben gemäß § 5 TMG (Telemediengesetz) und § 18 MStV (Medienstaatsvertrag)'
+              : 'Information pursuant to § 5 TMG (German Telemedia Act) and § 18 MStV (Media State Treaty)'}
           </p>
 
           {/* Section 1: Company Information */}

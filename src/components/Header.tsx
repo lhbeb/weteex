@@ -32,7 +32,7 @@ const Header = () => {
   const isCheckoutPage = pathname === '/checkout';
 
   const catalogNavigation = useMemo(() => [
-    { label: t('nav.allCollections'), href: '/#products' },
+    { label: t('nav.allCollections'), href: '/#collection' },
     { label: t('nav.modernChairs'), href: '/search?query=Moderne%20Stühle%20Möbel' },
     { label: t('nav.diningTables'), href: '/search?query=Tische' },
     { label: t('nav.solidWoodRattan'), href: '/search?query=Rattan' },
